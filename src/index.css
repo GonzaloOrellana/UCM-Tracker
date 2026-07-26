@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root,
+  *,
+  ::before,
+  ::after,
+  button,
+  input,
+  select,
+  textarea,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  label {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+
+  body {
+    background-color: #E6E6E8;
+    color: #1A1A1A;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Hide Scrollbars Globally While Retaining Full Scrollability */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Diagonal Stripe Pattern Utility */
+.bg-stripe-pattern {
+  background-color: #EFEFEF;
+  background-image: repeating-linear-gradient(-45deg,
+      #F8FAFC,
+      #F8FAFC 4px,
+      #94A3B8 4px,
+      #94A3B8 5.5px);
+}
+
+.bg-stripe-dark {
+  background-color: #262626;
+  background-image: repeating-linear-gradient(-45deg,
+      #333333,
+      #333333 4px,
+      #262626 4px,
+      #262626 10px);
+}
+
+/* Metallic Color Gradients & Reflections */
+.bg-metallic-dark {
+  background: linear-gradient(180deg, #52525B 0%, #27272A 35%, #18181B 70%, #09090B 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.bg-metallic-red {
+  background: linear-gradient(180deg, #FF4D4D 0%, #C81D25 35%, #8B0000 70%, #4A0000 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.bg-metallic-silver {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 35%, #94A3B8 70%, #475569 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.bg-metallic-stripe-pattern {
+  background-color: #CBD5E1;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(0, 0, 0, 0.3) 100%),
+    repeating-linear-gradient(-45deg,
+      #F8FAFC,
+      #F8FAFC 4px,
+      #94A3B8 4px,
+      #94A3B8 5.5px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Glassmorphism Dark Bento Card for High Contrast */
+.crextio-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 1.5rem;
+  /* ~24px */
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+  color: #FFFFFF;
+}
+
+/* Glassmorphism Dark Accent Bento Card (For "Próximos Estrenos") */
+.crextio-dark-card {
+  background: rgba(18, 18, 22, 0.45);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 1.5rem;
+  /* ~24px */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+}
+
+/* Backward compatibility wrappers for existing code */
+.saas-card {
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+  color: #1A1A1A;
+}
+
+.saas-app-shell {
+  background: linear-gradient(135deg, #F4F4F4 0%, #F8F7F2 50%, #FAF8EE 100%);
+  border-radius: 2.25rem;
+  /* ~36px */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.06);
+}
+
+/* Cinematic Light-Beam Background matching reference photo (with bright top-left corner) */
+.bg-crextio-dashboard-gradient {
+  background-color: #12131C;
+  background-image:
+    /* Top-left corner bright soft radial glow */
+    radial-gradient(ellipse at 0% 0%, rgba(225, 238, 255, 0.42) 0%, rgba(165, 195, 245, 0.24) 25%, transparent 70%),
+    /* Top-right secondary light glow */
+    radial-gradient(ellipse at 85% 15%, rgba(185, 215, 250, 0.25) 0%, rgba(140, 170, 225, 0.12) 30%, transparent 65%),
+    /* Diagonal prismatic light rays */
+    linear-gradient(-62deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      transparent 16%,
+      rgba(140, 205, 255, 0.15) 26%,
+      transparent 36%,
+      rgba(230, 110, 130, 0.09) 46%,
+      transparent 56%,
+      rgba(150, 210, 255, 0.12) 66%,
+      transparent 80%),
+    linear-gradient(-72deg,
+      rgba(255, 255, 255, 0.09) 12%,
+      transparent 26%,
+      rgba(190, 210, 255, 0.08) 44%,
+      transparent 64%),
+    /* Deep cosmic background base gradient (Lighter at top-left 0%) */
+    linear-gradient(135deg, #44486E 0%, #292C46 32%, #161726 68%, #0C0D17 100%);
+  background-attachment: fixed;
+}
+
+/* Mobile Right-to-Left Side Drawer Animation */
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glassmorphism Floating Pill Container */
+.glass-pill {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1rem;
+}
