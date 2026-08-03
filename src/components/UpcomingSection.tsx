@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { INITIAL_UPCOMING_RELEASES } from '../data/upcomingData';
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
-import { UpcomingRelease } from '../types/mcu';
+import { MCUItem } from '../types/mcu';
+import { useMCU } from '../context/MCUContext';
 
 interface UpcomingSectionProps {
   onNavigateToUpcoming?: () => void;
@@ -30,12 +30,22 @@ const cardVariants = {
   },
 };
 
-const UpcomingCard: React.FC<{ item: UpcomingRelease }> = ({ item }) => {
+const formatDateDisplay = (dateStr: string) => {
+  if (!dateStr) return 'Próximamente';
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  }
+  return dateStr;
+};
+
+const UpcomingCard: React.FC<{ item: MCUItem; onClick?: () => void }> = ({ item, onClick }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
     <motion.div
       variants={cardVariants}
+      onClick={onClick}
       className="flex flex-col select-none shrink-0 w-24 sm:w-28 snap-start group/upcoming cursor-pointer"
     >
       {/* Clean Poster Image Box */}
@@ -63,7 +73,10 @@ const UpcomingCard: React.FC<{ item: UpcomingRelease }> = ({ item }) => {
           {item.titulo}
         </h4>
         <p className="text-[10px] text-zinc-300 font-medium truncate">
-          <span className="truncate">{item.fechaLanzamiento ? item.fechaLanzamiento : 'Próximamente'}</span>
+          <span className="truncate">{formatDateDisplay(item.fechaLanzamiento)}</span>
+          {item.fechaEsExacta === false && (
+            <span className="text-[9px] text-amber-400 font-normal ml-1">(Est.)</span>
+          )}
         </p>
       </div>
     </motion.div>
@@ -71,6 +84,7 @@ const UpcomingCard: React.FC<{ item: UpcomingRelease }> = ({ item }) => {
 };
 
 export const UpcomingSection: React.FC<UpcomingSectionProps> = ({ onNavigateToUpcoming }) => {
+  const { upcomingItems, openDetailModal } = useMCU();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -133,8 +147,8 @@ export const UpcomingSection: React.FC<UpcomingSectionProps> = ({ onNavigateToUp
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 pt-0.5 scroll-smooth no-scrollbar"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {INITIAL_UPCOMING_RELEASES.map((item) => (
-            <UpcomingCard key={item.id} item={item} />
+          {upcomingItems.map((item) => (
+            <UpcomingCard key={item.id} item={item} onClick={() => openDetailModal(item)} />
           ))}
         </motion.div>
       </div>
@@ -142,4 +156,5 @@ export const UpcomingSection: React.FC<UpcomingSectionProps> = ({ onNavigateToUp
     </div>
   );
 };
+
 

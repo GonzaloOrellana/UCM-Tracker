@@ -1,8 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { INITIAL_UPCOMING_RELEASES } from '../data/upcomingData';
+import { useMCU } from '../context/MCUContext';
 
 export const UpcomingView: React.FC = () => {
+  const { upcomingItems, openDetailModal } = useMCU();
+
+  // Helper to format ISO YYYY-MM-DD to DD/MM/YYYY
+  const formatDateDisplay = (dateStr: string) => {
+    if (!dateStr) return 'Próximamente';
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+    return dateStr;
+  };
+
   return (
     <div className="space-y-6">
       
@@ -13,9 +25,10 @@ export const UpcomingView: React.FC = () => {
         transition={{ duration: 1.4, ease: 'easeOut' }}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
       >
-        {INITIAL_UPCOMING_RELEASES.map((item) => (
+        {upcomingItems.map((item) => (
           <div
             key={item.id}
+            onClick={() => openDetailModal(item)}
             className="flex flex-col select-none group cursor-pointer"
           >
             {/* Poster Image Container matching production card size */}
@@ -26,16 +39,28 @@ export const UpcomingView: React.FC = () => {
                 className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                 loading="lazy"
               />
+              {item.fechaEsExacta === false && (
+                <div className="absolute top-2 right-2 bg-amber-500/90 text-zinc-950 font-bold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md backdrop-blur-xs">
+                  Estimada
+                </div>
+              )}
             </div>
 
             {/* Title & Metadata Text UNDERNEATH Poster */}
             <div className="mt-2 space-y-0.5 px-0.5">
-              <h3 className="text-xs font-bold text-white line-clamp-1">
+              <h3 className="text-xs font-bold text-white line-clamp-1 group-hover:text-red-400 transition-colors">
                 {item.titulo}
               </h3>
-              <p className="text-xs text-white/70 font-semibold truncate">
-                {item.fechaLanzamiento ? item.fechaLanzamiento : 'Próximamente'}
-              </p>
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs text-white/70 font-semibold truncate">
+                  {formatDateDisplay(item.fechaLanzamiento)}
+                </p>
+                {item.fechaEsExacta === false && (
+                  <span className="text-[10px] text-amber-400/90 font-medium" title="Fecha de estreno estimada">
+                    (Est.)
+                  </span>
+                )}
+              </div>
             </div>
 
           </div>
@@ -45,3 +70,4 @@ export const UpcomingView: React.FC = () => {
     </div>
   );
 };
+

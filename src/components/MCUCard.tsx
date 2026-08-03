@@ -112,9 +112,14 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
           </button>
         </div>
 
-        <p className="text-xs text-white/70 font-medium">
-          {item.anioLanzamiento}
-        </p>
+        <div className="flex items-center gap-2 text-xs text-white/70 font-medium">
+          <span>{item.anioLanzamiento}</span>
+          {item.fechaEsExacta === false && (
+            <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-1.5 py-0.2 rounded font-normal" title="Fecha de estreno estimada">
+              Fecha estimada
+            </span>
+          )}
+        </div>
       </div>
 
     </div>

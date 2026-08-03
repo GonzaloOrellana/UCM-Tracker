@@ -19,6 +19,8 @@ interface MCUStats {
 
 interface MCUContextType {
   items: MCUItem[];
+  availableItems: MCUItem[];
+  upcomingItems: MCUItem[];
   filteredItems: MCUItem[];
   watchedIds: Set<string>;
   favoriteIds: Set<string>;
@@ -101,8 +103,26 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
   }, [customItems, editedMap]);
 
-  // Custom Filters Hook
-  const { filters, filteredItems, setFilters, resetFilters } = useMCUFilters(items, watchedIds);
+  // Today's date ISO string YYYY-MM-DD for dynamic comparison against system date
+  const todayStr = useMemo(() => {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }, []);
+
+  // Split into Available (already released) and Upcoming (future release)
+  const availableItems = useMemo(() => {
+    return items.filter((item) => item.fechaLanzamiento <= todayStr);
+  }, [items, todayStr]);
+
+  const upcomingItems = useMemo(() => {
+    return items.filter((item) => item.fechaLanzamiento > todayStr);
+  }, [items, todayStr]);
+
+  // Custom Filters Hook operating on available items for library views
+  const { filters, filteredItems, setFilters, resetFilters } = useMCUFilters(availableItems, watchedIds);
 
   // Initial load
   useEffect(() => {
@@ -127,26 +147,26 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     loadData();
   }, []);
 
-  // Compute Statistics
+  // Compute Statistics based on released/available productions
   const stats: MCUStats = useMemo(() => {
-    const total = items.length;
-    const watched = items.filter((i) => watchedIds.has(i.id)).length;
+    const total = availableItems.length;
+    const watched = availableItems.filter((i) => watchedIds.has(i.id)).length;
     const percentage = total > 0 ? Math.round((watched / total) * 100) : 0;
 
-    const movies = items.filter((i) => i.tipo === 'movie');
+    const movies = availableItems.filter((i) => i.tipo === 'movie');
     const movieWatched = movies.filter((i) => watchedIds.has(i.id)).length;
 
-    const series = items.filter((i) => i.tipo === 'series');
+    const series = availableItems.filter((i) => i.tipo === 'series');
     const seriesWatched = series.filter((i) => watchedIds.has(i.id)).length;
 
-    const specials = items.filter((i) => i.tipo === 'special');
+    const specials = availableItems.filter((i) => i.tipo === 'special');
     const specialWatched = specials.filter((i) => watchedIds.has(i.id)).length;
 
     const phaseList = ['Fase 1', 'Fase 2', 'Fase 3', 'Fase 4', 'Fase 5', 'Fase 6'];
     const phases: Record<string, { total: number; watched: number; percentage: number }> = {};
 
     phaseList.forEach((phaseName) => {
-      const phaseItems = items.filter((i) => i.fase === phaseName);
+      const phaseItems = availableItems.filter((i) => i.fase === phaseName);
       const phaseWatched = phaseItems.filter((i) => watchedIds.has(i.id)).length;
       const pct = phaseItems.length > 0 ? Math.round((phaseWatched / phaseItems.length) * 100) : 0;
       phases[phaseName] = { total: phaseItems.length, watched: phaseWatched, percentage: pct };
@@ -161,7 +181,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       specials: { total: specials.length, watched: specialWatched },
       phases,
     };
-  }, [items, watchedIds]);
+  }, [availableItems, watchedIds]);
 
   // Modal handlers
   const openDetailModal = (item: MCUItem, source: 'grid' | 'fav' = 'grid') => {
@@ -280,6 +300,8 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     <MCUContext.Provider
       value={{
         items,
+        availableItems,
+        upcomingItems,
         filteredItems,
         watchedIds,
         favoriteIds,
