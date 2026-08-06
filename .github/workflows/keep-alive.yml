@@ -1,0 +1,18 @@
+name: Supabase Keep-Alive Ping
+
+on:
+  schedule:
+    # Corre cada 3 días a las 00:00 UTC
+    - cron: '0 0 */3 * *'
+  # Permite disparar la acción manualmente desde la pestaña Actions en GitHub
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          curl -s -f -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/user_progress?select=*&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
