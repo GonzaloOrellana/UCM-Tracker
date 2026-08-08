@@ -33,7 +33,7 @@ export interface MCUItem {
 
 export type OrderMode = 'release' | 'chronological';
 
-export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile';
+export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms';
 
 export interface FilterState {
   status: 'all' | 'watched' | 'unwatched';
@@ -65,5 +65,6 @@ export interface UpcomingRelease {
 
 export interface UserSettings {
   userName: string;
+  avatarId?: string;
   profilePicUrl?: string;
 }

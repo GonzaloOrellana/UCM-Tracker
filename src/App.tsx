@@ -6,10 +6,14 @@ import { ResetPasswordView } from './views/ResetPasswordView';
 import { DashboardView } from './views/DashboardView';
 import { LibraryView } from './views/LibraryView';
 import { UpcomingView } from './views/UpcomingView';
+import { PrivacyPolicyView } from './views/PrivacyPolicyView';
+import { TermsOfServiceView } from './views/TermsOfServiceView';
+import { ProfileView } from './views/ProfileView';
 import { DetailModal } from './components/DetailModal';
 import { EditItemModal } from './components/EditItemModal';
+import { CookieConsentBanner } from './components/CookieConsentBanner';
+import { Footer } from './components/Footer';
 import { MCUItem } from './types/mcu';
-import { ProfileView } from './views/ProfileView';
 import { getSupabaseClient } from './lib/supabase';
 
 const TrackerMainApp: React.FC = () => {
@@ -54,13 +58,16 @@ const TrackerMainApp: React.FC = () => {
     );
   }
 
-  // Si el usuario no ha iniciado sesión y no ha elegido entrar como invitado -> Página de Login
-  if (!user && !isGuestMode) {
+  // Si el usuario no ha iniciado sesión y no ha elegido entrar como invitado -> Página de Login (salvo que navegue a una vista legal pública)
+  if (!user && !isGuestMode && currentView !== 'privacy' && currentView !== 'terms') {
     return (
-      <LoginView
-        onContinueAsGuest={() => setIsGuestMode(true)}
-        onForgotPassword={() => setResetPasswordState('request')}
-      />
+      <>
+        <LoginView
+          onContinueAsGuest={() => setIsGuestMode(true)}
+          onForgotPassword={() => setResetPasswordState('request')}
+        />
+        <CookieConsentBanner />
+      </>
     );
   }
 
@@ -100,13 +107,24 @@ const TrackerMainApp: React.FC = () => {
             {currentView === 'profile' && (
               <ProfileView onExitGuestMode={() => setIsGuestMode(false)} />
             )}
+
+            {currentView === 'privacy' && (
+              <PrivacyPolicyView />
+            )}
+
+            {currentView === 'terms' && (
+              <TermsOfServiceView />
+            )}
           </main>
+
+          {/* Global Footer */}
+          <Footer />
 
         </div>
 
       </div>
 
-      {/* Floating Modals */}
+      {/* Floating Modals & Cookie Banner */}
       <DetailModal
         item={activeDetailItem}
         onClose={closeDetailModal}
@@ -119,6 +137,8 @@ const TrackerMainApp: React.FC = () => {
         item={editingItem}
         onClose={() => setEditingItem(null)}
       />
+
+      <CookieConsentBanner />
     </>
   );
 };

@@ -25,8 +25,12 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
         return;
       }
       setUser(u);
-      if (u?.user_metadata?.user_name) {
-        updateSettings({ ...settings, userName: u.user_metadata.user_name });
+      if (u?.user_metadata?.user_name || u?.user_metadata?.avatar_id) {
+        updateSettings({
+          ...settings,
+          userName: u.user_metadata.user_name || settings.userName,
+          avatarId: u.user_metadata.avatar_id || settings.avatarId,
+        });
       }
     });
 
@@ -38,8 +42,12 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
         return;
       }
       setUser(u);
-      if (u?.user_metadata?.user_name) {
-        updateSettings({ ...settings, userName: u.user_metadata.user_name });
+      if (u?.user_metadata?.user_name || u?.user_metadata?.avatar_id) {
+        updateSettings({
+          ...settings,
+          userName: u.user_metadata.user_name || settings.userName,
+          avatarId: u.user_metadata.avatar_id || settings.avatarId,
+        });
       }
       if (onAuthChange) onAuthChange();
     });
@@ -59,15 +67,19 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
       throw new Error('Credenciales inválidas. Por favor verifica tus datos o crea una cuenta.');
     }
 
-    if (data.user?.user_metadata?.user_name) {
-      updateSettings({ ...settings, userName: data.user.user_metadata.user_name });
+    if (data.user?.user_metadata?.user_name || data.user?.user_metadata?.avatar_id) {
+      updateSettings({
+        ...settings,
+        userName: data.user.user_metadata.user_name || settings.userName,
+        avatarId: data.user.user_metadata.avatar_id || settings.avatarId,
+      });
     }
   };
 
   const signup = async (email: string, pass: string, name: string) => {
     const supabase = getSupabaseClient();
     if (!supabase) throw new Error('Cliente Supabase no disponible.');
-    const { error, data } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password: pass,
       options: {
@@ -76,6 +88,16 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
     });
     if (error) throw error;
     updateSettings({ ...settings, userName: name });
+  };
+
+  const updateAvatarId = async (avatarId: string) => {
+    const supabase = getSupabaseClient();
+    if (supabase && user) {
+      const { error } = await supabase.auth.updateUser({
+        data: { avatar_id: avatarId },
+      });
+      if (error) console.error('Error al actualizar avatar en Supabase:', error);
+    }
   };
 
   const logout = async () => {
@@ -90,7 +112,7 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
     const supabase = getSupabaseClient();
     if (supabase && user) {
       await supabase.auth.updateUser({
-        data: { is_deleted: true, user_name: null },
+        data: { is_deleted: true, user_name: null, avatar_id: null },
       });
       await supabase.auth.signOut();
     }
@@ -124,5 +146,6 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
     deleteAccount,
     requestPasswordReset,
     updatePassword,
+    updateAvatarId,
   };
 }

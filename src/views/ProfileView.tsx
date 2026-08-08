@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useMCU } from '../context/MCUContext';
-import { Camera, Trash2, User, Mail, ShieldCheck, LogOut, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { User, Mail, ShieldCheck, LogOut, CheckCircle2, AlertTriangle, FileText, Cookie, Trash2, Pencil } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ChangePasswordCard } from '../components/profile/ChangePasswordCard';
 import { DeleteAccountModal } from '../components/profile/DeleteAccountModal';
+import { AvatarPickerModal } from '../components/profile/AvatarPicker';
 
 interface ProfileViewProps {
   onExitGuestMode?: () => void;
 }
 
 export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => {
-  const { user, settings, updateSettings, logout, deleteAccount } = useMCU();
+  const { user, settings, updateSettings, updateAvatar, logout, deleteAccount, setCurrentView, cookieConsent, resetCookieConsent } = useMCU();
 
   const [userName, setUserName] = useState(settings.userName || '');
-  const [profilePicUrl, setProfilePicUrl] = useState(settings.profilePicUrl || '');
+  const [selectedAvatarId, setSelectedAvatarId] = useState(settings.avatarId || '');
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [isAvatarPickerOpen, setIsAvatarPickerOpen] = useState(false);
 
   // Delete Account Confirmation state
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -23,63 +25,18 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
   // Keep inputs in sync with settings
   useEffect(() => {
     setUserName(settings.userName || '');
-    setProfilePicUrl(settings.profilePicUrl || '');
+    setSelectedAvatarId(settings.avatarId || '');
   }, [settings]);
 
-  const handleProfilePicUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const rawResult = event.target?.result as string;
-        if (rawResult) {
-          const img = new Image();
-          img.src = rawResult;
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const maxDim = 256;
-            let width = img.width;
-            let height = img.height;
-
-            if (width > height) {
-              if (width > maxDim) {
-                height = Math.round((height * maxDim) / width);
-                width = maxDim;
-              }
-            } else {
-              if (height > maxDim) {
-                width = Math.round((width * maxDim) / height);
-                height = maxDim;
-              }
-            }
-
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-              ctx.drawImage(img, 0, 0, width, height);
-              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
-              setProfilePicUrl(compressedBase64);
-              updateSettings({
-                ...settings,
-                userName: userName.trim() || settings.userName,
-                profilePicUrl: compressedBase64,
-              });
-            }
-          };
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSaveSettings = (e: React.FormEvent) => {
+  const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     updateSettings({
       ...settings,
       userName: userName.trim() || settings.userName,
-      profilePicUrl: profilePicUrl.trim(),
     });
+    if (selectedAvatarId) {
+      await updateAvatar(selectedAvatarId);
+    }
     setSaveSuccess(true);
     setTimeout(() => setSaveSuccess(false), 3000);
   };
@@ -117,44 +74,50 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
             </h2>
           </div>
 
-          {/* Avatar Photo Upload Area */}
-          <div className="flex items-center gap-4">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden shrink-0 bg-[#C81D25] text-white font-semibold text-xl flex items-center justify-center shadow-lg">
-              {profilePicUrl ? (
-                <img src={profilePicUrl} alt={userName} className="w-full h-full object-cover" />
-              ) : (
-                userName.charAt(0).toUpperCase()
-              )}
+          {/* Active Avatar Preview with Floating Edit Pencil Button */}
+          <div className="flex items-center gap-4 pt-1 border-b border-white/10 pb-4">
+            <div className="relative group">
+              <button
+                type="button"
+                onClick={() => setIsAvatarPickerOpen(true)}
+                className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 bg-[#1b1e32] border-2 border-white/20 shadow-xl cursor-pointer block focus:outline-none transition-transform hover:scale-105"
+                title="Cambiar avatar"
+              >
+                {settings.profilePicUrl ? (
+                  <img src={settings.profilePicUrl} alt={userName} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-white font-semibold text-2xl flex items-center justify-center h-full">
+                    {userName.charAt(0).toUpperCase()}
+                  </span>
+                )}
+              </button>
+
+              {/* Floating Pencil Edit Button Icon (Bottom Right) */}
+              <button
+                type="button"
+                onClick={() => setIsAvatarPickerOpen(true)}
+                className="absolute bottom-0 right-0 p-1.5 rounded-full bg-[#C81D25] hover:bg-[#a8151c] text-white shadow-lg border-2 border-[#181b2e] cursor-pointer transition-transform hover:scale-110"
+                title="Cambiar avatar"
+              >
+                <Pencil className="w-3.5 h-3.5" />
+              </button>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 text-left">
               <div className="flex items-center gap-2">
-                <label className="px-3 py-1.5 bg-white/15 hover:bg-white/25 border border-white/20 text-white text-xs font-medium rounded-lg cursor-pointer transition-colors flex items-center gap-1.5 shadow-xs">
-                  <Camera className="w-3.5 h-3.5 text-[#F5C842]" />
-                  <span>Subir Foto</span>
-                  <input type="file" accept="image/*" onChange={handleProfilePicUpload} className="hidden" />
-                </label>
-
-                {profilePicUrl && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setProfilePicUrl('');
-                      updateSettings({
-                        ...settings,
-                        profilePicUrl: '',
-                      });
-                    }}
-                    className="p-1.5 text-rose-300 hover:bg-rose-500/20 border border-rose-500/30 rounded-lg text-xs font-medium transition-colors cursor-pointer flex items-center gap-1"
-                    title="Quitar foto"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                    <span>Quitar</span>
-                  </button>
-                )}
+                <h3 className="text-sm font-semibold text-white">
+                  Avatar de Personaje
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setIsAvatarPickerOpen(true)}
+                  className="text-xs text-red-400 hover:text-red-300 font-medium underline cursor-pointer"
+                >
+                  Cambiar
+                </button>
               </div>
-              <p className="text-[10px] text-zinc-400 font-normal">
-                Formatos recomendados: JPG o PNG. Tamaño máximo 2MB.
+              <p className="text-xs text-zinc-300 font-normal">
+                Elegí un héroe o villano de Marvel para tu perfil.
               </p>
             </div>
           </div>
@@ -191,7 +154,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
             <div className="pt-1">
               <div className="inline-flex items-center gap-2 text-[11px] px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-zinc-300 font-medium">
                 <ShieldCheck className={`w-3.5 h-3.5 ${user ? 'text-emerald-400' : 'text-amber-400'}`} />
-                <span>{user ? 'Cuenta activa sincronizada en Supabase' : 'Modo Invitado (Guardado local)'}</span>
+                <span>{user ? 'Avatar y cuenta sincronizados en Supabase' : 'Modo Invitado (Guardado local)'}</span>
               </div>
             </div>
           </div>
@@ -221,6 +184,76 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
             <ChangePasswordCard />
           </div>
         )}
+
+        {/* CARD 3: Información Legal & Privacidad (Ley 25.326) */}
+        <div className="bg-white/10 backdrop-blur-3xl p-5 sm:p-6 rounded-2xl border border-white/20 shadow-2xl space-y-4 text-left">
+          <div className="border-b border-white/15 pb-2 flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Privacidad & Información Legal</span>
+            </h2>
+            <span className="text-[10px] text-zinc-400">Ley N° 25.326 (Argentina)</span>
+          </div>
+
+          <p className="text-xs text-zinc-300 leading-relaxed font-normal">
+            Marvel Tracker protege tus datos personales y cumple con la legislación argentina de hábeas data. Podés revisar nuestras políticas completas o ajustar tus preferencias de cookies en cualquier momento.
+          </p>
+
+          {/* Links grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <button
+              type="button"
+              onClick={() => setCurrentView('privacy')}
+              className="p-3 bg-white/5 hover:bg-white/15 border border-white/15 rounded-xl text-left transition-all cursor-pointer group"
+            >
+              <div className="flex items-center gap-2 text-xs font-semibold text-white group-hover:text-emerald-300">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Política de Privacidad</span>
+              </div>
+              <p className="text-[10px] text-zinc-400 mt-1 font-normal">
+                Ver tratamiento de datos, Supabase y derechos ARCO.
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setCurrentView('terms')}
+              className="p-3 bg-white/5 hover:bg-white/15 border border-white/15 rounded-xl text-left transition-all cursor-pointer group"
+            >
+              <div className="flex items-center gap-2 text-xs font-semibold text-white group-hover:text-red-300">
+                <FileText className="w-4 h-4 text-red-400" />
+                <span>Términos de Uso</span>
+              </div>
+              <p className="text-[10px] text-zinc-400 mt-1 font-normal">
+                Exención fan-made de Marvel/Disney y condiciones.
+              </p>
+            </button>
+          </div>
+
+          {/* Cookie preference status */}
+          <div className="p-3 rounded-xl bg-[#24273E]/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+            <div className="space-y-0.5 text-left">
+              <span className="font-semibold text-white flex items-center gap-1.5">
+                <Cookie className="w-4 h-4 text-amber-400" />
+                <span>Preferencia de Cookies Analíticas</span>
+              </span>
+              <p className="text-[11px] text-zinc-400">
+                Estado actual:{' '}
+                <strong className={cookieConsent === 'accepted' ? 'text-emerald-400' : cookieConsent === 'rejected' ? 'text-rose-400' : 'text-amber-400'}>
+                  {cookieConsent === 'accepted' ? 'Aceptadas' : cookieConsent === 'rejected' ? 'Rechazadas' : 'Sin responder'}
+                </strong>
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={resetCookieConsent}
+              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0"
+            >
+              Reconfigurar Cookies
+            </button>
+          </div>
+        </div>
 
         {/* SECCIÓN 3: Acciones de Cuenta (Jerarquía Diferenciada) */}
         <div className="pt-4 space-y-4 text-left">
@@ -290,6 +323,18 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
         isDeleting={isDeleting}
         onClose={() => setShowDeleteConfirm(false)}
         onConfirm={handleDeleteAccount}
+      />
+
+      {/* Avatar Selector Glassmorphic Modal */}
+      <AvatarPickerModal
+        isOpen={isAvatarPickerOpen}
+        onClose={() => setIsAvatarPickerOpen(false)}
+        currentAvatarId={selectedAvatarId || settings.avatarId}
+        onSelectAvatar={async (id) => {
+          setSelectedAvatarId(id);
+          await updateAvatar(id);
+        }}
+        isLoggedIn={!!user}
       />
     </>
   );

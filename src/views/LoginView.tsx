@@ -16,6 +16,9 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+  const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'terms' | null>(null);
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -25,6 +28,12 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
     e.preventDefault();
     setErrorMsg(null);
     setSuccessMsg(null);
+
+    if (mode === 'signup' && !acceptedTerms) {
+      setErrorMsg('Debes aceptar la Política de Privacidad y los Términos de Uso para crear tu cuenta.');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -52,7 +61,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
   };
 
   return (
-    <div className="relative h-screen max-h-screen w-full bg-zinc-950 flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans text-white">
+    <div className="relative h-screen max-h-screen w-full bg-zinc-950 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans text-white">
 
       {/* Background Cinematic Wallpaper */}
       <div
@@ -208,6 +217,39 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
                 )}
               </div>
 
+              {/* Checkbox Obligatorio en Signup */}
+              {mode === 'signup' && (
+                <div className="flex items-start gap-2 pt-1 text-left">
+                  <input
+                    type="checkbox"
+                    id="accept-terms-checkbox"
+                    required
+                    checked={acceptedTerms}
+                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                    className="mt-0.5 w-3.5 h-3.5 accent-[#C81D25] rounded cursor-pointer shrink-0"
+                  />
+                  <label htmlFor="accept-terms-checkbox" className="text-[10px] text-zinc-300 font-normal leading-tight">
+                    Acepto la{' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowLegalModal('privacy')}
+                      className="text-white underline hover:text-red-300 font-medium cursor-pointer"
+                    >
+                      Política de Privacidad
+                    </button>{' '}
+                    y los{' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowLegalModal('terms')}
+                      className="text-white underline hover:text-red-300 font-medium cursor-pointer"
+                    >
+                      Términos de Uso
+                    </button>{' '}
+                    (Ley 25.326).
+                  </label>
+                </div>
+              )}
+
               {/* Primary Submit Button */}
               <button
                 type="submit"
@@ -262,6 +304,68 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
         </motion.div>
 
       </div>
+
+      {/* Footer Legal Links for Login View (Centrado horizontal en la zona inferior sin contenedor) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 1.2, ease: 'easeOut' }}
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 sm:bottom-5 z-20 flex items-center gap-2.5 text-xs text-zinc-300 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] text-center whitespace-nowrap"
+      >
+        <button
+          type="button"
+          onClick={() => setShowLegalModal('privacy')}
+          className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
+        >
+          Política de Privacidad
+        </button>
+        <span className="text-zinc-500">•</span>
+        <button
+          type="button"
+          onClick={() => setShowLegalModal('terms')}
+          className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
+        >
+          Términos de Uso
+        </button>
+      </motion.div>
+
+      {/* Modal Overlay para ver Políticas desde el Login/Signup */}
+      {showLegalModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+          <div className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-[#1e2238] border border-white/20 rounded-2xl p-6 shadow-2xl text-left">
+            <button
+              onClick={() => setShowLegalModal(null)}
+              className="absolute top-4 right-4 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold cursor-pointer"
+            >
+              Cerrar
+            </button>
+
+            {showLegalModal === 'privacy' ? (
+              <div className="space-y-4 text-xs sm:text-sm text-zinc-200">
+                <h2 className="text-lg font-bold text-white">Política de Privacidad (Ley 25.326)</h2>
+                <p>
+                  En Marvel Tracker, garantizamos la confidencialidad y protección de tus datos personales. Colectamos tu correo electrónico y nombre de usuario únicamente para la gestión de la cuenta y sincronización de progreso. Tus datos se alojan de forma segura en Supabase Inc. fuera de Argentina.
+                </p>
+                <p>
+                  Conforme a la Ley 25.326 y la AAIP, tenés derecho de acceso, rectificación, actualización y supresión de tus datos.
+                </p>
+                <p>Contacto del responsable: <a href="mailto:gonzaorellanajob@gmail.com" className="text-white underline">gonzaorellanajob@gmail.com</a></p>
+              </div>
+            ) : (
+              <div className="space-y-4 text-xs sm:text-sm text-zinc-200">
+                <h2 className="text-lg font-bold text-white">Términos y Condiciones de Uso</h2>
+                <p>
+                  Marvel Tracker es un proyecto de fan-tracking no oficial e independiente. El contenido del MCU (marcas, títulos, personajes) pertenece a Marvel Studios / Disney.
+                </p>
+                <p>
+                  El servicio se presta "tal cual" sin fines de lucro para uso personal.
+                </p>
+                <p>Contacto: <a href="mailto:gonzaorellanajob@gmail.com" className="text-white underline">gonzaorellanajob@gmail.com</a></p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -6,6 +6,7 @@ import { mcuService } from '../services/mcuService';
 import { User } from '@supabase/supabase-js';
 import { useMCUAuth } from '../hooks/useMCUAuth';
 import { useMCUFilters, defaultFilters } from '../hooks/useMCUFilters';
+import { getAvatarById } from '../data/avatars';
 
 interface MCUStats {
   total: number;
@@ -41,6 +42,12 @@ interface MCUContextType {
   requestPasswordReset: (email: string) => Promise<void>;
   updatePassword: (newPassword: string) => Promise<void>;
 
+  // Cookie Consent
+  cookieConsent: 'accepted' | 'rejected' | null;
+  acceptCookies: () => void;
+  rejectCookies: () => void;
+  resetCookieConsent: () => void;
+
   // Acciones
   setCurrentView: (view: NavView) => void;
   openDetailModal: (item: MCUItem, source?: 'grid' | 'fav') => void;
@@ -56,6 +63,7 @@ interface MCUContextType {
   setFilters: (filters: Partial<FilterState>) => void;
   resetFilters: () => void;
   updateSettings: (newSettings: UserSettings) => void;
+  updateAvatar: (avatarId: string) => Promise<void>;
 }
 
 const MCUContext = createContext<MCUContextType | undefined>(undefined);
@@ -71,6 +79,27 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [customItems, setCustomItems] = useState<MCUItem[]>([]);
   const [editedMap, setEditedMap] = useState<Record<string, Partial<MCUItem>>>({});
   
+  const [cookieConsent, setCookieConsent] = useState<'accepted' | 'rejected' | null>(() => {
+    const saved = localStorage.getItem('marvel_tracker_cookie_consent');
+    if (saved === 'accepted' || saved === 'rejected') return saved;
+    return null;
+  });
+
+  const acceptCookies = () => {
+    localStorage.setItem('marvel_tracker_cookie_consent', 'accepted');
+    setCookieConsent('accepted');
+  };
+
+  const rejectCookies = () => {
+    localStorage.setItem('marvel_tracker_cookie_consent', 'rejected');
+    setCookieConsent('rejected');
+  };
+
+  const resetCookieConsent = () => {
+    localStorage.removeItem('marvel_tracker_cookie_consent');
+    setCookieConsent(null);
+  };
+
   const [settings, setSettings] = useState<UserSettings>({
     userName: 'Gonzalo',
   });
@@ -81,7 +110,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // Custom Auth Hook
-  const { user, login, signup, logout, deleteAccount, requestPasswordReset, updatePassword } = useMCUAuth({
+  const { user, login, signup, logout, deleteAccount, requestPasswordReset, updatePassword, updateAvatarId } = useMCUAuth({
     settings,
     updateSettings,
     onAuthChange: () => {
@@ -93,6 +122,15 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       resetProgress();
     },
   });
+
+  const updateAvatar = async (avatarId: string) => {
+    const avatarObj = getAvatarById(avatarId);
+    const url = avatarObj ? avatarObj.url : DEFAULT_AVATAR;
+    const newSettings = { ...settings, avatarId, profilePicUrl: url };
+    setSettings(newSettings);
+    storageService.saveSettings(newSettings);
+    await updateAvatarId(avatarId);
+  };
 
   // Combine initial + custom + edits
   const items = useMemo(() => {
@@ -289,10 +327,15 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const effectiveSettings = useMemo<UserSettings>(() => {
+    const activeAvatarId = user ? (user.user_metadata?.avatar_id || settings.avatarId) : settings.avatarId;
+    const avatarObj = getAvatarById(activeAvatarId);
+    const resolvedPicUrl = avatarObj ? avatarObj.url : (user ? DEFAULT_AVATAR : (settings.profilePicUrl || DEFAULT_AVATAR));
+
     return {
       ...settings,
+      avatarId: activeAvatarId,
       userName: user ? (settings.userName && settings.userName !== 'Invitado' ? settings.userName : 'Usuario') : 'Invitado',
-      profilePicUrl: user ? (settings.profilePicUrl || DEFAULT_AVATAR) : DEFAULT_AVATAR,
+      profilePicUrl: resolvedPicUrl,
     };
   }, [settings, user]);
 
@@ -319,6 +362,10 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         deleteAccount,
         requestPasswordReset,
         updatePassword,
+        cookieConsent,
+        acceptCookies,
+        rejectCookies,
+        resetCookieConsent,
         setCurrentView,
         openDetailModal,
         closeDetailModal,
@@ -333,6 +380,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setFilters,
         resetFilters,
         updateSettings,
+        updateAvatar,
       }}
     >
       {children}
