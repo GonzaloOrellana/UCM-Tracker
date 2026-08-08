@@ -34,7 +34,7 @@ export const Topbar: React.FC<TopbarProps> = ({
         duration: 1.3,
         ease: [0.25, 1, 0.4, 1],
       }}
-      className="sticky top-2 sm:top-3 z-50 mb-6 sm:mb-8 pointer-events-auto"
+      className="relative mb-6 sm:mb-8 pointer-events-auto"
     >
       <div className="flex items-center justify-between gap-4">
         

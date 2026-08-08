@@ -2,6 +2,7 @@ import React from 'react';
 import { useMCU } from '../context/MCUContext';
 import { MCUGrid } from '../components/MCUGrid';
 import { FilterBar } from '../components/FilterBar';
+import { ScrollToTopButton } from '../components/ScrollToTopButton';
 import { NavView } from '../types/mcu';
 
 interface LibraryViewProps {
@@ -25,6 +26,9 @@ export const LibraryView: React.FC<LibraryViewProps> = ({ view }) => {
         items={sectionItems}
         onOpenDetail={(item) => openDetailModal(item)}
       />
+
+      {/* Floating Scroll To Top Button */}
+      <ScrollToTopButton />
 
     </div>
   );

@@ -41,21 +41,32 @@ const formatDateDisplay = (dateStr: string) => {
 
 const UpcomingCard: React.FC<{ item: MCUItem; onClick?: () => void }> = ({ item, onClick }) => {
   const [imageError, setImageError] = useState(false);
+  const isUnreleased = !item.fechaLanzamiento || item.fechaLanzamiento > new Date().toISOString().split('T')[0];
+  const tooltipText = isUnreleased
+    ? `Aún no estrenada - Disponible el ${formatDateDisplay(item.fechaLanzamiento)}`
+    : item.titulo;
 
   return (
     <motion.div
       variants={cardVariants}
-      onClick={onClick}
-      className="flex flex-col select-none shrink-0 w-24 sm:w-28 snap-start group/upcoming cursor-pointer"
+      onClick={isUnreleased ? undefined : onClick}
+      title={tooltipText}
+      className={`flex flex-col select-none shrink-0 w-24 sm:w-28 snap-start group/upcoming ${
+        isUnreleased ? 'cursor-not-allowed opacity-85' : 'cursor-pointer'
+      }`}
     >
       {/* Clean Poster Image Box */}
-      <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-md shadow-black/40 group-hover/upcoming:shadow-xl group-hover/upcoming:border-white/30 transition-all duration-300">
+      <div className={`relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-md shadow-black/40 transition-all duration-300 ${
+        isUnreleased ? '' : 'group-hover/upcoming:shadow-xl group-hover/upcoming:border-white/30'
+      }`}>
         {!imageError ? (
           <img
             src={item.urlPoster}
             alt={item.titulo}
             onError={() => setImageError(true)}
-            className="w-full h-full object-cover group-hover/upcoming:scale-105 transition-transform duration-300"
+            className={`w-full h-full object-cover transition-transform duration-300 ${
+              isUnreleased ? '' : 'group-hover/upcoming:scale-105'
+            }`}
             loading="lazy"
           />
         ) : (
@@ -69,7 +80,9 @@ const UpcomingCard: React.FC<{ item: MCUItem; onClick?: () => void }> = ({ item,
 
       {/* Title & Release Date Below Poster */}
       <div className="mt-2 space-y-0.5 px-0.5">
-        <h4 className="text-[11px] font-medium text-white line-clamp-2 leading-snug group-hover/upcoming:text-red-400 transition-colors">
+        <h4 className={`text-[11px] font-medium text-white line-clamp-2 leading-snug transition-colors ${
+          isUnreleased ? '' : 'group-hover/upcoming:text-red-400'
+        }`}>
           {item.titulo}
         </h4>
         <p className="text-[10px] text-zinc-300 font-medium truncate">

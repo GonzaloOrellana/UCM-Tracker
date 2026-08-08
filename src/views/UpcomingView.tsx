@@ -25,46 +25,61 @@ export const UpcomingView: React.FC = () => {
         transition={{ duration: 1.4, ease: 'easeOut' }}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
       >
-        {upcomingItems.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => openDetailModal(item)}
-            className="flex flex-col select-none group cursor-pointer"
-          >
-            {/* Poster Image Container matching production card size */}
-            <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-lg shadow-black/40 group-hover:shadow-2xl group-hover:shadow-black/60 transition-all duration-300">
-              <img
-                src={item.urlPoster}
-                alt={item.titulo}
-                className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
-                loading="lazy"
-              />
-              {item.fechaEsExacta === false && (
-                <div className="absolute top-2 right-2 bg-amber-500/90 text-zinc-950 font-bold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md backdrop-blur-xs">
-                  Estimada
-                </div>
-              )}
-            </div>
+        {upcomingItems.map((item) => {
+          const isUnreleased = !item.fechaLanzamiento || item.fechaLanzamiento > new Date().toISOString().split('T')[0];
+          const tooltipText = isUnreleased
+            ? `Aún no estrenada - Disponible el ${formatDateDisplay(item.fechaLanzamiento)}`
+            : item.titulo;
 
-            {/* Title & Metadata Text UNDERNEATH Poster */}
-            <div className="mt-2 space-y-0.5 px-0.5">
-              <h3 className="text-xs font-bold text-white line-clamp-1 group-hover:text-red-400 transition-colors">
-                {item.titulo}
-              </h3>
-              <div className="flex items-center gap-1.5">
-                <p className="text-xs text-white/70 font-semibold truncate">
-                  {formatDateDisplay(item.fechaLanzamiento)}
-                </p>
+          return (
+            <div
+              key={item.id}
+              onClick={isUnreleased ? undefined : () => openDetailModal(item)}
+              title={tooltipText}
+              className={`flex flex-col select-none group ${
+                isUnreleased ? 'cursor-not-allowed opacity-85' : 'cursor-pointer'
+              }`}
+            >
+              {/* Poster Image Container */}
+              <div className={`relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-lg shadow-black/40 transition-all duration-300 ${
+                isUnreleased ? '' : 'group-hover:shadow-2xl group-hover:shadow-black/60'
+              }`}>
+                <img
+                  src={item.urlPoster}
+                  alt={item.titulo}
+                  className={`w-full h-full object-cover transition-all duration-300 ${
+                    isUnreleased ? '' : 'group-hover:scale-105'
+                  }`}
+                  loading="lazy"
+                />
                 {item.fechaEsExacta === false && (
-                  <span className="text-[10px] text-amber-400/90 font-medium" title="Fecha de estreno estimada">
-                    (Est.)
-                  </span>
+                  <div className="absolute top-2 right-2 bg-amber-500/90 text-zinc-950 font-bold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md backdrop-blur-xs">
+                    Estimada
+                  </div>
                 )}
               </div>
-            </div>
 
-          </div>
-        ))}
+              {/* Title & Metadata Text UNDERNEATH Poster */}
+              <div className="mt-2 space-y-0.5 px-0.5">
+                <h3 className={`text-xs font-bold text-white line-clamp-1 transition-colors ${
+                  isUnreleased ? '' : 'group-hover:text-red-400'
+                }`}>
+                  {item.titulo}
+                </h3>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-white/70 font-semibold truncate">
+                    {formatDateDisplay(item.fechaLanzamiento)}
+                  </p>
+                  {item.fechaEsExacta === false && (
+                    <span className="text-[10px] text-amber-400/90 font-medium" title="Fecha de estreno estimada">
+                      (Est.)
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </motion.div>
 
     </div>
