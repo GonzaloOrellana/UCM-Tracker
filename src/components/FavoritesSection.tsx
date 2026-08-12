@@ -35,8 +35,8 @@ export const FavoritesSection: React.FC<FavoritesSectionProps> = ({ onOpenDetail
       {/* Header (Title + Carousel Scroll Navigation Arrows) */}
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h3 className="font-semibold text-white text-base sm:text-lg tracking-tight">
-            Favoritos
+          <h3 className="font-display text-xl sm:text-2xl uppercase tracking-wider text-white leading-none">
+            FAVORITOS
           </h3>
         </div>
 
@@ -110,10 +110,10 @@ export const FavoritesSection: React.FC<FavoritesSectionProps> = ({ onOpenDetail
                 </motion.div>
 
                 {/* Title Below */}
-                <h4 className="mt-1.5 text-[11px] font-medium text-white truncate">
+                <h4 className="mt-1.5 font-display text-xs uppercase tracking-wide text-white truncate leading-none">
                   {item.titulo}
                 </h4>
-                <p className="text-[10px] text-white/80 font-medium">
+                <p className="font-label text-[10px] text-white/80 font-bold uppercase tracking-wider">
                   {item.anioLanzamiento}
                 </p>
               </motion.div>

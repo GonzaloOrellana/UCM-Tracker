@@ -120,7 +120,7 @@ export const Topbar: React.FC<TopbarProps> = ({
                       />
                     )}
                   </AnimatePresence>
-                  <span className={`transition-colors duration-200 ${isActive ? 'text-zinc-950 font-semibold' : 'text-zinc-300 font-medium hover:text-white'}`}>
+                  <span className={`font-label text-xs uppercase tracking-wider transition-colors duration-200 ${isActive ? 'text-zinc-950 font-bold' : 'text-zinc-300 font-semibold hover:text-white'}`}>
                     {item.label}
                   </span>
                 </button>

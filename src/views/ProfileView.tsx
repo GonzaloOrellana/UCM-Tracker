@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useMCU } from '../context/MCUContext';
-import { User, Mail, ShieldCheck, LogOut, CheckCircle2, AlertTriangle, FileText, Cookie, Trash2, Pencil } from 'lucide-react';
+import { User, Mail, ShieldCheck, LogOut, CheckCircle2, AlertTriangle, FileText, Cookie, Trash2, Pencil, Lock, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ChangePasswordCard } from '../components/profile/ChangePasswordCard';
 import { DeleteAccountModal } from '../components/profile/DeleteAccountModal';
@@ -17,6 +17,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
   const [selectedAvatarId, setSelectedAvatarId] = useState(settings.avatarId || '');
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [isAvatarPickerOpen, setIsAvatarPickerOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'security' | 'account'>('security');
 
   // Delete Account Confirmation state
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -61,259 +62,263 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="space-y-6 max-w-2xl mx-auto pb-6 text-white font-sans"
+        className="max-w-6xl mx-auto pb-8 text-white font-sans space-y-6"
       >
-        {/* CARD 1: Información General Form */}
-        <form
-          onSubmit={handleSaveSettings}
-          className="bg-white/10 backdrop-blur-3xl p-5 sm:p-6 rounded-2xl border border-white/20 shadow-2xl space-y-4 text-left"
-        >
-          <div>
-            <h2 className="text-sm font-semibold text-white border-b border-white/15 pb-2">
-              Información General
-            </h2>
-          </div>
-
-          {/* Active Avatar Preview with Floating Edit Pencil Button */}
-          <div className="flex items-center gap-4 pt-1 border-b border-white/10 pb-4">
-            <div className="relative group">
-              <button
-                type="button"
-                onClick={() => setIsAvatarPickerOpen(true)}
-                className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 bg-[#1b1e32] border-2 border-white/20 shadow-xl cursor-pointer block focus:outline-none transition-transform hover:scale-105"
-                title="Cambiar avatar"
-              >
-                {settings.profilePicUrl ? (
-                  <img src={settings.profilePicUrl} alt={userName} className="w-full h-full object-cover" />
-                ) : (
-                  <span className="text-white font-semibold text-2xl flex items-center justify-center h-full">
-                    {userName.charAt(0).toUpperCase()}
-                  </span>
-                )}
-              </button>
-
-              {/* Floating Pencil Edit Button Icon (Bottom Right) */}
-              <button
-                type="button"
-                onClick={() => setIsAvatarPickerOpen(true)}
-                className="absolute bottom-0 right-0 p-1.5 rounded-full bg-[#C81D25] hover:bg-[#a8151c] text-white shadow-lg border-2 border-[#181b2e] cursor-pointer transition-transform hover:scale-110"
-                title="Cambiar avatar"
-              >
-                <Pencil className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            <div className="space-y-1 text-left">
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-semibold text-white">
-                  Avatar de Personaje
-                </h3>
-                <button
-                  type="button"
-                  onClick={() => setIsAvatarPickerOpen(true)}
-                  className="text-xs text-red-400 hover:text-red-300 font-medium underline cursor-pointer"
-                >
-                  Cambiar
-                </button>
-              </div>
-              <p className="text-xs text-zinc-300 font-normal">
-                Elegí un héroe o villano de Marvel para tu perfil.
-              </p>
-            </div>
-          </div>
-
-          {/* Basic Info Fields */}
-          <div className="space-y-3 pt-1">
-            <div className="space-y-1">
-              <label className="text-[11px] font-medium text-zinc-300 block">
-                Nombre de Usuario <span className="text-[#C81D25]">*</span>
-              </label>
-              <input
-                type="text"
-                required
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                placeholder="ej. Gonzalo"
-                className="w-full px-3.5 py-2 bg-white/10 border border-white/20 focus:border-white/50 rounded-lg text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner focus:ring-1 focus:ring-white/40"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[11px] font-medium text-zinc-300 block flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-zinc-400" /> Correo Electrónico
-              </label>
-              <input
-                type="text"
-                disabled
-                value={user ? user.email || '' : 'Modo Invitado (Sesión local)'}
-                className="w-full px-3.5 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-zinc-400 font-medium cursor-not-allowed"
-              />
-            </div>
-
-            {/* Sync Status Badge */}
-            <div className="pt-1">
-              <div className="inline-flex items-center gap-2 text-[11px] px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-zinc-300 font-medium">
-                <ShieldCheck className={`w-3.5 h-3.5 ${user ? 'text-emerald-400' : 'text-amber-400'}`} />
-                <span>{user ? 'Avatar y cuenta sincronizados en Supabase' : 'Modo Invitado (Guardado local)'}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* General Info Submit Button */}
-          <div className="space-y-2 pt-2">
-            <button
-              type="submit"
-              className="w-full py-3 px-4 bg-white hover:bg-zinc-100 active:scale-[0.98] text-zinc-950 text-xs font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
-            >
-              <CheckCircle2 className="w-4 h-4 text-zinc-950" />
-              <span>Guardar Cambios de Perfil</span>
-            </button>
-
-            {saveSuccess && (
-              <div className="p-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[11px] flex items-center justify-center gap-1.5 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Perfil guardado correctamente</span>
-              </div>
-            )}
-          </div>
-        </form>
-
-        {/* CARD 2: Cambiar Contraseña */}
-        {user && (
-          <div className="w-full">
-            <ChangePasswordCard />
-          </div>
-        )}
-
-        {/* CARD 3: Información Legal & Privacidad (Ley 25.326) */}
-        <div className="bg-white/10 backdrop-blur-3xl p-5 sm:p-6 rounded-2xl border border-white/20 shadow-2xl space-y-4 text-left">
-          <div className="border-b border-white/15 pb-2 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Privacidad & Información Legal</span>
-            </h2>
-            <span className="text-[10px] text-zinc-400">Ley N° 25.326 (Argentina)</span>
-          </div>
-
-          <p className="text-xs text-zinc-300 leading-relaxed font-normal">
-            Marvel Tracker protege tus datos personales y cumple con la legislación argentina de hábeas data. Podés revisar nuestras políticas completas o ajustar tus preferencias de cookies en cualquier momento.
-          </p>
-
-          {/* Links grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <button
-              type="button"
-              onClick={() => setCurrentView('privacy')}
-              className="p-3 bg-white/5 hover:bg-white/15 border border-white/15 rounded-xl text-left transition-all cursor-pointer group"
-            >
-              <div className="flex items-center gap-2 text-xs font-semibold text-white group-hover:text-emerald-300">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Política de Privacidad</span>
-              </div>
-              <p className="text-[10px] text-zinc-400 mt-1 font-normal">
-                Ver tratamiento de datos, Supabase y derechos ARCO.
-              </p>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setCurrentView('terms')}
-              className="p-3 bg-white/5 hover:bg-white/15 border border-white/15 rounded-xl text-left transition-all cursor-pointer group"
-            >
-              <div className="flex items-center gap-2 text-xs font-semibold text-white group-hover:text-red-300">
-                <FileText className="w-4 h-4 text-red-400" />
-                <span>Términos de Uso</span>
-              </div>
-              <p className="text-[10px] text-zinc-400 mt-1 font-normal">
-                Exención fan-made de Marvel/Disney y condiciones.
-              </p>
-            </button>
-          </div>
-
-          {/* Cookie preference status */}
-          <div className="p-3 rounded-xl bg-[#24273E]/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-            <div className="space-y-0.5 text-left">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <Cookie className="w-4 h-4 text-amber-400" />
-                <span>Preferencia de Cookies Analíticas</span>
-              </span>
-              <p className="text-[11px] text-zinc-400">
-                Estado actual:{' '}
-                <strong className={cookieConsent === 'accepted' ? 'text-emerald-400' : cookieConsent === 'rejected' ? 'text-rose-400' : 'text-amber-400'}>
-                  {cookieConsent === 'accepted' ? 'Aceptadas' : cookieConsent === 'rejected' ? 'Rechazadas' : 'Sin responder'}
-                </strong>
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={resetCookieConsent}
-              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0"
-            >
-              Reconfigurar Cookies
-            </button>
-          </div>
+        {/* Page Title Header */}
+        <div className="border-b border-white/15 pb-3">
+          <h1 className="font-display text-3xl sm:text-4xl uppercase tracking-wider text-white leading-none">
+            PERFIL DE USUARIO
+          </h1>
         </div>
 
-        {/* SECCIÓN 3: Acciones de Cuenta (Jerarquía Diferenciada) */}
-        <div className="pt-4 space-y-4 text-left">
-          <div className="border-t border-white/10 pt-4">
-            <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-              Gestión de Sesión y Cuenta
-            </h3>
+        {/* Client Profile Grid Architecture (Inspired by Reference Wireframe) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+          {/* ────────────────────────────────────────────────────────── */}
+          {/* LEFT COLUMN: Identity Profile Card + User Info Form */}
+          {/* ────────────────────────────────────────────────────────── */}
+          <div className="lg:col-span-5 h-full flex flex-col">
+            
+            {/* Identity Box Card */}
+            <form
+              onSubmit={handleSaveSettings}
+              className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-5 text-center relative overflow-hidden flex-1 flex flex-col justify-between"
+            >
+              <div className="flex flex-col items-center justify-center space-y-3">
+                {/* Large Avatar Circle with Edit Pencil */}
+                <div className="relative group">
+                  <button
+                    type="button"
+                    onClick={() => setIsAvatarPickerOpen(true)}
+                    className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 bg-[#1b1e32] border-4 border-white/30 shadow-2xl cursor-pointer block focus:outline-none transition-transform hover:scale-105"
+                    title="Cambiar avatar"
+                  >
+                    {settings.profilePicUrl ? (
+                      <img src={settings.profilePicUrl} alt={userName} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="font-display text-4xl text-white flex items-center justify-center h-full">
+                        {userName.charAt(0).toUpperCase()}
+                      </span>
+                    )}
+                  </button>
+
+                  {/* Floating Edit Pencil Badge */}
+                  <button
+                    type="button"
+                    onClick={() => setIsAvatarPickerOpen(true)}
+                    className="absolute bottom-1 right-1 p-2 rounded-full bg-[#C81D25] hover:bg-[#a8151c] text-white shadow-lg border-2 border-[#181b2e] cursor-pointer transition-transform hover:scale-110"
+                    title="Cambiar avatar"
+                  >
+                    <Pencil className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* User Display Name */}
+                <div>
+                  <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
+                    {userName || settings.userName}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Form Input Fields */}
+              <div className="space-y-3 pt-3 border-t border-white/15 text-left">
+                
+                {/* Field 1: Nombre de Usuario */}
+                <div className="space-y-1">
+                  <label className="font-label text-[11px] font-bold uppercase tracking-wider text-zinc-300 block">
+                    Nombre de Usuario <span className="text-[#C81D25]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="ej. Gonzalo"
+                    className="w-full px-3.5 py-2.5 bg-white/10 border border-white/20 focus:border-white/50 rounded-xl text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner focus:ring-1 focus:ring-white/40"
+                  />
+                </div>
+
+                {/* Field 2: Correo Electrónico */}
+                <div className="space-y-1">
+                  <label className="font-label text-[11px] font-bold uppercase tracking-wider text-zinc-300 block flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5 text-zinc-400" /> Correo Electrónico
+                  </label>
+                  <input
+                    type="text"
+                    disabled
+                    value={user ? user.email || '' : 'Modo Invitado (Sesión local)'}
+                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-zinc-400 font-medium cursor-not-allowed"
+                  />
+                </div>
+
+                {/* Field 3: Sincronización Status */}
+                <div className="pt-1">
+                  <div className="flex items-center gap-2 text-[11px] font-label font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl bg-white/10 border border-white/15 text-zinc-300">
+                    <ShieldCheck className={`w-4 h-4 ${user ? 'text-emerald-400' : 'text-amber-400'}`} />
+                    <span>{user ? 'Sincronizado en Supabase' : 'Guardado Local'}</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Submit Save Button */}
+              <div className="space-y-2 pt-1">
+                <button
+                  type="submit"
+                  className="w-full py-3 px-4 bg-white hover:bg-zinc-100 text-zinc-950 font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-zinc-950" />
+                  <span>GUARDAR CAMBIOS</span>
+                </button>
+
+                {saveSuccess && (
+                  <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[11px] font-label font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Perfil guardado correctamente</span>
+                  </div>
+                )}
+              </div>
+
+            </form>
+
           </div>
 
-          {/* Cerrar Sesión (Estilo Neutral Secundario) */}
-          {user ? (
-            <div className="space-y-4">
-              <button
-                type="button"
-                onClick={async () => {
-                  await logout();
-                }}
-                className="w-full py-2.5 px-4 bg-white/10 hover:bg-white/20 active:scale-[0.98] border border-white/20 text-white text-xs font-medium rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
-              >
-                <LogOut className="w-4 h-4 text-zinc-300" />
-                <span>Cerrar Sesión</span>
-              </button>
-
-              {/* Zona de Peligro: Eliminar Cuenta (Tratamiento discreto/separado) */}
-              <div className="p-4 rounded-2xl bg-rose-950/20 border border-rose-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
-                <div className="space-y-0.5">
-                  <h4 className="text-xs font-semibold text-rose-300 flex items-center gap-1.5">
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
-                    Zona de Peligro
-                  </h4>
-                  <p className="text-[11px] text-zinc-400 leading-normal">
-                    Esta acción cerrará tu sesión y borrará permanentemente todos tus datos guardados.
-                  </p>
-                </div>
+          {/* ────────────────────────────────────────────────────────── */}
+          {/* RIGHT COLUMN: Tabbed Configuration & Account Panels */}
+          {/* ────────────────────────────────────────────────────────── */}
+          <div className="lg:col-span-7 h-full flex flex-col">
+            
+            {/* Main Glass Panel with Tabs Header */}
+            <div className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-6 flex-1 flex flex-col justify-between">
+              
+              {/* Tab Navigation Header */}
+              <div className="flex items-center gap-2 border-b border-white/15 pb-4 font-label text-xs font-bold uppercase tracking-wider">
                 <button
-                  type="button"
-                  onClick={() => setShowDeleteConfirm(true)}
-                  className="px-3.5 py-1.5 text-rose-300 hover:text-rose-200 hover:bg-rose-500/20 border border-rose-500/30 rounded-lg text-xs font-medium transition-all cursor-pointer shrink-0 flex items-center gap-1.5"
+                  onClick={() => setActiveTab('security')}
+                  className={`px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${
+                    activeTab === 'security'
+                      ? 'bg-white text-zinc-950 shadow-md'
+                      : 'bg-white/5 text-zinc-300 hover:bg-white/15'
+                  }`}
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
-                  <span>Eliminar Cuenta</span>
+                  <Lock className="w-4 h-4" />
+                  <span>SEGURIDAD</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveTab('account')}
+                  className={`px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${
+                    activeTab === 'account'
+                      ? 'bg-white text-zinc-950 shadow-md'
+                      : 'bg-white/5 text-zinc-300 hover:bg-white/15'
+                  }`}
+                >
+                  <Settings className="w-4 h-4" />
+                  <span>GESTIÓN DE CUENTA</span>
                 </button>
               </div>
+
+              {/* TAB 1: Seguridad */}
+              {activeTab === 'security' && (
+                <div className="space-y-4 animate-fade-in text-left">
+                  {user ? (
+                    <div className="w-full">
+                      <ChangePasswordCard />
+                    </div>
+                  ) : (
+                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-zinc-300 font-body">
+                      Estás navegando en modo invitado. Las opciones de cambio de contraseña están disponibles únicamente para cuentas registradas.
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* TAB 2: Gestión de Sesión y Cuenta */}
+              {activeTab === 'account' && (
+                <div className="space-y-4 animate-fade-in text-left">
+                  {/* Cookie Status Box en Gestión de Cuenta */}
+                  <div className="p-4 rounded-2xl bg-[#24273E]/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+                    <div className="space-y-1 text-left">
+                      <span className="font-label text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                        <Cookie className="w-4 h-4 text-amber-400" />
+                        <span>PREFERENCIA DE COOKIES ANALÍTICAS</span>
+                      </span>
+                      <p className="font-body text-[11px] text-zinc-400">
+                        Estado actual:{' '}
+                        <strong className={cookieConsent === 'accepted' ? 'text-emerald-400' : cookieConsent === 'rejected' ? 'text-rose-400' : 'text-amber-400'}>
+                          {cookieConsent === 'accepted' ? 'Aceptadas' : cookieConsent === 'rejected' ? 'Rechazadas' : 'Sin responder'}
+                        </strong>
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={resetCookieConsent}
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-label text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0"
+                    >
+                      RECONFIGURAR
+                    </button>
+                  </div>
+
+                  {user ? (
+                    <div className="space-y-5">
+                      {/* Cerrar Sesión Button */}
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await logout();
+                        }}
+                        className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
+                      >
+                        <LogOut className="w-4 h-4 text-zinc-300" />
+                        <span>CERRAR SESIÓN</span>
+                      </button>
+
+                      {/* Zona de Peligro: Eliminar Cuenta */}
+                      <div className="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-left">
+                        <div className="space-y-1">
+                          <h4 className="font-label text-xs font-bold uppercase tracking-wider text-rose-300 flex items-center gap-2">
+                            <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+                            <span>ZONA DE PELIGRO</span>
+                          </h4>
+                          <p className="font-body text-[11px] text-zinc-400">
+                            Esta acción borrará permanentemente todos tus datos guardados.
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setShowDeleteConfirm(true)}
+                          className="px-4 py-2 text-rose-300 hover:text-rose-200 hover:bg-rose-500/20 border border-rose-500/30 rounded-xl font-label text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0 flex items-center gap-2"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          <span>ELIMINAR CUENTA</span>
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (onExitGuestMode) {
+                          onExitGuestMode();
+                        } else {
+                          logout();
+                        }
+                      }}
+                      className="w-full py-3.5 px-4 bg-[#C81D25] hover:bg-[#a8151c] text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      <User className="w-4 h-4" />
+                      <span>INICIAR SESIÓN / REGISTRARSE</span>
+                    </button>
+                  )}
+                </div>
+              )}
+
             </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => {
-                if (onExitGuestMode) {
-                  onExitGuestMode();
-                } else {
-                  logout();
-                }
-              }}
-              className="w-full py-3 px-4 bg-[#C81D25] hover:bg-[#a8151c] active:scale-[0.98] text-white text-xs font-semibold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
-            >
-              <User className="w-4 h-4" />
-              <span>Iniciar Sesión / Registrarse</span>
-            </button>
-          )}
+
+          </div>
+
         </div>
       </motion.div>
 

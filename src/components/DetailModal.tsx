@@ -132,11 +132,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.3, delay: 0.18, ease: transitionEase }}
                 >
-                  <h2 className="text-xl sm:text-2xl font-normal text-zinc-900 leading-tight tracking-tight">
+                  <h2 className="font-display text-2xl sm:text-4xl uppercase tracking-wider text-zinc-900 leading-none">
                     {item.titulo}
                   </h2>
                   {item.tituloOriginal && item.tituloOriginal !== item.titulo && (
-                    <p className="text-xs text-zinc-500 italic mt-0.5 font-medium">
+                    <p className="font-body text-xs text-zinc-500 italic mt-1 font-medium">
                       {item.tituloOriginal}
                     </p>
                   )}
@@ -148,9 +148,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.3, delay: 0.23, ease: transitionEase }}
-                  className="flex items-center flex-wrap gap-x-2.5 gap-y-1 text-xs text-zinc-700 font-medium"
+                  className="flex items-center flex-wrap gap-x-2.5 gap-y-1 font-label text-xs text-zinc-700 font-bold uppercase tracking-wider"
                 >
-                  <span className="font-normal text-zinc-900 uppercase tracking-wider">
+                  <span className="text-[#C81D25] uppercase tracking-wider font-bold">
                     {item.fase}
                   </span>
                   <span className="text-zinc-300">•</span>
@@ -159,11 +159,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                     <span>{getTypeText()}</span>
                   </span>
                   <span className="text-zinc-300">•</span>
-                  <span className="font-normal text-zinc-800">{item.anioLanzamiento}</span>
+                  <span className="font-bold text-zinc-800">{item.anioLanzamiento}</span>
                   {item.duracion && (
                     <>
                       <span className="text-zinc-300">•</span>
-                      <span className="flex items-center gap-1 font-normal text-zinc-800">
+                      <span className="flex items-center gap-1 font-bold text-zinc-800">
                         <Clock className="w-3.5 h-3.5 text-[#C81D25]" /> {item.duracion}
                       </span>
                     </>

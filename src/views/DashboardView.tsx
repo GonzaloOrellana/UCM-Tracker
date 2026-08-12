@@ -43,7 +43,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   },
                 },
               }}
-              className="text-3xl sm:text-4xl lg:text-[44px] font-light text-white tracking-tight leading-none flex items-center gap-2 flex-wrap drop-shadow-md"
+              className="text-3xl sm:text-4xl lg:text-[44px] font-display uppercase tracking-wider text-white leading-none flex items-center gap-2 flex-wrap drop-shadow-md"
             >
               <motion.span
                 variants={{
@@ -51,9 +51,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   visible: { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, x: 0 },
                 }}
                 transition={{ duration: 1.3, ease: [0.25, 1, 0.3, 1] }}
-                className="inline-block"
+                className="inline-block text-white/70 font-normal"
               >
-                Hola,
+                HOLA,
               </motion.span>
               <motion.span
                 variants={{
@@ -61,7 +61,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   visible: { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, x: 0 },
                 }}
                 transition={{ duration: 1.3, ease: [0.25, 1, 0.3, 1] }}
-                className="font-normal inline-block"
+                className="font-normal text-white inline-block"
               >
                 {settings.userName}
               </motion.span>
@@ -83,10 +83,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
               </div>
               <div>
-                <span className="text-2xl sm:text-4xl font-light text-white tracking-tight block leading-none">
+                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
                   {stats.total}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-white/80 font-medium block mt-0.5">
+                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
                   Producciones
                 </span>
               </div>
@@ -104,10 +104,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
               </div>
               <div>
-                <span className="text-2xl sm:text-4xl font-light text-white tracking-tight block leading-none">
+                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
                   {stats.watched}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-white/80 font-medium block mt-0.5">
+                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
                   Vistas
                 </span>
               </div>
@@ -125,10 +125,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
               </div>
               <div>
-                <span className="text-2xl sm:text-4xl font-light text-white tracking-tight block leading-none">
+                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
                   {stats.total - stats.watched}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-white/80 font-medium block mt-0.5">
+                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
                   Pendientes
                 </span>
               </div>
@@ -142,11 +142,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
         <div className="space-y-2 pt-1">
 
           {/* Clean Inline Format Legend Above Progress Bar (with Infinity Gems Icons) */}
-          <div className="flex items-center gap-3 sm:gap-5 text-xs font-normal text-zinc-300 px-1 tracking-wide flex-wrap">
+          <div className="flex items-center gap-3 sm:gap-5 font-label text-xs font-bold uppercase tracking-wider text-zinc-300 px-1 flex-wrap">
             <div className="flex items-center gap-1.5">
               <img src="/gema-de-realidad.png" alt="Gema de la Realidad" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(239,68,68,0.8)]" />
               <span>Películas</span>
-              <span className="font-semibold text-white ml-0.5">({stats.movies.watched}/{stats.movies.total})</span>
+              <span className="font-bold text-white ml-0.5">({stats.movies.watched}/{stats.movies.total})</span>
             </div>
 
             <span className="text-white/30 hidden sm:inline">•</span>
@@ -154,7 +154,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             <div className="flex items-center gap-1.5">
               <img src="/gema-de-la-mente.png" alt="Gema de la Mente" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
               <span>Series</span>
-              <span className="font-semibold text-white ml-0.5">({stats.series.watched}/{stats.series.total})</span>
+              <span className="font-bold text-white ml-0.5">({stats.series.watched}/{stats.series.total})</span>
             </div>
 
             <span className="text-white/30 hidden sm:inline">•</span>
@@ -162,7 +162,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             <div className="flex items-center gap-1.5">
               <img src="/gema-del-espacio.png" alt="Gema del Espacio" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
               <span>Especiales</span>
-              <span className="font-semibold text-white ml-0.5">({stats.specials.watched}/{stats.specials.total})</span>
+              <span className="font-bold text-white ml-0.5">({stats.specials.watched}/{stats.specials.total})</span>
             </div>
           </div>
 
@@ -195,7 +195,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
               className="flex items-center shrink-0 cursor-default"
               title={`Progreso Total Visto: ${stats.watched} de ${stats.total} (${stats.percentage}%)`}
             >
-              <span className="text-3xl sm:text-4xl font-semibold text-white tracking-tight drop-shadow-lg">
+              <span className="font-display text-3xl sm:text-4xl text-white tracking-wide drop-shadow-lg">
                 {stats.percentage}%
               </span>
             </div>
@@ -208,10 +208,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
       {/* Bento Grid Row 1: Symmetrical Layout - Estado por Fases (50% width) & Favoritos Card (50% width) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
-
-        {/* Left Column (50% width): Estado por Fases Light Bento Card */}
+        
+        {/* Left Column (50% width): Estado por Fases */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.97 }}
+          initial={{ opacity: 0, y: 22, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.2, ease: [0.25, 1, 0.4, 1] }}
           className="h-full"
@@ -219,18 +219,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
           <div className="crextio-card p-5 sm:p-6 space-y-3.5 flex flex-col h-full overflow-hidden">
 
             {/* Card Header */}
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold text-white text-base sm:text-lg tracking-tight">
-                  Estado por Fases
-                </h3>
-                <p className="text-xs text-zinc-400 font-normal">
-                  Mapa de progreso del Universo Cinematográfico
-                </p>
-              </div>
-              <span className="text-xs text-zinc-300 bg-white/10 border border-white/15 px-2.5 py-1 rounded-full font-medium">
-                {phaseList.filter((p) => (stats.phases[p]?.percentage || 0) === 100).length} de 6 completadas
-              </span>
+            <div>
+              <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
+                ESTADO POR FASES
+              </h3>
+              <p className="font-label text-xs font-bold text-zinc-300 uppercase tracking-wider mt-1.5">
+                {phaseList.filter((p) => (stats.phases[p]?.percentage || 0) === 100).length} DE 6 FASES COMPLETADAS
+              </p>
             </div>
 
             {/* DESKTOP TIMELINE (Horizontal 6-Node Roadmap) */}
@@ -318,10 +313,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
                       {/* Phase Label & Progress Counter */}
                       <div className="mt-2 text-center space-y-0.5">
-                        <span className={`block text-xs font-semibold ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
+                        <span className={`block font-label text-xs font-bold uppercase tracking-wider ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
                           {phaseName}
                         </span>
-                        <span className="block text-[10px] text-zinc-400 font-medium">
+                        <span className="block font-label text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
                           {phaseData.watched}/{phaseData.total}
                         </span>
                       </div>

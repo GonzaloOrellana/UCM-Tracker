@@ -81,7 +81,7 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
           />
         ) : (
           <div className="w-full h-full bg-[#1A1A1A] p-4 flex flex-col justify-center text-center">
-            <h4 className="font-medium text-white text-base leading-snug">
+            <h4 className="font-display text-white text-xl uppercase tracking-wider leading-none">
               {item.titulo}
             </h4>
           </div>
@@ -92,7 +92,7 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
       {/* Title & Metadata Text UNDERNEATH Poster */}
       <div className="mt-3 px-0.5 space-y-0.5">
         <div className="flex items-start justify-between gap-2 min-h-[2.5rem]">
-          <h3 className="font-medium text-white text-base leading-snug flex-1">
+          <h3 className="font-display text-white text-lg sm:text-xl uppercase tracking-wide leading-tight flex-1">
             {item.titulo}
           </h3>
 
@@ -112,11 +112,11 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
           </button>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-white/70 font-medium">
+        <div className="flex items-center gap-2 font-label text-xs text-white/70 font-bold uppercase tracking-wider">
           <span>{item.anioLanzamiento}</span>
           {item.fechaEsExacta === false && (
-            <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-1.5 py-0.2 rounded font-normal" title="Fecha de estreno estimada">
-              Fecha estimada
+            <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-1.5 py-0.2 rounded font-label uppercase font-bold" title="Fecha de estreno estimada">
+              Estimada
             </span>
           )}
         </div>

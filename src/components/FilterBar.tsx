@@ -45,8 +45,8 @@ export const FilterBar: React.FC = () => {
               type="text"
               value={filters.search}
               onChange={(e) => setFilters({ search: e.target.value })}
-              placeholder="Buscar producciones..."
-              className="w-full bg-transparent border-none outline-none text-white placeholder:text-zinc-400 font-medium text-xs sm:text-sm truncate"
+              placeholder="BUSCAR PRODUCCIONES..."
+              className="w-full bg-transparent border-none outline-none text-white placeholder:text-zinc-400 font-label font-bold text-xs sm:text-sm uppercase tracking-wider truncate"
             />
           </div>
 
@@ -55,7 +55,7 @@ export const FilterBar: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsFiltersOpen(true)}
-              className={`px-4 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-2 font-semibold text-xs relative ${isFiltersOpen || hasActiveSecondaryFilters
+              className={`px-4 py-1.5 rounded-full border transition-all cursor-pointer flex items-center gap-2 font-label font-bold text-xs uppercase tracking-wider relative ${isFiltersOpen || hasActiveSecondaryFilters
                   ? 'bg-white text-zinc-950 border-white shadow-md'
                   : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
                 }`}

@@ -80,12 +80,12 @@ const UpcomingCard: React.FC<{ item: MCUItem; onClick?: () => void }> = ({ item,
 
       {/* Title & Release Date Below Poster */}
       <div className="mt-2 space-y-0.5 px-0.5">
-        <h4 className={`text-[11px] font-medium text-white line-clamp-2 leading-snug transition-colors ${
-          isUnreleased ? '' : 'group-hover/upcoming:text-red-400'
+        <h4 className={`font-display text-xs uppercase tracking-wide leading-none transition-colors ${
+          isUnreleased ? 'text-white' : 'group-hover/upcoming:text-marvel-red'
         }`}>
           {item.titulo}
         </h4>
-        <p className="text-[10px] text-zinc-300 font-medium truncate">
+        <p className="font-label text-[10px] text-zinc-300 font-bold uppercase tracking-wider truncate">
           <span className="truncate">{formatDateDisplay(item.fechaLanzamiento)}</span>
           {item.fechaEsExacta === false && (
             <span className="text-[9px] text-amber-400 font-normal ml-1">(Est.)</span>
@@ -114,8 +114,8 @@ export const UpcomingSection: React.FC<UpcomingSectionProps> = ({ onNavigateToUp
       {/* Header Row: Title + Controls & Expand Button */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="font-medium text-white text-base sm:text-lg tracking-tight">
-            Próximos Estrenos del UCM
+          <h3 className="font-display text-xl sm:text-2xl uppercase tracking-wider text-white leading-none">
+            PRÓXIMOS ESTRENOS DEL MCU
           </h3>
         </div>
 
