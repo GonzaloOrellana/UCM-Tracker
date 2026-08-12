@@ -12,6 +12,7 @@ import { ProfileView } from './views/ProfileView';
 import { DetailModal } from './components/DetailModal';
 import { EditItemModal } from './components/EditItemModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
+import { AvatarUpdateNotice } from './components/AvatarUpdateNotice';
 import { Footer } from './components/Footer';
 import { MCUItem } from './types/mcu';
 import { getSupabaseClient } from './lib/supabase';
@@ -67,6 +68,7 @@ const TrackerMainApp: React.FC = () => {
           onForgotPassword={() => setResetPasswordState('request')}
         />
         <CookieConsentBanner />
+        <AvatarUpdateNotice />
       </>
     );
   }
@@ -139,6 +141,7 @@ const TrackerMainApp: React.FC = () => {
       />
 
       <CookieConsentBanner />
+      <AvatarUpdateNotice />
     </>
   );
 };
