@@ -219,57 +219,192 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
           <div className="crextio-card p-5 sm:p-6 space-y-3.5 flex flex-col h-full overflow-hidden">
 
             {/* Card Header */}
-            <div>
-              <h3 className="font-semibold text-white text-base sm:text-lg tracking-tight">
-                Estado por Fases
-              </h3>
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-semibold text-white text-base sm:text-lg tracking-tight">
+                  Estado por Fases
+                </h3>
+                <p className="text-xs text-zinc-400 font-normal">
+                  Mapa de progreso del Universo Cinematográfico
+                </p>
+              </div>
+              <span className="text-xs text-zinc-300 bg-white/10 border border-white/15 px-2.5 py-1 rounded-full font-medium">
+                {phaseList.filter((p) => (stats.phases[p]?.percentage || 0) === 100).length} de 6 completadas
+              </span>
             </div>
 
-            {/* List of Phase Progress Bars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-3.5 py-1">
-              {phaseList.map((phaseName) => {
+            {/* DESKTOP TIMELINE (Horizontal 6-Node Roadmap) */}
+            <div className="hidden sm:flex flex-col justify-center flex-1 my-auto py-4 px-2">
+              <div className="relative flex items-center justify-between w-full">
+                
+                {/* Horizontal Segment Connector Lines Behind Nodes */}
+                <div className="absolute top-4.5 sm:top-5 left-6 right-6 -translate-y-1/2 h-0.5 z-0 pointer-events-none flex items-center">
+                  {phaseList.slice(0, -1).map((_, i) => {
+                    const prevPhaseData = stats.phases[phaseList[i]];
+                    const isPrevComplete = prevPhaseData && prevPhaseData.percentage === 100 && prevPhaseData.total > 0;
+                    return (
+                      <div key={i} className="flex-1 h-full relative mx-1">
+                        {isPrevComplete ? (
+                          <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: 'easeOut' }}
+                            className="h-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] origin-left shadow-[0_0_8px_rgba(230,36,41,0.6)]"
+                          />
+                        ) : (
+                          <div className="w-full h-0.5 border-t-2 border-dashed border-white/20" />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* 6 Phase Nodes */}
+                {phaseList.map((phaseName, idx) => {
+                  const phaseData = stats.phases[phaseName] || { total: 0, watched: 0, percentage: 0 };
+                  const pct = phaseData.percentage;
+                  const isComplete = pct === 100 && phaseData.total > 0;
+                  const isInProgress = pct > 0 && !isComplete;
+
+                  return (
+                    <div key={phaseName} className="relative z-10 flex flex-col items-center group/phase cursor-default">
+                      
+                      {/* Floating Glassmorphism Tooltip on Hover */}
+                      <div className="absolute -top-11 left-1/2 -translate-x-1/2 opacity-0 group-hover/phase:opacity-100 transition-all duration-200 pointer-events-none z-30 whitespace-nowrap bg-[#161726]/95 backdrop-blur-md border border-white/20 text-white text-[11px] px-2.5 py-1 rounded-lg shadow-xl flex items-center gap-1.5">
+                        <span className="font-semibold">{phaseName}:</span>
+                        <span className="text-zinc-300">{phaseData.watched}/{phaseData.total} ({pct}%)</span>
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#161726] border-b border-r border-white/20 rotate-45" />
+                      </div>
+
+                      {/* Node Circle */}
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.1 + idx * 0.1 }}
+                        className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/phase:scale-110"
+                      >
+                        {isComplete ? (
+                          <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_12px_rgba(230,36,41,0.6)] border border-white/20">
+                            <Check className="w-4 h-4 text-white stroke-[3]" />
+                          </div>
+                        ) : isInProgress ? (
+                          <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
+                            <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
+                              <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
+                              <motion.circle
+                                cx="18"
+                                cy="18"
+                                r="14"
+                                fill="none"
+                                stroke="#C81D25"
+                                strokeWidth="3.5"
+                                strokeLinecap="round"
+                                strokeDasharray="88"
+                                initial={{ strokeDashoffset: 88 }}
+                                animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
+                                transition={{ duration: 1.8, delay: 0.2 + idx * 0.1, ease: [0.25, 1, 0.4, 1] }}
+                              />
+                            </svg>
+                            <span className="absolute text-[9px] font-bold text-white tracking-tighter">
+                              {pct}%
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
+                            <span className="w-2 h-2 rounded-full bg-white/20" />
+                          </div>
+                        )}
+                      </motion.div>
+
+                      {/* Phase Label & Progress Counter */}
+                      <div className="mt-2 text-center space-y-0.5">
+                        <span className={`block text-xs font-semibold ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
+                          {phaseName}
+                        </span>
+                        <span className="block text-[10px] text-zinc-400 font-medium">
+                          {phaseData.watched}/{phaseData.total}
+                        </span>
+                      </div>
+
+                    </div>
+                  );
+                })}
+
+              </div>
+            </div>
+
+            {/* MOBILE TIMELINE (Vertical Stepper Roadmap) */}
+            <div className="sm:hidden relative flex flex-col space-y-3.5 py-2 px-1">
+              
+              {/* Vertical Segment Line Connecting Nodes */}
+              <div className="absolute top-4 bottom-4 left-4.5 w-0.5 -translate-x-1/2 z-0 pointer-events-none">
+                <div className="w-full h-full border-l-2 border-dashed border-white/20" />
+              </div>
+
+              {phaseList.map((phaseName, idx) => {
                 const phaseData = stats.phases[phaseName] || { total: 0, watched: 0, percentage: 0 };
                 const pct = phaseData.percentage;
                 const isComplete = pct === 100 && phaseData.total > 0;
                 const isInProgress = pct > 0 && !isComplete;
 
-                // Unified Marvel Red Progress Bar Fill matching main progress bar
-                const barStyle = pct > 0
-                  ? 'bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] shadow-[0_0_8px_rgba(230,36,41,0.5)]'
-                  : 'bg-transparent';
-
                 return (
-                  <div key={phaseName} className="space-y-1.5 group/phase">
-
-                    <div className="flex items-center justify-between text-xs">
-                      <span className={`font-medium truncate ${isComplete ? 'text-white font-semibold' : 'text-zinc-200'}`}>
-                        {phaseName}
-                      </span>
-
-                      <span className={`font-semibold text-[11px] shrink-0 ml-1 flex items-center gap-1 ${isComplete ? 'text-white font-bold' : isInProgress ? 'text-white' : 'text-zinc-400'
-                        }`}>
-                        {isComplete && (
-                          <svg className="w-3 h-3 text-white inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  <div key={phaseName} className="flex items-center gap-3.5 relative z-10">
+                    
+                    {/* Node Circle */}
+                    <div className="relative w-9 h-9 rounded-full flex items-center justify-center shrink-0">
+                      {isComplete ? (
+                        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_10px_rgba(230,36,41,0.6)] border border-white/20">
+                          <Check className="w-4 h-4 text-white stroke-[3]" />
+                        </div>
+                      ) : isInProgress ? (
+                        <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
+                          <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
+                            <motion.circle
+                              cx="18"
+                              cy="18"
+                              r="14"
+                              fill="none"
+                              stroke="#C81D25"
+                              strokeWidth="3.5"
+                              strokeLinecap="round"
+                              strokeDasharray="88"
+                              initial={{ strokeDashoffset: 88 }}
+                              animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
+                              transition={{ duration: 1.6, delay: 0.15 + idx * 0.08, ease: [0.25, 1, 0.4, 1] }}
+                            />
                           </svg>
-                        )}
-                        {phaseData.watched}/{phaseData.total}
-                      </span>
+                          <span className="absolute text-[9px] font-bold text-white tracking-tighter">
+                            {pct}%
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
+                          <span className="w-2 h-2 rounded-full bg-white/20" />
+                        </div>
+                      )}
                     </div>
 
-                    {/* Progress Line - Flush Borderless Track with Slow Fill Animation */}
-                    <div className="w-full h-2 rounded-full bg-black/40 border border-white/10 overflow-hidden relative">
-                      <motion.div
-                        initial={{ width: '0%' }}
-                        animate={{ width: `${pct}%` }}
-                        transition={{ duration: 2.0, delay: 0.35, ease: [0.25, 1, 0.4, 1] }}
-                        className={`h-full rounded-full ${barStyle}`}
-                      />
+                    {/* Phase Info Row */}
+                    <div className="flex-1 flex items-center justify-between text-xs border-b border-white/10 pb-2">
+                      <div className="flex flex-col">
+                        <span className={`font-semibold ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
+                          {phaseName}
+                        </span>
+                        <span className="text-[11px] text-zinc-400 font-normal">
+                          {isComplete ? 'Completada' : `${pct}% avanzado`}
+                        </span>
+                      </div>
+
+                      <span className={`font-semibold text-xs ${isComplete ? 'text-emerald-400' : isInProgress ? 'text-white' : 'text-zinc-500'}`}>
+                        {phaseData.watched}/{phaseData.total}
+                      </span>
                     </div>
 
                   </div>
                 );
               })}
+
             </div>
 
           </div>
