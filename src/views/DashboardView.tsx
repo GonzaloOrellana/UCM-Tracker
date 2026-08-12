@@ -334,59 +334,83 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             </div>
 
             {/* MOBILE TIMELINE (Vertical Stepper Roadmap) */}
-            <div className="sm:hidden relative flex flex-col space-y-3.5 py-2 px-1">
-              
-              {/* Vertical Segment Line Connecting Nodes */}
-              <div className="absolute top-4 bottom-4 left-4.5 w-0.5 -translate-x-1/2 z-0 pointer-events-none">
-                <div className="w-full h-full border-l-2 border-dashed border-white/20" />
-              </div>
-
+            <div className="sm:hidden flex flex-col py-1 px-1">
               {phaseList.map((phaseName, idx) => {
                 const phaseData = stats.phases[phaseName] || { total: 0, watched: 0, percentage: 0 };
                 const pct = phaseData.percentage;
                 const isComplete = pct === 100 && phaseData.total > 0;
                 const isInProgress = pct > 0 && !isComplete;
 
+                const prevPhaseData = idx > 0 ? stats.phases[phaseList[idx - 1]] : null;
+                const isPrevComplete = prevPhaseData && prevPhaseData.percentage === 100 && prevPhaseData.total > 0;
+
                 return (
-                  <div key={phaseName} className="flex items-center gap-3.5 relative z-10">
+                  <div key={phaseName} className="flex items-stretch gap-3.5 relative">
                     
-                    {/* Node Circle */}
-                    <div className="relative w-9 h-9 rounded-full flex items-center justify-center shrink-0">
-                      {isComplete ? (
-                        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_10px_rgba(230,36,41,0.6)] border border-white/20">
-                          <Check className="w-4 h-4 text-white stroke-[3]" />
-                        </div>
-                      ) : isInProgress ? (
-                        <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
-                          <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
-                            <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
-                            <motion.circle
-                              cx="18"
-                              cy="18"
-                              r="14"
-                              fill="none"
-                              stroke="#C81D25"
-                              strokeWidth="3.5"
-                              strokeLinecap="round"
-                              strokeDasharray="88"
-                              initial={{ strokeDashoffset: 88 }}
-                              animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
-                              transition={{ duration: 1.6, delay: 0.15 + idx * 0.08, ease: [0.25, 1, 0.4, 1] }}
-                            />
-                          </svg>
-                          <span className="absolute text-[9px] font-bold text-white tracking-tighter">
-                            {pct}%
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
-                          <span className="w-2 h-2 rounded-full bg-white/20" />
+                    {/* Centered Node & Segment Connector Column */}
+                    <div className="w-9 shrink-0 flex flex-col items-center justify-center relative">
+                      
+                      {/* Top Connector Segment (From top of row to center of node) */}
+                      {idx > 0 && (
+                        <div className="absolute top-0 bottom-1/2 left-1/2 -translate-x-1/2 w-0.5 z-0 pointer-events-none">
+                          {isPrevComplete ? (
+                            <div className="w-full h-full bg-gradient-to-b from-[#800A10] to-[#C81D25] shadow-[0_0_6px_rgba(230,36,41,0.6)]" />
+                          ) : (
+                            <div className="w-full h-full border-l-2 border-dashed border-white/20" />
+                          )}
                         </div>
                       )}
+
+                      {/* Bottom Connector Segment (From center of node to bottom of row) */}
+                      {idx < phaseList.length - 1 && (
+                        <div className="absolute top-1/2 bottom-0 left-1/2 -translate-x-1/2 w-0.5 z-0 pointer-events-none">
+                          {isComplete ? (
+                            <div className="w-full h-full bg-gradient-to-b from-[#C81D25] to-[#E62429] shadow-[0_0_6px_rgba(230,36,41,0.6)]" />
+                          ) : (
+                            <div className="w-full h-full border-l-2 border-dashed border-white/20" />
+                          )}
+                        </div>
+                      )}
+
+                      {/* Node Circle */}
+                      <div className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center shrink-0 my-2">
+                        {isComplete ? (
+                          <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_10px_rgba(230,36,41,0.6)] border border-white/20">
+                            <Check className="w-4 h-4 text-white stroke-[3]" />
+                          </div>
+                        ) : isInProgress ? (
+                          <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
+                            <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
+                              <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
+                              <motion.circle
+                                cx="18"
+                                cy="18"
+                                r="14"
+                                fill="none"
+                                stroke="#C81D25"
+                                strokeWidth="3.5"
+                                strokeLinecap="round"
+                                strokeDasharray="88"
+                                initial={{ strokeDashoffset: 88 }}
+                                animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
+                                transition={{ duration: 1.6, delay: 0.15 + idx * 0.08, ease: [0.25, 1, 0.4, 1] }}
+                              />
+                            </svg>
+                            <span className="absolute text-[9px] font-bold text-white tracking-tighter">
+                              {pct}%
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
+                            <span className="w-2 h-2 rounded-full bg-white/20" />
+                          </div>
+                        )}
+                      </div>
+
                     </div>
 
                     {/* Phase Info Row */}
-                    <div className="flex-1 flex items-center justify-between text-xs border-b border-white/10 pb-2">
+                    <div className="flex-1 flex items-center justify-between text-xs border-b border-white/10 py-2.5">
                       <div className="flex flex-col">
                         <span className={`font-semibold ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
                           {phaseName}
