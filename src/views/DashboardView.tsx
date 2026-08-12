@@ -233,12 +233,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                 const isComplete = pct === 100 && phaseData.total > 0;
                 const isInProgress = pct > 0 && !isComplete;
 
-                // White / Silver Metallic Progress Bar Fill
-                const barStyle = isComplete
-                  ? 'bg-gradient-to-r from-zinc-300 via-white to-slate-200 shadow-[0_0_10px_rgba(255,255,255,0.8)]'
-                  : isInProgress
-                    ? 'bg-gradient-to-r from-slate-400 via-zinc-200 to-white shadow-[0_0_8px_rgba(255,255,255,0.5)]'
-                    : 'bg-transparent';
+                // Unified Marvel Red Progress Bar Fill matching main progress bar
+                const barStyle = pct > 0
+                  ? 'bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] shadow-[0_0_8px_rgba(230,36,41,0.5)]'
+                  : 'bg-transparent';
 
                 return (
                   <div key={phaseName} className="space-y-1.5 group/phase">

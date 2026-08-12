@@ -117,5 +117,14 @@ export function getAvatarById(id?: string): Avatar | undefined {
 export function getAvatarUrl(id?: string, fallbackUrl?: string): string {
   const avatar = getAvatarById(id);
   if (avatar) return avatar.url;
+
+  if (fallbackUrl && fallbackUrl.startsWith('/avatares/')) {
+    const normalizedFallback = decodeURI(fallbackUrl).toLowerCase();
+    const matchedByUrl = AVAILABLE_AVATARS.find(
+      (a) => decodeURI(a.url).toLowerCase() === normalizedFallback
+    );
+    if (matchedByUrl) return matchedByUrl.url;
+  }
+
   return fallbackUrl || AVAILABLE_AVATARS[0].url;
 }

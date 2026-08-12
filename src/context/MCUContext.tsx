@@ -6,7 +6,7 @@ import { mcuService } from '../services/mcuService';
 import { User } from '@supabase/supabase-js';
 import { useMCUAuth } from '../hooks/useMCUAuth';
 import { useMCUFilters, defaultFilters } from '../hooks/useMCUFilters';
-import { getAvatarById } from '../data/avatars';
+import { getAvatarById, getAvatarUrl } from '../data/avatars';
 
 interface MCUStats {
   total: number;
@@ -328,8 +328,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const effectiveSettings = useMemo<UserSettings>(() => {
     const activeAvatarId = user ? (user.user_metadata?.avatar_id || settings.avatarId) : settings.avatarId;
-    const avatarObj = getAvatarById(activeAvatarId);
-    const resolvedPicUrl = avatarObj ? avatarObj.url : (user ? DEFAULT_AVATAR : (settings.profilePicUrl || DEFAULT_AVATAR));
+    const resolvedPicUrl = getAvatarUrl(activeAvatarId, settings.profilePicUrl);
 
     return {
       ...settings,
