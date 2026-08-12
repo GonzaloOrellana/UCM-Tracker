@@ -10,7 +10,7 @@ export const AVAILABLE_AVATARS: Avatar[] = [
   { id: 'capitan-america-alt', name: 'Capitán América (Traje Alt)', url: '/avatares/captain-america.jpg', category: 'Vengadores' },
   { id: 'ironman', name: 'Iron Man', url: '/avatares/Iron-Man.jpg', category: 'Vengadores' },
   { id: 'tony-stark', name: 'Tony Stark', url: '/avatares/Tony-Stark.jpg', category: 'Vengadores' },
-  { id: 'thor', name: 'Thor', url: '/avatares/Thor.jpg', category: 'Vengadores' },
+  { id: 'thor', name: 'Thor', url: '/avatares/Thor-UCM.jpg', category: 'Vengadores' },
   { id: 'black-widow', name: 'Black Widow', url: '/avatares/BlackWidow.jpg', category: 'Vengadores' },
   { id: 'hawkeye', name: 'Ojo de Halcón', url: '/avatares/Hawkeye.jpg', category: 'Vengadores' },
   { id: 'hulk', name: 'Hulk', url: '/avatares/Hulk.jpg', category: 'Vengadores' },
@@ -54,14 +54,14 @@ export const AVAILABLE_AVATARS: Avatar[] = [
   // 4 Fantásticos
   { id: 'mr-fantastico', name: 'Mr. Fantástico', url: '/avatares/Mister-Fantastic.jpg', category: '4 Fantásticos' },
   { id: 'sue-storm', name: 'Sue Storm', url: '/avatares/SueStorm.jpg', category: '4 Fantásticos' },
-  { id: 'la-mole', name: 'La Mole', url: '/avatares/LaMole.jpg', category: '4 Fantásticos' },
+  { id: 'la-mole', name: 'La Mole', url: '/avatares/laMole.jpg', category: '4 Fantásticos' },
   { id: 'human-torch', name: 'Antorcha Humana', url: '/avatares/Human_Torch.jpg', category: '4 Fantásticos' },
 
   // X-Men
   { id: 'wolverine', name: 'Wolverine', url: encodeURI('/avatares/Wolverine (2).jpg'), category: 'X-Men' },
   { id: 'cyclope', name: 'Cíclope', url: '/avatares/Cyclope.jpg', category: 'X-Men' },
   { id: 'magneto', name: 'Magneto (Ian McKellen)', url: '/avatares/MAGNETO-IanMcKellen.jpg', category: 'X-Men' },
-  { id: 'professor-x', name: 'Profesor X', url: '/avatares/PROFESSOR-X.jpg', category: 'X-Men' },
+  { id: 'professor-x', name: 'Profesor X', url: '/avatares/profesor-x.jpg', category: 'X-Men' },
   { id: 'gambito', name: 'Gambito', url: encodeURI('/avatares/Remy LeBeau-Gambit.jpg'), category: 'X-Men' },
   { id: 'deadpool', name: 'Deadpool', url: '/avatares/deadpool.jpg', category: 'X-Men' },
   { id: 'coloso', name: 'Coloso', url: '/avatares/Coloso.jpg', category: 'X-Men' },
