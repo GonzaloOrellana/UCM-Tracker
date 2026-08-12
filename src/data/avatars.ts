@@ -7,7 +7,6 @@ export interface Avatar {
 
 export const AVAILABLE_AVATARS: Avatar[] = [
   // Vengadores
-  { id: 'capitan-america', name: 'Capitán América', url: '/avatares/capitan-america2.jpg', category: 'Vengadores' },
   { id: 'capitan-america-alt', name: 'Capitán América (Traje Alt)', url: '/avatares/captain-america.jpg', category: 'Vengadores' },
   { id: 'ironman', name: 'Iron Man', url: '/avatares/Iron-Man.jpg', category: 'Vengadores' },
   { id: 'tony-stark', name: 'Tony Stark', url: '/avatares/Tony-Stark.jpg', category: 'Vengadores' },
