@@ -190,7 +190,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
           <div className="lg:col-span-7 h-full flex flex-col">
             
             {/* Main Glass Panel with Tabs Header */}
-            <div className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-6 flex-1 flex flex-col justify-between">
+            <div className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-6 flex-1 flex flex-col justify-start">
               
               {/* Tab Navigation Header */}
               <div className="flex items-center gap-2 border-b border-white/15 pb-4 font-label text-xs font-bold uppercase tracking-wider">
