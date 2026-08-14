@@ -42,6 +42,32 @@
   /* Firefox */
 }
 
+/* Custom Scrollbar Utility for Modal and Contained Scroll Areas */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #D4D4D8 transparent;
+  -ms-overflow-style: auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: block;
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
+}
+
 /* Diagonal Stripe Pattern Utility */
 .bg-stripe-pattern {
   background-color: #EFEFEF;
