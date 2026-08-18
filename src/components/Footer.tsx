@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="w-full mt-12 py-6 border-t border-white/10 text-[11px] text-zinc-400 font-sans flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
       <p className="text-zinc-400">
-        Marvel Tracker © 2026 • Proyecto fan-made no comercial
+        Marvel Tracker © 2026
       </p>
 
       <div className="flex items-center gap-3 text-zinc-300">
