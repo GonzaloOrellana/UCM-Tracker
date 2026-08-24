@@ -310,23 +310,37 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 1.2, ease: 'easeOut' }}
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 sm:bottom-5 z-20 flex items-center gap-2.5 text-xs text-zinc-300 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] text-center whitespace-nowrap"
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 sm:bottom-5 z-20 flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 text-xs text-zinc-300 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.9)] text-center whitespace-nowrap"
       >
-        <button
-          type="button"
-          onClick={() => setShowLegalModal('privacy')}
-          className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
-        >
-          Política de Privacidad
-        </button>
-        <span className="text-zinc-500">•</span>
-        <button
-          type="button"
-          onClick={() => setShowLegalModal('terms')}
-          className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
-        >
-          Términos de Uso
-        </button>
+        <span>
+          Desarrollado por{' '}
+          <a
+            href="https://www.gonzaorellana.com.ar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#5b92f7] hover:text-[#93c5fd] cursor-pointer transition-colors"
+          >
+            Gonzalo Orellana
+          </a>
+        </span>
+        <span className="hidden sm:inline text-zinc-500">•</span>
+        <div className="flex items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => setShowLegalModal('privacy')}
+            className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
+          >
+            Política de Privacidad
+          </button>
+          <span className="text-zinc-500">•</span>
+          <button
+            type="button"
+            onClick={() => setShowLegalModal('terms')}
+            className="font-medium text-zinc-300 hover:text-white underline cursor-pointer transition-colors"
+          >
+            Términos de Uso
+          </button>
+        </div>
       </motion.div>
 
       {/* Modal Overlay para ver Políticas desde el Login/Signup */}

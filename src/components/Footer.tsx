@@ -6,9 +6,23 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="w-full mt-12 py-6 border-t border-white/10 text-[11px] text-zinc-400 font-sans flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-      <p className="text-zinc-400">
-        Marvel Tracker © 2026
-      </p>
+      <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2">
+        <p className="text-zinc-400">
+          Marvel Tracker © 2026
+        </p>
+        <span className="hidden sm:inline text-zinc-600">•</span>
+        <p className="text-zinc-400">
+          Desarrollado por{' '}
+          <a
+            href="https://www.gonzaorellana.com.ar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#5b92f7] font-semibold hover:text-[#93c5fd] transition-colors"
+          >
+            Gonzalo Orellana
+          </a>
+        </p>
+      </div>
 
       <div className="flex items-center gap-3 text-zinc-300">
         <button
