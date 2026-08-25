@@ -338,22 +338,6 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#205081"
   },
   {
-    "id": "the-wolverine-2013",
-    "titulo": "Wolverine: Inmortal",
-    "tituloOriginal": "The Wolverine",
-    "tipo": "movie",
-    "anioLanzamiento": 2013,
-    "fechaLanzamiento": "2013-07-26",
-    "ordenEstreno": 7.5,
-    "ordenCronologico": 0.4,
-    "fase": "Saga X-Men",
-    "urlPoster": "https://static.wikia.nocookie.net/xmen9260/images/2/28/Wolverine_Inmortal_alternativo.jpg/revision/latest?cb=20170223215550&path-prefix=es",
-    "resumen": "Logan viaja al Japón moderno sumido en el duelo por la muerte de Jean Grey. Allí enfrenta a ninjas, la yakuza y su propia vulnerabilidad tras perder temporalmente su factor de curación.",
-    "duracion": "2h 06m",
-    "personajePrincipal": "Logan / Wolverine",
-    "colorAcento": "#388E3C"
-  },
-  {
     "id": "thor-the-dark-world-8",
     "titulo": "Thor: El mundo oscuro",
     "tituloOriginal": "Thor: The Dark World",
@@ -592,22 +576,6 @@ export const PRODUCTIONS: MCUItem[] = [
     "duracion": "13 episodios",
     "personajePrincipal": "Daredevil & Punisher",
     "colorAcento": "#880E4F"
-  },
-  {
-    "id": "x-men-apocalypse-2016",
-    "titulo": "X-Men: Apocalipsis",
-    "tituloOriginal": "X-Men: Apocalypse",
-    "tipo": "movie",
-    "anioLanzamiento": 2016,
-    "fechaLanzamiento": "2016-05-27",
-    "ordenEstreno": 15.5,
-    "ordenCronologico": 29.5,
-    "fase": "Saga X-Men",
-    "urlPoster": "https://static.wikia.nocookie.net/xmen9260/images/0/00/X-Men_Apocalipsis.jpg/revision/latest?cb=20160418090630&path-prefix=es",
-    "resumen": "Apocalipsis, el primer y más poderoso mutante de la historia, despierta tras miles de años y recluta a cuatro jinetes para purgar a la humanidad, forzando a los jóvenes X-Men a unirse para salvar la Tierra.",
-    "duracion": "2h 24m",
-    "personajePrincipal": "Apocalipsis & X-Men",
-    "colorAcento": "#512DA8"
   },
   {
     "id": "luke-cage-s1",
@@ -880,22 +848,6 @@ export const PRODUCTIONS: MCUItem[] = [
     "duracion": "2h 03m",
     "personajePrincipal": "Carol Danvers / Capitana Marvel",
     "colorAcento": "#DA2727"
-  },
-  {
-    "id": "x-men-dark-phoenix-2019",
-    "titulo": "X-Men: Dark Phoenix",
-    "tituloOriginal": "Dark Phoenix",
-    "tipo": "movie",
-    "anioLanzamiento": 2019,
-    "fechaLanzamiento": "2019-06-07",
-    "ordenEstreno": 22.5,
-    "ordenCronologico": 45.5,
-    "fase": "Saga X-Men",
-    "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBF4GmGsGBUp_eu_5rilIV5ZolxL-voyExoliplM07hg&s=10",
-    "resumen": "Durante una misión de rescate en el espacio, Jean Grey es golpeada por una misteriosa fuerza cósmica que incrementa exponencialmente sus poderes, volviéndola inestable y peligrosa para los X-Men.",
-    "duracion": "1h 54m",
-    "personajePrincipal": "Jean Grey / Fénix",
-    "colorAcento": "#B71C1C"
   },
   {
     "id": "punisher-s2",
