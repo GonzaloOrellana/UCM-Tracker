@@ -26,30 +26,18 @@ export const UpcomingView: React.FC = () => {
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
       >
         {upcomingItems.map((item) => {
-          const isUnreleased = !item.fechaLanzamiento || item.fechaLanzamiento > new Date().toISOString().split('T')[0];
-          const tooltipText = isUnreleased
-            ? `Aún no estrenada - Disponible el ${formatDateDisplay(item.fechaLanzamiento)}`
-            : item.titulo;
-
           return (
             <div
               key={item.id}
-              onClick={isUnreleased ? undefined : () => openDetailModal(item)}
-              title={tooltipText}
-              className={`flex flex-col select-none group ${
-                isUnreleased ? 'cursor-not-allowed opacity-85' : 'cursor-pointer'
-              }`}
+              title={`Aún no estrenada • Disponible el ${formatDateDisplay(item.fechaLanzamiento)}`}
+              className="flex flex-col select-none cursor-default"
             >
               {/* Poster Image Container */}
-              <div className={`relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-lg shadow-black/40 transition-all duration-300 ${
-                isUnreleased ? '' : 'group-hover:shadow-2xl group-hover:shadow-black/60'
-              }`}>
+              <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-lg shadow-black/40">
                 <img
                   src={item.urlPoster}
                   alt={item.titulo}
-                  className={`w-full h-full object-cover transition-all duration-300 ${
-                    isUnreleased ? '' : 'group-hover:scale-105'
-                  }`}
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
                 {item.fechaEsExacta === false && (
@@ -61,9 +49,7 @@ export const UpcomingView: React.FC = () => {
 
               {/* Title & Metadata Text UNDERNEATH Poster */}
               <div className="mt-2 space-y-0.5 px-0.5">
-                <h3 className={`text-xs font-bold text-white line-clamp-1 transition-colors ${
-                  isUnreleased ? '' : 'group-hover:text-red-400'
-                }`}>
+                <h3 className="text-xs font-bold text-white line-clamp-1">
                   {item.titulo}
                 </h3>
                 <div className="flex items-center gap-1.5">

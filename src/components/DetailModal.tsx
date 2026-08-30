@@ -306,7 +306,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   </div>
 
                   {/* Parent Pill Container */}
-                  <div className="relative bg-zinc-100/90 border border-zinc-200/90 rounded-full p-1 flex items-center justify-between gap-0.5 shadow-inner">
+                  <div className="relative bg-zinc-100 border border-zinc-200/90 rounded-full p-1 flex items-center justify-between gap-0.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.12)]">
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => {
                       const isSelected = currentRating === num;
                       return (
@@ -320,7 +320,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                           {isSelected && (
                             <motion.div
                               layoutId="activeRatingPill"
-                              className="absolute inset-0 bg-amber-400 rounded-full shadow-xs -z-10"
+                              className="absolute inset-0 rating-pill-crystal rounded-full -z-10"
                               transition={{
                                 type: 'spring',
                                 stiffness: 400,
@@ -329,7 +329,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                               }}
                             />
                           )}
-                          <span className={isSelected ? 'text-zinc-950 font-bold' : 'text-zinc-600 hover:text-zinc-900 font-medium'}>
+                          <span className={isSelected ? 'text-zinc-950 font-bold drop-shadow-2xs' : 'text-zinc-600 hover:text-zinc-900 font-medium'}>
                             {num}
                           </span>
                         </button>
@@ -340,7 +340,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
 
               </div>
 
-              {/* Bottom Row: Stagger 5 - Watched Toggle (Footer) */}
+              {/* Bottom Row: Stagger 5 - Watched Toggle with Mechanical Hardware Switch (Footer) */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -350,26 +350,28 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
               >
                 <div
                   onClick={() => toggleWatched(item.id)}
-                  className="flex items-center gap-3 cursor-pointer select-none"
+                  className="flex items-center gap-3 cursor-pointer select-none group/toggle"
                 >
-                  <span className="text-xs font-normal text-zinc-900">
+                  <span className="text-xs font-semibold text-zinc-900 group-hover/toggle:text-[#C81D25] transition-colors">
                     {isWatched ? 'Visto' : 'Marcar como visto'}
                   </span>
                   <button
                     type="button"
                     role="switch"
                     aria-checked={isWatched}
-                    className={`w-11 h-6 rounded-full transition-colors p-1 cursor-pointer flex items-center ${
-                      isWatched ? 'bg-emerald-500' : 'bg-zinc-200 border border-zinc-300'
+                    className={`w-11 h-6 rounded-full p-0.5 transition-all duration-200 cursor-pointer flex items-center active:scale-90 ${
+                      isWatched
+                        ? 'tactile-switch-active'
+                        : 'tactile-switch-well'
                     }`}
                     title={isWatched ? 'Marcar como no visto' : 'Marcar como visto'}
                   >
                     <span
-                      className={`w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-200 flex items-center justify-center ${
+                      className={`w-5 h-5 rounded-full tactile-switch-thumb transform transition-transform duration-200 flex items-center justify-center ${
                         isWatched ? 'translate-x-5' : 'translate-x-0'
                       }`}
                     >
-                      {isWatched && <Check className="w-2.5 h-2.5 text-emerald-600 stroke-[3]" />}
+                      {isWatched && <Check className="w-3 h-3 text-emerald-800 stroke-[3.5]" />}
                     </span>
                   </button>
                 </div>

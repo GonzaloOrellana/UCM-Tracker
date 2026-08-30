@@ -33,35 +33,35 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
   return (
     <div
       onClick={() => onOpenDetail(item)}
-      className="flex flex-col cursor-pointer select-none group bg-white text-[#1a1c1c] border-2 border-[#1a1c1c] rounded-none p-3 shadow-[4px_4px_0px_#1a1c1c] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 relative overflow-hidden"
+      className="flex flex-col cursor-pointer select-none group bg-white text-[#1a1c1c] border-2 border-[#1a1c1c] rounded-none p-3 shadow-[4px_4px_0px_#1a1c1c] hover:shadow-[1px_1px_0px_#1a1c1c] hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-150 relative overflow-hidden active:shadow-none active:translate-x-[4px] active:translate-y-[4px]"
     >
       {/* Poster Image Container con Marco de Tinta Negro Estilo Brutalista (Sharp 0) */}
       <div className="relative aspect-[2/3] w-full rounded-none overflow-hidden bg-[#f3f3f3] border-2 border-[#1a1c1c]">
         
-        {/* Badge Esquinero Estilo Cómic ("ISSUE #XX") en Rojo Marvel y Esquinas Rectas */}
-        <div className="absolute top-2 left-2 z-20 bg-[#bb0013] text-white font-label font-bold text-[10px] tracking-widest px-2 py-0.5 rounded-none uppercase border border-[#1a1c1c] shadow-xs">
+        {/* Badge Esquinero Estilo Cómic ("ISSUE #XX") con Efecto Estampado Debossed / Letterpress */}
+        <div className="absolute top-2 left-2 z-20 bg-[#bb0013] text-white font-label font-black text-[10px] tracking-widest px-2.5 py-0.5 rounded-none uppercase border-2 border-[#1a1c1c] shadow-[2px_2px_0px_#1a1c1c] comic-letterpress">
           {issueLabel}
         </div>
 
-        {/* Toggle Switch en la esquina superior derecha */}
+        {/* Toggle Switch Analógico Mecánico en la esquina superior derecha */}
         <button
           type="button"
           role="switch"
           aria-checked={isWatched}
           onClick={handleCheckboxClick}
-          className={`absolute top-2 right-2 z-20 w-8 h-5 rounded-none p-0.5 transition-colors cursor-pointer flex items-center shadow-xs ${
+          className={`absolute top-2 right-2 z-20 w-9 h-5 rounded-none p-0.5 transition-all cursor-pointer flex items-center shadow-[2px_2px_0px_#1a1c1c] active:shadow-none active:translate-x-[1px] active:translate-y-[1px] ${
             isWatched
-              ? 'bg-emerald-600 border border-emerald-900'
-              : 'bg-[#1a1c1c]/60 border border-[#1a1c1c]'
+              ? 'bg-emerald-600 border-2 border-[#1a1c1c]'
+              : 'bg-[#1a1c1c]/70 border-2 border-[#1a1c1c]'
           }`}
           title={isWatched ? 'Marcar como no visto' : 'Marcar como visto'}
         >
           <span
-            className={`w-3.5 h-3.5 rounded-none bg-white border border-[#1a1c1c] shadow-xs transform transition-transform duration-200 flex items-center justify-center ${
-              isWatched ? 'translate-x-3' : 'translate-x-0'
+            className={`w-3.5 h-3.5 rounded-none bg-white border border-[#1a1c1c] shadow-[1px_1px_0px_#1a1c1c] transform transition-transform duration-200 flex items-center justify-center ${
+              isWatched ? 'translate-x-3.5' : 'translate-x-0'
             }`}
           >
-            {isWatched && <Check className="w-2.5 h-2.5 text-emerald-700 stroke-[3]" />}
+            {isWatched && <Check className="w-2.5 h-2.5 text-emerald-800 stroke-[3.5]" />}
           </span>
         </button>
 
@@ -93,17 +93,17 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
             {item.titulo}
           </h3>
 
-          {/* Botón Favorito Heart */}
+          {/* Botón Favorito Heart con Relieve Cómic */}
           <button
             type="button"
             onClick={handleFavoriteClick}
-            className="p-1 -mr-1 transition-transform hover:scale-110 cursor-pointer shrink-0"
+            className="p-1 -mr-1 transition-transform hover:scale-120 active:scale-90 cursor-pointer shrink-0"
             title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
           >
             <Heart
-              className={`w-4 h-4 transition-colors stroke-[2] ${
+              className={`w-4.5 h-4.5 transition-colors stroke-[2.5] ${
                 isFavorite
-                  ? 'fill-[#bb0013] text-[#bb0013]'
+                  ? 'fill-[#bb0013] text-[#bb0013] drop-shadow-[1px_1px_0px_#1a1c1c]'
                   : 'text-[#5e5e5e] hover:text-[#bb0013]'
               }`}
             />
@@ -117,10 +117,10 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
 
         {/* Metadata Badges en Recuadros Negros Rectos */}
         <div className="flex items-center gap-2 pt-1 font-label text-[10px] text-[#1a1c1c] font-bold uppercase tracking-wider">
-          <span className="border border-[#1a1c1c] px-2 py-0.5 rounded-none bg-[#f3f3f3]">
+          <span className="border-2 border-[#1a1c1c] px-2 py-0.5 rounded-none bg-[#f3f3f3] shadow-[1px_1px_0px_#1a1c1c]">
             {item.anioLanzamiento}
           </span>
-          <span className="border border-[#1a1c1c] px-2 py-0.5 rounded-none bg-[#f3f3f3]">
+          <span className="border-2 border-[#1a1c1c] px-2 py-0.5 rounded-none bg-[#f3f3f3] shadow-[1px_1px_0px_#1a1c1c]">
             {item.fase}
           </span>
         </div>

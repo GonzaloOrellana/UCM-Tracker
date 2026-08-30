@@ -107,9 +107,9 @@ export const ResetPasswordView: React.FC<ResetPasswordViewProps> = ({
           {/* Header Brand & Title */}
           <div className="text-center space-y-3">
             <img
-              src="/Logo-marvel-tracker.png"
+              src="/logo-marveltracker-blanco.png"
               alt="Marvel Tracker"
-              className="h-10 sm:h-12 w-auto mx-auto object-contain"
+              className="h-11 sm:h-14 w-auto mx-auto object-contain"
             />
             <div>
               <h2 className="text-lg font-semibold text-white tracking-tight flex items-center justify-center gap-2">

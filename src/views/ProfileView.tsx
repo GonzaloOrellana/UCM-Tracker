@@ -82,7 +82,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
             {/* Identity Box Card */}
             <form
               onSubmit={handleSaveSettings}
-              className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-5 text-center relative overflow-hidden flex-1 flex flex-col justify-between"
+              className="tactile-bento-card p-6 rounded-3xl space-y-5 text-center relative overflow-hidden flex-1 flex flex-col justify-between"
             >
               <div className="flex flex-col items-center justify-center space-y-3">
                 {/* Large Avatar Circle with Edit Pencil */}
@@ -90,7 +90,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                   <button
                     type="button"
                     onClick={() => setIsAvatarPickerOpen(true)}
-                    className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 bg-[#1b1e32] border-4 border-white/30 shadow-2xl cursor-pointer block focus:outline-none transition-transform hover:scale-105"
+                    className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 bg-[#080911] border-4 border-white/30 shadow-2xl cursor-pointer block focus:outline-none transition-transform hover:scale-105"
                     title="Cambiar avatar"
                   >
                     {settings.profilePicUrl ? (
@@ -106,7 +106,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                   <button
                     type="button"
                     onClick={() => setIsAvatarPickerOpen(true)}
-                    className="absolute bottom-1 right-1 p-2 rounded-full bg-[#C81D25] hover:bg-[#a8151c] text-white shadow-lg border-2 border-[#181b2e] cursor-pointer transition-transform hover:scale-110"
+                    className="absolute bottom-1 right-1 p-2 rounded-full bg-[#C81D25] hover:bg-[#a8151c] text-white shadow-lg border-2 border-[#181b2e] cursor-pointer transition-transform hover:scale-110 active:scale-95"
                     title="Cambiar avatar"
                   >
                     <Pencil className="w-4 h-4" />
@@ -135,7 +135,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     placeholder="ej. Gonzalo"
-                    className="w-full px-3.5 py-2.5 bg-white/10 border border-white/20 focus:border-white/50 rounded-xl text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner focus:ring-1 focus:ring-white/40"
+                    className="w-full px-3.5 py-2.5 neu-input-sunken rounded-xl text-xs text-white placeholder-zinc-500 outline-none font-medium transition-all"
                   />
                 </div>
 
@@ -148,13 +148,13 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                     type="text"
                     disabled
                     value={user ? user.email || '' : 'Modo Invitado (Sesión local)'}
-                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-zinc-400 font-medium cursor-not-allowed"
+                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-xs text-zinc-400 font-medium cursor-not-allowed shadow-inner"
                   />
                 </div>
 
                 {/* Field 3: Sincronización Status */}
                 <div className="pt-1">
-                  <div className="flex items-center gap-2 text-[11px] font-label font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl bg-white/10 border border-white/15 text-zinc-300">
+                  <div className="flex items-center gap-2 text-[11px] font-label font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl tactile-kpi-plate text-zinc-300">
                     <ShieldCheck className={`w-4 h-4 ${user ? 'text-emerald-400' : 'text-amber-400'}`} />
                     <span>{user ? 'Sincronizado en Supabase' : 'Guardado Local'}</span>
                   </div>
@@ -166,9 +166,9 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
               <div className="space-y-2 pt-1">
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 bg-white hover:bg-zinc-100 text-zinc-950 font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 btn-metallic-primary text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-zinc-950" />
+                  <CheckCircle2 className="w-4 h-4 text-white" />
                   <span>GUARDAR CAMBIOS</span>
                 </button>
 
@@ -190,7 +190,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
           <div className="lg:col-span-7 h-full flex flex-col">
             
             {/* Main Glass Panel with Tabs Header */}
-            <div className="bg-white/10 backdrop-blur-3xl p-6 rounded-3xl border border-white/20 shadow-2xl space-y-6 flex-1 flex flex-col justify-start">
+            <div className="tactile-bento-card p-6 rounded-3xl space-y-6 flex-1 flex flex-col justify-start">
               
               {/* Tab Navigation Header */}
               <div className="flex items-center gap-2 border-b border-white/15 pb-4 font-label text-xs font-bold uppercase tracking-wider">
@@ -198,8 +198,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                   onClick={() => setActiveTab('security')}
                   className={`px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${
                     activeTab === 'security'
-                      ? 'bg-white text-zinc-950 shadow-md'
-                      : 'bg-white/5 text-zinc-300 hover:bg-white/15'
+                      ? 'neu-pill-button-active'
+                      : 'neu-pill-button text-zinc-300'
                   }`}
                 >
                   <Lock className="w-4 h-4" />
@@ -210,8 +210,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                   onClick={() => setActiveTab('account')}
                   className={`px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${
                     activeTab === 'account'
-                      ? 'bg-white text-zinc-950 shadow-md'
-                      : 'bg-white/5 text-zinc-300 hover:bg-white/15'
+                      ? 'neu-pill-button-active'
+                      : 'neu-pill-button text-zinc-300'
                   }`}
                 >
                   <Settings className="w-4 h-4" />

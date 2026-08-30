@@ -1,455 +1,698 @@
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useMCU } from '../context/MCUContext';
-import { FavoritesSection } from '../components/FavoritesSection';
-import { UpcomingSection } from '../components/UpcomingSection';
-import { NavView } from '../types/mcu';
-import { ArrowUpRight, Check, Film, Sparkles } from 'lucide-react';
+import { NavView, MCUItem } from '../types/mcu';
+import { ArrowUpRight, Heart, ChevronLeft, ChevronRight, Trophy } from 'lucide-react';
 
 interface DashboardViewProps {
   onNavigate: (view: NavView) => void;
 }
 
 export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
-  const { stats, settings, openDetailModal } = useMCU();
+  const {
+    stats,
+    settings,
+    openDetailModal,
+    availableItems,
+    upcomingItems,
+    watchedIds,
+    favoriteIds,
+    toggleFavorite,
+    items,
+  } = useMCU();
 
-  const phaseList = ['Fase 1', 'Fase 2', 'Fase 3', 'Fase 4', 'Fase 5', 'Fase 6'];
+  const scrollUpcomingRef = useRef<HTMLDivElement>(null);
+  const scrollFavoritesRef = useRef<HTMLDivElement>(null);
 
-  const moviesPct = Math.round((stats.movies.total / stats.total) * 100);
-  const seriesPct = Math.round((stats.series.total / stats.total) * 100);
-  const specialsPct = 100 - moviesPct - seriesPct;
+  // Next unwatched production in chronological order for the Spotlight Hero Card
+  const nextUnwatchedItem = useMemo<MCUItem | null>(() => {
+    const unwatched = availableItems.filter((item) => !watchedIds.has(item.id));
+    if (unwatched.length === 0) return null;
+    return [...unwatched].sort((a, b) => a.ordenCronologico - b.ordenCronologico)[0];
+  }, [availableItems, watchedIds]);
+
+  // Favorite items
+  const favoriteItems = useMemo(() => {
+    return items.filter((item) => favoriteIds.has(item.id));
+  }, [items, favoriteIds]);
+
+  // Helper for scroll navigation
+  const scrollContainer = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = direction === 'left' ? -ref.current.clientWidth : ref.current.clientWidth;
+      ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  // Helper to format countdown label
+  const getCountdownLabel = (dateStr: string) => {
+    if (!dateStr) return 'Próximamente';
+    const target = new Date(dateStr + 'T00:00:00');
+    const now = new Date();
+    const diff = target.getTime() - now.getTime();
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    if (isNaN(days)) return 'Próximamente';
+    if (days <= 0) return 'Disponible';
+    if (days === 1) return 'Mañana';
+    if (days <= 45) return `En ${days} días`;
+
+    const parts = dateStr.split('-');
+    if (parts.length >= 2) {
+      const monthsMap = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+      const monthIdx = parseInt(parts[1], 10) - 1;
+      const monthName = monthsMap[monthIdx] || parts[1];
+      return `${monthName} ${parts[0]}`;
+    }
+    return dateStr;
+  };
+
+  // Helper for Continuous Laser Energy Trench with exact percentage badge
+  const renderEnergyBeam = (
+    watched: number,
+    total: number,
+    colorTheme: {
+      gradient: string;
+      glow: string;
+      text: string;
+    }
+  ) => {
+    const pct = total > 0 ? Math.round((watched / total) * 100) : 0;
+
+    return (
+      <div className="flex flex-col items-end gap-1.5 w-28 sm:w-40 shrink-0">
+        {/* Top Metric Header: Status / Percent */}
+        <div className="flex items-center justify-between w-full text-[11px] font-label font-bold tracking-wider leading-none">
+          <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase">
+            {pct === 100 ? 'COMPLETO' : 'PROGRESO'}
+          </span>
+          <span className={`text-[11px] sm:text-xs font-mono font-bold ${colorTheme.text}`}>
+            {pct}%
+          </span>
+        </div>
+
+        {/* Continuous Sunken Laser Energy Trench */}
+        <div className="w-full h-2 sm:h-2.5 rounded-full neu-energy-trench p-[1px] relative overflow-hidden">
+          <div
+            className={`h-full rounded-full ${colorTheme.gradient} neu-energy-beam ${colorTheme.glow} relative flex items-center justify-end`}
+            style={{ width: `${Math.max(pct, pct > 0 ? 5 : 0)}%` }}
+          >
+            {/* Pulsing Laser Edge Spark */}
+            {pct > 0 && pct < 100 && (
+              <span className="absolute right-0 top-0 bottom-0 w-1.5 rounded-full bg-white shadow-[0_0_6px_#FFFFFF,0_0_10px_currentColor] opacity-95" />
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const completedPhasesCount = ['Fase 1', 'Fase 2', 'Fase 3', 'Fase 4', 'Fase 5', 'Fase 6'].filter(
+    (p) => (stats.phases[p]?.percentage || 0) === 100 && (stats.phases[p]?.total || 0) > 0
+  ).length;
+
+  // Phase percentages
+  const p1 = stats.phases['Fase 1']?.percentage || 0;
+  const p2 = stats.phases['Fase 2']?.percentage || 0;
+  const p3 = stats.phases['Fase 3']?.percentage || 0;
+  const p4 = stats.phases['Fase 4']?.percentage || 0;
+  const p5 = stats.phases['Fase 5']?.percentage || 0;
+  const p6 = stats.phases['Fase 6']?.percentage || 0;
+
+  // SVG Node Helper for Roadmap with Tactile Convex Lens Diode Styling
+  const renderRoadmapNode = (
+    cx: number,
+    cy: number,
+    pct: number,
+    color: string,
+    labelBottom: string,
+    filterId: string
+  ) => {
+    const r = 17;
+    const circ = 2 * Math.PI * r; // ~106.8
+    const offset = circ - (circ * pct) / 100;
+
+    return (
+      <g key={labelBottom} className="cursor-default group/node">
+        {/* Outer Beveled Metallic Socket Ring */}
+        <circle cx={cx} cy={cy} r={r + 3.5} fill="#080911" stroke="#25283E" strokeWidth="1.5" />
+        <circle cx={cx} cy={cy} r={r} fill="#141625" stroke="#1D2033" strokeWidth="1" />
+
+        {/* Inner Core Lens with Convex Reflection */}
+        <circle cx={cx} cy={cy} r={r - 3.5} fill="url(#node-lens-gradient)" stroke="rgba(255,255,255,0.14)" strokeWidth="0.5" />
+
+        {/* Specular Micro Reflection Spot */}
+        <circle cx={cx - 4.5} cy={cy - 4.5} r="1.5" fill="rgba(255,255,255,0.4)" />
+
+        {/* Progress Arc with Glowing Emission */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={r}
+          fill="none"
+          stroke={color}
+          strokeWidth="3.2"
+          strokeLinecap="round"
+          strokeDasharray={circ}
+          strokeDashoffset={offset}
+          filter={`url(#${filterId})`}
+          transform={`rotate(-90 ${cx} ${cy})`}
+        />
+
+        {/* Percentage Number in Center */}
+        <text
+          x={cx}
+          y={cy + 3.5}
+          textAnchor="middle"
+          fill="#FFFFFF"
+          fontSize={pct >= 100 ? "9.5" : "10.5"}
+          fontWeight="700"
+          fontFamily="Space Grotesk, sans-serif"
+        >
+          {pct}%
+        </text>
+
+        {/* Label Bottom */}
+        <text
+          x={cx}
+          y={cy + 33}
+          textAnchor="middle"
+          fill="#A1A1AA"
+          fontSize="11"
+          fontWeight="600"
+          fontFamily="Space Grotesk, sans-serif"
+        >
+          {labelBottom}
+        </text>
+      </g>
+    );
+  };
 
   return (
-    <div className="space-y-6 sm:space-y-7 animate-fade-in relative pb-2">
+    <div className="space-y-5 sm:space-y-6 animate-fade-in relative pb-6 select-none">
 
-      {/* Top Header Section (Greeting + KPIs + Single Progress Bar) */}
-      <div className="space-y-4">
+      {/* ─────────────────────────────────────────────────────────────
+          ROW 1: TOP BENTO HERO (MASTER STATUS + HERO SPOTLIGHT)
+          ───────────────────────────────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
 
-        {/* Row 1: Greeting on Left & 3 Standalone KPIs on Far Right */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-
-          {/* Left Side: Greeting with Curtain Reveal Animation (clip-path horizontal curtain) */}
-          <div>
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 1 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.35,
-                    delayChildren: 0.1,
-                  },
-                },
-              }}
-              className="text-3xl sm:text-4xl lg:text-[44px] font-display uppercase tracking-wider text-white leading-none flex items-center gap-2 flex-wrap drop-shadow-md"
-            >
-              <motion.span
-                variants={{
-                  hidden: { clipPath: 'polygon(0 0, 0% 0, 0% 100%, 0 100%)', opacity: 0.1, x: -10 },
-                  visible: { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, x: 0 },
-                }}
-                transition={{ duration: 1.3, ease: [0.25, 1, 0.3, 1] }}
-                className="inline-block text-white/70 font-normal"
-              >
-                HOLA,
-              </motion.span>
-              <motion.span
-                variants={{
-                  hidden: { clipPath: 'polygon(0 0, 0% 0, 0% 100%, 0 100%)', opacity: 0.1, x: -10 },
-                  visible: { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, x: 0 },
-                }}
-                transition={{ duration: 1.3, ease: [0.25, 1, 0.3, 1] }}
-                className="font-normal text-white inline-block"
-              >
-                {settings.userName}
-              </motion.span>
-            </motion.h1>
-          </div>
-
-          {/* Right Side: 3 Standalone KPIs with Slow Staggered Entry Animation */}
-          <div className="flex items-center gap-3 sm:gap-6 lg:gap-8 self-start lg:self-auto shrink-0">
-
-            {/* KPI 1: Total / Producciones */}
-            <motion.div
-              initial={{ opacity: 0, y: 18, scale: 0.92 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.4, delay: 0.2, ease: [0.25, 1, 0.4, 1] }}
-              className="flex items-center gap-2 sm:gap-3 group/kpi cursor-default"
-            >
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(255,255,255,0.7)] flex items-center justify-center shrink-0 relative overflow-hidden group-hover/kpi:scale-105 group-hover/kpi:border-white/60 transition-all duration-300">
-                <img src="/Movie-rollo.png" alt="Total" className="w-6.5 h-6.5 sm:w-9 sm:h-9 object-contain drop-shadow-md group-hover/kpi:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
-              </div>
-              <div>
-                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
-                  {stats.total}
-                </span>
-                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
-                  Producciones
-                </span>
-              </div>
-            </motion.div>
-
-            {/* KPI 2: Vistas */}
-            <motion.div
-              initial={{ opacity: 0, y: 18, scale: 0.92 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.4, delay: 0.5, ease: [0.25, 1, 0.4, 1] }}
-              className="flex items-center gap-2 sm:gap-3 group/kpi cursor-default"
-            >
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(255,255,255,0.7)] flex items-center justify-center shrink-0 relative overflow-hidden group-hover/kpi:scale-105 group-hover/kpi:border-white/60 transition-all duration-300">
-                <img src="/Check.png" alt="Vistas" className="w-6.5 h-6.5 sm:w-9 sm:h-9 object-contain drop-shadow-md group-hover/kpi:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
-              </div>
-              <div>
-                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
-                  {stats.watched}
-                </span>
-                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
-                  Vistas
-                </span>
-              </div>
-            </motion.div>
-
-            {/* KPI 3: Pendientes */}
-            <motion.div
-              initial={{ opacity: 0, y: 18, scale: 0.92 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.4, delay: 0.8, ease: [0.25, 1, 0.4, 1] }}
-              className="flex items-center gap-2 sm:gap-3 group/kpi cursor-default"
-            >
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.12),inset_0_1px_2px_rgba(255,255,255,0.7)] flex items-center justify-center shrink-0 relative overflow-hidden group-hover/kpi:scale-105 group-hover/kpi:border-white/60 transition-all duration-300">
-                <img src="/Popcorn.png" alt="Pendientes" className="w-6.5 h-6.5 sm:w-9 sm:h-9 object-contain drop-shadow-md group-hover/kpi:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-transparent to-transparent pointer-events-none rounded-xl sm:rounded-2xl" />
-              </div>
-              <div>
-                <span className="font-display text-2xl sm:text-4xl text-white tracking-wide block leading-none">
-                  {stats.total - stats.watched}
-                </span>
-                <span className="font-label text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider block mt-0.5">
-                  Pendientes
-                </span>
-              </div>
-            </motion.div>
-
-          </div>
-
-        </div>
-
-        {/* Row 2: Unified Main Progress Bar & Clean Format Indicators */}
-        <div className="space-y-2 pt-1">
-
-          {/* Clean Inline Format Legend Above Progress Bar (with Infinity Gems Icons) */}
-          <div className="flex items-center gap-3 sm:gap-5 font-label text-xs font-bold uppercase tracking-wider text-zinc-300 px-1 flex-wrap">
-            <div className="flex items-center gap-1.5">
-              <img src="/gema-de-realidad.png" alt="Gema de la Realidad" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(239,68,68,0.8)]" />
-              <span>Películas</span>
-              <span className="font-bold text-white ml-0.5">({stats.movies.watched}/{stats.movies.total})</span>
-            </div>
-
-            <span className="text-white/30 hidden sm:inline">•</span>
-
-            <div className="flex items-center gap-1.5">
-              <img src="/gema-de-la-mente.png" alt="Gema de la Mente" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
-              <span>Series</span>
-              <span className="font-bold text-white ml-0.5">({stats.series.watched}/{stats.series.total})</span>
-            </div>
-
-            <span className="text-white/30 hidden sm:inline">•</span>
-
-            <div className="flex items-center gap-1.5">
-              <img src="/gema-del-espacio.png" alt="Gema del Espacio" className="w-4 h-4 object-contain shrink-0 drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
-              <span>Especiales</span>
-              <span className="font-bold text-white ml-0.5">({stats.specials.watched}/{stats.specials.total})</span>
-            </div>
-          </div>
-
-          {/* Progress Bar Container & Percentage Counter */}
-          <div className="flex items-center gap-4 sm:gap-5">
-
-            {/* Continuous Unified Progress Bar */}
-            <div className="w-full max-w-[480px] sm:max-w-[580px] h-8 sm:h-9 rounded-full relative bg-black/50 shadow-[inset_0_2px_6px_rgba(0,0,0,0.7),0_1px_2px_rgba(255,255,255,0.2)] border border-white/20 overflow-hidden backdrop-blur-md">
-              
-              {/* Smooth Animated Fill Bar (Marvel Red Gradient) */}
-              <motion.div
-                initial={{ width: '0%' }}
-                animate={{ width: `${stats.percentage}%` }}
-                transition={{ duration: 2.2, ease: [0.25, 1, 0.4, 1] }}
-                className="h-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] rounded-full relative flex items-center justify-end shadow-[0_0_18px_rgba(230,36,41,0.7)]"
-              >
-                {/* Glowing Leading Edge Marker */}
-                {stats.percentage > 0 && (
-                  <div className="w-2.5 h-full bg-white/90 rounded-full shadow-[0_0_12px_#FFF] shrink-0" />
-                )}
-
-                {/* Specular Gloss Reflection Overlay */}
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/30 via-transparent to-black/30 rounded-full" />
-              </motion.div>
-
-            </div>
-
-            {/* Standalone Percentage Text */}
-            <div
-              className="flex items-center shrink-0 cursor-default"
-              title={`Progreso Total Visto: ${stats.watched} de ${stats.total} (${stats.percentage}%)`}
-            >
-              <span className="font-display text-3xl sm:text-4xl text-white tracking-wide drop-shadow-lg">
-                {stats.percentage}%
-              </span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* Bento Grid Row 1: Symmetrical Layout - Estado por Fases (50% width) & Favoritos Card (50% width) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
-        
-        {/* Left Column (50% width): Estado por Fases */}
+        {/* Card 1: Master Status (approx 58% - 7 cols on lg) */}
         <motion.div
-          initial={{ opacity: 0, y: 22, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.25, 1, 0.4, 1] }}
-          className="h-full"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 1, 0.3, 1] }}
+          className="lg:col-span-7 flex flex-col"
         >
-          <div className="crextio-card p-5 sm:p-6 space-y-3.5 flex flex-col h-full overflow-hidden">
+          <div className="tactile-bento-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
 
-            {/* Card Header */}
-            <div>
-              <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
-                ESTADO POR FASES
-              </h3>
-              <p className="font-label text-xs font-bold text-zinc-300 uppercase tracking-wider mt-1.5">
-                {phaseList.filter((p) => (stats.phases[p]?.percentage || 0) === 100).length} DE 6 FASES COMPLETADAS
-              </p>
+            {/* Header: Title */}
+            <div className="pb-2">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white leading-none">
+                HOLA, {settings.userName}
+              </h1>
             </div>
 
-            {/* DESKTOP TIMELINE (Horizontal 6-Node Roadmap) */}
-            <div className="hidden sm:flex flex-col justify-center flex-1 my-auto py-4 px-2">
-              <div className="relative flex items-center justify-between w-full">
+            {/* Main Stats Row: Big Impact Figures & Clean Columns */}
+            <div className="my-auto py-4 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+              
+              {/* Left Main Percentage Display */}
+              <div className="flex items-baseline gap-2 shrink-0">
+                <span className="font-display text-6xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none drop-shadow-md">
+                  {stats.percentage}%
+                </span>
+                <span className="font-label font-bold text-[10px] text-zinc-400 uppercase tracking-widest">
+                  GLOBAL
+                </span>
+              </div>
+
+              {/* Vertical Separator on Desktop */}
+              <div className="hidden md:block w-[1px] h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+
+              {/* 3 Minimalist Metric Columns */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full md:w-auto flex-1 text-center sm:text-left">
                 
-                {/* Horizontal Segment Connector Lines Behind Nodes */}
-                <div className="absolute top-4.5 sm:top-5 left-6 right-6 -translate-y-1/2 h-0.5 z-0 pointer-events-none flex items-center">
-                  {phaseList.slice(0, -1).map((_, i) => {
-                    const prevPhaseData = stats.phases[phaseList[i]];
-                    const isPrevComplete = prevPhaseData && prevPhaseData.percentage === 100 && prevPhaseData.total > 0;
-                    return (
-                      <div key={i} className="flex-1 h-full relative mx-1">
-                        {isPrevComplete ? (
-                          <motion.div
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: 'easeOut' }}
-                            className="h-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] origin-left shadow-[0_0_8px_rgba(230,36,41,0.6)]"
-                          />
-                        ) : (
-                          <div className="w-full h-0.5 border-t-2 border-dashed border-white/20" />
-                        )}
-                      </div>
-                    );
-                  })}
+                {/* Col 1: Total */}
+                <div className="space-y-1">
+                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide leading-none block">
+                    {stats.total}
+                  </span>
+                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                    Producciones
+                  </span>
                 </div>
 
-                {/* 6 Phase Nodes */}
-                {phaseList.map((phaseName, idx) => {
-                  const phaseData = stats.phases[phaseName] || { total: 0, watched: 0, percentage: 0 };
-                  const pct = phaseData.percentage;
-                  const isComplete = pct === 100 && phaseData.total > 0;
-                  const isInProgress = pct > 0 && !isComplete;
+                {/* Col 2: Vistas */}
+                <div className="space-y-1">
+                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-emerald-400 tracking-wide leading-none block drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]">
+                    {stats.watched}
+                  </span>
+                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                    Vistas
+                  </span>
+                </div>
 
-                  return (
-                    <div key={phaseName} className="relative z-10 flex flex-col items-center group/phase cursor-default">
-                      
-                      {/* Floating Glassmorphism Tooltip on Hover */}
-                      <div className="absolute -top-11 left-1/2 -translate-x-1/2 opacity-0 group-hover/phase:opacity-100 transition-all duration-200 pointer-events-none z-30 whitespace-nowrap bg-[#161726]/95 backdrop-blur-md border border-white/20 text-white text-[11px] px-2.5 py-1 rounded-lg shadow-xl flex items-center gap-1.5">
-                        <span className="font-semibold">{phaseName}:</span>
-                        <span className="text-zinc-300">{phaseData.watched}/{phaseData.total} ({pct}%)</span>
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#161726] border-b border-r border-white/20 rotate-45" />
-                      </div>
-
-                      {/* Node Circle */}
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.1 + idx * 0.1 }}
-                        className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover/phase:scale-110"
-                      >
-                        {isComplete ? (
-                          <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_12px_rgba(230,36,41,0.6)] border border-white/20">
-                            <Check className="w-4 h-4 text-white stroke-[3]" />
-                          </div>
-                        ) : isInProgress ? (
-                          <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
-                            <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
-                              <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
-                              <motion.circle
-                                cx="18"
-                                cy="18"
-                                r="14"
-                                fill="none"
-                                stroke="#C81D25"
-                                strokeWidth="3.5"
-                                strokeLinecap="round"
-                                strokeDasharray="88"
-                                initial={{ strokeDashoffset: 88 }}
-                                animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
-                                transition={{ duration: 1.8, delay: 0.2 + idx * 0.1, ease: [0.25, 1, 0.4, 1] }}
-                              />
-                            </svg>
-                            <span className="absolute text-[9px] font-bold text-white tracking-tighter">
-                              {pct}%
-                            </span>
-                          </div>
-                        ) : (
-                          <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
-                            <span className="w-2 h-2 rounded-full bg-white/20" />
-                          </div>
-                        )}
-                      </motion.div>
-
-                      {/* Phase Label & Progress Counter */}
-                      <div className="mt-2 text-center space-y-0.5">
-                        <span className={`block font-label text-xs font-bold uppercase tracking-wider ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
-                          {phaseName}
-                        </span>
-                        <span className="block font-label text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
-                          {phaseData.watched}/{phaseData.total}
-                        </span>
-                      </div>
-
-                    </div>
-                  );
-                })}
+                {/* Col 3: Pendientes */}
+                <div className="space-y-1">
+                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-amber-400 tracking-wide leading-none block drop-shadow-[0_0_12px_rgba(251,191,36,0.3)]">
+                    {stats.total - stats.watched}
+                  </span>
+                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                    Pendientes
+                  </span>
+                </div>
 
               </div>
+
             </div>
 
-            {/* MOBILE TIMELINE (Vertical Stepper Roadmap) */}
-            <div className="sm:hidden flex flex-col py-1 px-1">
-              {phaseList.map((phaseName, idx) => {
-                const phaseData = stats.phases[phaseName] || { total: 0, watched: 0, percentage: 0 };
-                const pct = phaseData.percentage;
-                const isComplete = pct === 100 && phaseData.total > 0;
-                const isInProgress = pct > 0 && !isComplete;
-
-                const prevPhaseData = idx > 0 ? stats.phases[phaseList[idx - 1]] : null;
-                const isPrevComplete = prevPhaseData && prevPhaseData.percentage === 100 && prevPhaseData.total > 0;
-
-                return (
-                  <div key={phaseName} className="flex items-stretch gap-3.5 relative">
-                    
-                    {/* Centered Node & Segment Connector Column */}
-                    <div className="w-9 shrink-0 flex flex-col items-center justify-center relative">
-                      
-                      {/* Top Connector Segment (From top of row to center of node) */}
-                      {idx > 0 && (
-                        <div className="absolute top-0 bottom-1/2 left-1/2 -translate-x-1/2 w-0.5 z-0 pointer-events-none">
-                          {isPrevComplete ? (
-                            <div className="w-full h-full bg-gradient-to-b from-[#800A10] to-[#C81D25] shadow-[0_0_6px_rgba(230,36,41,0.6)]" />
-                          ) : (
-                            <div className="w-full h-full border-l-2 border-dashed border-white/20" />
-                          )}
-                        </div>
-                      )}
-
-                      {/* Bottom Connector Segment (From center of node to bottom of row) */}
-                      {idx < phaseList.length - 1 && (
-                        <div className="absolute top-1/2 bottom-0 left-1/2 -translate-x-1/2 w-0.5 z-0 pointer-events-none">
-                          {isComplete ? (
-                            <div className="w-full h-full bg-gradient-to-b from-[#C81D25] to-[#E62429] shadow-[0_0_6px_rgba(230,36,41,0.6)]" />
-                          ) : (
-                            <div className="w-full h-full border-l-2 border-dashed border-white/20" />
-                          )}
-                        </div>
-                      )}
-
-                      {/* Node Circle */}
-                      <div className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center shrink-0 my-2">
-                        {isComplete ? (
-                          <div className="w-full h-full rounded-full bg-gradient-to-r from-[#800A10] via-[#C81D25] to-[#E62429] flex items-center justify-center shadow-[0_0_10px_rgba(230,36,41,0.6)] border border-white/20">
-                            <Check className="w-4 h-4 text-white stroke-[3]" />
-                          </div>
-                        ) : isInProgress ? (
-                          <div className="relative w-full h-full flex items-center justify-center bg-[#161726] rounded-full border border-white/20 shadow-md">
-                            <svg className="w-full h-full -rotate-90 p-0.5" viewBox="0 0 36 36">
-                              <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3" />
-                              <motion.circle
-                                cx="18"
-                                cy="18"
-                                r="14"
-                                fill="none"
-                                stroke="#C81D25"
-                                strokeWidth="3.5"
-                                strokeLinecap="round"
-                                strokeDasharray="88"
-                                initial={{ strokeDashoffset: 88 }}
-                                animate={{ strokeDashoffset: 88 - (88 * pct) / 100 }}
-                                transition={{ duration: 1.6, delay: 0.15 + idx * 0.08, ease: [0.25, 1, 0.4, 1] }}
-                              />
-                            </svg>
-                            <span className="absolute text-[9px] font-bold text-white tracking-tighter">
-                              {pct}%
-                            </span>
-                          </div>
-                        ) : (
-                          <div className="w-full h-full rounded-full bg-black/40 border border-white/20 flex items-center justify-center text-zinc-500 text-[10px] font-medium">
-                            <span className="w-2 h-2 rounded-full bg-white/20" />
-                          </div>
-                        )}
-                      </div>
-
-                    </div>
-
-                    {/* Phase Info Row */}
-                    <div className="flex-1 flex items-center justify-between text-xs border-b border-white/10 py-2.5">
-                      <div className="flex flex-col">
-                        <span className={`font-semibold ${isComplete ? 'text-white' : isInProgress ? 'text-white' : 'text-zinc-400'}`}>
-                          {phaseName}
-                        </span>
-                        <span className="text-[11px] text-zinc-400 font-normal">
-                          {isComplete ? 'Completada' : `${pct}% avanzado`}
-                        </span>
-                      </div>
-
-                      <span className={`font-semibold text-xs ${isComplete ? 'text-emerald-400' : isInProgress ? 'text-white' : 'text-zinc-500'}`}>
-                        {phaseData.watched}/{phaseData.total}
-                      </span>
-                    </div>
-
-                  </div>
-                );
-              })}
-
+            {/* Bottom: Continuous Laser Energy Trench */}
+            <div className="pt-2">
+              <div className="w-full h-3 rounded-full neu-energy-trench p-[1px] relative overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-red-700 via-rose-500 to-red-400 neu-energy-beam shadow-[0_0_14px_rgba(225,29,72,0.7)] relative flex items-center justify-end"
+                  style={{ width: `${Math.max(stats.percentage, stats.percentage > 0 ? 4 : 0)}%` }}
+                >
+                  {stats.percentage > 0 && stats.percentage < 100 && (
+                    <span className="absolute right-0 top-0 bottom-0 w-2 rounded-full bg-white shadow-[0_0_8px_#FFFFFF,0_0_12px_#E62429] opacity-95" />
+                  )}
+                </div>
+              </div>
             </div>
 
           </div>
         </motion.div>
 
-        {/* Right Column (50% width): Favoritos Card */}
+        {/* Card 2: Hero Spotlight: Tu Próxima Misión (approx 42% - 5 cols on lg) */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.35, ease: [0.25, 1, 0.4, 1] }}
-          className="h-full"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.3, 1] }}
+          className="lg:col-span-5 flex flex-col"
         >
-          <FavoritesSection onOpenDetail={(item) => openDetailModal(item, 'fav')} />
+          {nextUnwatchedItem ? (
+            <div className="relative tactile-bento-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full overflow-hidden group/spotlight">
+
+              {/* Vibrant Background Scene with High Poster Visibility */}
+              <div className="absolute inset-0 z-0 pointer-events-none opacity-80 group-hover/spotlight:opacity-95 transition-all duration-500">
+                <img
+                  src={nextUnwatchedItem.urlPoster}
+                  alt={nextUnwatchedItem.titulo}
+                  className="w-full h-full object-cover object-center group-hover/spotlight:scale-105 transition-transform duration-700 ease-out"
+                />
+                {/* Directional Soft Scrim to Guarantee Pristine Text Contrast */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#090A12]/95 via-[#090A12]/60 to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090A12]/75 via-transparent to-black/20" />
+              </div>
+
+              {/* Spotlight Content */}
+              <div className="relative z-10 my-auto py-2">
+                <span className="font-label text-[10px] sm:text-[11px] font-bold text-zinc-200 uppercase tracking-widest block mb-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                  SIGUIENTE EN TU LISTA:
+                </span>
+                <h2
+                  onClick={() => openDetailModal(nextUnwatchedItem)}
+                  className="font-display text-2xl sm:text-3xl lg:text-[34px] uppercase tracking-wide text-white leading-tight cursor-pointer hover:text-marvel-red transition-colors line-clamp-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+                >
+                  {nextUnwatchedItem.titulo}
+                </h2>
+              </div>
+
+              {/* Spotlight Footer: Tactile Glass Action Button */}
+              <div className="relative z-10 flex items-center justify-start pt-1">
+                <button
+                  onClick={() => openDetailModal(nextUnwatchedItem)}
+                  className="tactile-btn-glass text-white font-label text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-1.5 cursor-pointer shadow-lg"
+                >
+                  <span>VER DETALLES</span>
+                  <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                </button>
+              </div>
+
+            </div>
+          ) : (
+            <div className="tactile-bento-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full text-center border-amber-500/40">
+              <div className="flex flex-col items-center justify-center flex-1 py-4">
+                <Trophy className="w-10 h-10 text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(245,200,66,0.5)]" />
+                <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white">
+                  ¡MULTIVERSO AL 100%!
+                </h3>
+                <p className="text-xs text-zinc-300 mt-1 max-w-xs">
+                  Has completado todas las producciones disponibles.
+                </p>
+              </div>
+              <button
+                onClick={() => onNavigate('upcoming')}
+                className="bg-[#C81D25] hover:bg-[#E62429] active:translate-y-0.5 text-white font-label text-xs font-bold uppercase tracking-wider py-2.5 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer"
+              >
+                VER PRÓXIMOS ESTRENOS →
+              </button>
+            </div>
+          )}
         </motion.div>
 
       </div>
 
-      {/* Bento Grid Row 2: Próximos Estrenos del UCM (Scroll-triggered In-View Animation) */}
-      <motion.div
-        initial={{ opacity: 0, y: 36, scale: 0.96 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 1.2, ease: [0.25, 1, 0.4, 1] }}
-      >
-        <UpcomingSection onNavigateToUpcoming={() => onNavigate('upcoming')} />
-      </motion.div>
+      {/* ─────────────────────────────────────────────────────────────
+          ROW 2 & 3: MAIN GRID (LEFT: SAGA ROADMAP, RIGHT: VAULT + FAVS + UPCOMING)
+          ───────────────────────────────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+        {/* Left Tall Card: Saga Roadmap (4 cols on lg / full height) */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 1, 0.3, 1] }}
+          className="lg:col-span-4 flex flex-col"
+        >
+          <div className="tactile-bento-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full">
+
+            {/* Header */}
+            <div>
+              <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
+                Saga Roadmap
+              </h3>
+            </div>
+
+            {/* Continuous SVG Circuit Diagram with Glow Defs */}
+            <div className="my-auto py-2">
+              <svg viewBox="0 0 320 250" className="w-full h-auto overflow-visible select-none">
+                <defs>
+                  <radialGradient id="node-lens-gradient" cx="30%" cy="30%" r="70%">
+                    <stop offset="0%" stopColor="#2D304A" />
+                    <stop offset="50%" stopColor="#141626" />
+                    <stop offset="100%" stopColor="#080911" />
+                  </radialGradient>
+                  <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#E62429" floodOpacity="0.75" />
+                  </filter>
+                  <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#00A8FF" floodOpacity="0.75" />
+                  </filter>
+                  <filter id="glow-yellow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#F5C842" floodOpacity="0.75" />
+                  </filter>
+                </defs>
+
+                {/* Section 1 Title: The Infinity Saga */}
+                <text
+                  x="8"
+                  y="20"
+                  fill="#FFFFFF"
+                  fontSize="13"
+                  fontWeight="bold"
+                  fontFamily="Space Grotesk, sans-serif"
+                >
+                  The Infinity Saga
+                </text>
+
+                {/* 1. Straight Red Line from Phase 1 to Phase 2 */}
+                <line x1="50" y1="62" x2="160" y2="62" stroke="#E62429" strokeWidth="2.5" strokeOpacity="0.85" />
+
+                {/* 2. Straight Red Line from Phase 2 to Phase 3 */}
+                <line x1="160" y1="62" x2="270" y2="62" stroke="#E62429" strokeWidth="2.5" strokeOpacity="0.85" />
+
+                {/* 3. Rectangular Pipeline Connecting Line (Electric Blue #00A8FF) from Phase 3 to Phase 4 */}
+                <path
+                  d="M 270 62 L 298 62 A 10 10 0 0 1 308 72 L 308 120 A 10 10 0 0 1 298 130 L 22 130 A 10 10 0 0 0 12 140 L 12 188 A 10 10 0 0 0 22 198 L 50 198"
+                  stroke="#00A8FF"
+                  strokeWidth="3"
+                  strokeOpacity="0.85"
+                  fill="none"
+                />
+
+                {/* Section 2 Title: The Multiverse Saga (placed under horizontal blue line) */}
+                <text
+                  x="24"
+                  y="154"
+                  fill="#FFFFFF"
+                  fontSize="13"
+                  fontWeight="bold"
+                  fontFamily="Space Grotesk, sans-serif"
+                >
+                  The Multiverse Saga
+                </text>
+
+                {/* 4. Straight Yellow Line from Phase 4 to Phase 5 */}
+                <line x1="50" y1="198" x2="160" y2="198" stroke="#F5C842" strokeWidth="2.5" strokeOpacity="0.85" />
+
+                {/* 5. Straight Yellow Line from Phase 5 to Phase 6 */}
+                <line x1="160" y1="198" x2="270" y2="198" stroke="#F5C842" strokeWidth="2.5" strokeOpacity="0.85" />
+
+                {/* Nodes Row 1 (Infinity Saga) */}
+                {renderRoadmapNode(50, 62, p1, '#E62429', 'Fase 1', 'glow-red')}
+                {renderRoadmapNode(160, 62, p2, '#E62429', 'Fase 2', 'glow-red')}
+                {renderRoadmapNode(270, 62, p3, '#E62429', 'Fase 3', 'glow-red')}
+
+                {/* Nodes Row 2 (Multiverse Saga) */}
+                {renderRoadmapNode(50, 198, p4, '#00A8FF', 'Fase 4', 'glow-blue')}
+                {renderRoadmapNode(160, 198, p5, '#F5C842', 'Fase 5', 'glow-yellow')}
+                {renderRoadmapNode(270, 198, p6, '#F5C842', 'Fase 6', 'glow-yellow')}
+              </svg>
+            </div>
+
+            {/* Bottom summary */}
+            <div className="pt-3 border-t border-white/10 text-center font-label text-xs text-zinc-400 font-bold uppercase tracking-wider">
+              {completedPhasesCount} DE 6 FASES COMPLETADAS
+            </div>
+
+          </div>
+        </motion.div>
+
+        {/* Right Section: Subgrid with Infinity Vault, Favoritos VIP, and Próximos Estrenos (8 cols on lg) */}
+        <div className="lg:col-span-8 flex flex-col gap-5">
+
+          {/* Sub-row: Infinity Vault & Favoritos VIP */}
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-5">
+
+            {/* Infinity Vault (6 cols on sm) */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 1, 0.3, 1] }}
+              className="sm:col-span-6 flex flex-col"
+            >
+              <div className="tactile-bento-card rounded-3xl p-6 flex flex-col justify-between h-full">
+                <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none mb-4">
+                  Infinity Vault
+                </h3>
+
+                <div className="space-y-4 my-auto">
+                  {/* Películas */}
+                  <div className="flex items-center justify-between gap-3 py-1">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full neu-gem-socket p-1.5 flex items-center justify-center shrink-0 relative">
+                        <div className="absolute inset-1 rounded-full bg-red-500/15 blur-xs pointer-events-none" />
+                        <img
+                          src="/gema-de-realidad.png"
+                          alt="Películas"
+                          className="w-full h-full object-contain relative z-10 drop-shadow-[0_3px_5px_rgba(0,0,0,0.8)]"
+                        />
+                      </div>
+                      <div>
+                        <span className="font-bold text-white text-xs sm:text-sm block leading-tight">
+                          Películas
+                        </span>
+                        <span className="text-[10px] text-zinc-400 font-medium">
+                          {stats.movies.watched} / {stats.movies.total}
+                        </span>
+                      </div>
+                    </div>
+                    {renderEnergyBeam(stats.movies.watched, stats.movies.total, {
+                      gradient: 'bg-gradient-to-r from-red-700 via-rose-500 to-red-400',
+                      glow: 'shadow-[0_0_10px_rgba(225,29,72,0.6)]',
+                      text: 'text-rose-400',
+                    })}
+                  </div>
+
+                  {/* Series */}
+                  <div className="flex items-center justify-between gap-3 py-1">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full neu-gem-socket p-1.5 flex items-center justify-center shrink-0 relative">
+                        <div className="absolute inset-1 rounded-full bg-amber-400/15 blur-xs pointer-events-none" />
+                        <img
+                          src="/gema-de-la-mente.png"
+                          alt="Series"
+                          className="w-full h-full object-contain relative z-10 drop-shadow-[0_3px_5px_rgba(0,0,0,0.8)]"
+                        />
+                      </div>
+                      <div>
+                        <span className="font-bold text-white text-xs sm:text-sm block leading-tight">
+                          Series
+                        </span>
+                        <span className="text-[10px] text-zinc-400 font-medium">
+                          {stats.series.watched} / {stats.series.total}
+                        </span>
+                      </div>
+                    </div>
+                    {renderEnergyBeam(stats.series.watched, stats.series.total, {
+                      gradient: 'bg-gradient-to-r from-amber-600 via-amber-400 to-yellow-300',
+                      glow: 'shadow-[0_0_10px_rgba(245,158,11,0.6)]',
+                      text: 'text-amber-400',
+                    })}
+                  </div>
+
+                  {/* Especiales */}
+                  <div className="flex items-center justify-between gap-3 py-1">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full neu-gem-socket p-1.5 flex items-center justify-center shrink-0 relative">
+                        <div className="absolute inset-1 rounded-full bg-sky-400/15 blur-xs pointer-events-none" />
+                        <img
+                          src="/gema-del-espacio.png"
+                          alt="Especiales"
+                          className="w-full h-full object-contain relative z-10 drop-shadow-[0_3px_5px_rgba(0,0,0,0.8)]"
+                        />
+                      </div>
+                      <div>
+                        <span className="font-bold text-white text-xs sm:text-sm block leading-tight">
+                          Especiales
+                        </span>
+                        <span className="text-[10px] text-zinc-400 font-medium">
+                          {stats.specials.watched} / {stats.specials.total}
+                        </span>
+                      </div>
+                    </div>
+                    {renderEnergyBeam(stats.specials.watched, stats.specials.total, {
+                      gradient: 'bg-gradient-to-r from-blue-600 via-sky-400 to-cyan-300',
+                      glow: 'shadow-[0_0_10px_rgba(14,165,233,0.6)]',
+                      text: 'text-sky-400',
+                    })}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Favoritos VIP (6 cols on sm) */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 1, 0.3, 1] }}
+              className="sm:col-span-6 flex flex-col"
+            >
+              <div className="tactile-bento-card rounded-3xl p-6 flex flex-col justify-between h-full">
+
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none">
+                    Favoritos
+                  </h3>
+                  {favoriteItems.length > 3 && (
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => scrollContainer(scrollFavoritesRef, 'left')}
+                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center cursor-pointer border border-white/10"
+                        title="Anterior"
+                      >
+                        <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
+                      </button>
+                      <button
+                        onClick={() => scrollContainer(scrollFavoritesRef, 'right')}
+                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center cursor-pointer border border-white/10"
+                        title="Siguiente"
+                      >
+                        <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex-1 flex items-center overflow-hidden">
+                  {favoriteItems.length > 0 ? (
+                    <div
+                      ref={scrollFavoritesRef}
+                      className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth w-full py-1.5 snap-x snap-mandatory"
+                    >
+                      {favoriteItems.map((item) => (
+                        <div
+                          key={item.id}
+                          onClick={() => openDetailModal(item, 'fav')}
+                          className="relative w-[calc((100%-0.75rem)/2)] sm:w-[calc((100%-1.5rem)/3)] aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-white/20 shadow-lg shrink-0 cursor-pointer group/fav hover:scale-[1.03] hover:border-marvel-red transition-all tactile-poster-frame snap-start"
+                        >
+                          <img
+                            src={item.urlPoster}
+                            alt={item.titulo}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="card-holo-foil opacity-0 group-hover/fav:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-6 w-full text-xs text-zinc-400">
+                      Tus producciones favoritas aparecerán aquí.
+                    </div>
+                  )}
+                </div>
+
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Sub-row: Próximos Estrenos del MCU (Bottom Full Width of Right Section) */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.25, 1, 0.3, 1] }}
+            className="w-full"
+          >
+            <div className="tactile-bento-card rounded-3xl p-6">
+
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none">
+                  Próximos Estrenos del MCU
+                </h3>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => scrollContainer(scrollUpcomingRef, 'left')}
+                    className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center cursor-pointer border border-white/10"
+                    title="Anterior"
+                  >
+                    <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
+                  </button>
+                  <button
+                    onClick={() => scrollContainer(scrollUpcomingRef, 'right')}
+                    className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center cursor-pointer border border-white/10"
+                    title="Siguiente"
+                  >
+                    <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Posters Carousel with Top Countdown Pills (Display only until released) */}
+              <div className="overflow-hidden w-full">
+                <div
+                  ref={scrollUpcomingRef}
+                  className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth py-1 snap-x snap-mandatory"
+                >
+                  {upcomingItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="relative w-[calc((100%-0.75rem)/2)] sm:w-[calc((100%-2.25rem)/4)] lg:w-[calc((100%-3.75rem)/6)] aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-white/15 shadow-lg shrink-0 select-none cursor-default tactile-poster-frame snap-start"
+                      title={`Próximo estreno: ${item.titulo} (${getCountdownLabel(item.fechaLanzamiento)})`}
+                    >
+                      <img
+                        src={item.urlPoster}
+                        alt={item.titulo}
+                        className="w-full h-full object-cover"
+                      />
+
+                      {/* Top Countdown Pill Badge directly on poster */}
+                      <div className="absolute top-2 inset-x-2 bg-black/75 backdrop-blur-md text-white font-label text-[9px] font-bold uppercase tracking-wider py-0.5 px-1 rounded-full text-center border border-white/20 shadow">
+                        {getCountdownLabel(item.fechaLanzamiento)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+
+        </div>
+
+      </div>
 
     </div>
   );
