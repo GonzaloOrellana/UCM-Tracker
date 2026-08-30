@@ -87,10 +87,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Work Sans"', 'system-ui', 'sans-serif'],
-        display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
-        body: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
-        label: ['"Space Grotesk"', 'monospace', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Syne"', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        label: ['"Space Grotesk"', '"JetBrains Mono"', 'monospace', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
         'crextio-card': '0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 2px 10px -2px rgba(0, 0, 0, 0.02)',
