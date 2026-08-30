@@ -8,6 +8,12 @@ interface DashboardViewProps {
   onNavigate: (view: NavView) => void;
 }
 
+// Allowed specials for the Spotlight Hero Card
+const ALLOWED_SPOTLIGHT_SPECIAL_IDS = new Set([
+  'guardians-galaxy-holiday-special',
+  'punisher-one-last-kill',
+]);
+
 export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
   const {
     stats,
@@ -25,8 +31,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
   const scrollFavoritesRef = useRef<HTMLDivElement>(null);
 
   // Next unwatched production in chronological order for the Spotlight Hero Card
+  // Excludes specials unless they are explicitly whitelisted (Guardianes de las Fiestas & Punisher)
   const nextUnwatchedItem = useMemo<MCUItem | null>(() => {
-    const unwatched = availableItems.filter((item) => !watchedIds.has(item.id));
+    const unwatched = availableItems.filter((item) => {
+      if (watchedIds.has(item.id)) return false;
+      if (item.tipo === 'special' && !ALLOWED_SPOTLIGHT_SPECIAL_IDS.has(item.id)) {
+        return false;
+      }
+      return true;
+    });
     if (unwatched.length === 0) return null;
     return [...unwatched].sort((a, b) => a.ordenCronologico - b.ordenCronologico)[0];
   }, [availableItems, watchedIds]);
