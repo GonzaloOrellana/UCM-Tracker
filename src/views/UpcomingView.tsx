@@ -49,7 +49,7 @@ export const UpcomingView: React.FC = () => {
 
               {/* Title & Metadata Text UNDERNEATH Poster */}
               <div className="mt-2 space-y-0.5 px-0.5">
-                <h3 className="text-xs font-bold text-white line-clamp-1">
+                <h3 className="font-display text-sm font-bold tracking-tight text-white line-clamp-1">
                   {item.titulo}
                 </h3>
                 <div className="flex items-center gap-1.5">

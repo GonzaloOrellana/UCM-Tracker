@@ -207,56 +207,53 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
             {/* Header: Title */}
             <div className="pb-2">
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white leading-none">
-                HOLA, {settings.userName}
+              <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+                Hola, {settings.userName}
               </h1>
             </div>
 
             {/* Main Stats Row: Big Impact Figures & Clean Columns */}
-            <div className="my-auto py-4 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div className="my-auto py-3 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
               
               {/* Left Main Percentage Display */}
-              <div className="flex items-baseline gap-2 shrink-0">
-                <span className="font-display text-6xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none drop-shadow-md">
+              <div className="flex items-baseline shrink-0">
+                <span className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-none drop-shadow-md">
                   {stats.percentage}%
-                </span>
-                <span className="font-label font-bold text-[10px] text-zinc-400 uppercase tracking-widest">
-                  GLOBAL
                 </span>
               </div>
 
               {/* Vertical Separator on Desktop */}
-              <div className="hidden md:block w-[1px] h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+              <div className="hidden md:block w-[1px] h-14 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
 
               {/* 3 Minimalist Metric Columns */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full md:w-auto flex-1 text-center sm:text-left">
                 
                 {/* Col 1: Total */}
-                <div className="space-y-1">
-                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide leading-none block">
+                <div className="space-y-0.5">
+                  <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-none block">
                     {stats.total}
                   </span>
-                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                  <span className="font-label text-[10px] sm:text-[11px] text-zinc-400 font-medium block">
                     Producciones
                   </span>
                 </div>
 
                 {/* Col 2: Vistas */}
-                <div className="space-y-1">
-                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-emerald-400 tracking-wide leading-none block drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]">
+                <div className="space-y-0.5">
+                  <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-400 tracking-tight leading-none block drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]">
                     {stats.watched}
                   </span>
-                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                  <span className="font-label text-[10px] sm:text-[11px] text-zinc-400 font-medium block">
                     Vistas
                   </span>
                 </div>
 
                 {/* Col 3: Pendientes */}
-                <div className="space-y-1">
-                  <span className="font-display text-3xl sm:text-4xl lg:text-5xl text-amber-400 tracking-wide leading-none block drop-shadow-[0_0_12px_rgba(251,191,36,0.3)]">
+                <div className="space-y-0.5">
+                  <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-amber-400 tracking-tight leading-none block drop-shadow-[0_0_12px_rgba(251,191,36,0.3)]">
                     {stats.total - stats.watched}
                   </span>
-                  <span className="font-label text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-widest block">
+                  <span className="font-label text-[10px] sm:text-[11px] text-zinc-400 font-medium block">
                     Pendientes
                   </span>
                 </div>
@@ -306,12 +303,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
               {/* Spotlight Content */}
               <div className="relative z-10 my-auto py-2">
-                <span className="font-label text-[10px] sm:text-[11px] font-bold text-zinc-200 uppercase tracking-widest block mb-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                  SIGUIENTE EN TU LISTA:
+                <span className="font-label text-[10px] sm:text-[11px] font-semibold text-zinc-300 block mb-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                  Siguiente en tu lista:
                 </span>
                 <h2
                   onClick={() => openDetailModal(nextUnwatchedItem)}
-                  className="font-display text-2xl sm:text-3xl lg:text-[34px] uppercase tracking-wide text-white leading-tight cursor-pointer hover:text-marvel-red transition-colors line-clamp-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+                  className="font-display text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-white leading-tight cursor-pointer hover:text-marvel-red transition-colors line-clamp-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
                 >
                   {nextUnwatchedItem.titulo}
                 </h2>
@@ -321,9 +318,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
               <div className="relative z-10 flex items-center justify-start pt-1">
                 <button
                   onClick={() => openDetailModal(nextUnwatchedItem)}
-                  className="tactile-btn-glass text-white font-label text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-1.5 cursor-pointer shadow-lg"
+                  className="tactile-btn-glass text-white font-label text-xs font-semibold px-5 py-2.5 rounded-full flex items-center gap-1.5 cursor-pointer shadow-lg"
                 >
-                  <span>VER DETALLES</span>
+                  <span>Ver detalles</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </button>
               </div>
@@ -333,8 +330,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             <div className="tactile-bento-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full text-center border-amber-500/40">
               <div className="flex flex-col items-center justify-center flex-1 py-4">
                 <Trophy className="w-10 h-10 text-amber-400 mb-2 drop-shadow-[0_0_10px_rgba(245,200,66,0.5)]" />
-                <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white">
-                  ¡MULTIVERSO AL 100%!
+                <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white">
+                  ¡Multiverso al 100%!
                 </h3>
                 <p className="text-xs text-zinc-300 mt-1 max-w-xs">
                   Has completado todas las producciones disponibles.
@@ -342,9 +339,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
               </div>
               <button
                 onClick={() => onNavigate('upcoming')}
-                className="bg-[#C81D25] hover:bg-[#E62429] active:translate-y-0.5 text-white font-label text-xs font-bold uppercase tracking-wider py-2.5 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer"
+                className="bg-[#C81D25] hover:bg-[#E62429] active:translate-y-0.5 text-white font-label text-xs font-bold py-2.5 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer"
               >
-                VER PRÓXIMOS ESTRENOS →
+                Ver próximos estrenos →
               </button>
             </div>
           )}
@@ -368,7 +365,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
             {/* Header */}
             <div>
-              <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
+              <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white leading-none">
                 Saga Roadmap
               </h3>
             </div>
@@ -472,7 +469,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
               className="sm:col-span-6 flex flex-col"
             >
               <div className="tactile-bento-card rounded-3xl p-6 flex flex-col justify-between h-full">
-                <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none mb-4">
+                <h3 className="font-display text-xl sm:text-[22px] font-bold tracking-tight text-white leading-none mb-4">
                   Infinity Vault
                 </h3>
 
@@ -571,7 +568,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
               <div className="tactile-bento-card rounded-3xl p-6 flex flex-col justify-between h-full">
 
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none">
+                  <h3 className="font-display text-xl sm:text-[22px] font-bold tracking-tight text-white leading-none">
                     Favoritos
                   </h3>
                   {favoriteItems.length > 3 && (
@@ -638,7 +635,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-display text-2xl uppercase tracking-wider text-white leading-none">
+                <h3 className="font-display text-xl sm:text-[22px] font-bold tracking-tight text-white leading-none">
                   Próximos Estrenos del MCU
                 </h3>
 

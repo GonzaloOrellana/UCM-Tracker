@@ -66,8 +66,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
       >
         {/* Page Title Header */}
         <div className="border-b border-white/15 pb-3">
-          <h1 className="font-display text-3xl sm:text-4xl uppercase tracking-wider text-white leading-none">
-            PERFIL DE USUARIO
+          <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white leading-none">
+            Perfil de Usuario
           </h1>
         </div>
 
@@ -115,7 +115,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
 
                 {/* User Display Name */}
                 <div>
-                  <h2 className="font-display text-2xl sm:text-3xl uppercase tracking-wider text-white leading-none">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white leading-none">
                     {userName || settings.userName}
                   </h2>
                 </div>

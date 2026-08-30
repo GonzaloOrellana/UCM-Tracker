@@ -194,7 +194,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.3, delay: 0.18, ease: transitionEase }}
                 >
-                  <h2 className="font-display text-xl sm:text-3xl uppercase tracking-wider text-zinc-900 leading-none">
+                  <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 leading-snug">
                     {item.titulo}
                   </h2>
                   {item.tituloOriginal && item.tituloOriginal !== item.titulo && (

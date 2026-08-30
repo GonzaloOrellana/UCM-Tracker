@@ -83,7 +83,7 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
           />
         ) : (
           <div className="w-full h-full bg-[#1A1A1A] p-4 flex flex-col justify-center text-center">
-            <h4 className="font-display text-white text-xl uppercase tracking-wider leading-none">
+            <h4 className="font-display text-white text-base sm:text-lg font-bold tracking-tight leading-snug">
               {item.titulo}
             </h4>
           </div>
@@ -94,7 +94,7 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
       {/* Title & Metadata Text UNDERNEATH Poster */}
       <div className="mt-3 px-0.5 space-y-0.5">
         <div className="flex items-start justify-between gap-2 min-h-[2.5rem]">
-          <h3 className="font-display text-white text-lg sm:text-xl uppercase tracking-wide leading-tight flex-1 group-hover:text-zinc-100 transition-colors">
+          <h3 className="font-display text-white text-sm sm:text-base font-bold tracking-tight leading-snug flex-1 group-hover:text-zinc-100 transition-colors">
             {item.titulo}
           </h3>
 

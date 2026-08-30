@@ -79,7 +79,7 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
           />
         ) : (
           <div className="w-full h-full bg-[#f3f3f3] p-4 flex flex-col justify-center text-center">
-            <h4 className="font-display text-[#1a1c1c] text-xl leading-none uppercase tracking-wider">
+            <h4 className="font-display text-[#1a1c1c] text-base sm:text-lg font-bold tracking-tight leading-snug">
               {item.titulo}
             </h4>
           </div>
@@ -89,7 +89,7 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
       {/* Título & Metadata debajo del Poster (Estilo Referencia "CIVIL WAR", "DOCTOR STRANGE") */}
       <div className="mt-3 space-y-1.5">
         <div className="flex items-start justify-between gap-1.5 min-h-[2.4rem]">
-          <h3 className="font-display text-[#1a1c1c] text-xl sm:text-2xl uppercase tracking-wider line-clamp-2 leading-none flex-1">
+          <h3 className="font-display text-[#1a1c1c] text-base sm:text-lg font-bold tracking-tight line-clamp-2 leading-snug flex-1">
             {item.titulo}
           </h3>
 
