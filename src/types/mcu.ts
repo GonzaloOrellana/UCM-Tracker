@@ -29,6 +29,7 @@ export interface MCUItem {
   personajePrincipal?: string;
   colorAcento?: string;
   fechaEsExacta?: boolean;
+  urlOficial?: string;
 }
 
 export type OrderMode = 'release' | 'chronological';

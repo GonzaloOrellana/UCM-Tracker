@@ -63,7 +63,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras ser picado por una araña genéticamente modificada, el tímido estudiante Peter Parker adquiere increíbles superpoderes y debe enfrentarse al malévolo Duende Verde mientras aprende que un gran poder conlleva una gran responsabilidad.",
     "duracion": "2h 01m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana/c09f11b9b92847d389bfce4da051d9b6?origin=mplay_player"
   },
   {
     "id": "x-men-2-2003",
@@ -95,7 +96,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Agobiado por sus responsabilidades como héroe y perdiendo sus poderes, Peter Parker intenta llevar una vida normal. Sin embargo, debe volver a ponerse la máscara para detener al peligroso Doctor Octopus.",
     "duracion": "2h 07m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/f272be584b9347c2b4c0677422fb04ab?origin=mplay_player"
   },
   {
     "id": "fantastic-four-2005",
@@ -143,7 +145,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un extraño simbionte extraterrestre altera la personalidad de Peter Parker sacando su lado más oscuro, mientras enfrenta a nuevos villanos como Venom, el Hombre de Arena y el Nuevo Duende.",
     "duracion": "2h 19m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
-    "colorAcento": "#1A1A1A"
+    "colorAcento": "#1A1A1A",
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana-3/866aee27c1c54d158f800a784c803ce0?origin=mplay_player"
   },
   {
     "id": "the-spectacular-spider-man-2008",
@@ -159,7 +162,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Considerada una de las mejores adaptaciones animadas del personaje. Sigue a un joven Peter Parker comenzando su tercer año de preparatoria mientras lidia con la adquisición de sus superpoderes, sus relaciones con Gwen Stacy y Harry Osborn, y la amenaza de supervillanos emergentes en Nueva York.",
     "duracion": "2 temporadas (26 eps)",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E11D48"
+    "colorAcento": "#E11D48",
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0LDB0S05WDYWH8UXNMAYOVXICU"
   },
   {
     "id": "fantastic-four-rise-of-the-silver-surfer-2007",
@@ -383,7 +387,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker disfruta de su vida como Spider-Man, pero enfrentarse a Electro y al regreso de su viejo amigo Harry Osborn revelará oscuros secretos sobre el pasado de su familia.",
     "duracion": "2h 22m",
     "personajePrincipal": "Peter Parker / Spider-Man (Andrew Garfield)",
-    "colorAcento": "#0055A5"
+    "colorAcento": "#0055A5",
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-sorprendente-hombre-arana-2-la-venganza-de-electro/068c72a75f9e4ab399aed20e8dd04cec?origin=mplay_player"
   },
   {
     "id": "x-men-days-of-future-past-2014",
@@ -639,7 +644,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker intenta equilibrar su vida adolescente con sus deberes como Spider-Man. Con la guía de Tony Stark, enfrenta al villano Buitre mientras demuestra ser un héroe independiente.",
     "duracion": "2h 13m",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E44050"
+    "colorAcento": "#E44050",
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/spiderman-de-regreso-a-casa/db88d60522434eac8e948fe4062baa83?origin=mplay_player"
   },
   {
     "id": "logan-2017",
@@ -1600,7 +1606,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker inicia un nuevo capítulo urbano en Nueva York sin el recuerdo de sus seres queridos tras los eventos de Sin Camino a Casa.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://www.sonypictures.com/movies"
   },
   {
     "id": "up-yfnsm-s2",

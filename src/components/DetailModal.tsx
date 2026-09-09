@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Heart, Star } from 'lucide-react';
+import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Heart, Star, Play, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DetailModalProps {
@@ -89,6 +89,46 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
   const isWatched = item ? watchedIds.has(item.id) : false;
   const isFavorite = item ? favoriteIds.has(item.id) : false;
   const currentRating = item ? ratings[item.id] : undefined;
+
+  const isBrandNewDay = Boolean(
+    item &&
+      (item.id === 'up-spider-man-4' ||
+        item.titulo.toLowerCase().includes('brand new day') ||
+        item.tituloOriginal?.toLowerCase().includes('brand new day'))
+  );
+
+  const watchUrl =
+    item?.urlOficial ||
+    (isBrandNewDay
+      ? 'https://www.sonypictures.com/movies'
+      : 'https://www.disneyplus.com');
+
+  const isMercadoPlay = Boolean(watchUrl.includes('mercadolibre'));
+  const isPrimeVideo = Boolean(watchUrl.includes('primevideo'));
+  const isDisney = Boolean(watchUrl.includes('disneyplus'));
+
+  const watchTooltip = isMercadoPlay
+    ? 'Ver en Mercado Play (Sitio oficial)'
+    : isPrimeVideo
+    ? 'Ver en Prime Video (Sitio oficial)'
+    : isDisney
+    ? 'Ver en Disney+ (Sitio oficial)'
+    : isBrandNewDay
+    ? 'Ver en Sony Pictures (Sitio oficial)'
+    : 'Ver en sitio oficial';
+
+  const getWatchButtonClasses = () => {
+    if (isMercadoPlay) {
+      return 'bg-[#FFE600] hover:bg-[#F2DC00] text-zinc-950 shadow-[0_2px_8px_rgba(255,230,0,0.35)] hover:shadow-[0_4px_14px_rgba(255,230,0,0.45)]';
+    }
+    if (isPrimeVideo) {
+      return 'bg-[#00A8E1] hover:bg-[#0092C5] text-white shadow-[0_2px_8px_rgba(0,168,225,0.35)] hover:shadow-[0_4px_14px_rgba(0,168,225,0.45)]';
+    }
+    if (isDisney) {
+      return 'bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-[0_2px_8px_rgba(0,99,229,0.35)] hover:shadow-[0_4px_14px_rgba(0,99,229,0.45)]';
+    }
+    return 'bg-zinc-900 hover:bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.35)]';
+  };
 
   const getTypeText = () => {
     if (!item) return '';
@@ -340,17 +380,31 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
 
               </div>
 
-              {/* Bottom Row: Stagger 5 - Watched Toggle with Mechanical Hardware Switch (Footer) */}
+              {/* Bottom Row: Stagger 5 - Watch Link & Watched Toggle with Mechanical Hardware Switch (Footer) */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 6 }}
                 transition={{ duration: 0.3, delay: 0.38, ease: transitionEase }}
-                className="flex items-center justify-end shrink-0 pt-1.5 sm:pt-2 border-t border-zinc-100"
+                className="flex items-center justify-between shrink-0 pt-1.5 sm:pt-2 border-t border-zinc-100 gap-3"
               >
+                {/* Watch Now Official Link Button */}
+                <a
+                  href={watchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  title={watchTooltip}
+                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${getWatchButtonClasses()}`}
+                >
+                  <Play className="w-3.5 h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
+                  <span>Ver ahora</span>
+                  <ExternalLink className={`w-3 h-3 transition-colors ${isMercadoPlay ? 'text-zinc-700 group-hover/watch:text-zinc-950' : 'text-white/70 group-hover/watch:text-white'}`} />
+                </a>
+
                 <div
                   onClick={() => toggleWatched(item.id)}
-                  className="flex items-center gap-3 cursor-pointer select-none group/toggle"
+                  className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none group/toggle shrink-0"
                 >
                   <span className="text-xs font-semibold text-zinc-900 group-hover/toggle:text-[#C81D25] transition-colors">
                     {isWatched ? 'Visto' : 'Marcar como visto'}

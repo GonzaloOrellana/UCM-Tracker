@@ -19,6 +19,7 @@ export const EditItemModal: React.FC<EditItemModalProps> = ({ item, onClose }) =
   const [overview, setOverview] = useState('');
   const [heroCharacter, setHeroCharacter] = useState('');
   const [posterUrl, setPosterUrl] = useState('');
+  const [urlOficial, setUrlOficial] = useState('');
 
   useEffect(() => {
     if (item) {
@@ -30,6 +31,7 @@ export const EditItemModal: React.FC<EditItemModalProps> = ({ item, onClose }) =
       setOverview(item.resumen || '');
       setHeroCharacter(item.personajePrincipal || '');
       setPosterUrl(item.urlPoster || '');
+      setUrlOficial(item.urlOficial || '');
     }
   }, [item]);
 
@@ -70,6 +72,7 @@ export const EditItemModal: React.FC<EditItemModalProps> = ({ item, onClose }) =
       resumen: overview,
       personajePrincipal: heroCharacter || undefined,
       urlPoster: posterUrl,
+      urlOficial: urlOficial.trim() || undefined,
     });
     onClose();
   };
@@ -172,6 +175,19 @@ export const EditItemModal: React.FC<EditItemModalProps> = ({ item, onClose }) =
                   <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
                 </label>
               </div>
+            </div>
+
+            <div>
+              <label className="text-xs font-medium text-zinc-800 block mb-1">
+                URL Oficial / Ver Ahora <span className="text-zinc-400 font-normal">(opcional, por defecto Disney+)</span>
+              </label>
+              <input
+                type="url"
+                value={urlOficial}
+                onChange={(e) => setUrlOficial(e.target.value)}
+                placeholder="https://www.disneyplus.com..."
+                className="w-full px-3.5 py-2.5 bg-white border border-zinc-200 focus:border-zinc-900 rounded-xl text-xs text-zinc-900 outline-none font-medium transition-all shadow-xs focus:ring-1 focus:ring-zinc-900"
+              />
             </div>
 
             <div>
