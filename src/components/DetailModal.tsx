@@ -307,6 +307,52 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   )}
                 </motion.div>
 
+                {/* Priority & Master List Order */}
+                {item.prioridad && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.3, delay: 0.25, ease: transitionEase }}
+                    className="flex items-center flex-wrap gap-2 pt-0.5"
+                  >
+                    <span
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-label font-bold tracking-wider uppercase border shadow-xs ${
+                        item.prioridad === 'esencial'
+                          ? 'bg-rose-50 text-rose-700 border-rose-200'
+                          : item.prioridad === 'recomendada'
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                          : item.prioridad === 'complementaria'
+                          ? 'bg-amber-50 text-amber-700 border-amber-200'
+                          : 'bg-zinc-100 text-zinc-600 border-zinc-200'
+                      }`}
+                    >
+                      <span>
+                        {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
+                      </span>
+                      <span>
+                        {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
+                      </span>
+                    </span>
+
+                    {item.ordenListaMaestra && (
+                      <span className="text-[11px] font-mono font-semibold text-zinc-600 bg-zinc-100 px-2 py-0.5 rounded-md border border-zinc-200">
+                        #{item.ordenListaMaestra} Lista Maestra
+                      </span>
+                    )}
+
+                    <span className="text-[11px] text-zinc-500 font-normal">
+                      {item.prioridad === 'esencial'
+                        ? '— Sin esto perdés una parte importante de la experiencia.'
+                        : item.prioridad === 'recomendada'
+                        ? '— Importante para personajes o historia.'
+                        : item.prioridad === 'complementaria'
+                        ? '— Aporta contexto, pero no es fundamental.'
+                        : '— Principalmente para completar el universo.'}
+                    </span>
+                  </motion.div>
+                )}
+
                 {/* Stagger 3: Main Character */}
                 {item.personajePrincipal && (
                   <motion.div

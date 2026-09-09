@@ -46,6 +46,37 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
         {/* Holo-Foil Trading Card Sheen on Hover */}
         <div className="absolute inset-0 card-holo-foil opacity-0 group-hover:opacity-100 pointer-events-none z-10 -translate-x-full group-hover:translate-x-full duration-1000 ease-out" />
 
+        {/* Priority Badge in Top Left Corner */}
+        {item.prioridad && (
+          <div
+            title={
+              item.prioridad === 'esencial'
+                ? '🔥 Esencial: Sin esto perdés una parte importante de la experiencia.'
+                : item.prioridad === 'recomendada'
+                ? '🟢 Recomendada: Importante para personajes o historia.'
+                : item.prioridad === 'complementaria'
+                ? '🟡 Complementaria: Aporta contexto, pero no es fundamental.'
+                : '⚪ Opcional: Principalmente para completar el universo.'
+            }
+            className={`absolute top-2.5 left-2.5 z-20 flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-label font-bold tracking-wider uppercase backdrop-blur-md border shadow-sm transition-all duration-300 ${
+              item.prioridad === 'esencial'
+                ? 'bg-rose-950/80 border-rose-500/60 text-rose-300 shadow-[0_0_8px_rgba(244,63,94,0.35)]'
+                : item.prioridad === 'recomendada'
+                ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+                : item.prioridad === 'complementaria'
+                ? 'bg-amber-950/80 border-amber-500/50 text-amber-300'
+                : 'bg-zinc-900/80 border-zinc-600/40 text-zinc-400'
+            }`}
+          >
+            <span>
+              {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
+            </span>
+            <span className="hidden sm:group-hover:inline transition-all duration-200">
+              {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
+            </span>
+          </div>
+        )}
+
         {/* Tactile Mechanical Toggle Switch in Top Right Corner */}
         <button
           type="button"

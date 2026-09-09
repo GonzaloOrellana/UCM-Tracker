@@ -316,9 +316,31 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
               {/* Spotlight Content */}
               <div className="relative z-10 my-auto py-2">
-                <span className="font-label text-[10px] sm:text-[11px] font-semibold text-zinc-300 block mb-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                  Siguiente en tu lista:
-                </span>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-label text-[10px] sm:text-[11px] font-semibold text-zinc-300 block drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                    Siguiente en tu lista:
+                  </span>
+                  {nextUnwatchedItem.prioridad && (
+                    <span
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-label font-bold uppercase tracking-wider backdrop-blur-md border ${
+                        nextUnwatchedItem.prioridad === 'esencial'
+                          ? 'bg-rose-950/80 border-rose-500/60 text-rose-300 shadow-[0_0_8px_rgba(244,63,94,0.4)]'
+                          : nextUnwatchedItem.prioridad === 'recomendada'
+                          ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+                          : nextUnwatchedItem.prioridad === 'complementaria'
+                          ? 'bg-amber-950/80 border-amber-500/50 text-amber-300'
+                          : 'bg-zinc-900/80 border-zinc-600/40 text-zinc-400'
+                      }`}
+                    >
+                      <span>
+                        {nextUnwatchedItem.prioridad === 'esencial' ? '🔥' : nextUnwatchedItem.prioridad === 'recomendada' ? '🟢' : nextUnwatchedItem.prioridad === 'complementaria' ? '🟡' : '⚪'}
+                      </span>
+                      <span>
+                        {nextUnwatchedItem.prioridad === 'esencial' ? 'Esencial' : nextUnwatchedItem.prioridad === 'recomendada' ? 'Recomendada' : nextUnwatchedItem.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
+                      </span>
+                    </span>
+                  )}
+                </div>
                 <h2
                   onClick={() => openDetailModal(nextUnwatchedItem)}
                   className="font-display text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-white leading-tight cursor-pointer hover:text-marvel-red transition-colors line-clamp-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"

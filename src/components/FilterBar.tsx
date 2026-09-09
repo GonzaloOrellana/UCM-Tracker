@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useMCU } from '../context/MCUContext';
-import { MCUPhase } from '../types/mcu';
+import { MCUPhase, MCUPriority } from '../types/mcu';
 import { Search, Filter, X, RotateCcw, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,9 +11,18 @@ export const FilterBar: React.FC = () => {
 
   const phaseList: MCUPhase[] = ['Fase 1', 'Fase 2', 'Fase 3', 'Fase 4', 'Fase 5', 'Fase 6'];
 
+  const priorityList: { value: 'all' | MCUPriority; label: string; icon: string }[] = [
+    { value: 'all', label: 'Todas', icon: '' },
+    { value: 'esencial', label: 'Esencial', icon: '🔥' },
+    { value: 'recomendada', label: 'Recomendada', icon: '🟢' },
+    { value: 'complementaria', label: 'Complementaria', icon: '🟡' },
+    { value: 'opcional', label: 'Opcional', icon: '⚪' },
+  ];
+
   const hasActiveSecondaryFilters =
     filters.status !== 'all' ||
     filters.phase !== 'all' ||
+    filters.priority !== 'all' ||
     filters.order !== 'release';
 
   // Lock body scroll when side drawer is open
@@ -218,6 +227,30 @@ export const FilterBar: React.FC = () => {
                           }`}
                         >
                           {phase}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Section 4: Priority Filter */}
+                  <div>
+                    <label className="font-label font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
+                      Prioridad
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {priorityList.map((p) => (
+                        <button
+                          key={p.value}
+                          type="button"
+                          onClick={() => setFilters({ priority: p.value })}
+                          className={`p-2.5 rounded-xl border text-center font-label font-bold uppercase tracking-wider text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                            filters.priority === p.value
+                              ? 'bg-gradient-to-r from-red-700 via-rose-600 to-red-800 text-white border-red-400/40 shadow-md border-t-white/40'
+                              : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 backdrop-blur-md'
+                          }`}
+                        >
+                          {p.icon && <span>{p.icon}</span>}
+                          <span>{p.label}</span>
                         </button>
                       ))}
                     </div>

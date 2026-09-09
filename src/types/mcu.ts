@@ -11,6 +11,8 @@ export type MCUPhase =
   | 'Web Series'
   | (string & {});
 
+export type MCUPriority = 'esencial' | 'recomendada' | 'complementaria' | 'opcional';
+
 export interface MCUItem {
   id: string;
   titulo: string;
@@ -20,6 +22,8 @@ export interface MCUItem {
   fechaLanzamiento: string; // ISO YYYY-MM-DD
   ordenEstreno: number;
   ordenCronologico: number;
+  ordenListaMaestra?: number;
+  prioridad?: MCUPriority;
   fase: MCUPhase;
   urlPoster: string;
   resumen: string;
@@ -40,6 +44,7 @@ export interface FilterState {
   status: 'all' | 'watched' | 'unwatched';
   type: 'all' | MediaType;
   phase: 'all' | MCUPhase;
+  priority: 'all' | MCUPriority;
   order: OrderMode;
   search: string;
 }

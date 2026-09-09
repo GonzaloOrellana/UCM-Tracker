@@ -9,14 +9,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 1992,
     "fechaLanzamiento": "1992-10-31",
     "ordenEstreno": 0.001,
-    "ordenCronologico": 0.001,
+    "ordenCronologico": 91,
     "fase": "Saga X-Men",
     "urlPoster": "https://static.wikia.nocookie.net/doblaje/images/a/ad/X-men_the_animated_series_DVD.jpeg/revision/latest?cb=20200704192347&path-prefix=es",
     "resumen": "La mítica serie animada de los años 90 que sigue a Charles Xavier, Wolverine, Cíclope, Tormenta, Titania, Gambito, Bestia y Júpiter defendiendo a mutantes y humanos de las amenazas de Magneto, Sentinelas, Apocalipsis y Mr. Siniestro.",
     "duracion": "5 temporadas",
     "personajePrincipal": "Wolverine & X-Men",
     "colorAcento": "#FFC107",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8eaac297-16fe-4d83-bb0f-ca0a280b8b82"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8eaac297-16fe-4d83-bb0f-ca0a280b8b82",
+    "prioridad": "opcional"
   },
   {
     "id": "spider-man-animated-series-1994",
@@ -26,14 +27,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 1994,
     "fechaLanzamiento": "1994-11-19",
     "ordenEstreno": 0.002,
-    "ordenCronologico": 0.002,
+    "ordenCronologico": 92,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVrgmjFISNOtmkpn4OwsIexEIWd9FFnz2TCB5lb9mYURR383z--igiVM&s=10",
     "resumen": "La aclamada serie animada de los 90 que relata las aventuras de Peter Parker equilibrando su vida universitaria en la Universidad Empire State con su lucha contra villanos icónicos como Duende Verde, Venom, Doctor Octopus, Carnage y Kingpin.",
     "duracion": "5 temporadas",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E11D48",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-404d8ab1-36ab-4e54-92da-9aa0c847c8c9"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-404d8ab1-36ab-4e54-92da-9aa0c847c8c9",
+    "prioridad": "opcional"
   },
   {
     "id": "x-men-2000",
@@ -43,14 +45,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2000,
     "fechaLanzamiento": "2000-07-14",
     "ordenEstreno": 0.01,
-    "ordenCronologico": 23.1,
+    "ordenCronologico": 45,
     "fase": "Saga X-Men",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNzNjZjQwOTAtNWQ3NC00MmJlLThlZDEtZmUyMWQ3NmE4Y2Y5XkEyXkFqcGc@._V1_.jpg",
     "resumen": "En un mundo donde los mutantes sufren persecución, el Profesor Charles Xavier y sus X-Men intentan proteger a la humanidad y detener a Magneto, quien planea transformar a los líderes mundiales en mutantes.",
     "duracion": "1h 44m",
     "personajePrincipal": "Wolverine & Profesor X",
     "colorAcento": "#FFC107",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e9f59c82-de76-4a18-a849-192532ff9b2d"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e9f59c82-de76-4a18-a849-192532ff9b2d",
+    "ordenListaMaestra": 45,
+    "prioridad": "recomendada"
   },
   {
     "id": "spider-man-1-tobey",
@@ -60,14 +64,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2002,
     "fechaLanzamiento": "2002-05-03",
     "ordenEstreno": 0.1,
-    "ordenCronologico": 1,
+    "ordenCronologico": 31,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://static.wikia.nocookie.net/spiderman/images/8/85/Spider-Man2002Poster.png/revision/latest?cb=20131213162615&path-prefix=es",
     "resumen": "Tras ser picado por una araña genéticamente modificada, el tímido estudiante Peter Parker adquiere increíbles superpoderes y debe enfrentarse al malévolo Duende Verde mientras aprende que un gran poder conlleva una gran responsabilidad.",
     "duracion": "2h 01m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana/c09f11b9b92847d389bfce4da051d9b6?origin=mplay_player"
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana/c09f11b9b92847d389bfce4da051d9b6?origin=mplay_player",
+    "ordenListaMaestra": 31,
+    "prioridad": "recomendada"
   },
   {
     "id": "x-men-2-2003",
@@ -77,14 +83,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2003,
     "fechaLanzamiento": "2003-05-02",
     "ordenEstreno": 0.15,
-    "ordenCronologico": 23.2,
+    "ordenCronologico": 46,
     "fase": "Saga X-Men",
     "urlPoster": "https://cineycine.com/wp-content/uploads/2014/05/x-men-2-poster.jpg",
     "resumen": "Tras un ataque mutante a la Casa Blanca, el militar William Stryker ataca la mansión del Profesor X. Los X-Men se ven forzados a formar una alianza con Magneto para salvar a la raza mutante de un genocidio.",
     "duracion": "2h 14m",
     "personajePrincipal": "Wolverine & X-Men",
     "colorAcento": "#FFC107",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-54748282-5bf7-496c-8db9-a9aa3b7f57ac"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-54748282-5bf7-496c-8db9-a9aa3b7f57ac",
+    "ordenListaMaestra": 46,
+    "prioridad": "recomendada"
   },
   {
     "id": "spider-man-2-tobey",
@@ -94,14 +102,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2004,
     "fechaLanzamiento": "2004-06-30",
     "ordenEstreno": 0.2,
-    "ordenCronologico": 2,
+    "ordenCronologico": 32,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://i.pinimg.com/736x/4f/22/3f/4f223fc32223114f66206f5a67debe71.jpg",
     "resumen": "Agobiado por sus responsabilidades como héroe y perdiendo sus poderes, Peter Parker intenta llevar una vida normal. Sin embargo, debe volver a ponerse la máscara para detener al peligroso Doctor Octopus.",
     "duracion": "2h 07m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://play.mercadolibre.com.ar/ver/f272be584b9347c2b4c0677422fb04ab?origin=mplay_player"
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/f272be584b9347c2b4c0677422fb04ab?origin=mplay_player",
+    "ordenListaMaestra": 32,
+    "prioridad": "recomendada"
   },
   {
     "id": "fantastic-four-2005",
@@ -111,14 +121,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2005,
     "fechaLanzamiento": "2005-07-08",
     "ordenEstreno": 0.25,
-    "ordenCronologico": 2.5,
+    "ordenCronologico": 79,
     "fase": "Saga Los 4 Fantásticos",
     "urlPoster": "https://static.wikia.nocookie.net/doblaje/images/f/f0/Cuatro.jpg/revision/latest?cb=20180511165031&path-prefix=es",
     "resumen": "Cuatro astronautas y el financista Victor Von Doom sufren una mutación genética en el espacio tras exponerse a una tormenta de radiación cósmica. De regreso en la Tierra, el científico Reed Richards, Sue Storm, Johnny Storm y Ben Grimm descubren que han desarrollado superpoderes increíbles. Mientras aprenden a usar sus nuevas habilidades como un equipo unido y mediático, deben detener a Von Doom, quien se ha transformado en un letal villano de metal empeñado en destruirlos.",
     "duracion": "1h 46m",
     "personajePrincipal": "Los 4 Fantásticos & Dr. Doom",
     "colorAcento": "#0055A5",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d6592baa-0dc6-4549-a0cb-3b93a3b0e260"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d6592baa-0dc6-4549-a0cb-3b93a3b0e260",
+    "ordenListaMaestra": 79,
+    "prioridad": "complementaria"
   },
   {
     "id": "x-men-3-the-last-stand-2006",
@@ -128,14 +140,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2006,
     "fechaLanzamiento": "2006-05-26",
     "ordenEstreno": 0.28,
-    "ordenCronologico": 23.3,
+    "ordenCronologico": 47,
     "fase": "Saga X-Men",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMThmOWE3OWEtODJmNC00ZDEzLTk4MWUtNzEzM2RiNmJiZmU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "resumen": "La invención de una 'cura' para las mutaciones divide a la comunidad mutante. Mientras Magneto declara la guerra a la humanidad, Jean Grey resurge como la destructiva Fénix Oscura.",
     "duracion": "1h 44m",
     "personajePrincipal": "Wolverine & Jean Grey",
     "colorAcento": "#D32F2F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e0f6bbed-cea5-41c1-b787-478f21255898"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e0f6bbed-cea5-41c1-b787-478f21255898",
+    "ordenListaMaestra": 47,
+    "prioridad": "complementaria"
   },
   {
     "id": "spider-man-3-tobey",
@@ -145,14 +159,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2007,
     "fechaLanzamiento": "2007-05-04",
     "ordenEstreno": 0.3,
-    "ordenCronologico": 3,
+    "ordenCronologico": 33,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://m.media-amazon.com/images/I/51yjgQYuGVL._AC_UF894,1000_QL80_.jpg",
     "resumen": "Un extraño simbionte extraterrestre altera la personalidad de Peter Parker sacando su lado más oscuro, mientras enfrenta a nuevos villanos como Venom, el Hombre de Arena y el Nuevo Duende.",
     "duracion": "2h 19m",
     "personajePrincipal": "Peter Parker / Spider-Man (Tobey Maguire)",
     "colorAcento": "#1A1A1A",
-    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana-3/866aee27c1c54d158f800a784c803ce0?origin=mplay_player"
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana-3/866aee27c1c54d158f800a784c803ce0?origin=mplay_player",
+    "ordenListaMaestra": 33,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-spectacular-spider-man-2008",
@@ -162,14 +178,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2008,
     "fechaLanzamiento": "2008-03-08",
     "ordenEstreno": 0.32,
-    "ordenCronologico": 3.2,
+    "ordenCronologico": 93,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://i.pinimg.com/736x/41/ea/a3/41eaa3998e4b575eaeb616210ce270fd.jpg",
     "resumen": "Considerada una de las mejores adaptaciones animadas del personaje. Sigue a un joven Peter Parker comenzando su tercer año de preparatoria mientras lidia con la adquisición de sus superpoderes, sus relaciones con Gwen Stacy y Harry Osborn, y la amenaza de supervillanos emergentes en Nueva York.",
     "duracion": "2 temporadas (26 eps)",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E11D48",
-    "urlOficial": "https://www.primevideo.com/-/es/detail/0LDB0S05WDYWH8UXNMAYOVXICU"
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0LDB0S05WDYWH8UXNMAYOVXICU",
+    "prioridad": "opcional"
   },
   {
     "id": "fantastic-four-rise-of-the-silver-surfer-2007",
@@ -179,14 +196,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2007,
     "fechaLanzamiento": "2007-06-15",
     "ordenEstreno": 0.35,
-    "ordenCronologico": 3.5,
+    "ordenCronologico": 80,
     "fase": "Saga Los 4 Fantásticos",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNmZmMTU0OGQtOWRmNS00ZjA1LWJkM2EtYmUwNGEzMjIyZDM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "resumen": "Mientras Reed y Sue preparan su boda, una misteriosa estela plateada altera el clima de la Tierra y crea cráteres gigantescos por todo el planeta. El equipo descubre que el responsable es el Deslizador de Plata (Silver Surfer), un heraldo cósmico que prepara al mundo para ser devorado por Galactus. Para salvar la Tierra de una destrucción total, los héroes deben unir fuerzas con el ejército de los Estados Unidos y con su peor enemigo, el Doctor Doom, quien ha regresado con intenciones ocultas.",
     "duracion": "1h 32m",
     "personajePrincipal": "Los 4 Fantásticos & Silver Surfer",
     "colorAcento": "#0055A5",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-06810fd3-a12e-4185-829b-36b3c814ce97"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-06810fd3-a12e-4185-829b-36b3c814ce97",
+    "ordenListaMaestra": 80,
+    "prioridad": "complementaria"
   },
   {
     "id": "iron-man-1",
@@ -196,14 +215,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2008,
     "fechaLanzamiento": "2008-05-02",
     "ordenEstreno": 1,
-    "ordenCronologico": 4,
+    "ordenCronologico": 1,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Tony Stark, un multimillonario fabricante de armas, es secuestrado y construye un traje blindado para escapar, convirtiéndose en Iron Man para combatir el crimen.",
     "duracion": "2h 06m",
     "personajePrincipal": "Tony Stark / Iron Man",
     "colorAcento": "#E62429",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0c520152-b81f-4c20-9310-003debd1947e"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0c520152-b81f-4c20-9310-003debd1947e",
+    "ordenListaMaestra": 1,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-incredible-hulk-2",
@@ -213,14 +234,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2008,
     "fechaLanzamiento": "2008-06-13",
     "ordenEstreno": 2,
-    "ordenCronologico": 6,
+    "ordenCronologico": 2,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Bruce Banner se convierte en el monstruo Hulk tras un experimento fallido con rayos gamma, y debe encontrar una cura mientras es perseguido por las autoridades.",
     "duracion": "1h 52m",
     "personajePrincipal": "Bruce Banner / Hulk",
     "colorAcento": "#4B8347",
-    "urlOficial": "https://www.primevideo.com/-/es/detail/0TISNLS9TOLEJR2I20MHX4FGD8"
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0TISNLS9TOLEJR2I20MHX4FGD8",
+    "ordenListaMaestra": 2,
+    "prioridad": "complementaria"
   },
   {
     "id": "x-men-origins-wolverine-2009",
@@ -230,14 +253,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2009,
     "fechaLanzamiento": "2009-05-01",
     "ordenEstreno": 2.5,
-    "ordenCronologico": 23.4,
+    "ordenCronologico": 50,
     "fase": "Saga X-Men",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZjQwOGEzNjUtNDgwYS00NzUzLWJhZjAtNmFlNzY2YTQyOTllXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "resumen": "Explora el violento pasado de Logan, su compleja relación con su hermano Victor Creed (Dientes de Sable) y el cruel experimento militar del programa Arma X que implantó adamantium en sus huesos.",
     "duracion": "1h 47m",
     "personajePrincipal": "Logan / Wolverine",
     "colorAcento": "#F57C00",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-82480f3f-6f11-4feb-8c4e-b32c0aca2c53"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-82480f3f-6f11-4feb-8c4e-b32c0aca2c53",
+    "ordenListaMaestra": 50,
+    "prioridad": "complementaria"
   },
   {
     "id": "iron-man-2-3",
@@ -247,14 +272,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2010,
     "fechaLanzamiento": "2010-05-07",
     "ordenEstreno": 3,
-    "ordenCronologico": 7,
+    "ordenCronologico": 3,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BYWYyOGQzOGYtMGQ1My00ZWYxLTgzZjktZWYzN2IwYjkxYzM0XkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
     "resumen": "Tony Stark lidia con problemas de salud y la presión pública al revelar su identidad como Iron Man, mientras enfrenta a un enemigo inventivo y a rivalidades corporativas.",
     "duracion": "2h 04m",
     "personajePrincipal": "Tony Stark / Iron Man",
     "colorAcento": "#E62429",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85c5529d-c053-4fa4-9957-4906eb5aedc6"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85c5529d-c053-4fa4-9957-4906eb5aedc6",
+    "ordenListaMaestra": 3,
+    "prioridad": "recomendada"
   },
   {
     "id": "thor-4",
@@ -264,14 +291,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2011,
     "fechaLanzamiento": "2011-05-06",
     "ordenEstreno": 4,
-    "ordenCronologico": 8,
+    "ordenCronologico": 4,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNjRhNGZjZjEtYTQzYS00OWUxLThjNGEtMTIwMTE2ZDFlZTZkXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Thor, el príncipe de Asgard, es desterrado a la Tierra por su arrogancia. Debe demostrar su dignidad y aprende a ser un héroe mientras enfrenta al malvado Loki.",
     "duracion": "1h 55m",
     "personajePrincipal": "Thor Odinson",
     "colorAcento": "#0E74BF",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-479d41e3-8438-4ba4-b93d-8223220e069c"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-479d41e3-8438-4ba4-b93d-8223220e069c",
+    "ordenListaMaestra": 4,
+    "prioridad": "recomendada"
   },
   {
     "id": "x-men-first-class-2011",
@@ -281,14 +310,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2011,
     "fechaLanzamiento": "2011-06-03",
     "ordenEstreno": 4.5,
-    "ordenCronologico": 23.5,
+    "ordenCronologico": 48,
     "fase": "Saga X-Men",
     "urlPoster": "https://static.wikia.nocookie.net/xmen9260/images/f/f3/X-Men_Primera_generaci%C3%B3n.jpg/revision/latest/scale-to-width-down/1200?cb=20170223202701&path-prefix=es",
     "resumen": "Ambientada en la década de 1960 durante la Crisis de los Misiles en Cuba, narra el origen de la amistad y la trágica rivalidad ideológica entre el joven Charles Xavier y Erik Lehnsherr (Magneto).",
     "duracion": "2h 12m",
     "personajePrincipal": "Charles Xavier & Magneto",
     "colorAcento": "#1976D2",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9f9e9ae3-88d8-467b-8969-28d253cc4687"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9f9e9ae3-88d8-467b-8969-28d253cc4687",
+    "ordenListaMaestra": 48,
+    "prioridad": "recomendada"
   },
   {
     "id": "captain-america-the-first-avenger-5",
@@ -298,14 +329,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2011,
     "fechaLanzamiento": "2011-07-22",
     "ordenEstreno": 5,
-    "ordenCronologico": 1,
+    "ordenCronologico": 5,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNzUyM2YyY2MtNzNlMS00MWU5LTgxNjAtNzZlNmI2NjU2NDZlXkEyXkFqcGc@._V1_QL75_UY562_CR8,0,380,562_.jpg",
     "resumen": "Steve Rogers, un joven enclenque, se convierte en el super-soldado Capitán América durante la Segunda Guerra Mundial, luchando contra HYDRA y su villano Red Skull.",
     "duracion": "2h 04m",
     "personajePrincipal": "Steve Rogers / Capitán América",
     "colorAcento": "#A2262F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8e68c43a-117c-4f4d-b217-0db106a1a614"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8e68c43a-117c-4f4d-b217-0db106a1a614",
+    "ordenListaMaestra": 5,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-avengers-6",
@@ -315,14 +348,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2012,
     "fechaLanzamiento": "2012-05-04",
     "ordenEstreno": 6,
-    "ordenCronologico": 10,
+    "ordenCronologico": 6,
     "fase": "Fase 1",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Nick Fury del S.H.I.E.L.D. recluta a un equipo de héroes (Iron Man, Thor, Hulk, Capitán América, Viuda Negra y Ojo de Halcón) para detener la invasión de Loki y los Chitauri.",
     "duracion": "2h 23m",
     "personajePrincipal": "Varios (Los Vengadores)",
     "colorAcento": "#393183",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d2ab699b-67da-4906-a7a4-5bc542c953cf"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d2ab699b-67da-4906-a7a4-5bc542c953cf",
+    "ordenListaMaestra": 6,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-amazing-spider-man-1-andrew",
@@ -332,14 +367,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2012,
     "fechaLanzamiento": "2012-07-03",
     "ordenEstreno": 6.1,
-    "ordenCronologico": 10.1,
+    "ordenCronologico": 34,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://es.web.img3.acsta.net/medias/nmedia/18/84/50/16/20084857.jpg",
     "resumen": "Peter Parker intenta descifrar el misterio de la desaparición de sus padres, lo que lo lleva a Oscorp y al laboratorio del Dr. Curt Connors, quien termina transformándose en el temible Lagarto.",
     "duracion": "2h 16m",
     "personajePrincipal": "Peter Parker / Spider-Man (Andrew Garfield)",
     "colorAcento": "#0055A5",
-    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.1ea9f6b8-151d-5fe1-5f3b-c897b6dd14cf?autoplay=0&ref_=atv_cf_strg_wb"
+    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.1ea9f6b8-151d-5fe1-5f3b-c897b6dd14cf?autoplay=0&ref_=atv_cf_strg_wb",
+    "ordenListaMaestra": 34,
+    "prioridad": "recomendada"
   },
   {
     "id": "agents-of-shield-7",
@@ -349,14 +386,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2013,
     "fechaLanzamiento": "2013-09-24",
     "ordenEstreno": 7,
-    "ordenCronologico": 2,
+    "ordenCronologico": 94,
     "fase": "Serie ABC",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTkwODYyMjgzOV5BMl5BanBnXkFtZTgwODAzMTE5MjE@._V1_SX300.jpg",
     "resumen": "El agente Phil Coulson lidera un equipo del S.H.I.E.L.D. que investiga casos inexplicables relacionados con las recientes invasiones alienígenas en la Tierra.",
     "duracion": "1 temp.",
     "personajePrincipal": "Phil Coulson",
     "colorAcento": "#205081",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb",
+    "prioridad": "opcional"
   },
   {
     "id": "thor-the-dark-world-8",
@@ -366,14 +404,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2013,
     "fechaLanzamiento": "2013-11-08",
     "ordenEstreno": 8,
-    "ordenCronologico": 12,
+    "ordenCronologico": 8,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTQyNzAwOTUxOF5BMl5BanBnXkFtZTcwMTE0OTc5OQ@@._V1_QL75_UY562_CR7,0,380,562_.jpg",
     "resumen": "Thor debe salvar los Nueve Reinos del éter oscuro liberado por el elfo oscuro Malekith. Para ello une fuerzas con Jane Foster y su hermano Loki.",
     "duracion": "1h 52m",
     "personajePrincipal": "Thor Odinson",
     "colorAcento": "#0E74BF",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c4f4e28-4152-4f64-90ec-8b7f682c33d4"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c4f4e28-4152-4f64-90ec-8b7f682c33d4",
+    "ordenListaMaestra": 8,
+    "prioridad": "complementaria"
   },
   {
     "id": "iron-man-3-9",
@@ -383,14 +423,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2013,
     "fechaLanzamiento": "2013-05-03",
     "ordenEstreno": 9,
-    "ordenCronologico": 13,
+    "ordenCronologico": 7,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjIzMzAzMjQyM15BMl5BanBnXkFtZTcwNzM2NjcyOQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Tony Stark enfrenta las consecuencias de *Los Vengadores* y un nuevo enemigo, el Mandarín. Se ve obligado a luchar sin su armadura y a salvar a Pepper Potts.",
     "duracion": "2h 10m",
     "personajePrincipal": "Tony Stark / Iron Man",
     "colorAcento": "#E62429",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e8569c2d-85ec-42a4-8811-b2618d494a40"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e8569c2d-85ec-42a4-8811-b2618d494a40",
+    "ordenListaMaestra": 7,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-amazing-spider-man-2-andrew",
@@ -400,14 +442,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2014,
     "fechaLanzamiento": "2014-05-02",
     "ordenEstreno": 9.1,
-    "ordenCronologico": 15.1,
+    "ordenCronologico": 35,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://i.ebayimg.com/images/g/3KAAAOSwan1i6xz3/s-l1200.jpg",
     "resumen": "Peter Parker disfruta de su vida como Spider-Man, pero enfrentarse a Electro y al regreso de su viejo amigo Harry Osborn revelará oscuros secretos sobre el pasado de su familia.",
     "duracion": "2h 22m",
     "personajePrincipal": "Peter Parker / Spider-Man (Andrew Garfield)",
     "colorAcento": "#0055A5",
-    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-sorprendente-hombre-arana-2-la-venganza-de-electro/068c72a75f9e4ab399aed20e8dd04cec?origin=mplay_player"
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/el-sorprendente-hombre-arana-2-la-venganza-de-electro/068c72a75f9e4ab399aed20e8dd04cec?origin=mplay_player",
+    "ordenListaMaestra": 35,
+    "prioridad": "recomendada"
   },
   {
     "id": "x-men-days-of-future-past-2014",
@@ -417,14 +461,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2014,
     "fechaLanzamiento": "2014-05-23",
     "ordenEstreno": 9.5,
-    "ordenCronologico": 23.6,
+    "ordenCronologico": 49,
     "fase": "Saga X-Men",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4lt_DHbT5krH-RLcdQNpSCneuCNmbKA1nl3JM7lXlqK_0cnIJIRYyWEo&s=10",
     "resumen": "En un futuro distópico donde los Centinelas han exterminado casi a todos los mutantes, la conciencia de Wolverine es enviada al año 1973 para evitar el asesinato que desencadenó la catástrofe.",
     "duracion": "2h 11m",
     "personajePrincipal": "Wolverine & X-Men",
     "colorAcento": "#7B1FA2",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5b3d1005-eb3b-41bb-8ac6-a025263d8106"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5b3d1005-eb3b-41bb-8ac6-a025263d8106",
+    "ordenListaMaestra": 49,
+    "prioridad": "recomendada"
   },
   {
     "id": "captain-america-the-winter-soldier-10",
@@ -434,14 +480,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2014,
     "fechaLanzamiento": "2014-04-04",
     "ordenEstreno": 10,
-    "ordenCronologico": 15,
+    "ordenCronologico": 9,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNWY1NjFmNDItZDhmOC00NjI1LWE0ZDItMTM0MjBjZThiOTQ2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Steve Rogers se enfrenta a un complot dentro del S.H.I.E.L.D. y a un misterioso asesino vestido de congelación. Junto a Black Widow, descubre una conspiración ligada a Hydra.",
     "duracion": "2h 16m",
     "personajePrincipal": "Steve Rogers / Capitán América",
     "colorAcento": "#A2262F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ef333a5c-b855-4d3e-a7d9-d9e142b6dc7d"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ef333a5c-b855-4d3e-a7d9-d9e142b6dc7d",
+    "ordenListaMaestra": 9,
+    "prioridad": "recomendada"
   },
   {
     "id": "guardians-of-the-galaxy-11",
@@ -451,14 +499,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2014,
     "fechaLanzamiento": "2014-08-01",
     "ordenEstreno": 11,
-    "ordenCronologico": 16,
+    "ordenCronologico": 10,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BM2ZmNjQ2MzAtNDlhNi00MmQyLWJhZDMtNmJiMjFlOWY4MzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Un grupo de inadaptados cósmicos (Star-Lord, Gamora, Drax, Rocket y Groot) se unen para impedir que el villano Ronan use una poderosa gema para destruir el universo.",
     "duracion": "2h 01m",
     "personajePrincipal": "Peter Quill / Star-Lord",
     "colorAcento": "#FF8F1C",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c9ee959b-7249-4a4c-9708-9ffd1ddb00f1"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c9ee959b-7249-4a4c-9708-9ffd1ddb00f1",
+    "ordenListaMaestra": 10,
+    "prioridad": "recomendada"
   },
   {
     "id": "guardians-of-the-galaxy-vol-2-12",
@@ -468,14 +518,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-05-05",
     "ordenEstreno": 12,
-    "ordenCronologico": 17,
+    "ordenCronologico": 11,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNWE5MGI3MDctMmU5Ni00YzI2LWEzMTQtZGIyZDA5MzQzNDBhXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
     "resumen": "Los Guardianes descubren secretos sobre los orígenes de Peter Quill al enfrentarse al padre de Star-Lord, Ego, un ser celestial con planes de conquista.",
     "duracion": "2h 16m",
     "personajePrincipal": "Peter Quill / Star-Lord",
     "colorAcento": "#FF8F1C",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9fcd7087-c151-49dc-aeb9-b2f9943fd4e6"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9fcd7087-c151-49dc-aeb9-b2f9943fd4e6",
+    "ordenListaMaestra": 11,
+    "prioridad": "recomendada"
   },
   {
     "id": "avengers-age-of-ultron-13",
@@ -485,14 +537,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-05-01",
     "ordenEstreno": 13,
-    "ordenCronologico": 22,
+    "ordenCronologico": 12,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BODBhYTg1NGQtNGVmNS00ZTdiLThjYTYtZDFkNzRiNTZmNDZjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Los Vengadores deben enfrentarse a su propia creación, la inteligencia artificial Ultrón, que amenaza con extinguir a la humanidad. Unen fuerzas con nuevos aliados.",
     "duracion": "2h 21m",
     "personajePrincipal": "Varios (Los Vengadores)",
     "colorAcento": "#393183",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-42329b99-0953-4f1a-9420-a0dbf7733e95"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-42329b99-0953-4f1a-9420-a0dbf7733e95",
+    "ordenListaMaestra": 12,
+    "prioridad": "recomendada"
   },
   {
     "id": "daredevil-netflix-s1",
@@ -502,14 +556,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-04-10",
     "ordenEstreno": 13,
-    "ordenCronologico": 20,
+    "ordenCronologico": 65,
     "fase": "Fase 2",
     "urlPoster": "https://i.redd.it/8m6oqx69brs11.jpg",
     "resumen": "Narra los orígenes de Matt Murdock, un abogado ciego con sentidos agudizados que combate el crimen nocturno en Hell's Kitchen enfrentando a Wilson Fisk.",
     "duracion": "13 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
     "colorAcento": "#880E4F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
+    "ordenListaMaestra": 65,
+    "prioridad": "recomendada"
   },
   {
     "id": "agent-carter-s1",
@@ -519,14 +575,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-01-06",
     "ordenEstreno": 13.5,
-    "ordenCronologico": 0.05,
+    "ordenCronologico": 95,
     "fase": "Fase 2",
     "urlPoster": "https://www.cinemascomics.com/wp-content/uploads/2026/07/agente-carter-poster-tmdb.jpg",
     "resumen": "En 1946, Peggy Carter debe lidiar con el trabajo administrativo en la SSR mientras ayuda secretamente a Howard Stark a limpiar su nombre tras ser acusado de vender armas a enemigos de Estados Unidos.",
     "duracion": "2 temporadas",
     "personajePrincipal": "Peggy Carter",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e4cbebda-a890-4e99-9a29-40d2162f7d46?distributionPartner=google"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e4cbebda-a890-4e99-9a29-40d2162f7d46?distributionPartner=google",
+    "prioridad": "opcional"
   },
   {
     "id": "jessica-jones-s1",
@@ -536,14 +593,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-11-20",
     "ordenEstreno": 14,
-    "ordenCronologico": 21,
+    "ordenCronologico": 66,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/34/Jessica_Jones_Poster_Final.png/revision/latest?cb=20151027210418&path-prefix=es",
     "resumen": "Presenta a Jessica intentando reconstruir su vida cotidiana hasta que reaparece Kilgrave, un hombre del pasado capaz de controlar la mente de cualquier persona que la sometió a traumas profundos.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones & Kilgrave",
     "colorAcento": "#4A2E59",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8",
+    "ordenListaMaestra": 66,
+    "prioridad": "complementaria"
   },
   {
     "id": "ant-man-14",
@@ -553,14 +612,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-07-17",
     "ordenEstreno": 14,
-    "ordenCronologico": 23,
+    "ordenCronologico": 13,
     "fase": "Fase 2",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjM2NTQ5Mzc2M15BMl5BanBnXkFtZTgwNTcxMDI2NTE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
     "resumen": "Scott Lang, un ladrón reformado, usa un traje que lo encoge para combatir la corporación Pym y descubre el misterioso mundo subatómico que contiene un peligro enorme.",
     "duracion": "1h 57m",
     "personajePrincipal": "Scott Lang / Ant-Man",
     "colorAcento": "#FFDB29",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-af42798c-b9db-457f-b748-5e1f029c1ece"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-af42798c-b9db-457f-b748-5e1f029c1ece",
+    "ordenListaMaestra": 13,
+    "prioridad": "recomendada"
   },
   {
     "id": "deadpool-1-2016",
@@ -570,14 +631,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2016,
     "fechaLanzamiento": "2016-02-12",
     "ordenEstreno": 14.5,
-    "ordenCronologico": 24.5,
+    "ordenCronologico": 51,
     "fase": "Saga X-Men",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNjc3NjFkZWYtOTFjNS00NjI1LTljNjgtNzE5MTJlNzlhMTljXkEyXkFqcGc@._V1_.jpg",
     "resumen": "Un antiguo mercenario sometido a un cruento experimento para curar su cáncer adquiere poderes de curación rápida y un retorcido sentido del humor, persiguiendo al hombre que casi destruye su vida.",
     "duracion": "1h 48m",
     "personajePrincipal": "Wade Wilson / Deadpool",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-17854bdb-0121-4327-80a0-699fdecd1aaa"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-17854bdb-0121-4327-80a0-699fdecd1aaa",
+    "ordenListaMaestra": 51,
+    "prioridad": "recomendada"
   },
   {
     "id": "captain-america-civil-war-15",
@@ -587,14 +650,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2016,
     "fechaLanzamiento": "2016-05-06",
     "ordenEstreno": 15,
-    "ordenCronologico": 28,
+    "ordenCronologico": 14,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Un desacuerdo político provoca una división entre los Vengadores. El equipo se divide en dos bandos liderados por el Capitán América y Iron Man, enfrentándose entre sí.",
     "duracion": "2h 27m",
     "personajePrincipal": "Steve Rogers / Capitán América",
     "colorAcento": "#A2262F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2bd19267-1387-4b51-98e6-5189ff28e9c9"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2bd19267-1387-4b51-98e6-5189ff28e9c9",
+    "ordenListaMaestra": 14,
+    "prioridad": "recomendada"
   },
   {
     "id": "daredevil-netflix-s2",
@@ -604,14 +669,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2016,
     "fechaLanzamiento": "2016-03-18",
     "ordenEstreno": 15,
-    "ordenCronologico": 25,
+    "ordenCronologico": 67,
     "fase": "Saga The Defenders",
     "urlPoster": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/fcd90627062993.56bdc9f61d4d0.jpg",
     "resumen": "Matt Murdock se enfrenta al vengativo justiciero Frank Castle (Punisher) y al regreso de Elektra Natchios para combatir a la mística organización La Mano.",
     "duracion": "13 episodios",
     "personajePrincipal": "Daredevil & Punisher",
     "colorAcento": "#880E4F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
+    "ordenListaMaestra": 67,
+    "prioridad": "recomendada"
   },
   {
     "id": "luke-cage-s1",
@@ -621,13 +688,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2016,
     "fechaLanzamiento": "2016-09-30",
     "ordenEstreno": 16,
-    "ordenCronologico": 31,
+    "ordenCronologico": 68,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/ba/Marvel_Luke_Cage_-_Poster_con_Luke_Cage.png/revision/latest?cb=20160808144917&path-prefix=es",
     "resumen": "Tras un experimento fallido que le otorga superfuerza y piel indestructible, un exconvicto intenta reconstruir su vida pasando desapercibido en Harlem, Nueva York. Sin embargo, una tragedia local lo obliga a salir de las sombras para enfrentar el imperio criminal del mafioso Cornell 'Cottonmouth' Stokes y de la política corrupta Mariah Dillard, asumiendo su rol como el protector del barrio.",
     "duracion": "13 episodios",
     "personajePrincipal": "Luke Cage & Cornell Stokes",
-    "colorAcento": "#D97706"
+    "colorAcento": "#D97706",
+    "ordenListaMaestra": 68,
+    "prioridad": "complementaria"
   },
   {
     "id": "doctor-strange-16",
@@ -637,14 +706,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2016,
     "fechaLanzamiento": "2016-11-04",
     "ordenEstreno": 16,
-    "ordenCronologico": 33,
+    "ordenCronologico": 15,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "El arrogante cirujano Stephen Strange sufre un accidente que le impide operar. Busca sanar en Kamar-Taj y se convierte en el Hechicero Supremo para defender la Tierra de amenazas mágicas.",
     "duracion": "1h 55m",
     "personajePrincipal": "Stephen Strange / Doctor Strange",
     "colorAcento": "#673AB7",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-43a741e8-2369-4577-9bec-ef94f4aaae0b"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-43a741e8-2369-4577-9bec-ef94f4aaae0b",
+    "ordenListaMaestra": 15,
+    "prioridad": "recomendada"
   },
   {
     "id": "iron-fist-s1",
@@ -654,14 +725,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-03-17",
     "ordenEstreno": 17,
-    "ordenCronologico": 32,
+    "ordenCronologico": 69,
     "fase": "Saga The Defenders",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjI5Mjg1NDcyOV5BMl5BanBnXkFtZTgwMjAxOTQ5MTI@._V1_.jpg",
     "resumen": "Tras sobrevivir a un accidente aéreo y pasar quince años entrenando en la ciudad mística de K'un-Lun, el joven multimillonario Danny Rand regresa a Nueva York para reclamar el legado de su familia. Armado con un dominio excepcional del kung-fu y la capacidad de invocar el poder del Puño de Hierro, Danny debe enfrentarse a la corrupción de su propia corporación y combatir a la organización criminal secreta conocida como La Mano.",
     "duracion": "13 episodios",
     "personajePrincipal": "Danny Rand / Iron Fist",
     "colorAcento": "#059669",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0",
+    "ordenListaMaestra": 69,
+    "prioridad": "opcional"
   },
   {
     "id": "spider-man-homecoming-17",
@@ -671,14 +744,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-07-07",
     "ordenEstreno": 17,
-    "ordenCronologico": 31,
+    "ordenCronologico": 16,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BODY2MTAzOTQ4M15BMl5BanBnXkFtZTgwNzg5MTE0MjI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Peter Parker intenta equilibrar su vida adolescente con sus deberes como Spider-Man. Con la guía de Tony Stark, enfrenta al villano Buitre mientras demuestra ser un héroe independiente.",
     "duracion": "2h 13m",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E44050",
-    "urlOficial": "https://play.mercadolibre.com.ar/ver/spiderman-de-regreso-a-casa/db88d60522434eac8e948fe4062baa83?origin=mplay_player"
+    "urlOficial": "https://play.mercadolibre.com.ar/ver/spiderman-de-regreso-a-casa/db88d60522434eac8e948fe4062baa83?origin=mplay_player",
+    "ordenListaMaestra": 16,
+    "prioridad": "recomendada"
   },
   {
     "id": "logan-2017",
@@ -688,14 +763,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-03-03",
     "ordenEstreno": 17.5,
-    "ordenCronologico": 35.5,
+    "ordenCronologico": 53,
     "fase": "Saga X-Men",
     "urlPoster": "https://www.aceprensa.com/wp-content/uploads/2019/12/263115-0-scaled.jpg",
     "resumen": "En un futuro donde los mutantes están casi extintos, un envejecido y debilitado Logan cuida de un enfermo Profesor X cerca de la frontera mexicana, hasta que una joven mutante perseguida irrumpe en su vida.",
     "duracion": "2h 17m",
     "personajePrincipal": "Logan & Laura / X-23",
     "colorAcento": "#E65100",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c1743ec-7cd6-4da4-9e8c-b713ad4e634a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c1743ec-7cd6-4da4-9e8c-b713ad4e634a",
+    "ordenListaMaestra": 53,
+    "prioridad": "esencial"
   },
   {
     "id": "thor-ragnarok-18",
@@ -705,14 +782,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-10-25",
     "ordenEstreno": 18,
-    "ordenCronologico": 38,
+    "ordenCronologico": 17,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjMyNDkzMzI1OF5BMl5BanBnXkFtZTgwODcxODg5MjI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Thor es aprisionado en el planeta Sakaar y descubre que debe competir como gladiador contra su antiguo aliado Hulk. Debe escapar para evitar el fin de Asgard por la villana Hela.",
     "duracion": "2h 10m",
     "personajePrincipal": "Thor Odinson",
     "colorAcento": "#0E74BF",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-766280de-0c00-4781-a388-2c85c5b4e259"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-766280de-0c00-4781-a388-2c85c5b4e259",
+    "ordenListaMaestra": 17,
+    "prioridad": "recomendada"
   },
   {
     "id": "the-defenders",
@@ -722,14 +801,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-08-18",
     "ordenEstreno": 18,
-    "ordenCronologico": 32,
+    "ordenCronologico": 70,
     "fase": "Saga The Defenders",
     "urlPoster": "https://imagenes.hobbyconsolas.com/files/image_640_auto/uploads/imagenes/2023/04/25/6902f54de43b0.jpeg",
     "resumen": "Miniserie crossover donde Daredevil, Jessica Jones, Luke Cage e Iron Fist unen sus fuerzas en Nueva York para detener la inminente destrucción de La Mano.",
     "duracion": "8 episodios",
     "personajePrincipal": "Los Defensores",
     "colorAcento": "#1A1A1A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-61687bed-4a66-4657-9252-df80ca1d1fbc"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-61687bed-4a66-4657-9252-df80ca1d1fbc",
+    "ordenListaMaestra": 70,
+    "prioridad": "complementaria"
   },
   {
     "id": "punisher-s1",
@@ -739,14 +820,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-11-17",
     "ordenEstreno": 19,
-    "ordenCronologico": 35,
+    "ordenCronologico": 71,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/01/The_Punisher_-_Promo_P%C3%B3ster_Oficial.png/revision/latest?cb=20171203043332&path-prefix=es",
     "resumen": "Tras cobrar venganza contra los criminales directamente responsables de la muerte de su familia, el ex-marine Frank Castle descubre un secreto militar mucho más grande y oscuro. Aliado con un analista tecnológico prófugo llamado Micro, Castle se adentra en el inframundo de Nueva York para desmantelar una conspiración gubernamental vinculada a su pasado en Afganistán. Al mismo tiempo, debe lidiar con la traición de su mejor amigo de las fuerzas especiales, Billy Russo.",
     "duracion": "13 episodios",
     "personajePrincipal": "Frank Castle / Punisher",
     "colorAcento": "#1A1A1A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991",
+    "ordenListaMaestra": 71,
+    "prioridad": "recomendada"
   },
   {
     "id": "black-panther-19",
@@ -756,14 +839,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-02-16",
     "ordenEstreno": 19,
-    "ordenCronologico": 30,
+    "ordenCronologico": 18,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "T'Challa regresa a la aislada nación africana de Wakanda como rey. Debe proteger su trono de la amenaza del villano Killmonger, que busca desatar el poder de Wakanda sobre el mundo.",
     "duracion": "2h 14m",
     "personajePrincipal": "T'Challa / Black Panther",
     "colorAcento": "#030303",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8904b1b5-da2c-4ff1-b389-dc81825559fd"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8904b1b5-da2c-4ff1-b389-dc81825559fd",
+    "ordenListaMaestra": 18,
+    "prioridad": "recomendada"
   },
   {
     "id": "jessica-jones-s2",
@@ -773,14 +858,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-03-08",
     "ordenEstreno": 20,
-    "ordenCronologico": 34,
+    "ordenCronologico": 72,
     "fase": "Saga The Defenders",
     "urlPoster": "https://www.cinemascomics.com/wp-content/uploads/2017/10/poster-temporada-2-jessica-jones-2017.jpg",
     "resumen": "Tras los eventos con su peor enemigo, Jessica profundiza de forma obsesiva en los violentos misterios de su propio pasado y el origen real de sus poderes.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones",
     "colorAcento": "#4A2E59",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8",
+    "ordenListaMaestra": 72,
+    "prioridad": "opcional"
   },
   {
     "id": "avengers-infinity-war-20",
@@ -790,14 +877,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-04-27",
     "ordenEstreno": 20,
-    "ordenCronologico": 42,
+    "ordenCronologico": 19,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Thanos, el titán loco, busca reunir las seis Gemas del Infinito para reequilibrar el universo. Los héroes de la Tierra y de la galaxia deben unirse para detenerlo.",
     "duracion": "2h 29m",
     "personajePrincipal": "Varios (Los Vengadores)",
     "colorAcento": "#393183",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9a136e06-852a-41bf-b71d-fa061cb43225"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9a136e06-852a-41bf-b71d-fa061cb43225",
+    "ordenListaMaestra": 19,
+    "prioridad": "recomendada"
   },
   {
     "id": "deadpool-2-2018",
@@ -807,14 +896,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-05-18",
     "ordenEstreno": 20.5,
-    "ordenCronologico": 40.5,
+    "ordenCronologico": 52,
     "fase": "Saga X-Men",
     "urlPoster": "https://es.web.img3.acsta.net/pictures/18/04/26/11/50/5029006.jpg",
     "resumen": "Deadpool forma el caótico equipo X-Force para proteger a un joven mutante con habilidades piroquinéticas del amenazante soldado viajero en el tiempo conocido como Cable.",
     "duracion": "1h 59m",
     "personajePrincipal": "Wade Wilson & Cable",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-27e84e56-31d3-4813-91ba-602cb52890f1"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-27e84e56-31d3-4813-91ba-602cb52890f1",
+    "ordenListaMaestra": 52,
+    "prioridad": "recomendada"
   },
   {
     "id": "luke-cage-s2",
@@ -824,13 +915,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-06-22",
     "ordenEstreno": 21,
-    "ordenCronologico": 36,
+    "ordenCronologico": 73,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b8/Luke_Cage_-_Imagen_promocional_T2.png/revision/latest?cb=20181111172040&path-prefix=es",
     "resumen": "Convertido en una celebridad en las calles de Harlem tras limpiar su nombre, Luke Cage enfrenta la presión de mantener la paz comunitaria. El panorama se complica con la llegada de Bushmaster, un líder criminal jamaiquino con habilidades sobrehumanas que busca venganza contra la familia Stokes, arrastrando a Luke a una violenta guerra de pandillas que pondrá a prueba sus límites morales.",
     "duracion": "13 episodios",
     "personajePrincipal": "Luke Cage & Bushmaster",
-    "colorAcento": "#D97706"
+    "colorAcento": "#D97706",
+    "ordenListaMaestra": 73,
+    "prioridad": "opcional"
   },
   {
     "id": "ant-man-and-the-wasp-21",
@@ -840,14 +933,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-07-06",
     "ordenEstreno": 21,
-    "ordenCronologico": 41,
+    "ordenCronologico": 20,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BODVkY2ZmZTAtYzFhMi00YzZlLWE2YWMtMDBiYjY2OTU4ZWM0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Scott Lang equilibra ser padre y superhéroe. Junto a Hope Van Dyne (la Avispa) entra al reino cuántico para rescatar a Janet Van Dyne, enfrentando nuevos enemigos.",
     "duracion": "1h 58m",
     "personajePrincipal": "Scott Lang / Ant-Man",
     "colorAcento": "#FFDB29",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3533ca7b-e187-4bf5-a65c-7c903cd2d4ad"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3533ca7b-e187-4bf5-a65c-7c903cd2d4ad",
+    "ordenListaMaestra": 20,
+    "prioridad": "recomendada"
   },
   {
     "id": "iron-fist-s2",
@@ -857,14 +952,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-09-07",
     "ordenEstreno": 22,
-    "ordenCronologico": 38,
+    "ordenCronologico": 74,
     "fase": "Saga The Defenders",
     "urlPoster": "https://imagenes.hobbyconsolas.com/files/image_640_auto/uploads/imagenes/2023/04/25/690257089468a.jpeg",
     "resumen": "Ambientada tras los eventos de The Defenders, Danny asume el rol de protector de Nueva York tras la desaparición de Matt Murdock. Junto a su pareja Colleen Wing, intenta mantener la paz frente a una violenta guerra de pandillas en Chinatown. Sin embargo, la situación se complica con la llegada de Davos, su antiguo hermano de armas de K'un-Lun, quien busca arrebatarle el poder del Puño de Hierro por considerarlo su derecho de nacimiento.",
     "duracion": "10 episodios",
     "personajePrincipal": "Danny Rand & Colleen Wing",
     "colorAcento": "#059669",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0",
+    "ordenListaMaestra": 74,
+    "prioridad": "opcional"
   },
   {
     "id": "daredevil-netflix-s3",
@@ -874,14 +971,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-10-19",
     "ordenEstreno": 22,
-    "ordenCronologico": 39,
+    "ordenCronologico": 75,
     "fase": "Saga The Defenders",
     "urlPoster": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/65d24c101118375.5f17aaf5e783d.jpg",
     "resumen": "Tras quedar gravemente herido en The Defenders, Matt Murdock resurge de las sombras para detener la venganza de Wilson Fisk y enfrentar al letal Bullseye.",
     "duracion": "13 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
     "colorAcento": "#880E4F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
+    "ordenListaMaestra": 75,
+    "prioridad": "recomendada"
   },
   {
     "id": "captain-marvel-22",
@@ -891,14 +990,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2019,
     "fechaLanzamiento": "2019-03-08",
     "ordenEstreno": 22,
-    "ordenCronologico": 3,
+    "ordenCronologico": 21,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZDI1NGU2ODAtNzBiNy00MWY5LWIyMGEtZjUxZjUwZmZiNjBlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Vers, una piloto de las fuerzas Kree, es atrapada en la Tierra durante los años 90. Con la ayuda de Nick Fury, descubre su verdadera identidad y poderes como la Capitana Marvel para enfrentar a un antiguo enemigo.",
     "duracion": "2h 03m",
     "personajePrincipal": "Carol Danvers / Capitana Marvel",
     "colorAcento": "#DA2727",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1e383a14-1ea6-4345-9ab8-fd37618669af"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1e383a14-1ea6-4345-9ab8-fd37618669af",
+    "ordenListaMaestra": 21,
+    "prioridad": "recomendada"
   },
   {
     "id": "punisher-s2",
@@ -908,14 +1009,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2019,
     "fechaLanzamiento": "2019-01-18",
     "ordenEstreno": 23,
-    "ordenCronologico": 43,
+    "ordenCronologico": 76,
     "fase": "Saga The Defenders",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZTI2NDllMjgtOWEyYi00Y2YxLThhYjQtNTQ0NTgwNDE1YmYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "resumen": "Intentando dejar atrás su pasado violento, Frank vive como un nómada bajo un nombre falso. Su tranquilidad termina cuando interviene para salvar a Amy, una misteriosa adolescente perseguida por asesinos liderados por un extremista religioso. Mientras protege a la joven de una red de chantaje político, Castle debe regresar a Nueva York, donde su antiguo enemigo Billy Russo ha despertado con el rostro desfigurado y amnesia, liderando una nueva y sanguinaria banda criminal.",
     "duracion": "13 episodios",
     "personajePrincipal": "Frank Castle & Billy Russo",
     "colorAcento": "#1A1A1A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991",
+    "ordenListaMaestra": 76,
+    "prioridad": "complementaria"
   },
   {
     "id": "avengers-endgame-23",
@@ -925,14 +1028,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2019,
     "fechaLanzamiento": "2019-04-26",
     "ordenEstreno": 23,
-    "ordenCronologico": 43,
+    "ordenCronologico": 22,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Tras el devastador chasquido de Thanos, los Vengadores supervivientes idean un plan de viaje en el tiempo para recolectar las Gemas del Infinito en el pasado y revertir sus efectos.",
     "duracion": "3h 02m",
     "personajePrincipal": "Varios (Los Vengadores)",
     "colorAcento": "#393183",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b39aa962-be56-4b09-a536-98617031717f"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b39aa962-be56-4b09-a536-98617031717f",
+    "ordenListaMaestra": 22,
+    "prioridad": "recomendada"
   },
   {
     "id": "jessica-jones-s3",
@@ -942,14 +1047,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2019,
     "fechaLanzamiento": "2019-06-14",
     "ordenEstreno": 24,
-    "ordenCronologico": 44,
+    "ordenCronologico": 77,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/31/P%C3%B3ster_de_la_tercera_temporada_de_Jessica_Jones.png/revision/latest?cb=20190613155756&path-prefix=es",
     "resumen": "Jessica se cruza en el camino de Gregory Salinger, un psicópata altamente inteligente sin poderes que pondrá a prueba su perspectiva de lo que significa ser un héroe.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones & Trish Walker",
     "colorAcento": "#4A2E59",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8",
+    "ordenListaMaestra": 77,
+    "prioridad": "opcional"
   },
   {
     "id": "spider-man-far-from-home-24",
@@ -959,14 +1066,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2019,
     "fechaLanzamiento": "2019-07-02",
     "ordenEstreno": 24,
-    "ordenCronologico": 49,
+    "ordenCronologico": 23,
     "fase": "Fase 3",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMzNhNTE0NWQtN2E1Ny00NjcwLTg1YTctMGY1NmMwODJmY2NmXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
     "resumen": "Peter Parker intenta disfrutar de unas vacaciones escolares en Europa, pero Nick Fury lo recluta para enfrentar a criaturas elementales. Descubre que nada es lo que parece y asume su rol de héroe tras la pérdida de Iron Man.",
     "duracion": "2h 09m",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E44050",
-    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.bab5dba3-e2d0-4ce8-d520-961b4db0be7a?autoplay=0&ref_=atv_cf_strg_wb"
+    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.bab5dba3-e2d0-4ce8-d520-961b4db0be7a?autoplay=0&ref_=atv_cf_strg_wb",
+    "ordenListaMaestra": 23,
+    "prioridad": "recomendada"
   },
   {
     "id": "wanda-vision-25",
@@ -976,14 +1085,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-01-15",
     "ordenEstreno": 25,
-    "ordenCronologico": 46,
+    "ordenCronologico": 24,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZTMxMmM1ODItMTZiMS00NjI1LWEwODctMjQ4ZjY4ODliNDI0XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
     "resumen": "Wanda Maximoff y Visión viven la vida perfecta de un matrimonio de situación de comedia, pero pronto descubren que nada es lo que parece, mientras ocultan un gran dolor y secretos relacionados con el multiverso.",
     "duracion": "9 episodios",
     "personajePrincipal": "Wanda Maximoff / Scarlet Witch",
     "colorAcento": "#7F4D9B",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c",
+    "ordenListaMaestra": 24,
+    "prioridad": "recomendada"
   },
   {
     "id": "falcon-and-winter-soldier-26",
@@ -993,14 +1104,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-03-19",
     "ordenEstreno": 26,
-    "ordenCronologico": 48,
+    "ordenCronologico": 25,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BYmJkOGNlNmEtMmQyOS00YjZiLTgxM2EtNmEzNzUzNTU5ODYwXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Sam Wilson (Falcon) y Bucky Barnes (Soldado de Invierno) trabajan juntos para enfrentar a terroristas globales, mientras deciden quién merece llevar el manto del Capitán América en el nuevo mundo post-Endgame.",
     "duracion": "6 episodios",
     "personajePrincipal": "Bucky Barnes / Sam Wilson",
     "colorAcento": "#9EB5C2",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c08a31a-2350-4aaf-90d0-88def4c551bf"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c08a31a-2350-4aaf-90d0-88def4c551bf",
+    "ordenListaMaestra": 25,
+    "prioridad": "recomendada"
   },
   {
     "id": "black-widow-27",
@@ -1010,14 +1123,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-07-09",
     "ordenEstreno": 27,
-    "ordenCronologico": 29,
+    "ordenCronologico": 27,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZTMyZTA0ZTItYjY3Yi00ODNjLWExYTgtYzgxZTk0NTg0Y2FlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Natasha Romanoff enfrenta su pasado como espía en la Rusia soviética con su familia encontrada (Yelena, Red Guardian y Melina) tras los eventos de Capitán América: Civil War.",
     "duracion": "2h 14m",
     "personajePrincipal": "Natasha Romanoff / Black Widow",
     "colorAcento": "#CE1836",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d9cd6bd1-bcf8-4a3b-8f92-0fdd4f79ac08"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d9cd6bd1-bcf8-4a3b-8f92-0fdd4f79ac08",
+    "ordenListaMaestra": 27,
+    "prioridad": "complementaria"
   },
   {
     "id": "loki-s1",
@@ -1027,14 +1142,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-06-09",
     "ordenEstreno": 28,
-    "ordenCronologico": 44,
+    "ordenCronologico": 26,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BYzA2YjM2ZWQtYTZhMS00OTI3LTlhYzQtZjBiZWZkMDdlNjA5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Después de escapar con el Teseracto en Endgame, Loki es arrestado por la Autoridad de Variación Temporal (AVT) y debe ayudar a reparar las alteraciones en la línea temporal.",
     "duracion": "6 episodios",
     "personajePrincipal": "Loki & Sylvie",
     "colorAcento": "#1F4D4D",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50",
+    "ordenListaMaestra": 26,
+    "prioridad": "recomendada"
   },
   {
     "id": "what-if-s1",
@@ -1044,14 +1161,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-08-11",
     "ordenEstreno": 29,
-    "ordenCronologico": 45,
+    "ordenCronologico": 59,
     "fase": "Fase 4",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKcdiBPMXnLjxUt64HuvYl1qSwRksiwxlWavx-xhRs5UVeGxRK8johbhs&s=10",
     "resumen": "Presenta escenarios como una realidad donde Peggy Carter toma el suero del súper soldado, T'Challa se convierte en Star-Lord o un devastador brote de zombis infecta a los Vengadores.",
     "duracion": "9 episodios",
     "personajePrincipal": "Peggy Carter & Star-Lord T'Challa",
     "colorAcento": "#E6CE68",
-    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f",
+    "ordenListaMaestra": 59,
+    "prioridad": "complementaria"
   },
   {
     "id": "shang-chi-and-the-legend-of-the-ten-rings-30",
@@ -1061,14 +1180,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-09-03",
     "ordenEstreno": 30,
-    "ordenCronologico": 47,
+    "ordenCronologico": 28,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZmY5MDcyNzAtYzg3MC00MGNlLTg3OGItNmRjYThkZGVlNzAyXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Shang-Chi debe enfrentarse a su pasado como miembro de los Diez Anillos cuando su padre y su organización resurgen. Descubre la mitología de Xialing y los poderes místicos de los anillos.",
     "duracion": "2h 12m",
     "personajePrincipal": "Shang-Chi",
     "colorAcento": "#C73E1D",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9",
+    "ordenListaMaestra": 28,
+    "prioridad": "recomendada"
   },
   {
     "id": "eternals-31",
@@ -1078,14 +1199,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-11-05",
     "ordenEstreno": 31,
-    "ordenCronologico": 50,
+    "ordenCronologico": 29,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZTBiZjI2M2UtZTNiNy00NmU4LWJiMjYtZjk4MDIzMzhlMjFlXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Los Eternos, una raza de seres inmortales creados por los Celestiales, deben reunirse después de siglos ocultos cuando reaparece una antigua amenaza (los Deviants) que podrían destruir la humanidad.",
     "duracion": "2h 37m",
     "personajePrincipal": "Sersi",
     "colorAcento": "#B48843",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b042efa2-6650-48fd-bf35-ea285a5a5649"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b042efa2-6650-48fd-bf35-ea285a5a5649",
+    "ordenListaMaestra": 29,
+    "prioridad": "complementaria"
   },
   {
     "id": "hawkeye-32",
@@ -1095,14 +1218,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-11-24",
     "ordenEstreno": 32,
-    "ordenCronologico": 52,
+    "ordenCronologico": 30,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BOGU5ZDBlOTAtOTZmYS00MWE0LTg0NzktNDcxZGJhN2FhZmM2XkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Clint Barton (Hawkeye) investiga a un nuevo villano arquerista llamado Bullseye en la ciudad de Nueva York, mientras entrena a su protegida Kate Bishop para recuperarse de las heridas de *Endgame*.",
     "duracion": "6 episodios",
     "personajePrincipal": "Clint Barton / Hawkeye",
     "colorAcento": "#8D7D83",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-128482e8-a9bc-4289-9c0d-83a975d823f3"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-128482e8-a9bc-4289-9c0d-83a975d823f3",
+    "ordenListaMaestra": 30,
+    "prioridad": "complementaria"
   },
   {
     "id": "spider-man-no-way-home-33",
@@ -1112,14 +1237,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2021,
     "fechaLanzamiento": "2021-12-17",
     "ordenEstreno": 33,
-    "ordenCronologico": 49,
+    "ordenCronologico": 36,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
     "resumen": "Peter Parker busca ayuda en el Doctor Strange para borrar la identidad secreta del mundo, pero el hechizo sale mal y desata a villanos de otras realidades (Doc Ock, Electro, Duende Verde, Sandman) en su universo.",
     "duracion": "2h 28m",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E44050",
-    "urlOficial": "https://www.primevideo.com/-/es/detail/0K2K4N25VGA0GOABHNZ2AXJPF7?ref_=atv_dp_amz_c_pZqpc5_1_1"
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0K2K4N25VGA0GOABHNZ2AXJPF7?ref_=atv_dp_amz_c_pZqpc5_1_1",
+    "ordenListaMaestra": 36,
+    "prioridad": "esencial"
   },
   {
     "id": "doctor-strange-2-34",
@@ -1129,14 +1256,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-05-06",
     "ordenEstreno": 34,
-    "ordenCronologico": 51,
+    "ordenCronologico": 37,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BN2YxZGRjMzYtZjE1ZC00MDI0LThjZmQtZTZmMzVmMmQ2NzBmXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "El Hechicero Supremo Stephen Strange explora el multiverso para enfrentar a una entidad misteriosa, mientras protege a la adolescente America Chavez, quien puede viajar entre dimensiones.",
     "duracion": "2h 06m",
     "personajePrincipal": "Stephen Strange / Doctor Strange",
     "colorAcento": "#673AB7",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6fe6062c-2499-4f44-a48a-fc93f59cb504"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6fe6062c-2499-4f44-a48a-fc93f59cb504",
+    "ordenListaMaestra": 37,
+    "prioridad": "recomendada"
   },
   {
     "id": "moon-knight-35",
@@ -1146,14 +1275,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-03-30",
     "ordenEstreno": 35,
-    "ordenCronologico": 53,
+    "ordenCronologico": 38,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNDAzNmYwZjgtNDc3YS00ZDMyLTk0MjktMTg4MGNmNGU3MjlhXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Steven Grant, un hombre con desórden disociativo, descubre que comparte cuerpo con Marc Spector, un exmilitar, avatar del dios egipcio Khonshu. Juntos enfrentan amenazas sobrenaturales.",
     "duracion": "6 episodios",
     "personajePrincipal": "Marc Spector / Moon Knight",
     "colorAcento": "#A9A689",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-330062c7-20c5-45e1-b6c5-e1e096055d75"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-330062c7-20c5-45e1-b6c5-e1e096055d75",
+    "ordenListaMaestra": 38,
+    "prioridad": "complementaria"
   },
   {
     "id": "thor-love-and-thunder-35",
@@ -1163,14 +1294,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-07-08",
     "ordenEstreno": 35,
-    "ordenCronologico": 35,
+    "ordenCronologico": 41,
     "fase": "Fase 4",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9c/Thor_Love_and_Thunder_-_P%C3%B3ster_2.png/revision/latest?cb=20220524021502&path-prefix=es",
     "resumen": "Thor emprende un viaje diferente a todo lo que ha enfrentado: la búsqueda de la paz interior. Pero su retiro es interrumpido por Gorr el Carnicero de Dioses, quien busca la extinción de los dioses. Para combatir la amenaza, Thor recluta la ayuda de Valkyrie, Korg y su exnovia Jane Foster, quien ahora maneja el Mjolnir como Mighty Thor.",
     "duracion": "1h 59m",
     "personajePrincipal": "Thor & Jane Foster",
     "colorAcento": "#00D2FF",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0007d7a0-2515-411e-9294-2de6a7b8d00e"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0007d7a0-2515-411e-9294-2de6a7b8d00e",
+    "ordenListaMaestra": 41,
+    "prioridad": "complementaria"
   },
   {
     "id": "ms-marvel-36",
@@ -1180,14 +1313,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-06-08",
     "ordenEstreno": 36,
-    "ordenCronologico": 58,
+    "ordenCronologico": 39,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNzlkNjBmOWUtOTgzZS00OWIzLThkNWEtZTg5MGY2ODAyYzZjXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Kamala Khan, una adolescente musulmana, obtiene poderes de flexibilidad al descubrir un brazalete místico. Admiradora de los superhéroes, especialmente de Capitana Marvel, debe equilibrar su familia y sus nuevas habilidades.",
     "duracion": "6 episodios",
     "personajePrincipal": "Kamala Khan / Ms. Marvel",
     "colorAcento": "#F57CB4",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7bf8d7e6-9739-4fee-86c0-f4afc48b152c"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7bf8d7e6-9739-4fee-86c0-f4afc48b152c",
+    "ordenListaMaestra": 39,
+    "prioridad": "complementaria"
   },
   {
     "id": "i-am-groot-s1",
@@ -1197,14 +1332,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-08-10",
     "ordenEstreno": 37,
-    "ordenCronologico": 17,
+    "ordenCronologico": 96,
     "fase": "Fase 4",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/8e/I_Am_Groot_-_P%C3%B3ster_2.png/revision/latest?cb=20220722195018&path-prefix=es",
     "resumen": "Historias breves e independientes que siguen las divertidas travesuras galácticas de Baby Groot mientras crece y se mete en problemas por el universo.",
     "duracion": "5 cortos",
     "personajePrincipal": "Baby Groot",
     "colorAcento": "#16A34A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba",
+    "prioridad": "opcional"
   },
   {
     "id": "she-hulk-37",
@@ -1214,14 +1350,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-08-18",
     "ordenEstreno": 37,
-    "ordenCronologico": 59,
+    "ordenCronologico": 40,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNjg4ZTQ1MjctNzEyMS00YWM2LTk1ZTQtNDU3ZDJjNjhhMDhkXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Jennifer Walters, prima de Bruce Banner, recibe una transfusión de sangre que la convierte en la abogada-superhéroe She-Hulk. Debe aprender a controlar sus poderes verdes mientras trabaja casos legales relacionados con seres con habilidades especiales.",
     "duracion": "9 episodios",
     "personajePrincipal": "Jennifer Walters / She-Hulk",
     "colorAcento": "#4EC190",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1c3c897-b925-4236-88e4-1ceed3623a46"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1c3c897-b925-4236-88e4-1ceed3623a46",
+    "ordenListaMaestra": 40,
+    "prioridad": "complementaria"
   },
   {
     "id": "werewolf-by-night",
@@ -1231,14 +1369,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-10-07",
     "ordenEstreno": 37,
-    "ordenCronologico": 53,
+    "ordenCronologico": 43,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BODUzMGFkYzgtYzhjNC00ZmFjLTg3ZTYtYWJkMWRjMzJmYTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "resumen": "Un grupo secreto de cazadores de monstruos se reúne en la misteriosa Mansión Bloodstone tras la muerte de su líder, viéndose obligados a participar en una competencia mortal para reclamar una poderosa reliquia.",
     "duracion": "53m",
     "personajePrincipal": "Jack Russell / Werewolf by Night",
     "colorAcento": "#800020",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ad2fd4e8-062b-45b9-b2c5-8b8779873e48"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ad2fd4e8-062b-45b9-b2c5-8b8779873e48",
+    "ordenListaMaestra": 43,
+    "prioridad": "complementaria"
   },
   {
     "id": "black-panther-wakanda-forever-38",
@@ -1248,14 +1388,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-11-11",
     "ordenEstreno": 38,
-    "ordenCronologico": 54,
+    "ordenCronologico": 42,
     "fase": "Fase 4",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BYWY5NDY1ZjItZDQxMy00MTAzLTgyOGQtNTQxYjFiMzZjMjUyXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Tras la muerte de T'Challa, la nación de Wakanda enfrenta amenazas extranjeras. Su gente recurre a su historia y a las habilidades de la reina Ramonda, Shuri, Nakia y Okoye para proteger su legado.",
     "duracion": "2h 41m",
     "personajePrincipal": "Queen Ramonda",
     "colorAcento": "#A52A2A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-86e14fdb-3841-4282-ad38-07c8c4aab4b6"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-86e14fdb-3841-4282-ad38-07c8c4aab4b6",
+    "ordenListaMaestra": 42,
+    "prioridad": "recomendada"
   },
   {
     "id": "guardians-galaxy-holiday-special",
@@ -1265,14 +1407,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-11-25",
     "ordenEstreno": 38,
-    "ordenCronologico": 55,
+    "ordenCronologico": 44,
     "fase": "Fase 4",
     "urlPoster": "https://preview.redd.it/official-poster-for-the-guardians-of-the-galaxy-holiday-v0-n0808j5e31w91.jpg?auto=webp&s=13bddf3bc80971c60aeea7b69a96657dcdf92ba8",
     "resumen": "Con el objetivo de alegrarle la Navidad a un melancólico Peter Quill, los guardianes Mantis y Drax viajan a la Tierra con la misión de secuestrar al actor Kevin Bacon para entregárselo como el regalo perfecto.",
     "duracion": "44m",
     "personajePrincipal": "Mantis & Drax",
     "colorAcento": "#166534",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1a15fe60-3236-4242-a699-a4e3392cf112"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1a15fe60-3236-4242-a699-a4e3392cf112",
+    "ordenListaMaestra": 44,
+    "prioridad": "recomendada"
   },
   {
     "id": "ant-man-quantumania-39",
@@ -1282,14 +1426,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-02-17",
     "ordenEstreno": 39,
-    "ordenCronologico": 62,
+    "ordenCronologico": 55,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMThkYWY5ZjQtYjJlMS00MDFmLWFkYzEtODEzZjg5YWFmMGY4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Scott Lang y Hope Van Dyne exploran el reino cuántico, donde se enfrentan al ente Kang el Conquistador que amenaza el multiverso. Deben detenerlo antes de que escape a la Tierra.",
     "duracion": "1h 58m",
     "personajePrincipal": "Scott Lang / Ant-Man",
     "colorAcento": "#FFDB29",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-eb1453f3-48aa-4af0-85f5-8ca4916c7415"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-eb1453f3-48aa-4af0-85f5-8ca4916c7415",
+    "ordenListaMaestra": 55,
+    "prioridad": "recomendada"
   },
   {
     "id": "guardians-of-the-galaxy-vol-3-40",
@@ -1299,14 +1445,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-05-05",
     "ordenEstreno": 40,
-    "ordenCronologico": 63,
+    "ordenCronologico": 56,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Los Guardianes deben proteger a Rocket Raccoon de su oscuro pasado mientras se enfrentan a un poderoso enemigo llamado Adam Warlock, que puede alterar el destino del grupo.",
     "duracion": "2h 30m",
     "personajePrincipal": "Peter Quill / Star-Lord",
     "colorAcento": "#FF8F1C",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-820f0ded-3254-42c5-a7e4-7c044ff6dd65"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-820f0ded-3254-42c5-a7e4-7c044ff6dd65",
+    "ordenListaMaestra": 56,
+    "prioridad": "recomendada"
   },
   {
     "id": "i-am-groot-s2",
@@ -1316,14 +1464,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-09-06",
     "ordenEstreno": 40,
-    "ordenCronologico": 18,
+    "ordenCronologico": 97,
     "fase": "Especiales UCM",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/I_Am_Groot_-_Segunda_Temporada_-_Primer_p%C3%B3ster.png/revision/latest?cb=20230806172732&path-prefix=es",
     "resumen": "Segunda temp. de aventuras donde Baby Groot explora el universo a bordo de las naves de los Guardianes, encontrándose con criaturas extrañas y nuevos mundos.",
     "duracion": "5 cortos",
     "personajePrincipal": "Baby Groot",
     "colorAcento": "#16A34A",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba",
+    "prioridad": "opcional"
   },
   {
     "id": "secret-invasion-2023",
@@ -1333,14 +1482,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-06-21",
     "ordenEstreno": 40.2,
-    "ordenCronologico": 63.2,
+    "ordenCronologico": 57,
     "fase": "Fase 5",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-oYlC2D7H2dEwotBDbM7tXH1z9AkPeUeHvYOjPA4gBlvihTKzIfXv3Go&s=10",
     "resumen": "Nick Furia se entera de una invasión clandestina en la Tierra por parte de una facción de Skrulls cambiaformas. Furia se une a sus aliados, incluidos Everett Ross, Maria Hill y Talos, para iniciar una carrera contrarreloj, frustrar la inminente toma del planeta y salvar a la humanidad.",
     "duracion": "6 episodios",
     "personajePrincipal": "Nick Furia & Talos",
     "colorAcento": "#15803D",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-4cfe6313-7f5e-4544-af84-d31bf718f65a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-4cfe6313-7f5e-4544-af84-d31bf718f65a",
+    "ordenListaMaestra": 57,
+    "prioridad": "complementaria"
   },
   {
     "id": "loki-s2",
@@ -1350,14 +1501,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-10-05",
     "ordenEstreno": 41,
-    "ordenCronologico": 64,
+    "ordenCronologico": 58,
     "fase": "Fase 5",
     "urlPoster": "https://preview.redd.it/official-poster-for-loki-season-2-v0-mjczxxkptafb1.jpg?auto=webp&s=b52be74ed745f4c481074ffd739feb43c7c0214f",
     "resumen": "Loki navega por un Multiverso en constante expansión y cada vez más peligroso para reparar el Telar del Tiempo y encontrar su propósito supremo.",
     "duracion": "6 episodios",
     "personajePrincipal": "Loki Dios de las Historias",
     "colorAcento": "#10B981",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50",
+    "ordenListaMaestra": 58,
+    "prioridad": "esencial"
   },
   {
     "id": "the-marvels-41",
@@ -1367,14 +1520,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-11-10",
     "ordenEstreno": 41,
-    "ordenCronologico": 65,
+    "ordenCronologico": 61,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BYzczOWM4MzItMWMyOS00ZDczLWIxMzctNzBmYTgzOTI1MzI3XkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Carol Danvers (Capitana Marvel), Kamala Khan (Ms. Marvel) y Monica Rambeau (Photon) intercambian poderes inexplicablemente. Deberán unirse para lidiar con la amenaza cósmica que surge de esta conexión.",
     "duracion": "1h 51m",
     "personajePrincipal": "Carol Danvers / Capitana Marvel",
     "colorAcento": "#DA2727",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-75c90eca-8969-4edb-ac1a-7165cff2671c"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-75c90eca-8969-4edb-ac1a-7165cff2671c",
+    "ordenListaMaestra": 61,
+    "prioridad": "recomendada"
   },
   {
     "id": "what-if-s2",
@@ -1384,14 +1539,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-12-22",
     "ordenEstreno": 42,
-    "ordenCronologico": 66,
+    "ordenCronologico": 60,
     "fase": "Multiverso Animado",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/1/1e/What_If_-_Segunda_Temporada_-_P%C3%B3ster_2.png/revision/latest?cb=20231214031113&path-prefix=es",
     "resumen": "Introduce a Kahhori, una joven mohawk que descubre el Teseracto, además de mostrar mundos extraños como un universo ambientado en el año 1602.",
     "duracion": "9 episodios",
     "personajePrincipal": "Kahhori / Variado",
     "colorAcento": "#E6CE68",
-    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f",
+    "ordenListaMaestra": 60,
+    "prioridad": "complementaria"
   },
   {
     "id": "deadpool-wolverine-42",
@@ -1401,14 +1558,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-07-26",
     "ordenEstreno": 42,
-    "ordenCronologico": 75,
+    "ordenCronologico": 54,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Deadpool y Wolverine atraviesan la ruptura del multiverso tras los eventos de *Endgame*. Se unen para resolver los caos temporales que amenazan la existencia misma de su universo.",
     "duracion": "2h 08m",
     "personajePrincipal": "Wade Wilson / Deadpool",
     "colorAcento": "#02FFD8",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-120ae1e6-2240-4924-a4ce-f8de6e28b0b1"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-120ae1e6-2240-4924-a4ce-f8de6e28b0b1",
+    "ordenListaMaestra": 54,
+    "prioridad": "esencial"
   },
   {
     "id": "echo-2024",
@@ -1418,14 +1577,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-01-09",
     "ordenEstreno": 42.1,
-    "ordenCronologico": 66.2,
+    "ordenCronologico": 62,
     "fase": "Fase 5",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIfokgpHJZ21E9qbMA8P7KXIuHo3AUhojrO2zuG6ksJA&s",
     "resumen": "La historia de origen de Maya Lopez, cuyo comportamiento despiadado en la ciudad de Nueva York termina pasándole factura en su pueblo natal. Maya debe enfrentarse a su pasado, reconectarse con sus raíces nativas americanas y abrazar el significado de la familia y la comunidad para poder seguir adelante mientras es perseguida por el imperio criminal de Wilson Fisk (Kingpin).",
     "duracion": "5 episodios",
     "personajePrincipal": "Maya Lopez / Echo",
     "colorAcento": "#B91C1C",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c9aa47d-88c2-455b-a63b-4be76b666a55"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c9aa47d-88c2-455b-a63b-4be76b666a55",
+    "ordenListaMaestra": 62,
+    "prioridad": "complementaria"
   },
   {
     "id": "x-men-97-s1",
@@ -1435,14 +1596,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-03-20",
     "ordenEstreno": 42.2,
-    "ordenCronologico": 66.3,
+    "ordenCronologico": 85,
     "fase": "Saga X-Men",
     "urlPoster": "https://stars-my-destination.com/wp-content/uploads/2024/05/image-50.png",
     "resumen": "Continuación directa de la legendaria serie animada de los 90. Tras la pérdida del Profesor X, los X-Men se ven forzados a enfrentar un peligroso e incierto futuro liderados inesperadamente por Magneto.",
     "duracion": "10 episodios",
     "personajePrincipal": "Cíclope & Magneto",
     "colorAcento": "#FFC107",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34",
+    "ordenListaMaestra": 85,
+    "prioridad": "recomendada"
   },
   {
     "id": "agatha-all-along-2024",
@@ -1452,14 +1615,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-09-18",
     "ordenEstreno": 42.8,
-    "ordenCronologico": 75.2,
+    "ordenCronologico": 63,
     "fase": "Fase 5",
     "urlPoster": "https://preview.redd.it/new-poster-for-agatha-all-along-v0-ui1mpmng08md1.jpeg?auto=webp&s=c20c56e5164b54eb47865193a8370c62b8f6b57d",
     "resumen": "Tres años después de perder sus poderes ante Wanda Maximoff, la infame bruja Agatha Harkness logra liberarse del hechizo de Westview gracias a la ayuda de un misterioso adolescente gótico. Sin su magia, Agatha y el joven reclutan a un desesperado e improvisado aquelarre de brujas para adentrarse y superar las pruebas de la legendaria Senda de las Brujas, un camino que promete devolverle a cada una lo que ha perdido.",
     "duracion": "9 episodios",
     "personajePrincipal": "Agatha Harkness",
     "colorAcento": "#7E22CE",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5e474669-a4a2-4b90-a928-5ae7f845090c"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5e474669-a4a2-4b90-a928-5ae7f845090c",
+    "ordenListaMaestra": 63,
+    "prioridad": "recomendada"
   },
   {
     "id": "captain-america-brave-new-world-43",
@@ -1469,14 +1634,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-07-03",
     "ordenEstreno": 43,
-    "ordenCronologico": 75,
+    "ordenCronologico": 81,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNDRjY2E0ZmEtN2QwNi00NTEwLWI3MWItODNkMGYwYWFjNGE0XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
     "resumen": "El nuevo Capitán América (Sam Wilson) toma su rol oficial mientras enfrenta a viejos enemigos que desafían la paz mundial. Debe demostrar que puede llenar las botas del legado de Steve Rogers.",
     "duracion": "2h 10m",
     "personajePrincipal": "Sam Wilson / Capitán América",
     "colorAcento": "#A2262F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3064ac7f-ef4d-4f89-b92f-b5524da92a72"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3064ac7f-ef4d-4f89-b92f-b5524da92a72",
+    "ordenListaMaestra": 81,
+    "prioridad": "recomendada"
   },
   {
     "id": "thunderbolts-44",
@@ -1486,14 +1653,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-12-20",
     "ordenEstreno": 44,
-    "ordenCronologico": 75,
+    "ordenCronologico": 82,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNDIzNGUwZmYtODM0Yy00NjA3LTgxOGUtOTY0ZGM5MjBkM2I3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Un equipo de antihéroes y villanos redimidos, liderados por el general Ross, es reunido para misiones clandestinas. Deben ganarse la confianza de sus superiores mientras luchan con su propia moral.",
     "duracion": "2h 15m",
     "personajePrincipal": "James 'Rhodey' Rhodes / Máquina de Guerra",
     "colorAcento": "#4A5568",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-f51dce23-7d8f-490a-9f0c-be1b5432c2a9"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-f51dce23-7d8f-490a-9f0c-be1b5432c2a9",
+    "ordenListaMaestra": 82,
+    "prioridad": "esencial"
   },
   {
     "id": "what-if-s3",
@@ -1503,14 +1672,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-12-22",
     "ordenEstreno": 45,
-    "ordenCronologico": 76,
+    "ordenCronologico": 98,
     "fase": "Multiverso Animado",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/e8/What_If_-_Tercera_temporada_-_P%C3%B3ster.png/revision/latest?cb=20241111182039&path-prefix=es",
     "resumen": "Cierra la historia multiversal explorando géneros variados, incluyendo un combate contra vengadores mecánicos y realidades inspiradas en el salvaje oeste.",
     "duracion": "8 episodios",
     "personajePrincipal": "El Vigilante / Variado",
     "colorAcento": "#E6CE68",
-    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f",
+    "prioridad": "opcional"
   },
   {
     "id": "eye-of-wakanda-45",
@@ -1520,14 +1690,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-08-06",
     "ordenEstreno": 45,
-    "ordenCronologico": 74,
+    "ordenCronologico": 99,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZjhhOTE5ODgtNDFjOS00ZTdlLTgzYjAtNGU1NmM4YzkwYWMxXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Serie que sigue a Okoye y al Dora Milaje de Wakanda mientras lideran la seguridad nacional de Wakanda después de los eventos de *Wakanda Forever*, enfrentándose a nuevas amenazas.",
     "duracion": "4 episodios",
     "personajePrincipal": "Okoye",
     "colorAcento": "#B43E3E",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8d16eb3d-b7e5-4c43-abda-a281be4d284a"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8d16eb3d-b7e5-4c43-abda-a281be4d284a",
+    "prioridad": "opcional"
   },
   {
     "id": "marvel-zombies-46",
@@ -1537,14 +1708,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-09-24",
     "ordenEstreno": 46,
-    "ordenCronologico": 75,
+    "ordenCronologico": 100,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNGNkYjI3ZWUtN2MzMS00NDg5LWE5MmYtZGE4Zjc0OGVhODM4XkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Serie animada en la que el multiverso del UCM es infectado por una plaga zombi. Superhéroes icónicos se ven transformados y luchan por la supervivencia en un mundo postapocalíptico.",
     "duracion": "4 episodios",
     "personajePrincipal": "Zombie Spider-Man",
     "colorAcento": "#5C0A06",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9",
+    "prioridad": "opcional"
   },
   {
     "id": "wonder-man-47",
@@ -1554,14 +1726,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2026,
     "fechaLanzamiento": "2026-01-27",
     "ordenEstreno": 47,
-    "ordenCronologico": 75,
+    "ordenCronologico": 86,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMDk5YzQ3NjQtNzY3MC00NzM3LWE4NzYtZGRkNDQxYjdiZDkyXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Una comedia de acción donde un actor transformado en superhéroe (Wonder Man) debe equilibrar su carrera en Hollywood con su nueva responsabilidad de proteger el mundo.",
     "duracion": "8 episodios",
     "personajePrincipal": "Simon Williams / Wonder Man",
     "colorAcento": "#00856D",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-25ee768f-06e3-491c-ad8f-876b4c87ac42?distributionPartner=google"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-25ee768f-06e3-491c-ad8f-876b4c87ac42?distributionPartner=google",
+    "ordenListaMaestra": 86,
+    "prioridad": "recomendada"
   },
   {
     "id": "your-friendly-neighborhood-spider-man-s1",
@@ -1571,14 +1745,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-01-29",
     "ordenEstreno": 47.8,
-    "ordenCronologico": 70.8,
+    "ordenCronologico": 84,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/d9/YFNSM_-_Primera_temporada_-_P%C3%B3ster.png/revision/latest?cb=20250106025901&path-prefix=es",
     "resumen": "Explora la historia del origen de Peter Parker y sus primeros días usando la identidad de Spider-Man. La trama se desarrolla en una línea temporal alternativa del MCU dentro del multiverso. En esta realidad, Peter obtiene sus habilidades a causa de una paradoja temporal provocada por el Doctor Strange. El cambio principal de este universo es que Norman Osborn se convierte en el mentor de Peter en lugar de Tony Stark, alterando por completo su camino heroico mientras se prepara para la escuela secundaria.",
     "duracion": "10 episodios",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E11D48",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7",
+    "ordenListaMaestra": 84,
+    "prioridad": "complementaria"
   },
   {
     "id": "daredevil-born-again-s1",
@@ -1588,14 +1764,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-03-04",
     "ordenEstreno": 48,
-    "ordenCronologico": 71,
+    "ordenCronologico": 78,
     "fase": "Fase 5",
     "urlPoster": "https://i.ebayimg.com/images/g/IakAAOSw9AVnvj8t/s-l1200.jpg",
     "resumen": "Matt Murdock, un abogado ciego de Hell's Kitchen, regresa para enfrentarse a Kingpin y lidiar con las consecuencias de su doble vida como justiciero.",
     "duracion": "9 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
     "colorAcento": "#880E4F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7",
+    "ordenListaMaestra": 78,
+    "prioridad": "esencial"
   },
   {
     "id": "ironheart-49",
@@ -1605,14 +1783,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-06-24",
     "ordenEstreno": 49,
-    "ordenCronologico": 74,
+    "ordenCronologico": 64,
     "fase": "Fase 5",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BN2EzMGZhOTktYjVhZi00NmIwLWIxZDEtNWUxZTQyNjhkYWQ4XkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Riri Williams, una joven ingeniera prodigio, crea su propia armadura al estilo Iron Man. Con el apoyo de Tony Stark (en flashbacks) debe enfrentar a nuevos villanos que amenazan su universidad y la ciudad.",
     "duracion": "6 episodios",
     "personajePrincipal": "Riri Williams / Ironheart",
     "colorAcento": "#00AEEF",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b2b50b9a-a055-4b31-a609-8ec46f3add98?distributionPartner=google"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b2b50b9a-a055-4b31-a609-8ec46f3add98?distributionPartner=google",
+    "ordenListaMaestra": 64,
+    "prioridad": "complementaria"
   },
   {
     "id": "fantastic-four-first-steps-2025",
@@ -1622,14 +1802,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-07-25",
     "ordenEstreno": 50,
-    "ordenCronologico": 74.5,
+    "ordenCronologico": 83,
     "fase": "Fase 6",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/5/57/The_Fantastic_Four_First_Steps_-_P%C3%B3ster_final.png/revision/latest?cb=20250625200315&path-prefix=es",
     "resumen": "Ambientada en un deslumbrante mundo retrofuturista de los años 60, la Primera Familia de Marvel integrada por Reed Richards (Pedro Pascal), Sue Storm (Vanessa Kirby), Johnny Storm (Joseph Quinn) y Ben Grimm (Ebon Moss-Bachrach) debe defender la Tierra del temible devorador de mundos Galactus y su heraldo Silver Surfer.",
     "duracion": "2h 15m",
     "personajePrincipal": "Los 4 Fantásticos (Reed, Sue, Johnny, Ben)",
     "colorAcento": "#0055A5",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2142a7a9-4c49-438d-a492-296c4e08b714"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2142a7a9-4c49-438d-a492-296c4e08b714",
+    "ordenListaMaestra": 83,
+    "prioridad": "esencial"
   },
   {
     "id": "daredevil-born-again-s2",
@@ -1639,14 +1821,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2026,
     "fechaLanzamiento": "2026-03-03",
     "ordenEstreno": 51,
-    "ordenCronologico": 76,
+    "ordenCronologico": 87,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNDBkMWRhMzEtM2M0Ny00OGZhLThkZGMtMTY1NWUwZWNhODdiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Segunda temp. de Born Again donde las ramificaciones políticas y la persecución de Kingpin obligan a Daredevil a liderar la resistencia urbana.",
     "duracion": "8 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
     "colorAcento": "#880E4F",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7",
+    "ordenListaMaestra": 87,
+    "prioridad": "esencial"
   },
   {
     "id": "punisher-one-last-kill",
@@ -1656,14 +1840,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2026,
     "fechaLanzamiento": "2026-05-12",
     "ordenEstreno": 55,
-    "ordenCronologico": 80,
+    "ordenCronologico": 101,
     "fase": "Fase 6",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTYxrR-uu-Q8ZXg2ZPfVjDDp4hvfX7l0q5hlh3AOQ5cNwhhYA3IW_VGJs&s=10",
     "resumen": "Un Frank devastado vive al margen de la sociedad intentando dejar atrás las armas. Sin embargo, se ve forzado a defenderse cuando la villana Ma Gnucci le pone una recompensa millonaria a su cabeza en venganza por la muerte de su familia, desatando una cacería implacable.",
     "duracion": "48m",
     "personajePrincipal": "Frank Castle / Punisher",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878",
+    "prioridad": "opcional"
   },
   {
     "id": "x-men-97-s2",
@@ -1673,14 +1858,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2026,
     "fechaLanzamiento": "2026-07-01",
     "ordenEstreno": 55.5,
-    "ordenCronologico": 80.5,
+    "ordenCronologico": 102,
     "fase": "Saga X-Men",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzNCucgjs9LnJg-HYWBCduIdR4PVEpDoWYOazOjZsn3hzXEheT4USxMZy1&s=10",
     "resumen": "Segunda temporada de X-Men '97 donde el equipo de mutantes queda dividido a través del tiempo tras la batalla contra Bastion, explorando el Antiguo Egipto con En Sabah Nur (Apocalipsis) y el futuro lejano con Bishop.",
     "duracion": "10 episodios",
     "personajePrincipal": "Wolverine, Cíclope & Apocalipsis",
     "colorAcento": "#FFC107",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34",
+    "prioridad": "opcional"
   },
   {
     "id": "up-spider-man-4",
@@ -1691,14 +1877,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-07-30",
     "fechaEsExacta": true,
     "ordenEstreno": 56,
-    "ordenCronologico": 81,
+    "ordenCronologico": 88,
     "fase": "Fase 6",
     "urlPoster": "https://preview.redd.it/new-spider-man-brand-new-day-posters-v0-0jon411xh2vg1.jpg?width=1080&crop=smart&auto=webp&s=ce2923b014959315129a2238151d8d72869d8166",
     "resumen": "Peter Parker inicia un nuevo capítulo urbano en Nueva York sin el recuerdo de sus seres queridos tras los eventos de Sin Camino a Casa.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#C81D25",
-    "urlOficial": "https://www.sonypictures.com/movies"
+    "urlOficial": "https://www.sonypictures.com/movies",
+    "ordenListaMaestra": 88,
+    "prioridad": "esencial"
   },
   {
     "id": "up-yfnsm-s2",
@@ -1709,14 +1897,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-09-21",
     "fechaEsExacta": false,
     "ordenEstreno": 57,
-    "ordenCronologico": 82,
+    "ordenCronologico": 103,
     "fase": "Fase 6",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKgG5YiXdKAl_O4JaJDcD7CXX2f3JoHGqexQMSqPv8PxLH5Xu8gYxfOzBj&s=10",
     "resumen": "Titulada inicialmente bajo el concepto de Sophomore Year, esta temporada sigue los desafíos de Peter en su segundo año con la llegada de Venom, Gwen Stacy y Daredevil.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#E11D48",
-    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7"
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7",
+    "prioridad": "opcional"
   },
   {
     "id": "up-vision-quest",
@@ -1727,13 +1916,14 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-10-14",
     "fechaEsExacta": true,
     "ordenEstreno": 58,
-    "ordenCronologico": 83,
+    "ordenCronologico": 104,
     "fase": "Fase 6",
     "urlPoster": "https://i.redd.it/9w9wfpirbpeb1.jpg",
     "resumen": "Visión Blanco intenta recuperar sus recuerdos, su propósito y su humanidad en una misteriosa búsqueda personal.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Visión Blanco",
-    "colorAcento": "#607D8B"
+    "colorAcento": "#607D8B",
+    "prioridad": "opcional"
   },
   {
     "id": "up-avengers-doomsday",
@@ -1744,13 +1934,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-12-18",
     "fechaEsExacta": true,
     "ordenEstreno": 59,
-    "ordenCronologico": 84,
+    "ordenCronologico": 89,
     "fase": "Fase 6",
     "urlPoster": "https://preview.redd.it/official-poster-for-avengers-doomsday-v0-4xcitk12vdeh1.jpeg?width=1080&crop=smart&auto=webp&s=39eb06fd7152854c766b0ec0481b1e558998bc56",
     "resumen": "Los héroes de múltiples dimensiones se unen para enfrentar al temible Doctor Victor Von Doom interpretado por Robert Downey Jr.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Doctor Doom & Vengadores",
-    "colorAcento": "#4CAF50"
+    "colorAcento": "#4CAF50",
+    "ordenListaMaestra": 89,
+    "prioridad": "esencial"
   },
   {
     "id": "up-daredevil-born-again-s3",
@@ -1761,13 +1953,14 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2027-03-01",
     "fechaEsExacta": false,
     "ordenEstreno": 60,
-    "ordenCronologico": 85,
+    "ordenCronologico": 105,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNDBkMWRhMzEtM2M0Ny00OGZhLThkZGMtMTY1NWUwZWNhODdiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
     "resumen": "Tercera temp. producida por Marvel Television cuyo rodaje concluyó oficialmente en julio de 2026.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Matt Murdock / Daredevil",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "prioridad": "opcional"
   },
   {
     "id": "up-avengers-secret-wars",
@@ -1778,13 +1971,15 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2027-12-17",
     "fechaEsExacta": true,
     "ordenEstreno": 61,
-    "ordenCronologico": 86,
+    "ordenCronologico": 90,
     "fase": "Fase 6",
     "urlPoster": "https://i.pinimg.com/736x/42/6c/88/426c88866e6d624f42848752ba8d1b82.jpg",
     "resumen": "La colisión definitiva del Multiverso en Battleworld que redefinirá el futuro del Universo Cinematográfico de Marvel.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Vengadores Multiversales",
-    "colorAcento": "#9C27B0"
+    "colorAcento": "#9C27B0",
+    "ordenListaMaestra": 90,
+    "prioridad": "esencial"
   },
   {
     "id": "up-armor-wars",
@@ -1795,12 +1990,13 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2027-01-01",
     "fechaEsExacta": false,
     "ordenEstreno": 62,
-    "ordenCronologico": 87,
+    "ordenCronologico": 106,
     "fase": "Fase 6",
     "urlPoster": "https://i.pinimg.com/736x/84/a6/76/84a676ddd7b6cbd4470349727ac23d75.jpg",
     "resumen": "James Rhodes (War Machine) debe enfrentarse al mayor temor de Tony Stark: que su tecnología avanzada caiga en las manos equivocadas.",
     "duracion": "Por anunciar",
     "personajePrincipal": "James Rhodes / War Machine",
-    "colorAcento": "#607D8B"
+    "colorAcento": "#607D8B",
+    "prioridad": "opcional"
   }
 ];

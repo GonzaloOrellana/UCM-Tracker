@@ -5,6 +5,7 @@ export const defaultFilters: FilterState = {
   search: '',
   phase: 'all',
   type: 'all',
+  priority: 'all',
   status: 'all',
   order: 'release',
 };
@@ -32,6 +33,11 @@ export function useMCUFilters(items: MCUItem[], watchedIds: Set<string>) {
 
         // Type Filter
         if (filters.type !== 'all' && item.tipo !== filters.type) {
+          return false;
+        }
+
+        // Priority Filter
+        if (filters.priority !== 'all' && item.prioridad !== filters.priority) {
           return false;
         }
 
