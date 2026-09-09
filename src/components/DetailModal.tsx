@@ -130,6 +130,41 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
     return 'bg-zinc-900 hover:bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.35)]';
   };
 
+  const renderPlatformLogo = () => {
+    if (isMercadoPlay) {
+      return (
+        <img
+          src="/logos-plataformas/mercado-libre-logo.png"
+          alt="Mercado Libre"
+          className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain shrink-0 transition-transform group-hover/watch:scale-110"
+        />
+      );
+    }
+    if (isPrimeVideo) {
+      return (
+        <img
+          src="/logos-plataformas/amazon-prime-video.png"
+          alt="Prime Video"
+          className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain rounded-xs shrink-0 shadow-2xs transition-transform group-hover/watch:scale-110"
+        />
+      );
+    }
+    if (isDisney) {
+      return (
+        <span className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full overflow-hidden shrink-0 flex items-center justify-center transition-transform group-hover/watch:scale-110 shadow-2xs">
+          <img
+            src="/logos-plataformas/Disney_plus_icon.png"
+            alt="Disney+"
+            className="w-full h-full object-cover scale-110"
+          />
+        </span>
+      );
+    }
+    return (
+      <ExternalLink className="w-3 h-3 text-white/70 group-hover/watch:text-white transition-colors" />
+    );
+  };
+
   const getTypeText = () => {
     if (!item) return '';
     switch (item.tipo) {
@@ -395,11 +430,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                   title={watchTooltip}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${getWatchButtonClasses()}`}
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${getWatchButtonClasses()}`}
                 >
                   <Play className="w-3.5 h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
                   <span>Ver ahora</span>
-                  <ExternalLink className={`w-3 h-3 transition-colors ${isMercadoPlay ? 'text-zinc-700 group-hover/watch:text-zinc-950' : 'text-white/70 group-hover/watch:text-white'}`} />
+                  {renderPlatformLogo()}
                 </a>
 
                 <div

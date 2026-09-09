@@ -15,7 +15,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "La mítica serie animada de los años 90 que sigue a Charles Xavier, Wolverine, Cíclope, Tormenta, Titania, Gambito, Bestia y Júpiter defendiendo a mutantes y humanos de las amenazas de Magneto, Sentinelas, Apocalipsis y Mr. Siniestro.",
     "duracion": "5 temporadas",
     "personajePrincipal": "Wolverine & X-Men",
-    "colorAcento": "#FFC107"
+    "colorAcento": "#FFC107",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8eaac297-16fe-4d83-bb0f-ca0a280b8b82"
   },
   {
     "id": "spider-man-animated-series-1994",
@@ -31,7 +32,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "La aclamada serie animada de los 90 que relata las aventuras de Peter Parker equilibrando su vida universitaria en la Universidad Empire State con su lucha contra villanos icónicos como Duende Verde, Venom, Doctor Octopus, Carnage y Kingpin.",
     "duracion": "5 temporadas",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E11D48"
+    "colorAcento": "#E11D48",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-404d8ab1-36ab-4e54-92da-9aa0c847c8c9"
   },
   {
     "id": "x-men-2000",
@@ -47,7 +49,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "En un mundo donde los mutantes sufren persecución, el Profesor Charles Xavier y sus X-Men intentan proteger a la humanidad y detener a Magneto, quien planea transformar a los líderes mundiales en mutantes.",
     "duracion": "1h 44m",
     "personajePrincipal": "Wolverine & Profesor X",
-    "colorAcento": "#FFC107"
+    "colorAcento": "#FFC107",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e9f59c82-de76-4a18-a849-192532ff9b2d"
   },
   {
     "id": "spider-man-1-tobey",
@@ -80,7 +83,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras un ataque mutante a la Casa Blanca, el militar William Stryker ataca la mansión del Profesor X. Los X-Men se ven forzados a formar una alianza con Magneto para salvar a la raza mutante de un genocidio.",
     "duracion": "2h 14m",
     "personajePrincipal": "Wolverine & X-Men",
-    "colorAcento": "#FFC107"
+    "colorAcento": "#FFC107",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-54748282-5bf7-496c-8db9-a9aa3b7f57ac"
   },
   {
     "id": "spider-man-2-tobey",
@@ -113,7 +117,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Cuatro astronautas y el financista Victor Von Doom sufren una mutación genética en el espacio tras exponerse a una tormenta de radiación cósmica. De regreso en la Tierra, el científico Reed Richards, Sue Storm, Johnny Storm y Ben Grimm descubren que han desarrollado superpoderes increíbles. Mientras aprenden a usar sus nuevas habilidades como un equipo unido y mediático, deben detener a Von Doom, quien se ha transformado en un letal villano de metal empeñado en destruirlos.",
     "duracion": "1h 46m",
     "personajePrincipal": "Los 4 Fantásticos & Dr. Doom",
-    "colorAcento": "#0055A5"
+    "colorAcento": "#0055A5",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d6592baa-0dc6-4549-a0cb-3b93a3b0e260"
   },
   {
     "id": "x-men-3-the-last-stand-2006",
@@ -129,7 +134,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "La invención de una 'cura' para las mutaciones divide a la comunidad mutante. Mientras Magneto declara la guerra a la humanidad, Jean Grey resurge como la destructiva Fénix Oscura.",
     "duracion": "1h 44m",
     "personajePrincipal": "Wolverine & Jean Grey",
-    "colorAcento": "#D32F2F"
+    "colorAcento": "#D32F2F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e0f6bbed-cea5-41c1-b787-478f21255898"
   },
   {
     "id": "spider-man-3-tobey",
@@ -179,7 +185,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Mientras Reed y Sue preparan su boda, una misteriosa estela plateada altera el clima de la Tierra y crea cráteres gigantescos por todo el planeta. El equipo descubre que el responsable es el Deslizador de Plata (Silver Surfer), un heraldo cósmico que prepara al mundo para ser devorado por Galactus. Para salvar la Tierra de una destrucción total, los héroes deben unir fuerzas con el ejército de los Estados Unidos y con su peor enemigo, el Doctor Doom, quien ha regresado con intenciones ocultas.",
     "duracion": "1h 32m",
     "personajePrincipal": "Los 4 Fantásticos & Silver Surfer",
-    "colorAcento": "#0055A5"
+    "colorAcento": "#0055A5",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-06810fd3-a12e-4185-829b-36b3c814ce97"
   },
   {
     "id": "iron-man-1",
@@ -195,7 +202,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tony Stark, un multimillonario fabricante de armas, es secuestrado y construye un traje blindado para escapar, convirtiéndose en Iron Man para combatir el crimen.",
     "duracion": "2h 06m",
     "personajePrincipal": "Tony Stark / Iron Man",
-    "colorAcento": "#E62429"
+    "colorAcento": "#E62429",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0c520152-b81f-4c20-9310-003debd1947e"
   },
   {
     "id": "the-incredible-hulk-2",
@@ -211,7 +219,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Bruce Banner se convierte en el monstruo Hulk tras un experimento fallido con rayos gamma, y debe encontrar una cura mientras es perseguido por las autoridades.",
     "duracion": "1h 52m",
     "personajePrincipal": "Bruce Banner / Hulk",
-    "colorAcento": "#4B8347"
+    "colorAcento": "#4B8347",
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0TISNLS9TOLEJR2I20MHX4FGD8"
   },
   {
     "id": "x-men-origins-wolverine-2009",
@@ -227,7 +236,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Explora el violento pasado de Logan, su compleja relación con su hermano Victor Creed (Dientes de Sable) y el cruel experimento militar del programa Arma X que implantó adamantium en sus huesos.",
     "duracion": "1h 47m",
     "personajePrincipal": "Logan / Wolverine",
-    "colorAcento": "#F57C00"
+    "colorAcento": "#F57C00",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-82480f3f-6f11-4feb-8c4e-b32c0aca2c53"
   },
   {
     "id": "iron-man-2-3",
@@ -243,7 +253,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tony Stark lidia con problemas de salud y la presión pública al revelar su identidad como Iron Man, mientras enfrenta a un enemigo inventivo y a rivalidades corporativas.",
     "duracion": "2h 04m",
     "personajePrincipal": "Tony Stark / Iron Man",
-    "colorAcento": "#E62429"
+    "colorAcento": "#E62429",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85c5529d-c053-4fa4-9957-4906eb5aedc6"
   },
   {
     "id": "thor-4",
@@ -259,7 +270,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Thor, el príncipe de Asgard, es desterrado a la Tierra por su arrogancia. Debe demostrar su dignidad y aprende a ser un héroe mientras enfrenta al malvado Loki.",
     "duracion": "1h 55m",
     "personajePrincipal": "Thor Odinson",
-    "colorAcento": "#0E74BF"
+    "colorAcento": "#0E74BF",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-479d41e3-8438-4ba4-b93d-8223220e069c"
   },
   {
     "id": "x-men-first-class-2011",
@@ -291,7 +303,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Steve Rogers, un joven enclenque, se convierte en el super-soldado Capitán América durante la Segunda Guerra Mundial, luchando contra HYDRA y su villano Red Skull.",
     "duracion": "2h 04m",
     "personajePrincipal": "Steve Rogers / Capitán América",
-    "colorAcento": "#A2262F"
+    "colorAcento": "#A2262F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8e68c43a-117c-4f4d-b217-0db106a1a614"
   },
   {
     "id": "the-avengers-6",
@@ -307,7 +320,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Nick Fury del S.H.I.E.L.D. recluta a un equipo de héroes (Iron Man, Thor, Hulk, Capitán América, Viuda Negra y Ojo de Halcón) para detener la invasión de Loki y los Chitauri.",
     "duracion": "2h 23m",
     "personajePrincipal": "Varios (Los Vengadores)",
-    "colorAcento": "#393183"
+    "colorAcento": "#393183",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d2ab699b-67da-4906-a7a4-5bc542c953cf"
   },
   {
     "id": "the-amazing-spider-man-1-andrew",
@@ -323,7 +337,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker intenta descifrar el misterio de la desaparición de sus padres, lo que lo lleva a Oscorp y al laboratorio del Dr. Curt Connors, quien termina transformándose en el temible Lagarto.",
     "duracion": "2h 16m",
     "personajePrincipal": "Peter Parker / Spider-Man (Andrew Garfield)",
-    "colorAcento": "#0055A5"
+    "colorAcento": "#0055A5",
+    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.1ea9f6b8-151d-5fe1-5f3b-c897b6dd14cf?autoplay=0&ref_=atv_cf_strg_wb"
   },
   {
     "id": "agents-of-shield-7",
@@ -339,7 +354,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "El agente Phil Coulson lidera un equipo del S.H.I.E.L.D. que investiga casos inexplicables relacionados con las recientes invasiones alienígenas en la Tierra.",
     "duracion": "1 temp.",
     "personajePrincipal": "Phil Coulson",
-    "colorAcento": "#205081"
+    "colorAcento": "#205081",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb"
   },
   {
     "id": "thor-the-dark-world-8",
@@ -355,7 +371,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Thor debe salvar los Nueve Reinos del éter oscuro liberado por el elfo oscuro Malekith. Para ello une fuerzas con Jane Foster y su hermano Loki.",
     "duracion": "1h 52m",
     "personajePrincipal": "Thor Odinson",
-    "colorAcento": "#0E74BF"
+    "colorAcento": "#0E74BF",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c4f4e28-4152-4f64-90ec-8b7f682c33d4"
   },
   {
     "id": "iron-man-3-9",
@@ -371,7 +388,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tony Stark enfrenta las consecuencias de *Los Vengadores* y un nuevo enemigo, el Mandarín. Se ve obligado a luchar sin su armadura y a salvar a Pepper Potts.",
     "duracion": "2h 10m",
     "personajePrincipal": "Tony Stark / Iron Man",
-    "colorAcento": "#E62429"
+    "colorAcento": "#E62429",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e8569c2d-85ec-42a4-8811-b2618d494a40"
   },
   {
     "id": "the-amazing-spider-man-2-andrew",
@@ -420,7 +438,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Steve Rogers se enfrenta a un complot dentro del S.H.I.E.L.D. y a un misterioso asesino vestido de congelación. Junto a Black Widow, descubre una conspiración ligada a Hydra.",
     "duracion": "2h 16m",
     "personajePrincipal": "Steve Rogers / Capitán América",
-    "colorAcento": "#A2262F"
+    "colorAcento": "#A2262F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ef333a5c-b855-4d3e-a7d9-d9e142b6dc7d"
   },
   {
     "id": "guardians-of-the-galaxy-11",
@@ -436,7 +455,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un grupo de inadaptados cósmicos (Star-Lord, Gamora, Drax, Rocket y Groot) se unen para impedir que el villano Ronan use una poderosa gema para destruir el universo.",
     "duracion": "2h 01m",
     "personajePrincipal": "Peter Quill / Star-Lord",
-    "colorAcento": "#FF8F1C"
+    "colorAcento": "#FF8F1C",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c9ee959b-7249-4a4c-9708-9ffd1ddb00f1"
   },
   {
     "id": "guardians-of-the-galaxy-vol-2-12",
@@ -452,7 +472,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Los Guardianes descubren secretos sobre los orígenes de Peter Quill al enfrentarse al padre de Star-Lord, Ego, un ser celestial con planes de conquista.",
     "duracion": "2h 16m",
     "personajePrincipal": "Peter Quill / Star-Lord",
-    "colorAcento": "#FF8F1C"
+    "colorAcento": "#FF8F1C",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9fcd7087-c151-49dc-aeb9-b2f9943fd4e6"
   },
   {
     "id": "avengers-age-of-ultron-13",
@@ -468,7 +489,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Los Vengadores deben enfrentarse a su propia creación, la inteligencia artificial Ultrón, que amenaza con extinguir a la humanidad. Unen fuerzas con nuevos aliados.",
     "duracion": "2h 21m",
     "personajePrincipal": "Varios (Los Vengadores)",
-    "colorAcento": "#393183"
+    "colorAcento": "#393183",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-42329b99-0953-4f1a-9420-a0dbf7733e95"
   },
   {
     "id": "daredevil-netflix-s1",
@@ -484,7 +506,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Narra los orígenes de Matt Murdock, un abogado ciego con sentidos agudizados que combate el crimen nocturno en Hell's Kitchen enfrentando a Wilson Fisk.",
     "duracion": "13 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
   },
   {
     "id": "agent-carter-s1",
@@ -500,7 +523,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "En 1946, Peggy Carter debe lidiar con el trabajo administrativo en la SSR mientras ayuda secretamente a Howard Stark a limpiar su nombre tras ser acusado de vender armas a enemigos de Estados Unidos.",
     "duracion": "2 temporadas",
     "personajePrincipal": "Peggy Carter",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e4cbebda-a890-4e99-9a29-40d2162f7d46?distributionPartner=google"
   },
   {
     "id": "jessica-jones-s1",
@@ -516,7 +540,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Presenta a Jessica intentando reconstruir su vida cotidiana hasta que reaparece Kilgrave, un hombre del pasado capaz de controlar la mente de cualquier persona que la sometió a traumas profundos.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones & Kilgrave",
-    "colorAcento": "#4A2E59"
+    "colorAcento": "#4A2E59",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
   },
   {
     "id": "ant-man-14",
@@ -532,7 +557,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Scott Lang, un ladrón reformado, usa un traje que lo encoge para combatir la corporación Pym y descubre el misterioso mundo subatómico que contiene un peligro enorme.",
     "duracion": "1h 57m",
     "personajePrincipal": "Scott Lang / Ant-Man",
-    "colorAcento": "#FFDB29"
+    "colorAcento": "#FFDB29",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-af42798c-b9db-457f-b748-5e1f029c1ece"
   },
   {
     "id": "deadpool-1-2016",
@@ -548,7 +574,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un antiguo mercenario sometido a un cruento experimento para curar su cáncer adquiere poderes de curación rápida y un retorcido sentido del humor, persiguiendo al hombre que casi destruye su vida.",
     "duracion": "1h 48m",
     "personajePrincipal": "Wade Wilson / Deadpool",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-17854bdb-0121-4327-80a0-699fdecd1aaa"
   },
   {
     "id": "captain-america-civil-war-15",
@@ -564,7 +591,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un desacuerdo político provoca una división entre los Vengadores. El equipo se divide en dos bandos liderados por el Capitán América y Iron Man, enfrentándose entre sí.",
     "duracion": "2h 27m",
     "personajePrincipal": "Steve Rogers / Capitán América",
-    "colorAcento": "#A2262F"
+    "colorAcento": "#A2262F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2bd19267-1387-4b51-98e6-5189ff28e9c9"
   },
   {
     "id": "daredevil-netflix-s2",
@@ -580,7 +608,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Matt Murdock se enfrenta al vengativo justiciero Frank Castle (Punisher) y al regreso de Elektra Natchios para combatir a la mística organización La Mano.",
     "duracion": "13 episodios",
     "personajePrincipal": "Daredevil & Punisher",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
   },
   {
     "id": "luke-cage-s1",
@@ -612,7 +641,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "El arrogante cirujano Stephen Strange sufre un accidente que le impide operar. Busca sanar en Kamar-Taj y se convierte en el Hechicero Supremo para defender la Tierra de amenazas mágicas.",
     "duracion": "1h 55m",
     "personajePrincipal": "Stephen Strange / Doctor Strange",
-    "colorAcento": "#673AB7"
+    "colorAcento": "#673AB7",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-43a741e8-2369-4577-9bec-ef94f4aaae0b"
   },
   {
     "id": "iron-fist-s1",
@@ -628,7 +658,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras sobrevivir a un accidente aéreo y pasar quince años entrenando en la ciudad mística de K'un-Lun, el joven multimillonario Danny Rand regresa a Nueva York para reclamar el legado de su familia. Armado con un dominio excepcional del kung-fu y la capacidad de invocar el poder del Puño de Hierro, Danny debe enfrentarse a la corrupción de su propia corporación y combatir a la organización criminal secreta conocida como La Mano.",
     "duracion": "13 episodios",
     "personajePrincipal": "Danny Rand / Iron Fist",
-    "colorAcento": "#059669"
+    "colorAcento": "#059669",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0"
   },
   {
     "id": "spider-man-homecoming-17",
@@ -661,7 +692,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "En un futuro donde los mutantes están casi extintos, un envejecido y debilitado Logan cuida de un enfermo Profesor X cerca de la frontera mexicana, hasta que una joven mutante perseguida irrumpe en su vida.",
     "duracion": "2h 17m",
     "personajePrincipal": "Logan & Laura / X-23",
-    "colorAcento": "#E65100"
+    "colorAcento": "#E65100",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c1743ec-7cd6-4da4-9e8c-b713ad4e634a"
   },
   {
     "id": "thor-ragnarok-18",
@@ -677,7 +709,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Thor es aprisionado en el planeta Sakaar y descubre que debe competir como gladiador contra su antiguo aliado Hulk. Debe escapar para evitar el fin de Asgard por la villana Hela.",
     "duracion": "2h 10m",
     "personajePrincipal": "Thor Odinson",
-    "colorAcento": "#0E74BF"
+    "colorAcento": "#0E74BF",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-766280de-0c00-4781-a388-2c85c5b4e259"
   },
   {
     "id": "the-defenders",
@@ -693,7 +726,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Miniserie crossover donde Daredevil, Jessica Jones, Luke Cage e Iron Fist unen sus fuerzas en Nueva York para detener la inminente destrucción de La Mano.",
     "duracion": "8 episodios",
     "personajePrincipal": "Los Defensores",
-    "colorAcento": "#1A1A1A"
+    "colorAcento": "#1A1A1A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-61687bed-4a66-4657-9252-df80ca1d1fbc"
   },
   {
     "id": "punisher-s1",
@@ -709,7 +743,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras cobrar venganza contra los criminales directamente responsables de la muerte de su familia, el ex-marine Frank Castle descubre un secreto militar mucho más grande y oscuro. Aliado con un analista tecnológico prófugo llamado Micro, Castle se adentra en el inframundo de Nueva York para desmantelar una conspiración gubernamental vinculada a su pasado en Afganistán. Al mismo tiempo, debe lidiar con la traición de su mejor amigo de las fuerzas especiales, Billy Russo.",
     "duracion": "13 episodios",
     "personajePrincipal": "Frank Castle / Punisher",
-    "colorAcento": "#1A1A1A"
+    "colorAcento": "#1A1A1A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991"
   },
   {
     "id": "black-panther-19",
@@ -725,7 +760,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "T'Challa regresa a la aislada nación africana de Wakanda como rey. Debe proteger su trono de la amenaza del villano Killmonger, que busca desatar el poder de Wakanda sobre el mundo.",
     "duracion": "2h 14m",
     "personajePrincipal": "T'Challa / Black Panther",
-    "colorAcento": "#030303"
+    "colorAcento": "#030303",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8904b1b5-da2c-4ff1-b389-dc81825559fd"
   },
   {
     "id": "jessica-jones-s2",
@@ -741,7 +777,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras los eventos con su peor enemigo, Jessica profundiza de forma obsesiva en los violentos misterios de su propio pasado y el origen real de sus poderes.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones",
-    "colorAcento": "#4A2E59"
+    "colorAcento": "#4A2E59",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
   },
   {
     "id": "avengers-infinity-war-20",
@@ -757,7 +794,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Thanos, el titán loco, busca reunir las seis Gemas del Infinito para reequilibrar el universo. Los héroes de la Tierra y de la galaxia deben unirse para detenerlo.",
     "duracion": "2h 29m",
     "personajePrincipal": "Varios (Los Vengadores)",
-    "colorAcento": "#393183"
+    "colorAcento": "#393183",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9a136e06-852a-41bf-b71d-fa061cb43225"
   },
   {
     "id": "deadpool-2-2018",
@@ -773,7 +811,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Deadpool forma el caótico equipo X-Force para proteger a un joven mutante con habilidades piroquinéticas del amenazante soldado viajero en el tiempo conocido como Cable.",
     "duracion": "1h 59m",
     "personajePrincipal": "Wade Wilson & Cable",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-27e84e56-31d3-4813-91ba-602cb52890f1"
   },
   {
     "id": "luke-cage-s2",
@@ -805,7 +844,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Scott Lang equilibra ser padre y superhéroe. Junto a Hope Van Dyne (la Avispa) entra al reino cuántico para rescatar a Janet Van Dyne, enfrentando nuevos enemigos.",
     "duracion": "1h 58m",
     "personajePrincipal": "Scott Lang / Ant-Man",
-    "colorAcento": "#FFDB29"
+    "colorAcento": "#FFDB29",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3533ca7b-e187-4bf5-a65c-7c903cd2d4ad"
   },
   {
     "id": "iron-fist-s2",
@@ -821,7 +861,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Ambientada tras los eventos de The Defenders, Danny asume el rol de protector de Nueva York tras la desaparición de Matt Murdock. Junto a su pareja Colleen Wing, intenta mantener la paz frente a una violenta guerra de pandillas en Chinatown. Sin embargo, la situación se complica con la llegada de Davos, su antiguo hermano de armas de K'un-Lun, quien busca arrebatarle el poder del Puño de Hierro por considerarlo su derecho de nacimiento.",
     "duracion": "10 episodios",
     "personajePrincipal": "Danny Rand & Colleen Wing",
-    "colorAcento": "#059669"
+    "colorAcento": "#059669",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0"
   },
   {
     "id": "daredevil-netflix-s3",
@@ -837,7 +878,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras quedar gravemente herido en The Defenders, Matt Murdock resurge de las sombras para detener la venganza de Wilson Fisk y enfrentar al letal Bullseye.",
     "duracion": "13 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a"
   },
   {
     "id": "captain-marvel-22",
@@ -853,7 +895,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Vers, una piloto de las fuerzas Kree, es atrapada en la Tierra durante los años 90. Con la ayuda de Nick Fury, descubre su verdadera identidad y poderes como la Capitana Marvel para enfrentar a un antiguo enemigo.",
     "duracion": "2h 03m",
     "personajePrincipal": "Carol Danvers / Capitana Marvel",
-    "colorAcento": "#DA2727"
+    "colorAcento": "#DA2727",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1e383a14-1ea6-4345-9ab8-fd37618669af"
   },
   {
     "id": "punisher-s2",
@@ -869,7 +912,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Intentando dejar atrás su pasado violento, Frank vive como un nómada bajo un nombre falso. Su tranquilidad termina cuando interviene para salvar a Amy, una misteriosa adolescente perseguida por asesinos liderados por un extremista religioso. Mientras protege a la joven de una red de chantaje político, Castle debe regresar a Nueva York, donde su antiguo enemigo Billy Russo ha despertado con el rostro desfigurado y amnesia, liderando una nueva y sanguinaria banda criminal.",
     "duracion": "13 episodios",
     "personajePrincipal": "Frank Castle & Billy Russo",
-    "colorAcento": "#1A1A1A"
+    "colorAcento": "#1A1A1A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991"
   },
   {
     "id": "avengers-endgame-23",
@@ -885,7 +929,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras el devastador chasquido de Thanos, los Vengadores supervivientes idean un plan de viaje en el tiempo para recolectar las Gemas del Infinito en el pasado y revertir sus efectos.",
     "duracion": "3h 02m",
     "personajePrincipal": "Varios (Los Vengadores)",
-    "colorAcento": "#393183"
+    "colorAcento": "#393183",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b39aa962-be56-4b09-a536-98617031717f"
   },
   {
     "id": "jessica-jones-s3",
@@ -901,7 +946,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Jessica se cruza en el camino de Gregory Salinger, un psicópata altamente inteligente sin poderes que pondrá a prueba su perspectiva de lo que significa ser un héroe.",
     "duracion": "13 episodios",
     "personajePrincipal": "Jessica Jones & Trish Walker",
-    "colorAcento": "#4A2E59"
+    "colorAcento": "#4A2E59",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8"
   },
   {
     "id": "spider-man-far-from-home-24",
@@ -917,7 +963,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker intenta disfrutar de unas vacaciones escolares en Europa, pero Nick Fury lo recluta para enfrentar a criaturas elementales. Descubre que nada es lo que parece y asume su rol de héroe tras la pérdida de Iron Man.",
     "duracion": "2h 09m",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E44050"
+    "colorAcento": "#E44050",
+    "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.bab5dba3-e2d0-4ce8-d520-961b4db0be7a?autoplay=0&ref_=atv_cf_strg_wb"
   },
   {
     "id": "wanda-vision-25",
@@ -933,7 +980,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Wanda Maximoff y Visión viven la vida perfecta de un matrimonio de situación de comedia, pero pronto descubren que nada es lo que parece, mientras ocultan un gran dolor y secretos relacionados con el multiverso.",
     "duracion": "9 episodios",
     "personajePrincipal": "Wanda Maximoff / Scarlet Witch",
-    "colorAcento": "#7F4D9B"
+    "colorAcento": "#7F4D9B",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c"
   },
   {
     "id": "falcon-and-winter-soldier-26",
@@ -949,7 +997,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Sam Wilson (Falcon) y Bucky Barnes (Soldado de Invierno) trabajan juntos para enfrentar a terroristas globales, mientras deciden quién merece llevar el manto del Capitán América en el nuevo mundo post-Endgame.",
     "duracion": "6 episodios",
     "personajePrincipal": "Bucky Barnes / Sam Wilson",
-    "colorAcento": "#9EB5C2"
+    "colorAcento": "#9EB5C2",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c08a31a-2350-4aaf-90d0-88def4c551bf"
   },
   {
     "id": "black-widow-27",
@@ -965,7 +1014,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Natasha Romanoff enfrenta su pasado como espía en la Rusia soviética con su familia encontrada (Yelena, Red Guardian y Melina) tras los eventos de Capitán América: Civil War.",
     "duracion": "2h 14m",
     "personajePrincipal": "Natasha Romanoff / Black Widow",
-    "colorAcento": "#CE1836"
+    "colorAcento": "#CE1836",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d9cd6bd1-bcf8-4a3b-8f92-0fdd4f79ac08"
   },
   {
     "id": "loki-s1",
@@ -981,7 +1031,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Después de escapar con el Teseracto en Endgame, Loki es arrestado por la Autoridad de Variación Temporal (AVT) y debe ayudar a reparar las alteraciones en la línea temporal.",
     "duracion": "6 episodios",
     "personajePrincipal": "Loki & Sylvie",
-    "colorAcento": "#1F4D4D"
+    "colorAcento": "#1F4D4D",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
   },
   {
     "id": "what-if-s1",
@@ -997,7 +1048,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Presenta escenarios como una realidad donde Peggy Carter toma el suero del súper soldado, T'Challa se convierte en Star-Lord o un devastador brote de zombis infecta a los Vengadores.",
     "duracion": "9 episodios",
     "personajePrincipal": "Peggy Carter & Star-Lord T'Challa",
-    "colorAcento": "#E6CE68"
+    "colorAcento": "#E6CE68",
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
   },
   {
     "id": "shang-chi-and-the-legend-of-the-ten-rings-30",
@@ -1013,7 +1065,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Shang-Chi debe enfrentarse a su pasado como miembro de los Diez Anillos cuando su padre y su organización resurgen. Descubre la mitología de Xialing y los poderes místicos de los anillos.",
     "duracion": "2h 12m",
     "personajePrincipal": "Shang-Chi",
-    "colorAcento": "#C73E1D"
+    "colorAcento": "#C73E1D",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9"
   },
   {
     "id": "eternals-31",
@@ -1029,7 +1082,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Los Eternos, una raza de seres inmortales creados por los Celestiales, deben reunirse después de siglos ocultos cuando reaparece una antigua amenaza (los Deviants) que podrían destruir la humanidad.",
     "duracion": "2h 37m",
     "personajePrincipal": "Sersi",
-    "colorAcento": "#B48843"
+    "colorAcento": "#B48843",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b042efa2-6650-48fd-bf35-ea285a5a5649"
   },
   {
     "id": "hawkeye-32",
@@ -1045,7 +1099,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Clint Barton (Hawkeye) investiga a un nuevo villano arquerista llamado Bullseye en la ciudad de Nueva York, mientras entrena a su protegida Kate Bishop para recuperarse de las heridas de *Endgame*.",
     "duracion": "6 episodios",
     "personajePrincipal": "Clint Barton / Hawkeye",
-    "colorAcento": "#8D7D83"
+    "colorAcento": "#8D7D83",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-128482e8-a9bc-4289-9c0d-83a975d823f3"
   },
   {
     "id": "spider-man-no-way-home-33",
@@ -1061,7 +1116,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Peter Parker busca ayuda en el Doctor Strange para borrar la identidad secreta del mundo, pero el hechizo sale mal y desata a villanos de otras realidades (Doc Ock, Electro, Duende Verde, Sandman) en su universo.",
     "duracion": "2h 28m",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E44050"
+    "colorAcento": "#E44050",
+    "urlOficial": "https://www.primevideo.com/-/es/detail/0K2K4N25VGA0GOABHNZ2AXJPF7?ref_=atv_dp_amz_c_pZqpc5_1_1"
   },
   {
     "id": "doctor-strange-2-34",
@@ -1077,7 +1133,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "El Hechicero Supremo Stephen Strange explora el multiverso para enfrentar a una entidad misteriosa, mientras protege a la adolescente America Chavez, quien puede viajar entre dimensiones.",
     "duracion": "2h 06m",
     "personajePrincipal": "Stephen Strange / Doctor Strange",
-    "colorAcento": "#673AB7"
+    "colorAcento": "#673AB7",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6fe6062c-2499-4f44-a48a-fc93f59cb504"
   },
   {
     "id": "moon-knight-35",
@@ -1093,7 +1150,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Steven Grant, un hombre con desórden disociativo, descubre que comparte cuerpo con Marc Spector, un exmilitar, avatar del dios egipcio Khonshu. Juntos enfrentan amenazas sobrenaturales.",
     "duracion": "6 episodios",
     "personajePrincipal": "Marc Spector / Moon Knight",
-    "colorAcento": "#A9A689"
+    "colorAcento": "#A9A689",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-330062c7-20c5-45e1-b6c5-e1e096055d75"
   },
   {
     "id": "thor-love-and-thunder-35",
@@ -1109,7 +1167,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Thor emprende un viaje diferente a todo lo que ha enfrentado: la búsqueda de la paz interior. Pero su retiro es interrumpido por Gorr el Carnicero de Dioses, quien busca la extinción de los dioses. Para combatir la amenaza, Thor recluta la ayuda de Valkyrie, Korg y su exnovia Jane Foster, quien ahora maneja el Mjolnir como Mighty Thor.",
     "duracion": "1h 59m",
     "personajePrincipal": "Thor & Jane Foster",
-    "colorAcento": "#00D2FF"
+    "colorAcento": "#00D2FF",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0007d7a0-2515-411e-9294-2de6a7b8d00e"
   },
   {
     "id": "ms-marvel-36",
@@ -1125,7 +1184,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Kamala Khan, una adolescente musulmana, obtiene poderes de flexibilidad al descubrir un brazalete místico. Admiradora de los superhéroes, especialmente de Capitana Marvel, debe equilibrar su familia y sus nuevas habilidades.",
     "duracion": "6 episodios",
     "personajePrincipal": "Kamala Khan / Ms. Marvel",
-    "colorAcento": "#F57CB4"
+    "colorAcento": "#F57CB4",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7bf8d7e6-9739-4fee-86c0-f4afc48b152c"
   },
   {
     "id": "i-am-groot-s1",
@@ -1141,7 +1201,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Historias breves e independientes que siguen las divertidas travesuras galácticas de Baby Groot mientras crece y se mete en problemas por el universo.",
     "duracion": "5 cortos",
     "personajePrincipal": "Baby Groot",
-    "colorAcento": "#16A34A"
+    "colorAcento": "#16A34A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba"
   },
   {
     "id": "she-hulk-37",
@@ -1157,7 +1218,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Jennifer Walters, prima de Bruce Banner, recibe una transfusión de sangre que la convierte en la abogada-superhéroe She-Hulk. Debe aprender a controlar sus poderes verdes mientras trabaja casos legales relacionados con seres con habilidades especiales.",
     "duracion": "9 episodios",
     "personajePrincipal": "Jennifer Walters / She-Hulk",
-    "colorAcento": "#4EC190"
+    "colorAcento": "#4EC190",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1c3c897-b925-4236-88e4-1ceed3623a46"
   },
   {
     "id": "werewolf-by-night",
@@ -1173,7 +1235,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un grupo secreto de cazadores de monstruos se reúne en la misteriosa Mansión Bloodstone tras la muerte de su líder, viéndose obligados a participar en una competencia mortal para reclamar una poderosa reliquia.",
     "duracion": "53m",
     "personajePrincipal": "Jack Russell / Werewolf by Night",
-    "colorAcento": "#800020"
+    "colorAcento": "#800020",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ad2fd4e8-062b-45b9-b2c5-8b8779873e48"
   },
   {
     "id": "black-panther-wakanda-forever-38",
@@ -1189,7 +1252,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tras la muerte de T'Challa, la nación de Wakanda enfrenta amenazas extranjeras. Su gente recurre a su historia y a las habilidades de la reina Ramonda, Shuri, Nakia y Okoye para proteger su legado.",
     "duracion": "2h 41m",
     "personajePrincipal": "Queen Ramonda",
-    "colorAcento": "#A52A2A"
+    "colorAcento": "#A52A2A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-86e14fdb-3841-4282-ad38-07c8c4aab4b6"
   },
   {
     "id": "guardians-galaxy-holiday-special",
@@ -1205,7 +1269,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Con el objetivo de alegrarle la Navidad a un melancólico Peter Quill, los guardianes Mantis y Drax viajan a la Tierra con la misión de secuestrar al actor Kevin Bacon para entregárselo como el regalo perfecto.",
     "duracion": "44m",
     "personajePrincipal": "Mantis & Drax",
-    "colorAcento": "#166534"
+    "colorAcento": "#166534",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1a15fe60-3236-4242-a699-a4e3392cf112"
   },
   {
     "id": "ant-man-quantumania-39",
@@ -1221,7 +1286,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Scott Lang y Hope Van Dyne exploran el reino cuántico, donde se enfrentan al ente Kang el Conquistador que amenaza el multiverso. Deben detenerlo antes de que escape a la Tierra.",
     "duracion": "1h 58m",
     "personajePrincipal": "Scott Lang / Ant-Man",
-    "colorAcento": "#FFDB29"
+    "colorAcento": "#FFDB29",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-eb1453f3-48aa-4af0-85f5-8ca4916c7415"
   },
   {
     "id": "guardians-of-the-galaxy-vol-3-40",
@@ -1237,7 +1303,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Los Guardianes deben proteger a Rocket Raccoon de su oscuro pasado mientras se enfrentan a un poderoso enemigo llamado Adam Warlock, que puede alterar el destino del grupo.",
     "duracion": "2h 30m",
     "personajePrincipal": "Peter Quill / Star-Lord",
-    "colorAcento": "#FF8F1C"
+    "colorAcento": "#FF8F1C",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-820f0ded-3254-42c5-a7e4-7c044ff6dd65"
   },
   {
     "id": "i-am-groot-s2",
@@ -1253,7 +1320,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Segunda temp. de aventuras donde Baby Groot explora el universo a bordo de las naves de los Guardianes, encontrándose con criaturas extrañas y nuevos mundos.",
     "duracion": "5 cortos",
     "personajePrincipal": "Baby Groot",
-    "colorAcento": "#16A34A"
+    "colorAcento": "#16A34A",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-38f451b9-22df-4784-b580-4e4db4b92dba"
   },
   {
     "id": "secret-invasion-2023",
@@ -1269,7 +1337,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Nick Furia se entera de una invasión clandestina en la Tierra por parte de una facción de Skrulls cambiaformas. Furia se une a sus aliados, incluidos Everett Ross, Maria Hill y Talos, para iniciar una carrera contrarreloj, frustrar la inminente toma del planeta y salvar a la humanidad.",
     "duracion": "6 episodios",
     "personajePrincipal": "Nick Furia & Talos",
-    "colorAcento": "#15803D"
+    "colorAcento": "#15803D",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-4cfe6313-7f5e-4544-af84-d31bf718f65a"
   },
   {
     "id": "loki-s2",
@@ -1285,7 +1354,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Loki navega por un Multiverso en constante expansión y cada vez más peligroso para reparar el Telar del Tiempo y encontrar su propósito supremo.",
     "duracion": "6 episodios",
     "personajePrincipal": "Loki Dios de las Historias",
-    "colorAcento": "#10B981"
+    "colorAcento": "#10B981",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
   },
   {
     "id": "the-marvels-41",
@@ -1301,7 +1371,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Carol Danvers (Capitana Marvel), Kamala Khan (Ms. Marvel) y Monica Rambeau (Photon) intercambian poderes inexplicablemente. Deberán unirse para lidiar con la amenaza cósmica que surge de esta conexión.",
     "duracion": "1h 51m",
     "personajePrincipal": "Carol Danvers / Capitana Marvel",
-    "colorAcento": "#DA2727"
+    "colorAcento": "#DA2727",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-75c90eca-8969-4edb-ac1a-7165cff2671c"
   },
   {
     "id": "what-if-s2",
@@ -1317,7 +1388,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Introduce a Kahhori, una joven mohawk que descubre el Teseracto, además de mostrar mundos extraños como un universo ambientado en el año 1602.",
     "duracion": "9 episodios",
     "personajePrincipal": "Kahhori / Variado",
-    "colorAcento": "#E6CE68"
+    "colorAcento": "#E6CE68",
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
   },
   {
     "id": "deadpool-wolverine-42",
@@ -1333,7 +1405,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Deadpool y Wolverine atraviesan la ruptura del multiverso tras los eventos de *Endgame*. Se unen para resolver los caos temporales que amenazan la existencia misma de su universo.",
     "duracion": "2h 08m",
     "personajePrincipal": "Wade Wilson / Deadpool",
-    "colorAcento": "#02FFD8"
+    "colorAcento": "#02FFD8",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-120ae1e6-2240-4924-a4ce-f8de6e28b0b1"
   },
   {
     "id": "echo-2024",
@@ -1349,7 +1422,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "La historia de origen de Maya Lopez, cuyo comportamiento despiadado en la ciudad de Nueva York termina pasándole factura en su pueblo natal. Maya debe enfrentarse a su pasado, reconectarse con sus raíces nativas americanas y abrazar el significado de la familia y la comunidad para poder seguir adelante mientras es perseguida por el imperio criminal de Wilson Fisk (Kingpin).",
     "duracion": "5 episodios",
     "personajePrincipal": "Maya Lopez / Echo",
-    "colorAcento": "#B91C1C"
+    "colorAcento": "#B91C1C",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c9aa47d-88c2-455b-a63b-4be76b666a55"
   },
   {
     "id": "x-men-97-s1",
@@ -1365,7 +1439,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Continuación directa de la legendaria serie animada de los 90. Tras la pérdida del Profesor X, los X-Men se ven forzados a enfrentar un peligroso e incierto futuro liderados inesperadamente por Magneto.",
     "duracion": "10 episodios",
     "personajePrincipal": "Cíclope & Magneto",
-    "colorAcento": "#FFC107"
+    "colorAcento": "#FFC107",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34"
   },
   {
     "id": "agatha-all-along-2024",
@@ -1381,7 +1456,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Tres años después de perder sus poderes ante Wanda Maximoff, la infame bruja Agatha Harkness logra liberarse del hechizo de Westview gracias a la ayuda de un misterioso adolescente gótico. Sin su magia, Agatha y el joven reclutan a un desesperado e improvisado aquelarre de brujas para adentrarse y superar las pruebas de la legendaria Senda de las Brujas, un camino que promete devolverle a cada una lo que ha perdido.",
     "duracion": "9 episodios",
     "personajePrincipal": "Agatha Harkness",
-    "colorAcento": "#7E22CE"
+    "colorAcento": "#7E22CE",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5e474669-a4a2-4b90-a928-5ae7f845090c"
   },
   {
     "id": "captain-america-brave-new-world-43",
@@ -1397,7 +1473,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "El nuevo Capitán América (Sam Wilson) toma su rol oficial mientras enfrenta a viejos enemigos que desafían la paz mundial. Debe demostrar que puede llenar las botas del legado de Steve Rogers.",
     "duracion": "2h 10m",
     "personajePrincipal": "Sam Wilson / Capitán América",
-    "colorAcento": "#A2262F"
+    "colorAcento": "#A2262F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3064ac7f-ef4d-4f89-b92f-b5524da92a72"
   },
   {
     "id": "thunderbolts-44",
@@ -1413,7 +1490,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un equipo de antihéroes y villanos redimidos, liderados por el general Ross, es reunido para misiones clandestinas. Deben ganarse la confianza de sus superiores mientras luchan con su propia moral.",
     "duracion": "2h 15m",
     "personajePrincipal": "James 'Rhodey' Rhodes / Máquina de Guerra",
-    "colorAcento": "#4A5568"
+    "colorAcento": "#4A5568",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-f51dce23-7d8f-490a-9f0c-be1b5432c2a9"
   },
   {
     "id": "what-if-s3",
@@ -1429,7 +1507,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Cierra la historia multiversal explorando géneros variados, incluyendo un combate contra vengadores mecánicos y realidades inspiradas en el salvaje oeste.",
     "duracion": "8 episodios",
     "personajePrincipal": "El Vigilante / Variado",
-    "colorAcento": "#E6CE68"
+    "colorAcento": "#E6CE68",
+    "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
   },
   {
     "id": "eye-of-wakanda-45",
@@ -1445,7 +1524,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Serie que sigue a Okoye y al Dora Milaje de Wakanda mientras lideran la seguridad nacional de Wakanda después de los eventos de *Wakanda Forever*, enfrentándose a nuevas amenazas.",
     "duracion": "4 episodios",
     "personajePrincipal": "Okoye",
-    "colorAcento": "#B43E3E"
+    "colorAcento": "#B43E3E",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8d16eb3d-b7e5-4c43-abda-a281be4d284a"
   },
   {
     "id": "marvel-zombies-46",
@@ -1461,7 +1541,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Serie animada en la que el multiverso del UCM es infectado por una plaga zombi. Superhéroes icónicos se ven transformados y luchan por la supervivencia en un mundo postapocalíptico.",
     "duracion": "4 episodios",
     "personajePrincipal": "Zombie Spider-Man",
-    "colorAcento": "#5C0A06"
+    "colorAcento": "#5C0A06",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9"
   },
   {
     "id": "wonder-man-47",
@@ -1477,7 +1558,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Una comedia de acción donde un actor transformado en superhéroe (Wonder Man) debe equilibrar su carrera en Hollywood con su nueva responsabilidad de proteger el mundo.",
     "duracion": "8 episodios",
     "personajePrincipal": "Simon Williams / Wonder Man",
-    "colorAcento": "#00856D"
+    "colorAcento": "#00856D",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-25ee768f-06e3-491c-ad8f-876b4c87ac42?distributionPartner=google"
   },
   {
     "id": "your-friendly-neighborhood-spider-man-s1",
@@ -1493,7 +1575,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Explora la historia del origen de Peter Parker y sus primeros días usando la identidad de Spider-Man. La trama se desarrolla en una línea temporal alternativa del MCU dentro del multiverso. En esta realidad, Peter obtiene sus habilidades a causa de una paradoja temporal provocada por el Doctor Strange. El cambio principal de este universo es que Norman Osborn se convierte en el mentor de Peter en lugar de Tony Stark, alterando por completo su camino heroico mientras se prepara para la escuela secundaria.",
     "duracion": "10 episodios",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E11D48"
+    "colorAcento": "#E11D48",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7"
   },
   {
     "id": "daredevil-born-again-s1",
@@ -1509,7 +1592,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Matt Murdock, un abogado ciego de Hell's Kitchen, regresa para enfrentarse a Kingpin y lidiar con las consecuencias de su doble vida como justiciero.",
     "duracion": "9 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7"
   },
   {
     "id": "ironheart-49",
@@ -1525,7 +1609,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Riri Williams, una joven ingeniera prodigio, crea su propia armadura al estilo Iron Man. Con el apoyo de Tony Stark (en flashbacks) debe enfrentar a nuevos villanos que amenazan su universidad y la ciudad.",
     "duracion": "6 episodios",
     "personajePrincipal": "Riri Williams / Ironheart",
-    "colorAcento": "#00AEEF"
+    "colorAcento": "#00AEEF",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b2b50b9a-a055-4b31-a609-8ec46f3add98?distributionPartner=google"
   },
   {
     "id": "fantastic-four-first-steps-2025",
@@ -1541,7 +1626,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Ambientada en un deslumbrante mundo retrofuturista de los años 60, la Primera Familia de Marvel integrada por Reed Richards (Pedro Pascal), Sue Storm (Vanessa Kirby), Johnny Storm (Joseph Quinn) y Ben Grimm (Ebon Moss-Bachrach) debe defender la Tierra del temible devorador de mundos Galactus y su heraldo Silver Surfer.",
     "duracion": "2h 15m",
     "personajePrincipal": "Los 4 Fantásticos (Reed, Sue, Johnny, Ben)",
-    "colorAcento": "#0055A5"
+    "colorAcento": "#0055A5",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2142a7a9-4c49-438d-a492-296c4e08b714"
   },
   {
     "id": "daredevil-born-again-s2",
@@ -1557,7 +1643,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Segunda temp. de Born Again donde las ramificaciones políticas y la persecución de Kingpin obligan a Daredevil a liderar la resistencia urbana.",
     "duracion": "8 episodios",
     "personajePrincipal": "Matt Murdock / Daredevil",
-    "colorAcento": "#880E4F"
+    "colorAcento": "#880E4F",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7"
   },
   {
     "id": "punisher-one-last-kill",
@@ -1573,7 +1660,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Un Frank devastado vive al margen de la sociedad intentando dejar atrás las armas. Sin embargo, se ve forzado a defenderse cuando la villana Ma Gnucci le pone una recompensa millonaria a su cabeza en venganza por la muerte de su familia, desatando una cacería implacable.",
     "duracion": "48m",
     "personajePrincipal": "Frank Castle / Punisher",
-    "colorAcento": "#C81D25"
+    "colorAcento": "#C81D25",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878"
   },
   {
     "id": "x-men-97-s2",
@@ -1589,7 +1677,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Segunda temporada de X-Men '97 donde el equipo de mutantes queda dividido a través del tiempo tras la batalla contra Bastion, explorando el Antiguo Egipto con En Sabah Nur (Apocalipsis) y el futuro lejano con Bishop.",
     "duracion": "10 episodios",
     "personajePrincipal": "Wolverine, Cíclope & Apocalipsis",
-    "colorAcento": "#FFC107"
+    "colorAcento": "#FFC107",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34"
   },
   {
     "id": "up-spider-man-4",
@@ -1624,7 +1713,8 @@ export const PRODUCTIONS: MCUItem[] = [
     "resumen": "Titulada inicialmente bajo el concepto de Sophomore Year, esta temporada sigue los desafíos de Peter en su segundo año con la llegada de Venom, Gwen Stacy y Daredevil.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Peter Parker / Spider-Man",
-    "colorAcento": "#E11D48"
+    "colorAcento": "#E11D48",
+    "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1417e49-48ad-4827-bfd6-94580ecbecd7"
   },
   {
     "id": "up-vision-quest",

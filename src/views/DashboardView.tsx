@@ -392,14 +392,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                     <stop offset="50%" stopColor="#141626" />
                     <stop offset="100%" stopColor="#080911" />
                   </radialGradient>
-                  <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#E62429" floodOpacity="0.75" />
-                  </filter>
                   <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
                     <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#00A8FF" floodOpacity="0.75" />
                   </filter>
-                  <filter id="glow-yellow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#F5C842" floodOpacity="0.75" />
+                  <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#E62429" floodOpacity="0.75" />
+                  </filter>
+                  <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#10B981" floodOpacity="0.75" />
                   </filter>
                 </defs>
 
@@ -415,22 +415,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   The Infinity Saga
                 </text>
 
-                {/* 1. Straight Red Line from Phase 1 to Phase 2 */}
-                <line x1="50" y1="62" x2="160" y2="62" stroke="#E62429" strokeWidth="2.5" strokeOpacity="0.85" />
+                {/* 1. Straight Blue Line from Phase 1 to Phase 2 */}
+                <line x1="50" y1="62" x2="160" y2="62" stroke="#00A8FF" strokeWidth="2.5" strokeOpacity="0.85" />
 
-                {/* 2. Straight Red Line from Phase 2 to Phase 3 */}
-                <line x1="160" y1="62" x2="270" y2="62" stroke="#E62429" strokeWidth="2.5" strokeOpacity="0.85" />
+                {/* 2. Straight Blue Line from Phase 2 to Phase 3 */}
+                <line x1="160" y1="62" x2="270" y2="62" stroke="#00A8FF" strokeWidth="2.5" strokeOpacity="0.85" />
 
-                {/* 3. Rectangular Pipeline Connecting Line (Electric Blue #00A8FF) from Phase 3 to Phase 4 */}
+                {/* 3. Rectangular Pipeline Connecting Line (Marvel Red #E62429) from Phase 3 to Phase 4 */}
                 <path
                   d="M 270 62 L 298 62 A 10 10 0 0 1 308 72 L 308 120 A 10 10 0 0 1 298 130 L 22 130 A 10 10 0 0 0 12 140 L 12 188 A 10 10 0 0 0 22 198 L 50 198"
-                  stroke="#00A8FF"
+                  stroke="#E62429"
                   strokeWidth="3"
                   strokeOpacity="0.85"
                   fill="none"
                 />
 
-                {/* Section 2 Title: The Multiverse Saga (placed under horizontal blue line) */}
+                {/* Section 2 Title: The Multiverse Saga (placed under horizontal connecting line) */}
                 <text
                   x="24"
                   y="154"
@@ -442,21 +442,21 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   The Multiverse Saga
                 </text>
 
-                {/* 4. Straight Yellow Line from Phase 4 to Phase 5 */}
-                <line x1="50" y1="198" x2="160" y2="198" stroke="#F5C842" strokeWidth="2.5" strokeOpacity="0.85" />
+                {/* 4. Straight Green Line from Phase 4 to Phase 5 */}
+                <line x1="50" y1="198" x2="160" y2="198" stroke="#10B981" strokeWidth="2.5" strokeOpacity="0.85" />
 
-                {/* 5. Straight Yellow Line from Phase 5 to Phase 6 */}
-                <line x1="160" y1="198" x2="270" y2="198" stroke="#F5C842" strokeWidth="2.5" strokeOpacity="0.85" />
+                {/* 5. Straight Green Line from Phase 5 to Phase 6 */}
+                <line x1="160" y1="198" x2="270" y2="198" stroke="#10B981" strokeWidth="2.5" strokeOpacity="0.85" />
 
-                {/* Nodes Row 1 (Infinity Saga) */}
-                {renderRoadmapNode(50, 62, p1, '#E62429', 'Fase 1', 'glow-red')}
-                {renderRoadmapNode(160, 62, p2, '#E62429', 'Fase 2', 'glow-red')}
-                {renderRoadmapNode(270, 62, p3, '#E62429', 'Fase 3', 'glow-red')}
+                {/* Nodes Row 1 (Infinity Saga - Blue) */}
+                {renderRoadmapNode(50, 62, p1, '#00A8FF', 'Fase 1', 'glow-blue')}
+                {renderRoadmapNode(160, 62, p2, '#00A8FF', 'Fase 2', 'glow-blue')}
+                {renderRoadmapNode(270, 62, p3, '#00A8FF', 'Fase 3', 'glow-blue')}
 
-                {/* Nodes Row 2 (Multiverse Saga) */}
-                {renderRoadmapNode(50, 198, p4, '#00A8FF', 'Fase 4', 'glow-blue')}
-                {renderRoadmapNode(160, 198, p5, '#F5C842', 'Fase 5', 'glow-yellow')}
-                {renderRoadmapNode(270, 198, p6, '#F5C842', 'Fase 6', 'glow-yellow')}
+                {/* Nodes Row 2 (Multiverse Saga - Red & Green) */}
+                {renderRoadmapNode(50, 198, p4, '#E62429', 'Fase 4', 'glow-red')}
+                {renderRoadmapNode(160, 198, p5, '#10B981', 'Fase 5', 'glow-green')}
+                {renderRoadmapNode(270, 198, p6, '#10B981', 'Fase 6', 'glow-green')}
               </svg>
             </div>
 
