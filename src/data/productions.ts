@@ -54,7 +54,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FFC107",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e9f59c82-de76-4a18-a849-192532ff9b2d",
     "ordenListaMaestra": 45,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "spider-man-1-tobey",
@@ -73,7 +73,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#C81D25",
     "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana/c09f11b9b92847d389bfce4da051d9b6?origin=mplay_player",
     "ordenListaMaestra": 31,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "x-men-2-2003",
@@ -92,7 +92,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FFC107",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-54748282-5bf7-496c-8db9-a9aa3b7f57ac",
     "ordenListaMaestra": 46,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "spider-man-2-tobey",
@@ -111,7 +111,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#C81D25",
     "urlOficial": "https://play.mercadolibre.com.ar/ver/f272be584b9347c2b4c0677422fb04ab?origin=mplay_player",
     "ordenListaMaestra": 32,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "fantastic-four-2005",
@@ -168,7 +168,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#1A1A1A",
     "urlOficial": "https://play.mercadolibre.com.ar/ver/el-hombre-arana-3/866aee27c1c54d158f800a784c803ce0?origin=mplay_player",
     "ordenListaMaestra": 33,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-spectacular-spider-man-2008",
@@ -224,7 +224,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E62429",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0c520152-b81f-4c20-9310-003debd1947e",
     "ordenListaMaestra": 1,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-incredible-hulk-2",
@@ -243,7 +243,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#4B8347",
     "urlOficial": "https://www.primevideo.com/-/es/detail/0TISNLS9TOLEJR2I20MHX4FGD8",
     "ordenListaMaestra": 2,
-    "prioridad": "complementaria"
+    "prioridad": "recomendada"
   },
   {
     "id": "x-men-origins-wolverine-2009",
@@ -281,7 +281,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E62429",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-85c5529d-c053-4fa4-9957-4906eb5aedc6",
     "ordenListaMaestra": 3,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "thor-4",
@@ -300,7 +300,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#0E74BF",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-479d41e3-8438-4ba4-b93d-8223220e069c",
     "ordenListaMaestra": 4,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "x-men-first-class-2011",
@@ -319,7 +319,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#1976D2",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9f9e9ae3-88d8-467b-8969-28d253cc4687",
     "ordenListaMaestra": 48,
-    "prioridad": "recomendada"
+    "prioridad": "opcional"
   },
   {
     "id": "captain-america-the-first-avenger-5",
@@ -338,7 +338,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A2262F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8e68c43a-117c-4f4d-b217-0db106a1a614",
     "ordenListaMaestra": 5,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-avengers-6",
@@ -357,7 +357,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#393183",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d2ab699b-67da-4906-a7a4-5bc542c953cf",
     "ordenListaMaestra": 6,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-amazing-spider-man-1-andrew",
@@ -376,7 +376,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#0055A5",
     "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.1ea9f6b8-151d-5fe1-5f3b-c897b6dd14cf?autoplay=0&ref_=atv_cf_strg_wb",
     "ordenListaMaestra": 34,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "agents-of-shield-7",
@@ -413,7 +413,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#0E74BF",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c4f4e28-4152-4f64-90ec-8b7f682c33d4",
     "ordenListaMaestra": 8,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "iron-man-3-9",
@@ -432,7 +432,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E62429",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-e8569c2d-85ec-42a4-8811-b2618d494a40",
     "ordenListaMaestra": 7,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-amazing-spider-man-2-andrew",
@@ -451,7 +451,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#0055A5",
     "urlOficial": "https://play.mercadolibre.com.ar/ver/el-sorprendente-hombre-arana-2-la-venganza-de-electro/068c72a75f9e4ab399aed20e8dd04cec?origin=mplay_player",
     "ordenListaMaestra": 35,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "x-men-days-of-future-past-2014",
@@ -470,7 +470,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#7B1FA2",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-5b3d1005-eb3b-41bb-8ac6-a025263d8106",
     "ordenListaMaestra": 49,
-    "prioridad": "recomendada"
+    "prioridad": "opcional"
   },
   {
     "id": "captain-america-the-winter-soldier-10",
@@ -489,7 +489,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A2262F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-ef333a5c-b855-4d3e-a7d9-d9e142b6dc7d",
     "ordenListaMaestra": 9,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "guardians-of-the-galaxy-11",
@@ -508,7 +508,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FF8F1C",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c9ee959b-7249-4a4c-9708-9ffd1ddb00f1",
     "ordenListaMaestra": 10,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "guardians-of-the-galaxy-vol-2-12",
@@ -527,7 +527,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FF8F1C",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9fcd7087-c151-49dc-aeb9-b2f9943fd4e6",
     "ordenListaMaestra": 11,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "avengers-age-of-ultron-13",
@@ -546,7 +546,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#393183",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-42329b99-0953-4f1a-9420-a0dbf7733e95",
     "ordenListaMaestra": 12,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "daredevil-netflix-s1",
@@ -565,7 +565,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#880E4F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
     "ordenListaMaestra": 65,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "agent-carter-s1",
@@ -621,7 +621,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FFDB29",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-af42798c-b9db-457f-b748-5e1f029c1ece",
     "ordenListaMaestra": 13,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "deadpool-1-2016",
@@ -640,7 +640,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#C81D25",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-17854bdb-0121-4327-80a0-699fdecd1aaa",
     "ordenListaMaestra": 51,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "captain-america-civil-war-15",
@@ -659,7 +659,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A2262F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-2bd19267-1387-4b51-98e6-5189ff28e9c9",
     "ordenListaMaestra": 14,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "daredevil-netflix-s2",
@@ -678,7 +678,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#880E4F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
     "ordenListaMaestra": 67,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "luke-cage-s1",
@@ -715,7 +715,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#673AB7",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-43a741e8-2369-4577-9bec-ef94f4aaae0b",
     "ordenListaMaestra": 15,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "iron-fist-s1",
@@ -753,7 +753,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E44050",
     "urlOficial": "https://play.mercadolibre.com.ar/ver/spiderman-de-regreso-a-casa/db88d60522434eac8e948fe4062baa83?origin=mplay_player",
     "ordenListaMaestra": 16,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "logan-2017",
@@ -772,7 +772,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E65100",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7c1743ec-7cd6-4da4-9e8c-b713ad4e634a",
     "ordenListaMaestra": 53,
-    "prioridad": "esencial"
+    "prioridad": "recomendada"
   },
   {
     "id": "thor-ragnarok-18",
@@ -791,7 +791,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#0E74BF",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-766280de-0c00-4781-a388-2c85c5b4e259",
     "ordenListaMaestra": 17,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "the-defenders",
@@ -829,7 +829,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#1A1A1A",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991",
     "ordenListaMaestra": 71,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "black-panther-19",
@@ -848,7 +848,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#030303",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8904b1b5-da2c-4ff1-b389-dc81825559fd",
     "ordenListaMaestra": 18,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "jessica-jones-s2",
@@ -886,7 +886,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#393183",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-9a136e06-852a-41bf-b71d-fa061cb43225",
     "ordenListaMaestra": 19,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "deadpool-2-2018",
@@ -905,7 +905,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#C81D25",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-27e84e56-31d3-4813-91ba-602cb52890f1",
     "ordenListaMaestra": 52,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "luke-cage-s2",
@@ -942,7 +942,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FFDB29",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3533ca7b-e187-4bf5-a65c-7c903cd2d4ad",
     "ordenListaMaestra": 20,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "iron-fist-s2",
@@ -980,7 +980,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#880E4F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
     "ordenListaMaestra": 75,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "captain-marvel-22",
@@ -999,7 +999,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#DA2727",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-1e383a14-1ea6-4345-9ab8-fd37618669af",
     "ordenListaMaestra": 21,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "punisher-s2",
@@ -1037,7 +1037,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#393183",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b39aa962-be56-4b09-a536-98617031717f",
     "ordenListaMaestra": 22,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "jessica-jones-s3",
@@ -1075,7 +1075,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E44050",
     "urlOficial": "https://www.primevideo.com/dp/amzn1.dv.gti.bab5dba3-e2d0-4ce8-d520-961b4db0be7a?autoplay=0&ref_=atv_cf_strg_wb",
     "ordenListaMaestra": 23,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "wanda-vision-25",
@@ -1094,7 +1094,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#7F4D9B",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c",
     "ordenListaMaestra": 24,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "falcon-and-winter-soldier-26",
@@ -1113,7 +1113,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#9EB5C2",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3c08a31a-2350-4aaf-90d0-88def4c551bf",
     "ordenListaMaestra": 25,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "black-widow-27",
@@ -1151,7 +1151,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#1F4D4D",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50",
     "ordenListaMaestra": 26,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "what-if-s1",
@@ -1170,7 +1170,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E6CE68",
     "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f",
     "ordenListaMaestra": 59,
-    "prioridad": "complementaria"
+    "prioridad": "recomendada"
   },
   {
     "id": "shang-chi-and-the-legend-of-the-ten-rings-30",
@@ -1189,7 +1189,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#C73E1D",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9",
     "ordenListaMaestra": 28,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "eternals-31",
@@ -1208,7 +1208,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#B48843",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b042efa2-6650-48fd-bf35-ea285a5a5649",
     "ordenListaMaestra": 29,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "hawkeye-32",
@@ -1227,7 +1227,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#8D7D83",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-128482e8-a9bc-4289-9c0d-83a975d823f3",
     "ordenListaMaestra": 30,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "spider-man-no-way-home-33",
@@ -1265,7 +1265,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#673AB7",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6fe6062c-2499-4f44-a48a-fc93f59cb504",
     "ordenListaMaestra": 37,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "moon-knight-35",
@@ -1284,7 +1284,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A9A689",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-330062c7-20c5-45e1-b6c5-e1e096055d75",
     "ordenListaMaestra": 38,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "thor-love-and-thunder-35",
@@ -1303,7 +1303,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#00D2FF",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-0007d7a0-2515-411e-9294-2de6a7b8d00e",
     "ordenListaMaestra": 41,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "ms-marvel-36",
@@ -1322,7 +1322,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#F57CB4",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-7bf8d7e6-9739-4fee-86c0-f4afc48b152c",
     "ordenListaMaestra": 39,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "i-am-groot-s1",
@@ -1359,7 +1359,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#4EC190",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b1c3c897-b925-4236-88e4-1ceed3623a46",
     "ordenListaMaestra": 40,
-    "prioridad": "complementaria"
+    "prioridad": "recomendada"
   },
   {
     "id": "werewolf-by-night",
@@ -1397,7 +1397,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A52A2A",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-86e14fdb-3841-4282-ad38-07c8c4aab4b6",
     "ordenListaMaestra": 42,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "guardians-galaxy-holiday-special",
@@ -1435,7 +1435,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FFDB29",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-eb1453f3-48aa-4af0-85f5-8ca4916c7415",
     "ordenListaMaestra": 55,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "guardians-of-the-galaxy-vol-3-40",
@@ -1454,7 +1454,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#FF8F1C",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-820f0ded-3254-42c5-a7e4-7c044ff6dd65",
     "ordenListaMaestra": 56,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "i-am-groot-s2",
@@ -1491,7 +1491,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#15803D",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-4cfe6313-7f5e-4544-af84-d31bf718f65a",
     "ordenListaMaestra": 57,
-    "prioridad": "complementaria"
+    "prioridad": "recomendada"
   },
   {
     "id": "loki-s2",
@@ -1529,7 +1529,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#DA2727",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-75c90eca-8969-4edb-ac1a-7165cff2671c",
     "ordenListaMaestra": 61,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "what-if-s2",
@@ -1548,7 +1548,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#E6CE68",
     "urlOficial": "https://disneyplus.com/es-ar/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f",
     "ordenListaMaestra": 60,
-    "prioridad": "complementaria"
+    "prioridad": "recomendada"
   },
   {
     "id": "deadpool-wolverine-42",
@@ -1643,7 +1643,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#A2262F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-3064ac7f-ef4d-4f89-b92f-b5524da92a72",
     "ordenListaMaestra": 81,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "thunderbolts-44",
@@ -1735,7 +1735,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#00856D",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-25ee768f-06e3-491c-ad8f-876b4c87ac42?distributionPartner=google",
     "ordenListaMaestra": 86,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "your-friendly-neighborhood-spider-man-s1",
@@ -1848,7 +1848,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Frank Castle / Punisher",
     "colorAcento": "#C81D25",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878",
-    "prioridad": "opcional"
+    "prioridad": "recomendada"
   },
   {
     "id": "x-men-97-s2",
@@ -1942,7 +1942,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Doctor Doom & Vengadores",
     "colorAcento": "#4CAF50",
     "ordenListaMaestra": 89,
-    "prioridad": "esencial"
+    "prioridad": "recomendada"
   },
   {
     "id": "up-daredevil-born-again-s3",
@@ -1979,7 +1979,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Vengadores Multiversales",
     "colorAcento": "#9C27B0",
     "ordenListaMaestra": 90,
-    "prioridad": "esencial"
+    "prioridad": "recomendada"
   },
   {
     "id": "up-armor-wars",

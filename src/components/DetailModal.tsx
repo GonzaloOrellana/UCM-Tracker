@@ -228,35 +228,69 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
             {/* Right Side: Details & Action Column */}
             <div className="flex-1 flex flex-col justify-between p-3.5 sm:p-5 md:p-6 bg-white relative z-10 space-y-2 sm:space-y-3 overflow-y-auto custom-scrollbar">
               
-              {/* Top Row: Action Buttons (Favorite, Edit, Close) */}
+              {/* Top Row: Category Badge (Left) & Action Buttons (Right) */}
               <motion.div
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.3, delay: 0.43, ease: transitionEase }}
-                className="flex items-center justify-end gap-2 shrink-0"
+                className="flex items-center justify-between gap-2 shrink-0"
               >
-                <button
-                  onClick={() => toggleFavorite(item.id)}
-                  className="p-1.5 transition-all hover:scale-110 cursor-pointer text-zinc-600 hover:text-rose-600"
-                  title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-                >
-                  <Heart className={`w-5 h-5 transition-colors ${isFavorite ? 'fill-[#C81D25] text-[#C81D25]' : ''}`} />
-                </button>
-                <button
-                  onClick={() => onEdit(item)}
-                  className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer"
-                  title="Editar información"
-                >
-                  <Edit2 className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={onClose}
-                  className="p-1.5 text-zinc-500 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer ml-1"
-                  title="Cerrar"
-                >
-                  <X className="w-5 h-5 stroke-[2]" />
-                </button>
+                <div>
+                  {item.prioridad && (
+                    <span
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-label font-bold tracking-wider uppercase border shadow-xs ${
+                        item.prioridad === 'esencial'
+                          ? 'bg-rose-50 text-rose-700 border-rose-200'
+                          : item.prioridad === 'recomendada'
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                          : item.prioridad === 'complementaria'
+                          ? 'bg-amber-50 text-amber-700 border-amber-200'
+                          : 'bg-zinc-100 text-zinc-600 border-zinc-200'
+                      }`}
+                      title={
+                        item.prioridad === 'esencial'
+                          ? 'Esencial: Sin esto perdés una parte importante de la experiencia.'
+                          : item.prioridad === 'recomendada'
+                          ? 'Recomendada: Importante para personajes o historia.'
+                          : item.prioridad === 'complementaria'
+                          ? 'Complementaria: Aporta contexto, pero no es fundamental.'
+                          : 'Opcional: Principalmente para completar el universo.'
+                      }
+                    >
+                      <span>
+                        {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
+                      </span>
+                      <span>
+                        {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
+                      </span>
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={() => toggleFavorite(item.id)}
+                    className="p-1.5 transition-all hover:scale-110 cursor-pointer text-zinc-600 hover:text-rose-600"
+                    title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                  >
+                    <Heart className={`w-5 h-5 transition-colors ${isFavorite ? 'fill-[#C81D25] text-[#C81D25]' : ''}`} />
+                  </button>
+                  <button
+                    onClick={() => onEdit(item)}
+                    className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer"
+                    title="Editar información"
+                  >
+                    <Edit2 className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={onClose}
+                    className="p-1.5 text-zinc-500 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer ml-1"
+                    title="Cerrar"
+                  >
+                    <X className="w-5 h-5 stroke-[2]" />
+                  </button>
+                </div>
               </motion.div>
 
               {/* Middle Section: Staggered Content Details */}
@@ -306,52 +340,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                     </>
                   )}
                 </motion.div>
-
-                {/* Priority & Master List Order */}
-                {item.prioridad && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.3, delay: 0.25, ease: transitionEase }}
-                    className="flex items-center flex-wrap gap-2 pt-0.5"
-                  >
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-label font-bold tracking-wider uppercase border shadow-xs ${
-                        item.prioridad === 'esencial'
-                          ? 'bg-rose-50 text-rose-700 border-rose-200'
-                          : item.prioridad === 'recomendada'
-                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                          : item.prioridad === 'complementaria'
-                          ? 'bg-amber-50 text-amber-700 border-amber-200'
-                          : 'bg-zinc-100 text-zinc-600 border-zinc-200'
-                      }`}
-                    >
-                      <span>
-                        {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
-                      </span>
-                      <span>
-                        {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
-                      </span>
-                    </span>
-
-                    {item.ordenListaMaestra && (
-                      <span className="text-[11px] font-mono font-semibold text-zinc-600 bg-zinc-100 px-2 py-0.5 rounded-md border border-zinc-200">
-                        #{item.ordenListaMaestra} Lista Maestra
-                      </span>
-                    )}
-
-                    <span className="text-[11px] text-zinc-500 font-normal">
-                      {item.prioridad === 'esencial'
-                        ? '— Sin esto perdés una parte importante de la experiencia.'
-                        : item.prioridad === 'recomendada'
-                        ? '— Importante para personajes o historia.'
-                        : item.prioridad === 'complementaria'
-                        ? '— Aporta contexto, pero no es fundamental.'
-                        : '— Principalmente para completar el universo.'}
-                    </span>
-                  </motion.div>
-                )}
 
                 {/* Stagger 3: Main Character */}
                 {item.personajePrincipal && (
