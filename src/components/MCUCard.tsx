@@ -58,20 +58,20 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
                 ? '🟡 Complementaria: Aporta contexto, pero no es fundamental.'
                 : '⚪ Opcional: Principalmente para completar el universo.'
             }
-            className={`absolute top-2.5 left-2.5 z-20 flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-label font-bold tracking-wider uppercase backdrop-blur-md border shadow-sm transition-all duration-300 ${
+            className={`absolute top-2.5 left-2.5 z-20 h-[22px] w-[22px] sm:group-hover:w-auto p-0 sm:group-hover:px-2 flex items-center justify-center gap-1 rounded-full text-[8.5px] font-sans font-bold tracking-tight uppercase tactile-priority-pill transition-all duration-300 max-w-[calc(100%-3rem)] ${
               item.prioridad === 'esencial'
-                ? 'bg-rose-950/80 border-rose-500/60 text-rose-300 shadow-[0_0_8px_rgba(244,63,94,0.35)]'
+                ? 'tactile-priority-esencial'
                 : item.prioridad === 'recomendada'
-                ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+                ? 'tactile-priority-recomendada'
                 : item.prioridad === 'complementaria'
-                ? 'bg-amber-950/80 border-amber-500/50 text-amber-300'
-                : 'bg-zinc-900/80 border-zinc-600/40 text-zinc-400'
+                ? 'tactile-priority-complementaria'
+                : 'tactile-priority-opcional'
             }`}
           >
-            <span>
+            <span className="text-[11px] leading-none flex items-center justify-center shrink-0">
               {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
             </span>
-            <span className="hidden sm:group-hover:inline transition-all duration-200">
+            <span className="hidden sm:group-hover:inline transition-all duration-200 truncate">
               {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
             </span>
           </div>

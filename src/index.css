@@ -564,3 +564,53 @@
     0 2px 6px rgba(0, 0, 0, 0.4),
     inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
+
+/* 10. Tactile Marvel Priority Pills (Cards & Dashboard) */
+.tactile-priority-pill {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 11, 20, 0.88);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.tactile-priority-esencial {
+  border: 1px solid rgba(200, 29, 37, 0.65);
+  border-top: 1px solid rgba(255, 100, 105, 0.85);
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    0 0 14px rgba(200, 29, 37, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+.tactile-priority-recomendada {
+  border: 1px solid rgba(16, 185, 129, 0.6);
+  border-top: 1px solid rgba(110, 231, 183, 0.85);
+  color: #ECFDF5;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    0 0 14px rgba(16, 185, 129, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.tactile-priority-complementaria {
+  border: 1px solid rgba(245, 158, 11, 0.6);
+  border-top: 1px solid rgba(252, 211, 77, 0.85);
+  color: #FFFBEB;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    0 0 14px rgba(245, 158, 11, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.tactile-priority-opcional {
+  border: 1px solid rgba(113, 113, 122, 0.6);
+  border-top: 1px solid rgba(212, 212, 216, 0.75);
+  color: #E4E4E7;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}

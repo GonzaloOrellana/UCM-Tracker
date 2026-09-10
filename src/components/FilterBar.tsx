@@ -243,7 +243,7 @@ export const FilterBar: React.FC = () => {
                           key={p.value}
                           type="button"
                           onClick={() => setFilters({ priority: p.value })}
-                          className={`p-2.5 rounded-xl border text-center font-label font-bold uppercase tracking-wider text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                          className={`p-2.5 rounded-xl border text-center font-sans font-bold uppercase tracking-wider text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                             filters.priority === p.value
                               ? 'bg-gradient-to-r from-red-700 via-rose-600 to-red-800 text-white border-red-400/40 shadow-md border-t-white/40'
                               : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 backdrop-blur-md'

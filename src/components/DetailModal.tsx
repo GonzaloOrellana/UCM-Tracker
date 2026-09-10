@@ -239,14 +239,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                 <div>
                   {item.prioridad && (
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-label font-bold tracking-wider uppercase border shadow-xs ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-sans font-bold tracking-wider uppercase border shadow-2xs ${
                         item.prioridad === 'esencial'
-                          ? 'bg-rose-50 text-rose-700 border-rose-200'
+                          ? 'bg-red-50 text-red-700 border-red-200'
                           : item.prioridad === 'recomendada'
                           ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                           : item.prioridad === 'complementaria'
                           ? 'bg-amber-50 text-amber-700 border-amber-200'
-                          : 'bg-zinc-100 text-zinc-600 border-zinc-200'
+                          : 'bg-zinc-100 text-zinc-700 border-zinc-200'
                       }`}
                       title={
                         item.prioridad === 'esencial'

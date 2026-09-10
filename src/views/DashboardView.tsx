@@ -322,17 +322,17 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   </span>
                   {nextUnwatchedItem.prioridad && (
                     <span
-                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-label font-bold uppercase tracking-wider backdrop-blur-md border ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-wider tactile-priority-pill ${
                         nextUnwatchedItem.prioridad === 'esencial'
-                          ? 'bg-rose-950/80 border-rose-500/60 text-rose-300 shadow-[0_0_8px_rgba(244,63,94,0.4)]'
+                          ? 'tactile-priority-esencial'
                           : nextUnwatchedItem.prioridad === 'recomendada'
-                          ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+                          ? 'tactile-priority-recomendada'
                           : nextUnwatchedItem.prioridad === 'complementaria'
-                          ? 'bg-amber-950/80 border-amber-500/50 text-amber-300'
-                          : 'bg-zinc-900/80 border-zinc-600/40 text-zinc-400'
+                          ? 'tactile-priority-complementaria'
+                          : 'tactile-priority-opcional'
                       }`}
                     >
-                      <span>
+                      <span className="text-[11px] leading-none">
                         {nextUnwatchedItem.prioridad === 'esencial' ? '🔥' : nextUnwatchedItem.prioridad === 'recomendada' ? '🟢' : nextUnwatchedItem.prioridad === 'complementaria' ? '🟡' : '⚪'}
                       </span>
                       <span>
