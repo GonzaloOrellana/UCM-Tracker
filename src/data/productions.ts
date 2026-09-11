@@ -1132,7 +1132,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "colorAcento": "#CE1836",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d9cd6bd1-bcf8-4a3b-8f92-0fdd4f79ac08",
     "ordenListaMaestra": 27,
-    "prioridad": "complementaria"
+    "prioridad": "esencial"
   },
   {
     "id": "loki-s1",
