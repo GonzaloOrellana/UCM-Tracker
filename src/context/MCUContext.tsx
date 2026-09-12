@@ -141,7 +141,9 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [items, todayStr]);
 
   const upcomingItems = useMemo(() => {
-    return items.filter((item) => item.fechaLanzamiento > todayStr);
+    return items
+      .filter((item) => item.fechaLanzamiento > todayStr)
+      .sort((a, b) => a.ordenEstreno - b.ordenEstreno);
   }, [items, todayStr]);
 
   // Custom Filters Hook operating on available items for library views

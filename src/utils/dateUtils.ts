@@ -2,10 +2,20 @@
  * Utilidades para formateo de fechas y cuentas regresivas del MCU
  */
 
-export const formatDateDisplay = (dateStr?: string): string => {
+export const formatDateDisplay = (dateStr?: string, fechaEsExacta: boolean = true): string => {
   if (!dateStr) return 'Próximamente';
   const parts = dateStr.split('-');
   if (parts.length === 3) {
+    if (!fechaEsExacta) {
+      const fullMonths = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+      ];
+      const monthIdx = parseInt(parts[1], 10) - 1;
+      if (monthIdx >= 0 && monthIdx < 12) {
+        return `${fullMonths[monthIdx]} ${parts[0]}`;
+      }
+    }
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
   }
   return dateStr;

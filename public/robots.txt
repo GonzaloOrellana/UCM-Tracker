@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://ucm-tracker.com/sitemap.xml
+
+# Crawl-delay (optional, be polite)
+Crawl-delay: 1

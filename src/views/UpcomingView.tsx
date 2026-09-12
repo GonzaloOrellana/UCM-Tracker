@@ -20,7 +20,7 @@ export const UpcomingView: React.FC = () => {
           return (
             <div
               key={item.id}
-              title={`Aún no estrenada • Disponible el ${formatDateDisplay(item.fechaLanzamiento)}`}
+              title={`Aún no estrenada • Disponible ${item.fechaEsExacta === false ? 'en' : 'el'} ${formatDateDisplay(item.fechaLanzamiento, item.fechaEsExacta)}`}
               className="flex flex-col select-none cursor-default"
             >
               {/* Poster Image Container */}
@@ -45,7 +45,7 @@ export const UpcomingView: React.FC = () => {
                 </h3>
                 <div className="flex items-center gap-1.5">
                   <p className="text-xs text-white/70 font-semibold truncate">
-                    {formatDateDisplay(item.fechaLanzamiento)}
+                    {formatDateDisplay(item.fechaLanzamiento, item.fechaEsExacta)}
                   </p>
                   {item.fechaEsExacta === false && (
                     <span className="text-[10px] text-amber-400/90 font-medium" title="Fecha de estreno estimada">
