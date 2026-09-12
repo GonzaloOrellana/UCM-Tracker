@@ -38,7 +38,7 @@ export interface MCUItem {
 
 export type OrderMode = 'release' | 'chronological';
 
-export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms';
+export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday';
 
 export interface FilterState {
   status: 'all' | 'watched' | 'unwatched';

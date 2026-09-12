@@ -86,7 +86,7 @@ export const PrivacyPolicyView: React.FC = () => {
                 <strong className="text-white">Datos de Cuenta y Registro:</strong> Correo electrónico, nombre de usuario y contraseña (hasheada y gestionada de forma encriptada mediante la infraestructura de Supabase Auth; la app nunca guarda ni lee tu contraseña en texto plano).
               </li>
               <li>
-                <strong className="text-white">Progreso y Contenido:</strong> Estado de producciones vistas (películas, series y especiales), lista de producciones marcadas como favoritas e historial de calificaciones asignadas.
+                <strong className="text-white">Progreso y Contenido:</strong> Estado de producciones vistas (películas, series y especiales) e historial de calificaciones asignadas.
               </li>
               <li>
                 <strong className="text-white">Datos de Perfil Opcionales:</strong> Fotografía o avatar de perfil cargado voluntariamente por el usuario.

@@ -9,6 +9,7 @@ import { UpcomingView } from './views/UpcomingView';
 import { PrivacyPolicyView } from './views/PrivacyPolicyView';
 import { TermsOfServiceView } from './views/TermsOfServiceView';
 import { ProfileView } from './views/ProfileView';
+import { DoomsdayRoadmapView } from './views/DoomsdayRoadmapView';
 import { DetailModal } from './components/DetailModal';
 import { EditItemModal } from './components/EditItemModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
@@ -76,10 +77,20 @@ const TrackerMainApp: React.FC = () => {
   return (
     <>
       {/* Main Page Container with Custom Linear Gradient Background */}
-      <div className="min-h-screen bg-crextio-dashboard-gradient text-white font-sans p-4 sm:p-6 lg:p-8 flex flex-col items-center">
-        
-        <div className="w-full max-w-[1580px] flex-1 flex flex-col space-y-6">
-          
+      <div
+        className={`min-h-screen bg-crextio-dashboard-gradient text-white font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:p-8 pb-12 sm:pb-6 lg:pb-8 ${
+          currentView === 'dashboard'
+            ? 'lg:h-screen lg:max-h-screen lg:overflow-hidden'
+            : ''
+        }`}
+      >
+        <div
+          className={`w-full max-w-[1580px] flex-1 flex flex-col space-y-3 sm:space-y-6 ${
+            currentView === 'dashboard'
+              ? 'h-full min-h-0'
+              : ''
+          }`}
+        >
           {/* Topbar Horizontal Navigation */}
           <Topbar
             currentView={currentView}
@@ -89,7 +100,7 @@ const TrackerMainApp: React.FC = () => {
           />
 
           {/* Active View Router Content */}
-          <main className="flex-1" key={currentView}>
+          <main className={currentView === 'dashboard' ? 'flex-1 min-h-0 flex flex-col' : 'flex-1'} key={currentView}>
             {currentView === 'dashboard' && (
               <DashboardView
                 onNavigate={(v) => setCurrentView(v)}
@@ -116,6 +127,13 @@ const TrackerMainApp: React.FC = () => {
 
             {currentView === 'terms' && (
               <TermsOfServiceView />
+            )}
+
+            {currentView === 'doomsday' && (
+              <DoomsdayRoadmapView
+                onBackToDashboard={() => setCurrentView('dashboard')}
+                onNavigate={(v) => setCurrentView(v)}
+              />
             )}
           </main>
 

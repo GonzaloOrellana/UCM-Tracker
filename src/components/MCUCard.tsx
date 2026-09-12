@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { Check, Heart } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface MCUCardProps {
@@ -10,23 +10,17 @@ interface MCUCardProps {
 }
 
 export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
-  const { watchedIds, favoriteIds, toggleWatched, toggleFavorite } = useMCU();
+  const { watchedIds, toggleWatched } = useMCU();
   const [imageError, setImageError] = useState(false);
   const [, setIsBouncing] = useState(false);
 
   const isWatched = watchedIds.has(item.id);
-  const isFavorite = favoriteIds.has(item.id);
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsBouncing(true);
     toggleWatched(item.id);
     setTimeout(() => setIsBouncing(false), 300);
-  };
-
-  const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    toggleFavorite(item.id);
   };
 
   return (
@@ -124,26 +118,10 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
 
       {/* Title & Metadata Text UNDERNEATH Poster */}
       <div className="mt-3 px-0.5 space-y-0.5">
-        <div className="flex items-start justify-between gap-2 min-h-[2.5rem]">
-          <h3 className="font-display text-white text-sm sm:text-base font-bold tracking-tight leading-snug flex-1 group-hover:text-zinc-100 transition-colors">
+        <div className="min-h-[2.5rem]">
+          <h3 className="font-display text-white text-sm sm:text-base font-bold tracking-tight leading-snug group-hover:text-zinc-100 transition-colors">
             {item.titulo}
           </h3>
-
-          {/* Tactile Heart Favorite Button with Ruby Glow */}
-          <button
-            type="button"
-            onClick={handleFavoriteClick}
-            className="p-1 -mr-1 transition-all duration-200 hover:scale-120 active:scale-90 cursor-pointer shrink-0"
-            title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          >
-            <Heart
-              className={`w-5 h-5 transition-all stroke-[2] ${
-                isFavorite
-                  ? 'fill-[#C81D25] text-[#C81D25] drop-shadow-[0_0_8px_rgba(200,29,37,0.7)]'
-                  : 'text-white/70 hover:text-[#C81D25]'
-              }`}
-            />
-          </button>
         </div>
 
         <div className="flex items-center gap-2 font-label text-xs text-white/70 font-bold uppercase tracking-wider">

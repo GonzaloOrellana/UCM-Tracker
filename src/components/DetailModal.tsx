@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Heart, Star, Play, ExternalLink } from 'lucide-react';
+import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Star, Play, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DetailModalProps {
@@ -11,9 +11,9 @@ interface DetailModalProps {
 }
 
 export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit }) => {
-  const { watchedIds, favoriteIds, ratings, toggleWatched, toggleFavorite, setRating, activeDetailSource } = useMCU();
+  const { watchedIds, ratings, toggleWatched, setRating } = useMCU();
 
-  const layoutPrefix = activeDetailSource === 'fav' ? 'fav' : 'card';
+  const layoutPrefix = 'card';
 
   const synopsisRef = useRef<HTMLDivElement>(null);
   const [hasMoreContent, setHasMoreContent] = useState(false);
@@ -87,7 +87,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
   }, [onClose]);
 
   const isWatched = item ? watchedIds.has(item.id) : false;
-  const isFavorite = item ? favoriteIds.has(item.id) : false;
   const currentRating = item ? ratings[item.id] : undefined;
 
   const isBrandNewDay = Boolean(
@@ -269,13 +268,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    onClick={() => toggleFavorite(item.id)}
-                    className="p-1.5 transition-all hover:scale-110 cursor-pointer text-zinc-600 hover:text-rose-600"
-                    title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-                  >
-                    <Heart className={`w-5 h-5 transition-colors ${isFavorite ? 'fill-[#C81D25] text-[#C81D25]' : ''}`} />
-                  </button>
                   <button
                     onClick={() => onEdit(item)}
                     className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer"

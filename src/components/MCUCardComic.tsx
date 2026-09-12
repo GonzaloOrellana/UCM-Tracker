@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { Check, Heart } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface MCUCardComicProps {
@@ -10,20 +10,14 @@ interface MCUCardComicProps {
 }
 
 export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }) => {
-  const { watchedIds, favoriteIds, toggleWatched, toggleFavorite } = useMCU();
+  const { watchedIds, toggleWatched } = useMCU();
   const [imageError, setImageError] = useState(false);
 
   const isWatched = watchedIds.has(item.id);
-  const isFavorite = favoriteIds.has(item.id);
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     toggleWatched(item.id);
-  };
-
-  const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    toggleFavorite(item.id);
   };
 
   // Formato de número de Issue (ej: ISSUE #01)
@@ -88,26 +82,10 @@ export const MCUCardComic: React.FC<MCUCardComicProps> = ({ item, onOpenDetail }
 
       {/* Título & Metadata debajo del Poster (Estilo Referencia "CIVIL WAR", "DOCTOR STRANGE") */}
       <div className="mt-3 space-y-1.5">
-        <div className="flex items-start justify-between gap-1.5 min-h-[2.4rem]">
-          <h3 className="font-display text-[#1a1c1c] text-base sm:text-lg font-bold tracking-tight line-clamp-2 leading-snug flex-1">
+        <div className="min-h-[2.4rem]">
+          <h3 className="font-display text-[#1a1c1c] text-base sm:text-lg font-bold tracking-tight line-clamp-2 leading-snug">
             {item.titulo}
           </h3>
-
-          {/* Botón Favorito Heart con Relieve Cómic */}
-          <button
-            type="button"
-            onClick={handleFavoriteClick}
-            className="p-1 -mr-1 transition-transform hover:scale-120 active:scale-90 cursor-pointer shrink-0"
-            title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-          >
-            <Heart
-              className={`w-4.5 h-4.5 transition-colors stroke-[2.5] ${
-                isFavorite
-                  ? 'fill-[#bb0013] text-[#bb0013] drop-shadow-[1px_1px_0px_#1a1c1c]'
-                  : 'text-[#5e5e5e] hover:text-[#bb0013]'
-              }`}
-            />
-          </button>
         </div>
 
         {/* ISSUE #XX Subtitle */}

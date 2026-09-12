@@ -2,10 +2,17 @@ import React from 'react';
 import { useMCU } from '../context/MCUContext';
 
 export const Footer: React.FC = () => {
-  const { setCurrentView } = useMCU();
+  const { currentView, setCurrentView } = useMCU();
+  const isDashboard = currentView === 'dashboard';
 
   return (
-    <footer className="w-full mt-12 py-6 border-t border-white/10 text-[11px] text-zinc-400 font-sans flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+    <footer
+      className={`w-full border-t border-white/10 font-sans flex flex-col sm:flex-row items-center justify-between text-center sm:text-left shrink-0 ${
+        isDashboard
+          ? 'mt-1 lg:mt-0 py-2 sm:py-1.5 pb-6 sm:pb-1.5 text-[10.5px] text-zinc-400 gap-2'
+          : 'mt-12 py-6 pb-10 sm:pb-6 text-[11px] text-zinc-400 gap-3'
+      }`}
+    >
       <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2">
         <p className="text-zinc-400">
           Marvel Tracker © 2026

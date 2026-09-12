@@ -2,7 +2,6 @@ import { MCUItem, UserSettings } from '../types/mcu';
 
 const STORAGE_KEYS = {
   WATCHED_IDS: 'mcu_watched_ids_v1',
-  FAVORITE_IDS: 'mcu_favorite_ids_v1',
   RATINGS: 'mcu_ratings_v1',
   CUSTOM_ITEMS: 'mcu_custom_items_v1',
   EDITED_ITEMS: 'mcu_edited_items_v1',
@@ -32,24 +31,6 @@ export const storageService = {
       localStorage.setItem(STORAGE_KEYS.WATCHED_IDS, JSON.stringify(ids));
     } catch (e) {
       console.error('Error saving watched IDs:', e);
-    }
-  },
-
-  getFavoriteIds(): string[] {
-    try {
-      const data = localStorage.getItem(STORAGE_KEYS.FAVORITE_IDS);
-      return data ? JSON.parse(data) : [];
-    } catch (e) {
-      console.error('Error loading favorite IDs:', e);
-      return [];
-    }
-  },
-
-  saveFavoriteIds(ids: string[]): void {
-    try {
-      localStorage.setItem(STORAGE_KEYS.FAVORITE_IDS, JSON.stringify(ids));
-    } catch (e) {
-      console.error('Error saving favorite IDs:', e);
     }
   },
 

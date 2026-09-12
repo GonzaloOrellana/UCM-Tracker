@@ -38,7 +38,7 @@ export const DeleteAccountModal: React.FC<DeleteAccountModalProps> = ({
             </div>
 
             <p className="text-xs text-zinc-300 leading-relaxed">
-              Se cerrará la sesión y se borrarán permanentemente todos tus datos guardados, progreso de producciones vistas y favoritos.
+              Se cerrará la sesión y se borrarán permanentemente todos tus datos guardados y el progreso de producciones vistas.
             </p>
 
             <div className="flex items-center justify-end gap-2.5 pt-2">

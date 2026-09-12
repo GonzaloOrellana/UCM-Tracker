@@ -24,7 +24,6 @@ interface MCUContextType {
   upcomingItems: MCUItem[];
   filteredItems: MCUItem[];
   watchedIds: Set<string>;
-  favoriteIds: Set<string>;
   ratings: Record<string, number>;
   filters: FilterState;
   stats: MCUStats;
@@ -53,7 +52,6 @@ interface MCUContextType {
   openDetailModal: (item: MCUItem, source?: 'grid' | 'fav') => void;
   closeDetailModal: () => void;
   toggleWatched: (id: string) => void;
-  toggleFavorite: (id: string) => void;
   setRating: (id: string, rating: number | null) => void;
   markAllAsWatched: () => void;
   resetProgress: () => void;
@@ -74,7 +72,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeDetailSource, setActiveDetailSource] = useState<'grid' | 'fav'>('grid');
 
   const [watchedIds, setWatchedIds] = useState<Set<string>>(new Set());
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
   const [ratings, setRatingsState] = useState<Record<string, number>>({});
   const [customItems, setCustomItems] = useState<MCUItem[]>([]);
   const [editedMap, setEditedMap] = useState<Record<string, Partial<MCUItem>>>({});
@@ -171,9 +168,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const watched = await mcuService.fetchWatchedIds();
       setWatchedIds(new Set(watched));
 
-      const favs = storageService.getFavoriteIds();
-      setFavoriteIds(new Set(favs));
-
       const loadedRatings = storageService.getRatings();
       setRatingsState(loadedRatings);
 
@@ -223,6 +217,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Modal handlers
   const openDetailModal = (item: MCUItem, source: 'grid' | 'fav' = 'grid') => {
+    if (item.fechaLanzamiento && item.fechaLanzamiento > todayStr) return;
     setActiveDetailSource(source);
     setActiveDetailItem(item);
   };
@@ -240,15 +235,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     await mcuService.toggleWatchedState(id, nextIsWatched);
   };
 
-  const toggleFavorite = (id: string) => {
-    setFavoriteIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      storageService.saveFavoriteIds(Array.from(next));
-      return next;
-    });
-  };
 
   const setRating = (id: string, rating: number | null) => {
     setRatingsState((prev) => {
@@ -272,8 +258,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const resetProgress = async () => {
     setWatchedIds(new Set());
     items.forEach((item) => mcuService.toggleWatchedState(item.id, false));
-    setFavoriteIds(new Set());
-    storageService.saveFavoriteIds([]);
     storageService.saveWatchedIds([]);
     storageService.saveRatings({});
   };
@@ -346,7 +330,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         upcomingItems,
         filteredItems,
         watchedIds,
-        favoriteIds,
         ratings,
         filters,
         stats,
@@ -369,7 +352,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         openDetailModal,
         closeDetailModal,
         toggleWatched,
-        toggleFavorite,
         setRating,
         markAllAsWatched,
         resetProgress,
