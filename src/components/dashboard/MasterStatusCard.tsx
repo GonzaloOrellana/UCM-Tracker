@@ -18,7 +18,7 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
       transition={{ duration: 0.8, ease: [0.25, 1, 0.3, 1] }}
       className="lg:col-span-4 flex flex-col h-full"
     >
-      <div className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-5 sm:p-5 lg:p-4.5 xl:p-6 flex flex-col justify-between h-full overflow-hidden min-h-[165px] lg:min-h-0">
+      <div className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-5 sm:p-5 lg:p-3.5 xl:p-6 flex flex-col justify-between h-full overflow-hidden min-h-[165px] lg:min-h-0">
 
         {/* Glowing Marvel Ambient Orbs */}
         <div className="absolute -top-10 -right-10 w-36 h-36 bg-red-600/12 rounded-full blur-2xl pointer-events-none z-0" />

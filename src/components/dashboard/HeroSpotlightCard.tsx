@@ -91,7 +91,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
               onOpenDetail(currentSpotlightItem);
             }
           }}
-          className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 lg:p-4 xl:p-5 flex flex-col justify-between h-[180px] sm:h-[195px] lg:h-full overflow-hidden group/spotlight cursor-pointer hover:border-white/30 hover:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.8),0_0_24px_rgba(255,255,255,0.06)] transition-all duration-300"
+          className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 lg:p-3.5 xl:p-5 flex flex-col justify-between h-[180px] sm:h-[195px] lg:h-full overflow-hidden group/spotlight cursor-pointer hover:border-white/30 hover:shadow-[0_16px_40px_-8px_rgba(0,0,0,0.8),0_0_24px_rgba(255,255,255,0.06)] transition-all duration-300"
         >
           {/* Vibrant Background Scene with Smooth Animated Crossfade */}
           <AnimatePresence mode="wait">
@@ -116,12 +116,12 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
 
           {/* Top Header: Section / Priority Badge */}
           <div className="relative z-10 flex items-center gap-2 shrink-0">
-            <span className="font-label text-[9px] sm:text-[10.5px] font-semibold text-zinc-300 shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+            <span className="font-label text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold text-zinc-300 shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
               Siguiente en tu lista:
             </span>
             {currentSpotlightItem.prioridad && (
               <span
-                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-sans font-bold uppercase tracking-wider tactile-priority-pill shrink-0 ${
+                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[8px] sm:text-[8.5px] xl:text-[9px] font-sans font-bold uppercase tracking-wider tactile-priority-pill shrink-0 ${
                   currentSpotlightItem.prioridad === 'esencial'
                     ? 'tactile-priority-esencial'
                     : currentSpotlightItem.prioridad === 'recomendada'
@@ -154,7 +154,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
           </div>
 
           {/* Spotlight Content: Animated Title */}
-          <div className="relative z-10 my-auto py-1 sm:py-2 pointer-events-none">
+          <div className="relative z-10 my-auto py-0.5 sm:py-1 pointer-events-none">
             <AnimatePresence mode="wait">
               <motion.h2
                 key={currentSpotlightItem.id}
@@ -162,7 +162,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.22, ease: 'easeOut' }}
-                className="font-display text-sm sm:text-lg lg:text-lg xl:text-2xl font-bold tracking-tight text-white leading-tight line-clamp-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] select-none"
+                className="font-display text-sm sm:text-base lg:text-base xl:text-xl font-bold tracking-tight text-white leading-tight line-clamp-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] select-none"
               >
                 {currentSpotlightItem.titulo}
               </motion.h2>
@@ -170,7 +170,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
           </div>
 
           {/* Spotlight Footer: Official Watch Link (Left) + Mode Toggle & Chevrons (Right) */}
-          <div className="relative z-10 flex items-center justify-between gap-1.5 sm:gap-2 pt-1 flex-wrap sm:flex-nowrap">
+          <div className="relative z-10 flex items-center justify-between gap-1 sm:gap-1.5 xl:gap-2 pt-0.5 min-w-0 flex-nowrap">
             {(() => {
               const platformInfo = getPlatformInfo(currentSpotlightItem.urlOficial, currentSpotlightItem);
 
@@ -181,11 +181,11 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                   title={platformInfo.tooltip}
-                  className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 lg:px-3.5 lg:py-1.5 xl:px-4 xl:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch shrink-0 ${platformInfo.buttonClasses}`}
+                  className={`inline-flex items-center gap-1 sm:gap-1.5 xl:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-2.5 lg:py-1 xl:px-3.5 xl:py-1.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch shrink-0 ${platformInfo.buttonClasses}`}
                 >
                   <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
                   <span>Ver ahora</span>
-                  {platformInfo.renderLogo()}
+                  {platformInfo.renderLogo('w-3.5 h-3.5 sm:w-4 sm:h-4')}
                 </a>
               );
             })()}
@@ -193,16 +193,16 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
             {/* Right Controls: Mode Toggle Pill + Navigation Chevrons */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1.5 sm:gap-2 shrink-0"
+              className="flex items-center gap-1 sm:gap-1.5 xl:gap-2 shrink-0"
             >
               {/* Segmented Mode Selector: Todas vs Trama Principal */}
-              <div className="flex items-center bg-black/60 border border-white/15 rounded-full p-0.5 sm:p-1 shadow-inner backdrop-blur-md">
+              <div className="flex items-center bg-black/60 border border-white/15 rounded-full p-0.5 shadow-inner backdrop-blur-md">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFilterChange('all');
                   }}
-                  className={`px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-[9.5px] sm:text-[10.5px] xl:text-[11px] font-semibold tracking-wide transition-all cursor-pointer ${
+                  className={`px-2 py-0.5 sm:px-2.5 sm:py-1 xl:px-3 xl:py-1 rounded-full text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold tracking-wide transition-all cursor-pointer ${
                     spotlightFilter === 'all'
                       ? 'bg-white/25 text-white shadow-xs font-bold border-t border-white/40'
                       : 'text-zinc-400 hover:text-white'
@@ -216,23 +216,23 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                     e.stopPropagation();
                     handleFilterChange('main');
                   }}
-                  className={`px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-[9.5px] sm:text-[10.5px] xl:text-[11px] font-semibold tracking-wide transition-all cursor-pointer flex items-center gap-1 sm:gap-1.5 ${
+                  className={`px-2 py-0.5 sm:px-2.5 sm:py-1 xl:px-3 xl:py-1 rounded-full text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold tracking-wide transition-all cursor-pointer flex items-center gap-1 ${
                     spotlightFilter === 'main'
                       ? 'bg-gradient-to-r from-red-600/90 to-amber-600/90 text-white shadow-xs font-bold border-t border-white/40'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                   title="Filtrar solo producciones Esenciales y Recomendadas (Trama Principal)"
                 >
-                  <span className="text-[10px] sm:text-[11px]">🔥</span>
-                  <span className="hidden md:inline">Trama Principal</span>
-                  <span className="md:hidden">Principal</span>
+                  <span className="text-[9.5px] sm:text-[10px]">🔥</span>
+                  <span className="hidden xl:inline">Trama Principal</span>
+                  <span className="xl:hidden">Principal</span>
                 </button>
               </div>
 
               {/* Chevrons Navigation with Counter */}
               {spotlightList.length > 1 && (
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  <span className="text-[9.5px] sm:text-[10.5px] xl:text-[11px] font-mono font-bold text-zinc-300 ml-0.5 select-none">
+                <div className="flex items-center gap-0.5 sm:gap-1">
+                  <span className="text-[9px] sm:text-[9.5px] xl:text-[10.5px] font-mono font-bold text-zinc-300 ml-0.5 select-none">
                     {spotlightIndex + 1}/{spotlightList.length}
                   </span>
                   <button
@@ -241,10 +241,10 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                       setSpotlightIndex((prev) => Math.max(0, prev - 1));
                     }}
                     disabled={spotlightIndex === 0}
-                    className="w-6 h-6 sm:w-6.5 sm:h-6.5 xl:w-7 xl:h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer border border-white/10 transition-all shadow-xs"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 xl:w-6.5 xl:h-6.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer border border-white/10 transition-all shadow-xs"
                     title="Producción anterior"
                   >
-                    <ChevronLeft className="w-3.5 h-3.5 xl:w-4 xl:h-4 stroke-[2.5]" />
+                    <ChevronLeft className="w-3 h-3 xl:w-3.5 xl:h-3.5 stroke-[2.5]" />
                   </button>
                   <button
                     onClick={(e) => {
@@ -252,10 +252,10 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                       setSpotlightIndex((prev) => Math.min(spotlightList.length - 1, prev + 1));
                     }}
                     disabled={spotlightIndex >= spotlightList.length - 1}
-                    className="w-6 h-6 sm:w-6.5 sm:h-6.5 xl:w-7 xl:h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer border border-white/10 transition-all shadow-xs"
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 xl:w-6.5 xl:h-6.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer border border-white/10 transition-all shadow-xs"
                     title="Siguiente producción"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 xl:w-4 xl:h-4 stroke-[2.5]" />
+                    <ChevronRight className="w-3 h-3 xl:w-3.5 xl:h-3.5 stroke-[2.5]" />
                   </button>
                 </div>
               )}

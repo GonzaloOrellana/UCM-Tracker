@@ -25,9 +25,9 @@ export const UpcomingCarouselCard: React.FC<UpcomingCarouselCardProps> = ({ upco
       transition={{ duration: 0.8, delay: 0.35, ease: [0.25, 1, 0.3, 1] }}
       className="md:col-span-1 lg:col-span-6 flex flex-col min-h-0 h-full"
     >
-      <div className="tactile-bento-card rounded-2xl sm:rounded-3xl p-3 sm:p-3.5 xl:p-4.5 flex flex-col justify-between h-full min-h-0">
-        <div className="flex items-center justify-between shrink-0">
-          <h3 className="font-display text-sm sm:text-base xl:text-xl font-bold tracking-tight text-white leading-none">
+      <div className="tactile-bento-card rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between h-full min-h-0">
+        <div className="flex items-center justify-between shrink-0 mb-2 sm:mb-2.5 lg:mb-1 xl:mb-2">
+          <h3 className="font-display text-sm sm:text-base xl:text-xl font-bold tracking-tight text-white leading-tight">
             Próximos Estrenos
           </h3>
 
@@ -60,7 +60,7 @@ export const UpcomingCarouselCard: React.FC<UpcomingCarouselCardProps> = ({ upco
             {upcomingItems.map((item) => (
               <div
                 key={item.id}
-                className="relative w-[96px] h-[144px] sm:w-[115px] sm:h-[172px] lg:w-[126px] lg:h-[189px] xl:w-[140px] xl:h-[210px] rounded-xl overflow-hidden bg-zinc-900 border border-white/15 shadow-lg shrink-0 cursor-default select-none tactile-poster-frame snap-start"
+                className="relative w-[96px] h-[144px] sm:w-[115px] sm:h-[172px] lg:w-[108px] lg:h-[162px] xl:w-[130px] xl:h-[195px] rounded-xl overflow-hidden bg-zinc-900 border border-white/15 shadow-lg shrink-0 cursor-default select-none tactile-poster-frame snap-start"
                 title={`Próximo estreno: ${item.titulo} (${getCountdownLabel(item.fechaLanzamiento)})`}
               >
                 <img
