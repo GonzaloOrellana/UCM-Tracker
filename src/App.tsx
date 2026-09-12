@@ -78,14 +78,14 @@ const TrackerMainApp: React.FC = () => {
     <>
       {/* Main Page Container with Custom Linear Gradient Background */}
       <div
-        className={`min-h-screen bg-crextio-dashboard-gradient text-white font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:p-8 pb-12 sm:pb-6 lg:pb-8 ${
+        className={`min-h-screen bg-crextio-dashboard-gradient text-white font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:px-6 lg:py-4 xl:p-8 pb-12 sm:pb-6 lg:pb-4 xl:pb-8 ${
           currentView === 'dashboard'
             ? 'lg:h-screen lg:max-h-screen lg:overflow-hidden'
             : ''
         }`}
       >
         <div
-          className={`w-full max-w-[1580px] flex-1 flex flex-col space-y-3 sm:space-y-6 ${
+          className={`w-full max-w-[1580px] flex-1 flex flex-col space-y-3 sm:space-y-4 xl:space-y-6 ${
             currentView === 'dashboard'
               ? 'h-full min-h-0'
               : ''

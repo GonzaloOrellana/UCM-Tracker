@@ -6,13 +6,13 @@ import {
   ArrowLeft,
   BookOpen,
   Clapperboard,
-  ExternalLink,
   Flame,
   Globe2,
   Play,
   Sparkles,
   Zap,
 } from 'lucide-react';
+import { getPlatformInfo } from '../utils/platformHelper';
 
 interface DoomsdayRoadmapViewProps {
   onBackToDashboard: () => void;
@@ -148,63 +148,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   };
 
   // Helper to render the official watch button (matching DetailModal)
-  const getWatchButtonData = (prod?: MCUItem) => {
-    const watchUrl = prod?.urlOficial || 'https://www.disneyplus.com';
-    const isMercadoPlay = Boolean(watchUrl.includes('mercadolibre'));
-    const isPrimeVideo = Boolean(watchUrl.includes('primevideo'));
-    const isDisney = Boolean(watchUrl.includes('disneyplus'));
-
-    const tooltip = isMercadoPlay
-      ? 'Ver en Mercado Play (Sitio oficial)'
-      : isPrimeVideo
-      ? 'Ver en Prime Video (Sitio oficial)'
-      : isDisney
-      ? 'Ver en Disney+ (Sitio oficial)'
-      : 'Ver en sitio oficial';
-
-    const buttonClasses = isMercadoPlay
-      ? 'bg-[#FFE600] hover:bg-[#F2DC00] text-zinc-950 shadow-[0_2px_8px_rgba(255,230,0,0.35)]'
-      : isPrimeVideo
-      ? 'bg-[#00A8E1] hover:bg-[#0092C5] text-white shadow-[0_2px_8px_rgba(0,168,225,0.35)]'
-      : isDisney
-      ? 'bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-[0_2px_8px_rgba(0,99,229,0.35)]'
-      : 'bg-zinc-900 hover:bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)]';
-
-    const renderLogo = () => {
-      if (isMercadoPlay) {
-        return (
-          <img
-            src="/logos-plataformas/mercado-libre-logo.png"
-            alt="Mercado Libre"
-            className="w-3.5 h-3.5 object-contain shrink-0 transition-transform group-hover/watch:scale-110"
-          />
-        );
-      }
-      if (isPrimeVideo) {
-        return (
-          <img
-            src="/logos-plataformas/amazon-prime-video.png"
-            alt="Prime Video"
-            className="w-3.5 h-3.5 object-contain rounded-xs shrink-0 shadow-2xs transition-transform group-hover/watch:scale-110"
-          />
-        );
-      }
-      if (isDisney) {
-        return (
-          <span className="w-3.5 h-3.5 rounded-full overflow-hidden shrink-0 flex items-center justify-center transition-transform group-hover/watch:scale-110 shadow-2xs">
-            <img
-              src="/logos-plataformas/Disney_plus_icon.png"
-              alt="Disney+"
-              className="w-full h-full object-cover scale-110"
-            />
-          </span>
-        );
-      }
-      return <ExternalLink className="w-3 h-3 text-white/70 group-hover/watch:text-white transition-colors" />;
-    };
-
-    return { watchUrl, tooltip, buttonClasses, renderLogo };
-  };
+  const getWatchButtonData = (prod?: MCUItem) => getPlatformInfo(prod?.urlOficial, prod);
 
   return (
     <div className="flex-1 flex flex-col space-y-6 animate-fade-in pb-12 max-w-[1580px] mx-auto w-full">

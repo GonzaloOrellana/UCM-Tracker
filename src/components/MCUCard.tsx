@@ -12,15 +12,12 @@ interface MCUCardProps {
 export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
   const { watchedIds, toggleWatched } = useMCU();
   const [imageError, setImageError] = useState(false);
-  const [, setIsBouncing] = useState(false);
 
   const isWatched = watchedIds.has(item.id);
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsBouncing(true);
     toggleWatched(item.id);
-    setTimeout(() => setIsBouncing(false), 300);
   };
 
   return (

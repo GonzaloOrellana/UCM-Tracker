@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Star, Play, ExternalLink } from 'lucide-react';
+import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Star, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getPlatformInfo } from '../utils/platformHelper';
 
 interface DetailModalProps {
   item: MCUItem | null;
@@ -89,80 +90,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
   const isWatched = item ? watchedIds.has(item.id) : false;
   const currentRating = item ? ratings[item.id] : undefined;
 
-  const isBrandNewDay = Boolean(
-    item &&
-      (item.id === 'up-spider-man-4' ||
-        item.titulo.toLowerCase().includes('brand new day') ||
-        item.tituloOriginal?.toLowerCase().includes('brand new day'))
-  );
+  const platformInfo = getPlatformInfo(item?.urlOficial, item);
 
-  const watchUrl =
-    item?.urlOficial ||
-    (isBrandNewDay
-      ? 'https://www.sonypictures.com/movies'
-      : 'https://www.disneyplus.com');
-
-  const isMercadoPlay = Boolean(watchUrl.includes('mercadolibre'));
-  const isPrimeVideo = Boolean(watchUrl.includes('primevideo'));
-  const isDisney = Boolean(watchUrl.includes('disneyplus'));
-
-  const watchTooltip = isMercadoPlay
-    ? 'Ver en Mercado Play (Sitio oficial)'
-    : isPrimeVideo
-    ? 'Ver en Prime Video (Sitio oficial)'
-    : isDisney
-    ? 'Ver en Disney+ (Sitio oficial)'
-    : isBrandNewDay
-    ? 'Ver en Sony Pictures (Sitio oficial)'
-    : 'Ver en sitio oficial';
-
-  const getWatchButtonClasses = () => {
-    if (isMercadoPlay) {
-      return 'bg-[#FFE600] hover:bg-[#F2DC00] text-zinc-950 shadow-[0_2px_8px_rgba(255,230,0,0.35)] hover:shadow-[0_4px_14px_rgba(255,230,0,0.45)]';
-    }
-    if (isPrimeVideo) {
-      return 'bg-[#00A8E1] hover:bg-[#0092C5] text-white shadow-[0_2px_8px_rgba(0,168,225,0.35)] hover:shadow-[0_4px_14px_rgba(0,168,225,0.45)]';
-    }
-    if (isDisney) {
-      return 'bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-[0_2px_8px_rgba(0,99,229,0.35)] hover:shadow-[0_4px_14px_rgba(0,99,229,0.45)]';
-    }
-    return 'bg-zinc-900 hover:bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.35)]';
-  };
-
-  const renderPlatformLogo = () => {
-    if (isMercadoPlay) {
-      return (
-        <img
-          src="/logos-plataformas/mercado-libre-logo.png"
-          alt="Mercado Libre"
-          className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain shrink-0 transition-transform group-hover/watch:scale-110"
-        />
-      );
-    }
-    if (isPrimeVideo) {
-      return (
-        <img
-          src="/logos-plataformas/amazon-prime-video.png"
-          alt="Prime Video"
-          className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain rounded-xs shrink-0 shadow-2xs transition-transform group-hover/watch:scale-110"
-        />
-      );
-    }
-    if (isDisney) {
-      return (
-        <span className="w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full overflow-hidden shrink-0 flex items-center justify-center transition-transform group-hover/watch:scale-110 shadow-2xs">
-          <img
-            src="/logos-plataformas/Disney_plus_icon.png"
-            alt="Disney+"
-            className="w-full h-full object-cover scale-110"
-          />
-        </span>
-      );
-    }
-    return (
-      <ExternalLink className="w-3 h-3 text-white/70 group-hover/watch:text-white transition-colors" />
-    );
-  };
 
   const getTypeText = () => {
     if (!item) return '';
@@ -451,16 +380,16 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
               >
                 {/* Watch Now Official Link Button */}
                 <a
-                  href={watchUrl}
+                  href={platformInfo.watchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  title={watchTooltip}
-                  className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${getWatchButtonClasses()}`}
+                  title={platformInfo.tooltip}
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${platformInfo.buttonClasses}`}
                 >
                   <Play className="w-3.5 h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
                   <span>Ver ahora</span>
-                  {renderPlatformLogo()}
+                  {platformInfo.renderLogo('w-4 h-4 sm:w-4.5 sm:h-4.5')}
                 </a>
 
                 <div

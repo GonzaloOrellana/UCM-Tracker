@@ -59,16 +59,6 @@ export interface ProgressStats {
   phases: Record<string, { total: number; watched: number; percentage: number }>;
 }
 
-export interface UpcomingRelease {
-  id: string;
-  titulo: string;
-  fechaLanzamiento: string;
-  urlPoster: string;
-  tipo: MediaType;
-  fase: MCUPhase;
-  resumen: string;
-}
-
 export interface UserSettings {
   userName: string;
   avatarId?: string;

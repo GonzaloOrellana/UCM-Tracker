@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { MCUItem, FilterState, UserSettings, NavView } from '../types/mcu';
+import { MCUItem, FilterState, UserSettings, NavView, ProgressStats } from '../types/mcu';
 import { PRODUCTIONS } from '../data/productions';
 import { storageService, DEFAULT_AVATAR } from '../services/storageService';
 import { mcuService } from '../services/mcuService';
@@ -7,16 +7,6 @@ import { User } from '@supabase/supabase-js';
 import { useMCUAuth } from '../hooks/useMCUAuth';
 import { useMCUFilters, defaultFilters } from '../hooks/useMCUFilters';
 import { getAvatarById, getAvatarUrl } from '../data/avatars';
-
-interface MCUStats {
-  total: number;
-  watched: number;
-  percentage: number;
-  movies: { total: number; watched: number };
-  series: { total: number; watched: number };
-  specials: { total: number; watched: number };
-  phases: Record<string, { total: number; watched: number; percentage: number }>;
-}
 
 interface MCUContextType {
   items: MCUItem[];
@@ -26,11 +16,10 @@ interface MCUContextType {
   watchedIds: Set<string>;
   ratings: Record<string, number>;
   filters: FilterState;
-  stats: MCUStats;
+  stats: ProgressStats;
   settings: UserSettings;
   currentView: NavView;
   activeDetailItem: MCUItem | null;
-  activeDetailSource: 'grid' | 'fav';
 
   // Autenticación
   user: User | null;
@@ -49,7 +38,7 @@ interface MCUContextType {
 
   // Acciones
   setCurrentView: (view: NavView) => void;
-  openDetailModal: (item: MCUItem, source?: 'grid' | 'fav') => void;
+  openDetailModal: (item: MCUItem) => void;
   closeDetailModal: () => void;
   toggleWatched: (id: string) => void;
   setRating: (id: string, rating: number | null) => void;
@@ -69,7 +58,6 @@ const MCUContext = createContext<MCUContextType | undefined>(undefined);
 export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentView, setCurrentView] = useState<NavView>('dashboard');
   const [activeDetailItem, setActiveDetailItem] = useState<MCUItem | null>(null);
-  const [activeDetailSource, setActiveDetailSource] = useState<'grid' | 'fav'>('grid');
 
   const [watchedIds, setWatchedIds] = useState<Set<string>>(new Set());
   const [ratings, setRatingsState] = useState<Record<string, number>>({});
@@ -180,7 +168,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   // Compute Statistics based on released/available productions
-  const stats: MCUStats = useMemo(() => {
+  const stats: ProgressStats = useMemo(() => {
     const total = availableItems.length;
     const watched = availableItems.filter((i) => watchedIds.has(i.id)).length;
     const percentage = total > 0 ? Math.round((watched / total) * 100) : 0;
@@ -216,9 +204,8 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [availableItems, watchedIds]);
 
   // Modal handlers
-  const openDetailModal = (item: MCUItem, source: 'grid' | 'fav' = 'grid') => {
+  const openDetailModal = (item: MCUItem) => {
     if (item.fechaLanzamiento && item.fechaLanzamiento > todayStr) return;
-    setActiveDetailSource(source);
     setActiveDetailItem(item);
   };
   const closeDetailModal = () => setActiveDetailItem(null);
@@ -336,7 +323,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         settings: effectiveSettings,
         currentView,
         activeDetailItem,
-        activeDetailSource,
         user,
         login,
         signup,

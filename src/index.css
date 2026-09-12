@@ -19,13 +19,6 @@
   }
 }
 
-/* Textura de puntos de imprenta (Halftone Dot Pattern) */
-.bg-comic-dots {
-  background-color: #F7F4EE;
-  background-image: radial-gradient(#D4CECE 1.2px, transparent 1.2px);
-  background-size: 12px 12px;
-  background-attachment: fixed;
-}
 
 /* Hide Scrollbars Globally While Retaining Full Scrollability */
 ::-webkit-scrollbar {

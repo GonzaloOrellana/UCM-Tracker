@@ -1,19 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useMCU } from '../context/MCUContext';
+import { formatDateDisplay } from '../utils/dateUtils';
 
 export const UpcomingView: React.FC = () => {
-  const { upcomingItems, openDetailModal } = useMCU();
-
-  // Helper to format ISO YYYY-MM-DD to DD/MM/YYYY
-  const formatDateDisplay = (dateStr: string) => {
-    if (!dateStr) return 'Próximamente';
-    const parts = dateStr.split('-');
-    if (parts.length === 3) {
-      return `${parts[2]}/${parts[1]}/${parts[0]}`;
-    }
-    return dateStr;
-  };
+  const { upcomingItems } = useMCU();
 
   return (
     <div className="space-y-6">
