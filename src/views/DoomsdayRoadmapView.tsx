@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMCU } from '../context/MCUContext';
 import { NavView, MCUItem } from '../types/mcu';
@@ -44,6 +44,15 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 }) => {
   const { items } = useMCU();
   const [activeTab, setActiveTab] = useState<'prep' | 'comics' | 'climax'>('prep');
+
+  // Lock solid black background for the Doomsday section
+  useEffect(() => {
+    const prevBg = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = '#000000';
+    return () => {
+      document.body.style.backgroundColor = prevBg;
+    };
+  }, []);
 
   // Curation: Imprescindibles ordenadas para estar preparado para Avengers: Doomsday
   const prepMilestones: PrepMilestone[] = useMemo(
@@ -151,61 +160,53 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   const getWatchButtonData = (prod?: MCUItem) => getPlatformInfo(prod?.urlOficial, prod);
 
   return (
-    <div className="flex-1 flex flex-col space-y-6 animate-fade-in pb-12 max-w-[1580px] mx-auto w-full">
+    <div className="flex-1 flex flex-col space-y-6 animate-fade-in pb-12 max-w-[1580px] mx-auto w-full relative">
+      {/* Doctor Doom Ambient Aura & Mystic Green Glows */}
+      <div className="fixed top-12 right-1/4 w-[500px] h-[500px] bg-emerald-500/[0.07] rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed bottom-1/4 left-10 w-[420px] h-[420px] bg-teal-600/[0.04] rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="fixed top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent pointer-events-none -z-10" />
+
       {/* ─────────────────────────────────────────────────────────────
-          TOP NAV BAR (Clean Back Button)
+          TOP NAV BAR (Clean Back Button with Doom emerald accent)
           ───────────────────────────────────────────────────────────── */}
       <div className="flex items-center pt-1">
         <button
           onClick={onBackToDashboard}
-          className="tactile-btn-glass text-white font-label text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-full flex items-center gap-2 cursor-pointer shadow-md hover:border-emerald-500/50 hover:text-emerald-300 transition-all"
+          className="bg-black/70 border border-emerald-500/30 text-emerald-300 font-label text-xs sm:text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.12)] hover:border-emerald-400 hover:bg-emerald-950/40 hover:text-emerald-200 hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] transition-all"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 text-emerald-400" />
           <span>Volver al Dashboard</span>
         </button>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          HERO BANNER: CLEAN CINEMATIC POSTER WITH DOOMSDAY LOGO
+          HERO BANNER: OFFICIAL MARVEL STUDIOS AVENGERS DOOMSDAY LOGO (AS TITLE)
           ───────────────────────────────────────────────────────────── */}
-      <div className="relative rounded-3xl overflow-hidden border border-emerald-500/20 shadow-2xl p-6 sm:p-8 xl:p-10 min-h-[190px] sm:min-h-[220px] flex flex-col justify-center bg-black">
-        {/* Background Artwork: Official Avengers Doomsday Emblem */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="relative w-full flex items-center justify-center overflow-hidden py-1 sm:py-2 select-none">
+        {/* Subtle, refined Ambient Emerald Aura */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] md:w-[650px] lg:w-[800px] h-[120px] sm:h-[160px] md:h-[200px] bg-emerald-500/[0.08] rounded-full blur-[70px] sm:blur-[100px] pointer-events-none -z-10" />
+
+        <h1 className="sr-only">Marvel Studios Avengers: Doomsday</h1>
+
+        <div className="relative flex items-center justify-center w-full h-[140px] sm:h-[190px] md:h-[250px] lg:h-[310px] xl:h-[360px] overflow-hidden">
           <img
-            src="/avengersDoomsday-logo.png"
-            alt="Avengers: Doomsday"
-            className="w-full h-full object-cover object-right select-none opacity-85"
+            src="/logoAvengersDoomsday.png"
+            alt="Marvel Studios Avengers: Doomsday"
+            className="w-auto h-[240px] sm:h-[330px] md:h-[430px] lg:h-[530px] xl:h-[620px] max-w-none object-contain select-none drop-shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-transform duration-300 hover:scale-[1.01]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-        </div>
-
-        {/* Ambient Subtle Emerald Glow */}
-        <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none z-0" />
-
-        {/* Minimalist Content */}
-        <div className="relative z-10 max-w-2xl space-y-2">
-          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight text-white leading-tight drop-shadow-md">
-            Camino a <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-400">Avengers: Doomsday</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-200">Secret Wars</span>
-          </h1>
-
-          <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed max-w-xl">
-            Incursiones multiversales, el tablero de Victor Von Doom y la creación de Battleworld.
-          </p>
         </div>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          NAVIGATION TABS (3 CONCISE CHAPTERS - NO BADGE OVERLOAD)
+          NAVIGATION TABS (3 CONCISE CHAPTERS WITH DOOM ACCENTS)
           ───────────────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+      <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar">
         <button
           onClick={() => setActiveTab('prep')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
-            activeTab === 'prep'
-              ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-[0_0_16px_rgba(16,185,129,0.35)] border-t border-emerald-300/40'
-              : 'tactile-bento-card text-zinc-400 hover:text-white hover:bg-white/5'
-          }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'prep'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+            }`}
         >
           <Clapperboard className="w-4 h-4" />
           <span>Qué ver para estar preparado</span>
@@ -213,11 +214,10 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('comics')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
-            activeTab === 'comics'
-              ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-[0_0_16px_rgba(16,185,129,0.35)] border-t border-emerald-300/40'
-              : 'tactile-bento-card text-zinc-400 hover:text-white hover:bg-white/5'
-          }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'comics'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+            }`}
         >
           <BookOpen className="w-4 h-4" />
           <span>Origen en Cómics</span>
@@ -225,11 +225,10 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('climax')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
-            activeTab === 'climax'
-              ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-[0_0_16px_rgba(16,185,129,0.35)] border-t border-emerald-300/40'
-              : 'tactile-bento-card text-zinc-400 hover:text-white hover:bg-white/5'
-          }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'climax'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+            }`}
         >
           <Clapperboard className="w-4 h-4" />
           <span>El Clímax en Cine</span>
@@ -253,10 +252,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             {/* Subsection 1: Imprescindibles */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]" />
                 <h3 className="font-display text-sm sm:text-base font-bold text-white tracking-tight uppercase">
                   Imprescindibles
                 </h3>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-emerald-500/30 via-emerald-500/10 to-transparent ml-2" />
               </div>
 
               {/* Cards Grid */}
@@ -268,27 +268,27 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={milestone.id}
-                      className="tactile-bento-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden border-emerald-500/15 hover:border-emerald-500/35 transition-all"
+                      className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.14)] transition-all group"
                     >
                       <div>
                         {/* Poster + Title Section */}
                         <div className="flex gap-3.5 items-start mb-2.5">
                           {posterUrl && (
-                            <div className="w-16 h-24 rounded-xl overflow-hidden shrink-0 border border-white/10 bg-zinc-900 shadow-md">
+                            <div className="w-16 h-24 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
                               <img
                                 src={posterUrl}
                                 alt={milestone.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy"
                               />
                             </div>
                           )}
 
                           <div className="min-w-0 flex-1 space-y-1">
-                            <h4 className="font-display text-sm font-bold text-white leading-tight line-clamp-2">
+                            <h4 className="font-display text-sm font-bold text-white leading-tight line-clamp-2 group-hover:text-emerald-300 transition-colors">
                               {milestone.title}
                             </h4>
-                            <span className="text-[11px] text-zinc-400 block font-mono">
+                            <span className="text-[11px] text-emerald-400/80 block font-mono">
                               {milestone.year}
                             </span>
                           </div>
@@ -367,12 +367,13 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
             {/* Subsection 2: Resumen de lo que no necesitas volver a ver */}
             <div className="pt-4 space-y-3">
-              <div className="border-t border-white/10 pt-5">
+              <div className="border-t border-emerald-500/20 pt-5">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_10px_#fbbf24]" />
                   <h3 className="font-display text-sm sm:text-base font-bold text-white tracking-tight uppercase">
                     Resumen de lo que no necesitas volver a ver
                   </h3>
+                  <div className="h-[1px] flex-1 bg-gradient-to-r from-amber-500/30 via-emerald-500/10 to-transparent ml-2" />
                 </div>
                 <p className="text-xs text-zinc-400 mt-1">
                   Ahorra tiempo de visionado: únicamente necesitas conocer estos tres puntos narrativos específicos para comprender su contexto en Doomsday:
@@ -388,23 +389,23 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={recap.id}
-                      className="tactile-bento-card rounded-2xl p-4 flex flex-col justify-between border-amber-500/20 bg-gradient-to-br from-[#13110b]/70 via-zinc-950/60 to-black/80 hover:border-amber-500/40 transition-all shadow-md"
+                      className="rounded-2xl p-4 flex flex-col justify-between border border-emerald-500/20 bg-gradient-to-br from-[#0c0e0c]/90 via-[#060806]/90 to-black hover:border-amber-500/40 transition-all shadow-md group"
                     >
                       <div>
                         {/* Top: Mini Poster + Title + Year */}
                         <div className="flex items-center gap-3 mb-3">
                           {posterUrl && (
-                            <div className="w-12 h-16 rounded-lg overflow-hidden shrink-0 border border-white/15 bg-zinc-900 shadow-sm">
+                            <div className="w-12 h-16 rounded-lg overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-sm">
                               <img
                                 src={posterUrl}
                                 alt={recap.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy"
                               />
                             </div>
                           )}
                           <div className="min-w-0 flex-1">
-                            <h4 className="font-display text-sm font-bold text-white leading-tight truncate">
+                            <h4 className="font-display text-sm font-bold text-white leading-tight truncate group-hover:text-amber-300 transition-colors">
                               {recap.title}
                             </h4>
                             <span className="text-[10.5px] text-zinc-400 font-mono block mt-0.5">
@@ -414,7 +415,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                         </div>
 
                         {/* Crucial Takeaway Text */}
-                        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-zinc-200 leading-relaxed font-sans">
+                        <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-xs text-zinc-200 leading-relaxed font-sans">
                           <p>{recap.keyTakeaway}</p>
                         </div>
                       </div>
@@ -460,9 +461,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             className="grid grid-cols-1 md:grid-cols-3 gap-4"
           >
             {/* Card 1: La Regla de las Incursiones */}
-            <div className="tactile-bento-card rounded-2xl p-5 sm:p-6 space-y-2.5 border-emerald-500/15">
-              <div className="flex items-center gap-2 text-emerald-400">
-                <Globe2 className="w-5 h-5" />
+            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Globe2 className="w-5 h-5" />
+                </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-white">
                   Colapso de Realidades
                 </h3>
@@ -473,9 +476,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Card 2: Dios Emperador Doom y Battleworld */}
-            <div className="tactile-bento-card rounded-2xl p-5 sm:p-6 space-y-2.5 border-emerald-500/15">
-              <div className="flex items-center gap-2 text-emerald-400">
-                <Flame className="w-5 h-5" />
+            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Flame className="w-5 h-5" />
+                </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-white">
                   Battleworld
                 </h3>
@@ -486,9 +491,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Card 3: Doom vs Reed Richards */}
-            <div className="tactile-bento-card rounded-2xl p-5 sm:p-6 space-y-2.5 border-amber-500/15">
-              <div className="flex items-center gap-2 text-amber-400">
-                <Sparkles className="w-5 h-5" />
+            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-amber-500/20 hover:border-amber-400/50 hover:shadow-[0_0_20px_rgba(251,191,36,0.14)] transition-all">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.2)]">
+                  <Sparkles className="w-5 h-5" />
+                </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-white">
                   Doom vs. Reed Richards
                 </h3>
@@ -511,9 +518,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
           >
             {/* Card 1: El Regreso de RDJ */}
-            <div className="tactile-bento-card rounded-2xl p-5 sm:p-6 space-y-2.5 border-emerald-500/15">
-              <div className="flex items-center gap-2 text-emerald-400">
-                <Clapperboard className="w-5 h-5" />
+            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Clapperboard className="w-5 h-5" />
+                </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-white">
                   Robert Downey Jr. es Doom
                 </h3>
@@ -524,9 +533,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Card 2: Soft-Reboot */}
-            <div className="tactile-bento-card rounded-2xl p-5 sm:p-6 space-y-2.5 border-emerald-500/15">
-              <div className="flex items-center gap-2 text-emerald-400">
-                <Sparkles className="w-5 h-5" />
+            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Sparkles className="w-5 h-5" />
+                </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-white">
                   Destino & Soft-Reboot
                 </h3>

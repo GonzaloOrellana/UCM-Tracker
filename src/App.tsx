@@ -78,7 +78,11 @@ const TrackerMainApp: React.FC = () => {
     <>
       {/* Main Page Container with Custom Linear Gradient Background */}
       <div
-        className={`min-h-screen bg-crextio-dashboard-gradient text-white font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:px-6 lg:py-3 xl:px-8 xl:py-4 pb-12 sm:pb-6 lg:pb-3 xl:pb-4 ${
+        className={`min-h-screen ${
+          currentView === 'doomsday'
+            ? 'bg-black text-white'
+            : 'bg-crextio-dashboard-gradient text-white'
+        } font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:px-6 lg:py-3 xl:px-8 xl:py-4 pb-12 sm:pb-6 lg:pb-3 xl:pb-4 transition-colors duration-500 ${
           currentView === 'dashboard'
             ? 'lg:h-screen lg:max-h-screen lg:overflow-hidden'
             : ''

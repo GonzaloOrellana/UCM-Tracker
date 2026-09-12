@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { NavView } from '../../types/mcu';
 
 interface DoomsdayBentoCardProps {
@@ -33,36 +33,24 @@ export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate
         <div className="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/15 rounded-full blur-2xl group-hover/doomsday:bg-emerald-400/25 transition-all duration-700 pointer-events-none z-0" />
         <div className="absolute -bottom-8 -left-8 w-28 h-28 bg-amber-500/10 rounded-full blur-xl pointer-events-none z-0" />
 
-        {/* Top Header: Clean Minimalist Badge & Date */}
-        <div className="relative z-10 flex items-center justify-between gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-mono font-medium tracking-wider uppercase bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
-            <Sparkles className="w-2.5 h-2.5 text-emerald-400" />
-            <span>Evento Multiversal</span>
-          </span>
-
-          <span className="text-[9px] sm:text-[10px] font-mono text-zinc-400/80 font-medium tracking-wider">
-            2026 — 2027
-          </span>
-        </div>
-
-        {/* Body / Title & Description (Clean & Spacious) */}
-        <div className="relative z-10 my-auto py-0.5 sm:py-1">
-          <h3 className="font-display text-sm sm:text-base lg:text-base xl:text-2xl font-bold tracking-tight text-white leading-tight group-hover/doomsday:text-emerald-300 transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-1 xl:line-clamp-2">
+        {/* Body / Title & Description (Clean & Spacious Top Placement) */}
+        <div className="relative z-10 pt-1 sm:pt-1.5 xl:pt-2">
+          <h3 className="font-display text-base sm:text-lg lg:text-lg xl:text-2xl font-bold tracking-tight text-white leading-tight group-hover/doomsday:text-emerald-300 transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-2">
             Camino a Doomsday & Secret Wars
           </h3>
-          <p className="text-[10.5px] lg:text-[11px] xl:text-[12px] text-zinc-300/80 mt-1 sm:mt-1.5 leading-relaxed font-sans max-w-sm line-clamp-2">
+          <p className="text-[11px] lg:text-[11.5px] xl:text-[12px] text-zinc-300/85 mt-1 sm:mt-1.5 leading-relaxed font-sans max-w-sm line-clamp-2">
             Incursiones, el ascenso de Victor Von Doom y la colisión total hacia Battleworld.
           </p>
         </div>
 
         {/* Footer Action: Tactile Glass CTA aligned with row baseline */}
-        <div className="relative z-10 flex items-center justify-start pt-0.5">
+        <div className="relative z-10 flex items-center justify-start pt-2">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onNavigate('doomsday');
             }}
-            className="tactile-btn-glass text-white font-label text-[10px] sm:text-[11px] xl:text-xs font-semibold px-3 sm:px-3.5 xl:px-4.5 py-1.5 xl:py-2 rounded-full flex items-center gap-1.5 cursor-pointer group-hover/doomsday:border-emerald-400/80 group-hover/doomsday:text-emerald-300 transition-all shadow-lg"
+            className="tactile-btn-glass text-white text-[10px] sm:text-[11px] xl:text-xs font-semibold px-3 sm:px-3.5 xl:px-4.5 py-1.5 xl:py-2 rounded-full flex items-center gap-1.5 cursor-pointer group-hover/doomsday:border-emerald-400/80 group-hover/doomsday:text-emerald-300 transition-all shadow-lg"
           >
             <span>Explorar evento</span>
             <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
