@@ -11,7 +11,7 @@ interface MCUGridProps {
 }
 
 export const MCUGrid: React.FC<MCUGridProps> = ({ items, onOpenDetail }) => {
-  const { resetFilters } = useMCU();
+  const { resetFilters, watchedIds, toggleWatched } = useMCU();
 
   if (items.length === 0) {
     return (
@@ -50,7 +50,13 @@ export const MCUGrid: React.FC<MCUGridProps> = ({ items, onOpenDetail }) => {
       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
     >
       {items.map((item) => (
-        <MCUCard key={item.id} item={item} onOpenDetail={onOpenDetail} />
+        <MCUCard
+          key={item.id}
+          item={item}
+          isWatched={watchedIds.has(item.id)}
+          onOpenDetail={onOpenDetail}
+          onToggleWatched={toggleWatched}
+        />
       ))}
     </motion.div>
   );

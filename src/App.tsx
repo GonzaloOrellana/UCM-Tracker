@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { MCUProvider, useMCU } from './context/MCUContext';
 import { Topbar } from './components/Topbar';
 import { LoginView } from './views/LoginView';
-import { ResetPasswordView } from './views/ResetPasswordView';
 import { DashboardView } from './views/DashboardView';
 import { LibraryView } from './views/LibraryView';
 import { UpcomingView } from './views/UpcomingView';
-import { PrivacyPolicyView } from './views/PrivacyPolicyView';
-import { TermsOfServiceView } from './views/TermsOfServiceView';
-import { ProfileView } from './views/ProfileView';
-import { DoomsdayRoadmapView } from './views/DoomsdayRoadmapView';
+
+// Lazy loading para vistas secundarias o pesadas (optimiza el bundle inicial)
+const ResetPasswordView = lazy(() =>
+  import('./views/ResetPasswordView').then((m) => ({ default: m.ResetPasswordView }))
+);
+const ProfileView = lazy(() =>
+  import('./views/ProfileView').then((m) => ({ default: m.ProfileView }))
+);
+const DoomsdayRoadmapView = lazy(() =>
+  import('./views/DoomsdayRoadmapView').then((m) => ({ default: m.DoomsdayRoadmapView }))
+);
+const PrivacyPolicyView = lazy(() =>
+  import('./views/PrivacyPolicyView').then((m) => ({ default: m.PrivacyPolicyView }))
+);
+const TermsOfServiceView = lazy(() =>
+  import('./views/TermsOfServiceView').then((m) => ({ default: m.TermsOfServiceView }))
+);
 import { DetailModal } from './components/DetailModal';
 import { EditItemModal } from './components/EditItemModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
@@ -94,14 +106,22 @@ const TrackerMainApp: React.FC = () => {
   // Si está en flujo de restablecimiento de contraseña
   if (resetPasswordState) {
     return (
-      <ResetPasswordView
-        mode={resetPasswordState}
-        onBackToLogin={() => setResetPasswordState(null)}
-        onPasswordUpdated={() => {
-          setResetPasswordState(null);
-          setCurrentView('dashboard');
-        }}
-      />
+      <Suspense
+        fallback={
+          <div className="min-h-screen bg-[#0C0D17] flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-[#C81D25] border-t-transparent rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <ResetPasswordView
+          mode={resetPasswordState}
+          onBackToLogin={() => setResetPasswordState(null)}
+          onPasswordUpdated={() => {
+            setResetPasswordState(null);
+            setCurrentView('dashboard');
+          }}
+        />
+      </Suspense>
     );
   }
 
@@ -159,40 +179,48 @@ const TrackerMainApp: React.FC = () => {
 
           {/* Active View Router Content */}
           <main className={currentView === 'dashboard' ? 'flex-1 min-h-0 flex flex-col' : 'flex-1'} key={currentView}>
-            {currentView === 'dashboard' && (
-              <DashboardView
-                onNavigate={(v) => setCurrentView(v)}
-              />
-            )}
+            <Suspense
+              fallback={
+                <div className="flex-1 flex items-center justify-center py-20">
+                  <div className="w-8 h-8 border-2 border-[#C81D25] border-t-transparent rounded-full animate-spin" />
+                </div>
+              }
+            >
+              {currentView === 'dashboard' && (
+                <DashboardView
+                  onNavigate={(v) => setCurrentView(v)}
+                />
+              )}
 
-            {(currentView === 'movies' || currentView === 'series' || currentView === 'specials') && (
-              <LibraryView
-                view={currentView}
-              />
-            )}
+              {(currentView === 'movies' || currentView === 'series' || currentView === 'specials') && (
+                <LibraryView
+                  view={currentView}
+                />
+              )}
 
-            {currentView === 'upcoming' && (
-              <UpcomingView />
-            )}
+              {currentView === 'upcoming' && (
+                <UpcomingView />
+              )}
 
-            {currentView === 'profile' && (
-              <ProfileView onExitGuestMode={handleExitGuest} />
-            )}
+              {currentView === 'profile' && (
+                <ProfileView onExitGuestMode={handleExitGuest} />
+              )}
 
-            {currentView === 'privacy' && (
-              <PrivacyPolicyView />
-            )}
+              {currentView === 'privacy' && (
+                <PrivacyPolicyView />
+              )}
 
-            {currentView === 'terms' && (
-              <TermsOfServiceView />
-            )}
+              {currentView === 'terms' && (
+                <TermsOfServiceView />
+              )}
 
-            {currentView === 'doomsday' && (
-              <DoomsdayRoadmapView
-                onBackToDashboard={() => setCurrentView('dashboard')}
-                onNavigate={(v) => setCurrentView(v)}
-              />
-            )}
+              {currentView === 'doomsday' && (
+                <DoomsdayRoadmapView
+                  onBackToDashboard={() => setCurrentView('dashboard')}
+                  onNavigate={(v) => setCurrentView(v)}
+                />
+              )}
+            </Suspense>
           </main>
 
           {/* Global Footer */}

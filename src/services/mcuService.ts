@@ -66,6 +66,47 @@ export const mcuService = {
     }
   },
 
+  // Guardar en lote o alternar múltiples estados de visto de forma atómica
+  async setMultipleWatchedState(itemIds: string[], nextIsWatched: boolean): Promise<void> {
+    if (itemIds.length === 0) return;
+
+    // 1. Actualización local inmediata (una sola escritura en localStorage)
+    const currentWatched = new Set(storageService.getWatchedIds());
+    if (nextIsWatched) {
+      itemIds.forEach((id) => currentWatched.add(id));
+    } else {
+      itemIds.forEach((id) => currentWatched.delete(id));
+    }
+    storageService.saveWatchedIds(Array.from(currentWatched));
+
+    // 2. Sincronización en bloque en Supabase (una sola transacción de red)
+    const supabase = getSupabaseClient();
+    if (supabase) {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          const now = new Date().toISOString();
+          const records = itemIds.map((id) => ({
+            user_id: session.user.id,
+            item_id: id,
+            is_watched: nextIsWatched,
+            updated_at: now,
+          }));
+
+          const { error } = await supabase
+            .from('user_progress')
+            .upsert(records, { onConflict: 'user_id, item_id' });
+
+          if (error) {
+            console.warn('Error al guardar en lote en Supabase user_progress:', error);
+          }
+        }
+      } catch (err) {
+        console.warn('Supabase batch upsert error:', err);
+      }
+    }
+  },
+
   // Cargar ítems personalizados desde Supabase o localStorage
   async fetchCustomItems(): Promise<MCUItem[]> {
     const supabase = getSupabaseClient();
@@ -108,18 +149,12 @@ export const mcuService = {
     // Intentar subir imagen a Supabase Storage si se proporcionó base64
     if (supabase && imageBase64 && imageBase64.startsWith('data:image')) {
       try {
-        const fileExt = imageBase64.substring('data:image/'.length, imageBase64.indexOf(';base64'));
-        const fileName = `${newItem.id}.${fileExt || 'jpg'}`;
+        const match = imageBase64.match(/^data:image\/([a-zA-Z0-9]+);base64,/);
+        const fileExt = match ? match[1] : 'jpg';
+        const fileName = `${newItem.id}.${fileExt}`;
         
-        // Convert base64 to Blob
-        const base64Data = imageBase64.split(',')[1];
-        const byteCharacters = atob(base64Data);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
-        }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], { type: `image/${fileExt || 'jpg'}` });
+        // Convert base64 to Blob usando la API nativa de fetch
+        const blob = await (await fetch(imageBase64)).blob();
 
         const { data: uploadData, error: uploadError } = await supabase.storage
           .from('marvel-posters')

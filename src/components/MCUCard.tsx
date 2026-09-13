@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
 import { MCUItem } from '../types/mcu';
-import { useMCU } from '../context/MCUContext';
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface MCUCardProps {
   item: MCUItem;
+  isWatched: boolean;
   onOpenDetail: (item: MCUItem) => void;
+  onToggleWatched: (id: string) => void;
 }
 
-export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
-  const { watchedIds, toggleWatched } = useMCU();
+export const MCUCard = React.memo<MCUCardProps>(({
+  item,
+  isWatched,
+  onOpenDetail,
+  onToggleWatched,
+}) => {
   const [imageError, setImageError] = useState(false);
-
-  const isWatched = watchedIds.has(item.id);
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    toggleWatched(item.id);
+    onToggleWatched(item.id);
   };
 
   return (
@@ -133,5 +136,5 @@ export const MCUCard: React.FC<MCUCardProps> = ({ item, onOpenDetail }) => {
 
     </div>
   );
-};
+});
 

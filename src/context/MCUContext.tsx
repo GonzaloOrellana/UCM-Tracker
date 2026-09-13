@@ -108,6 +108,20 @@ const parseViewFromUrl = (): NavView | null => {
   return null;
 };
 
+const syncUrlWithView = (view: NavView) => {
+  if (typeof window === 'undefined') return;
+  const currentHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+  const currentResolved = VIEW_MAP[currentHash] || 'dashboard';
+
+  if (currentResolved !== view) {
+    const targetHash = view === 'dashboard' ? '' : `#${view}`;
+    const targetUrl = view === 'dashboard'
+      ? window.location.pathname + window.location.search
+      : targetHash;
+    window.history.replaceState(null, '', targetUrl);
+  }
+};
+
 export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentView, setCurrentViewState] = useState<NavView>(() => {
     const fromUrl = parseViewFromUrl();
@@ -151,17 +165,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       document.body.scrollTop = 0;
     }
 
-    const targetHash = view === 'dashboard' ? '' : `#${view}`;
-    const currentHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
-    const currentResolved = VIEW_MAP[currentHash] || 'dashboard';
-
-    if (currentResolved !== view) {
-      if (view === 'dashboard') {
-        window.history.replaceState(null, '', window.location.pathname + window.location.search);
-      } else {
-        window.history.replaceState(null, '', targetHash);
-      }
-    }
+    syncUrlWithView(view);
   };
 
   // Mantener sincronizado URL y localStorage ante cambios de vista
@@ -172,17 +176,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       // Ignorar error
     }
 
-    const currentHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
-    const currentResolved = VIEW_MAP[currentHash] || 'dashboard';
-
-    if (currentResolved !== currentView) {
-      const targetHash = currentView === 'dashboard' ? '' : `#${currentView}`;
-      if (currentView === 'dashboard') {
-        window.history.replaceState(null, '', window.location.pathname + window.location.search);
-      } else {
-        window.history.replaceState(null, '', targetHash);
-      }
-    }
+    syncUrlWithView(currentView);
   }, [currentView]);
 
   // Soporte para botones Atrás / Adelante del navegador
@@ -394,15 +388,15 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const markAllAsWatched = async () => {
-    const allIds = new Set(items.map((i) => i.id));
-    setWatchedIds(allIds);
-    items.forEach((item) => mcuService.toggleWatchedState(item.id, true));
+    const allIds = items.map((i) => i.id);
+    setWatchedIds(new Set(allIds));
+    await mcuService.setMultipleWatchedState(allIds, true);
   };
 
   const resetProgress = async () => {
+    const allIds = items.map((i) => i.id);
     setWatchedIds(new Set());
-    items.forEach((item) => mcuService.toggleWatchedState(item.id, false));
-    storageService.saveWatchedIds([]);
+    await mcuService.setMultipleWatchedState(allIds, false);
     storageService.saveRatings({});
   };
 
