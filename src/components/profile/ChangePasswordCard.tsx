@@ -3,7 +3,11 @@ import { KeyRound, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useMCU } from '../../context/MCUContext';
 import { getSupabaseClient } from '../../lib/supabase';
 
-export const ChangePasswordCard: React.FC = () => {
+interface ChangePasswordCardProps {
+  seamless?: boolean;
+}
+
+export const ChangePasswordCard: React.FC<ChangePasswordCardProps> = ({ seamless = true }) => {
   const { user, updatePassword } = useMCU();
 
   const [currentPassword, setCurrentPassword] = useState('');
@@ -74,76 +78,76 @@ export const ChangePasswordCard: React.FC = () => {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-3xl p-4 sm:p-5 rounded-2xl border border-white/20 shadow-2xl space-y-3 text-left">
-      <h2 className="text-sm font-semibold text-white border-b border-white/15 pb-2 flex items-center gap-2">
-        <KeyRound className="w-3.5 h-3.5 text-[#F5C842]" />
-        <span>Cambiar Contraseña</span>
-      </h2>
-
+    <div className={seamless ? "space-y-3 text-left" : "bg-white/10 backdrop-blur-3xl p-4 sm:p-5 rounded-2xl border border-white/20 shadow-2xl space-y-3 text-left"}>
       {passError && (
-        <div className="p-2 rounded-lg bg-rose-500/25 border border-rose-500/40 text-rose-200 text-[11px] flex items-center gap-2">
-          <AlertCircle className="w-3.5 h-3.5 shrink-0 text-rose-300" />
+        <div className="p-2.5 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
           <span>{passError}</span>
         </div>
       )}
 
       {passSuccess && (
-        <div className="p-2 rounded-lg bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-[11px] flex items-center gap-2">
-          <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-300" />
+        <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
           <span>{passSuccess}</span>
         </div>
       )}
 
-      <form onSubmit={handlePasswordChange} className="space-y-2">
-        <div className="space-y-1">
-          <label className="text-[11px] font-medium text-zinc-300 block">
-            Contraseña actual
-          </label>
-          <input
-            type="password"
-            required
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            placeholder="••••••••••••"
-            className="w-full px-3.5 py-1.5 bg-white/10 border border-white/20 focus:border-white/50 rounded-lg text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner"
-          />
+      <form onSubmit={handlePasswordChange} className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="space-y-1">
+            <label className="font-display text-[10.5px] font-bold uppercase tracking-wider text-zinc-300 block">
+              Contraseña actual
+            </label>
+            <input
+              type="password"
+              required
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              placeholder="••••••••••••"
+              className="w-full px-3 py-2 neu-input-sunken rounded-xl text-xs text-white placeholder-zinc-500 outline-none font-medium transition-all"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label className="font-display text-[10.5px] font-bold uppercase tracking-wider text-zinc-300 block">
+              Nueva contraseña
+            </label>
+            <input
+              type="password"
+              required
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="Mínimo 6 caracteres"
+              className="w-full px-3 py-2 neu-input-sunken rounded-xl text-xs text-white placeholder-zinc-500 outline-none font-medium transition-all"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <label className="font-display text-[10.5px] font-bold uppercase tracking-wider text-zinc-300 block">
+              Confirmar contraseña
+            </label>
+            <input
+              type="password"
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="••••••••••••"
+              className="w-full px-3 py-2 neu-input-sunken rounded-xl text-xs text-white placeholder-zinc-500 outline-none font-medium transition-all"
+            />
+          </div>
         </div>
 
-        <div className="space-y-1">
-          <label className="text-[11px] font-medium text-zinc-300 block">
-            Nueva contraseña
-          </label>
-          <input
-            type="password"
-            required
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="Mínimo 6 caracteres"
-            className="w-full px-3.5 py-1.5 bg-white/10 border border-white/20 focus:border-white/50 rounded-lg text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner"
-          />
+        <div className="flex justify-end pt-0.5">
+          <button
+            type="submit"
+            disabled={updatingPass || !currentPassword || !newPassword || !confirmPassword}
+            className="w-full sm:w-auto px-4 py-2 bg-white/10 hover:bg-white/15 active:scale-[0.98] border border-white/15 disabled:opacity-40 text-white font-display text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
+          >
+            <KeyRound className="w-3.5 h-3.5 text-zinc-300" />
+            <span>{updatingPass ? 'Actualizando...' : 'Actualizar Contraseña'}</span>
+          </button>
         </div>
-
-        <div className="space-y-1">
-          <label className="text-[11px] font-medium text-zinc-300 block">
-            Confirmar nueva contraseña
-          </label>
-          <input
-            type="password"
-            required
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="••••••••••••"
-            className="w-full px-3.5 py-1.5 bg-white/10 border border-white/20 focus:border-white/50 rounded-lg text-xs text-white placeholder-zinc-400 outline-none font-medium transition-all shadow-inner"
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={updatingPass || !currentPassword || !newPassword || !confirmPassword}
-          className="w-full py-2 px-3 bg-white/15 hover:bg-white/25 border border-white/20 disabled:opacity-40 text-white text-xs font-medium rounded-lg transition-all cursor-pointer shadow-xs mt-1"
-        >
-          {updatingPass ? 'Actualizando...' : 'Actualizar Contraseña'}
-        </button>
       </form>
     </div>
   );
