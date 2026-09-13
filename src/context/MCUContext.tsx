@@ -125,12 +125,30 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return 'dashboard';
   });
 
+  // Deshabilitar la restauración de scroll automática del navegador para SPA
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      try {
+        window.history.scrollRestoration = 'manual';
+      } catch {
+        // Ignorar
+      }
+    }
+  }, []);
+
   const setCurrentView = (view: NavView) => {
     setCurrentViewState(view);
     try {
       localStorage.setItem('mcu_current_view', view);
     } catch {
       // Ignorar error
+    }
+
+    // Asegurar que al navegar a cualquier vista la pantalla vuelva arriba
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
 
     const targetHash = view === 'dashboard' ? '' : `#${view}`;
@@ -173,6 +191,11 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const fromUrl = parseViewFromUrl() || 'dashboard';
       if (fromUrl !== currentView) {
         setCurrentViewState(fromUrl);
+        if (typeof window !== 'undefined') {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
         try {
           localStorage.setItem('mcu_current_view', fromUrl);
         } catch {

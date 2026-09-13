@@ -36,7 +36,7 @@ export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate
         {/* Body / Title & Description (Clean & Spacious Top Placement) */}
         <div className="relative z-10 pt-1 sm:pt-1.5 xl:pt-2">
           <h3 className="font-display text-base sm:text-lg lg:text-lg xl:text-2xl font-bold tracking-tight text-white leading-tight group-hover/doomsday:text-emerald-300 transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-2">
-            Camino a Doomsday & Secret Wars
+            Camino a Doomsday
           </h3>
           <p className="text-[11px] lg:text-[11.5px] xl:text-[12px] text-zinc-300/85 mt-1 sm:mt-1.5 leading-relaxed font-sans max-w-sm line-clamp-2">
             Incursiones, el ascenso de Victor Von Doom y la colisión total hacia Battleworld.

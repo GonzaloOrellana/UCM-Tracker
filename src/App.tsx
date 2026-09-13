@@ -76,6 +76,21 @@ const TrackerMainApp: React.FC = () => {
     }
   }, [user]);
 
+  // Resetear el scroll hacia arriba cada vez que cambia la vista (crítico para navegación móvil y desktop)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    const rId = requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+
+    return () => cancelAnimationFrame(rId);
+  }, [currentView]);
+
   // Si está en flujo de restablecimiento de contraseña
   if (resetPasswordState) {
     return (

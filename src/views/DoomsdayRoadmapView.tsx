@@ -43,14 +43,32 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   const { items } = useMCU();
   const [activeTab, setActiveTab] = useState<'prep' | 'comics' | 'climax'>('prep');
 
-  // Lock solid black background for the Doomsday section
+  // Resetear scroll al tope y fijar fondo negro para la sección de Doomsday
   useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    const rId = requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+
     const prevBg = document.body.style.backgroundColor;
     document.body.style.backgroundColor = '#000000';
     return () => {
+      cancelAnimationFrame(rId);
       document.body.style.backgroundColor = prevBg;
     };
   }, []);
+
+  // Al cambiar entre pestañas internas del evento, volver suavemente arriba
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [activeTab]);
 
   // Curation: Imprescindibles ordenadas para estar preparado para Avengers: Doomsday
   const prepMilestones: PrepMilestone[] = useMemo(
@@ -279,17 +297,49 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             transition={{ duration: 0.25 }}
             className="space-y-6"
           >
+            {/* Sinopsis (Izquierda) + Tráiler Oficial (Derecha) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-center">
+              {/* Sinopsis a la izquierda */}
+              <div className="bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-center space-y-3 shadow-xl">
+                <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
+                  Sinopsis
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
+                  Tras el colapso inminente de múltiples realidades desatado por las constantes incursiones multiversales, los Vengadores, los Cuatro Fantásticos y héroes provenientes de distintas líneas temporales deberán unir fuerzas ante una crisis de proporciones cósmicas. Frente a ellos emerge el temible y brillante <strong>Victor von Doom</strong> (Robert Downey Jr.), quien buscará remodelar el tejido mismo de la existencia bajo su propia voluntad suprema.
+                </p>
+                <div className="pt-1 flex items-center gap-3 text-xs text-zinc-400 font-sans flex-wrap">
+                  <span>Estreno: <strong className="text-white">18 de Diciembre de 2026</strong></span>
+                  <span>•</span>
+                  <span>Dirección: <strong className="text-white">Anthony y Joe Russo</strong></span>
+                </div>
+              </div>
+
+              {/* Tráiler a la derecha */}
+              <div className="w-full">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.12)] bg-black">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/lAr_uspgHm8"
+                    title="Avengers: Doomsday | Tráiler Oficial"
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Subsection 1: Imprescindibles */}
-            <div className="space-y-3">
-              <div className="text-center">
+            <div className="space-y-3 px-5 sm:px-6 lg:px-7">
+              <div>
                 <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
                   Imprescindibles
                 </h3>
               </div>
 
               {/* Advertencia / Nota: se asume haber visto la Saga del Infinito */}
-              <div className="flex justify-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-medium text-center">
+              <div className="flex justify-start">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-medium">
                   <Info className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span>
                     Se da por sentado que ya viste o tuviste que haber visto <strong className="text-emerald-200 font-semibold">toda la Saga del Infinito</strong>.
@@ -311,7 +361,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
+                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
                             <img
                               src={posterUrl}
                               alt={milestone.title}
@@ -401,8 +451,8 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Subsection 2: Resumen de lo que no necesitas volver a ver */}
-            <div className="pt-2 space-y-3">
-              <div className="text-center">
+            <div className="pt-2 space-y-3 px-5 sm:px-6 lg:px-7">
+              <div>
                 <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
                   Resumen de lo que no necesitas volver a ver
                 </h3>
@@ -425,7 +475,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
+                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
                             <img
                               src={posterUrl}
                               alt={recap.title}
@@ -459,9 +509,10 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                                     rel="noopener noreferrer"
                                     onClick={(e) => e.stopPropagation()}
                                     title={tooltip}
-                                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all hover:scale-[1.03] cursor-pointer select-none group/watch ${buttonClasses}`}
+                                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${buttonClasses}`}
                                   >
-                                    <span>Ver</span>
+                                    <Play className="w-3 h-3 fill-current transition-transform group-hover/watch:scale-110" />
+                                    <span>Ver ahora</span>
                                     {renderLogo()}
                                   </a>
                                 );
@@ -489,8 +540,24 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             transition={{ duration: 0.25 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
           >
-            {/* Fotos Izquierda */}
-            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+            {/* Vista Celular: Primer par de imágenes al principio (Primera Izquierda + Primera Derecha) */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden items-start">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsodUOhTbuVHNpAZSmCEKYeyfw_ZQwLH7mcjTH0ZvGr4n1wlNm9hMXWOo&s=10"
+                alt="Doctor Doom - Cómics"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYcKfNhjDSbwgM3sVRVjf8OhBrHiAdA5ihxa_lYaqpX7egL1xLMP1Q3E&s=10"
+                alt="Avengers Doomsday"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Fotos Columna Izquierda (Sólo Desktop / lg) */}
+            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4 sm:gap-5 self-start justify-center">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsodUOhTbuVHNpAZSmCEKYeyfw_ZQwLH7mcjTH0ZvGr4n1wlNm9hMXWOo&s=10"
                 alt="Doctor Doom - Cómics"
@@ -549,8 +616,24 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
               </div>
             </div>
 
-            {/* Fotos Derecha */}
-            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+            {/* Vista Celular: Segundo par de imágenes al final (Segunda Izquierda + Segunda Derecha) */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden items-start">
+              <img
+                src="https://i.pinimg.com/736x/27/2d/28/272d28337e6aa0cd45ed83572245cb5d.jpg"
+                alt="Doctor Doom - Segunda ilustración cómic"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://i.pinimg.com/736x/75/f2/c2/75f2c28c0510fc26f5dd7013da065c5b.jpg"
+                alt="Doctor Doom - Portada cómic"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Fotos Columna Derecha (Sólo Desktop / lg) */}
+            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4 sm:gap-5 self-start justify-center">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYcKfNhjDSbwgM3sVRVjf8OhBrHiAdA5ihxa_lYaqpX7egL1xLMP1Q3E&s=10"
                 alt="Avengers Doomsday"
@@ -578,7 +661,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
           >
             {/* Fotos Izquierda */}
-            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+            <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-5 self-start justify-center items-start">
               <img
                 src="https://www.cinemascomics.com/wp-content/uploads/2024/09/Secret-Wars_4_dr-doom.jpg"
                 alt="Doctor Doom - Secret Wars"
@@ -648,8 +731,8 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
               />
               <img
                 src="https://i.pinimg.com/1200x/da/64/0a/da640ad25e6cace3889e26960fd55762.jpg"
-                alt="Wallpaper cómic Avengers Secret Wars"
-                className="w-full h-auto object-contain rounded-2x1 shadow-xl select-none"
+                alt="Portada cómic Avengers Secret Wars"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
                 loading="lazy"
               />
             </div>
