@@ -227,11 +227,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 leading-snug">
                     {item.titulo}
                   </h2>
-                  {item.tituloOriginal && item.tituloOriginal !== item.titulo && (
-                    <p className="font-body text-[11px] sm:text-xs text-zinc-500 italic mt-0.5 sm:mt-1 font-medium">
-                      {item.tituloOriginal}
-                    </p>
-                  )}
                 </motion.div>
 
                 {/* Stagger 2: Phase, Type, Release Year & Duration */}
