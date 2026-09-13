@@ -6,6 +6,7 @@ import {
   ArrowLeft,
   BookOpen,
   Clapperboard,
+  Info,
   Play,
   Sparkles,
 } from 'lucide-react';
@@ -74,6 +75,14 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           'Fundamental para entender las consecuencias narrativas tras la partida de Tony Stark y Steve Rogers.',
       },
       {
+        id: 'prep-spider-man-no-way-home',
+        productionId: 'spider-man-no-way-home-33',
+        title: 'Spider-Man: Sin camino a casa',
+        year: '2021',
+        whyItMatters:
+          'Se produce la primera gran colisión de universos dentro del UCM, dejando posibles consecuencias para Doomsday.',
+      },
+      {
         id: 'prep-wakanda-forever',
         productionId: 'black-panther-wakanda-forever-38',
         title: 'Black Panther: Wakanda Forever',
@@ -95,7 +104,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
         title: 'Los 4 Fantásticos: Primeros Pasos',
         year: '2025',
         whyItMatters:
-          'Útil para refrescar la historia, los poderes y la dinámica de los personajes, además de la aparición de Doctor Doom.',
+          'Útil para refrescar la historia, los poderes y la dinámica de los personajes, además de la aparición de Doctor Doom. Además la escena post-créditos conecta directamente con la película.',
       },
       {
         id: 'prep-loki-s2',
@@ -106,12 +115,20 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           'Muy recomendable ver especialmente el final, dado que tendrá una conexión directa con los eventos de Doomsday.',
       },
       {
+        id: 'prep-deadpool-wolverine',
+        productionId: 'deadpool-wolverine-42',
+        title: 'Deadpool & Wolverine',
+        year: '2024',
+        whyItMatters:
+          'Se rumorea que la película iniciaría con estos personajes luchando contra el Spider-Man de Tobey Maguire en el mundo de este Spider-Man.',
+      },
+      {
         id: 'prep-thunderbolts',
         productionId: 'thunderbolts-44',
         title: 'Thunderbolts*',
         year: '2025',
         whyItMatters:
-          'Esencial para conocer a este grupo, que se perfila como los nuevos Vengadores, y entender el rol relevante de Yelena.',
+          'Esencial para conocer a este grupo, que se perfila como los nuevos Vengadores, y entender el rol relevante de Yelena. Ademas la escena post-creditos conecta directamente con la pelicula. Aclaracion importante: esta pelicula se recomienda ver despues haber visto Black Widow, Ant-man 2, Falcon y el soldado del invierno y Hawkeye. ',
       },
     ],
     []
@@ -121,6 +138,14 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   const quickRecapItems: QuickRecapItem[] = useMemo(
     () => [
       {
+        id: 'recap-shang-chi',
+        productionId: 'shang-chi-and-the-legend-of-the-ten-rings-30',
+        title: 'Shang-Chi y la leyenda de los Diez Anillos',
+        year: '2021',
+        keyTakeaway:
+          'Basta con conocer quién es el personaje y el poder de los Diez Anillos, ya que aparece en el tráiler de Avengers: Doomsday.',
+      },
+      {
         id: 'recap-thor-love-thunder',
         productionId: 'thor-love-and-thunder-35',
         title: 'Thor: Love and Thunder',
@@ -129,12 +154,12 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           'Solo necesitas saber que Thor adoptó a Love, una niña con poderes vinculados a la Eternidad.',
       },
       {
-        id: 'recap-captain-america-4',
-        productionId: 'captain-america-brave-new-world-43',
-        title: 'Capitán América: Brave New World',
-        year: '2025',
+        id: 'recap-the-marvels',
+        productionId: 'the-marvels-41',
+        title: 'The Marvels',
+        year: '2023',
         keyTakeaway:
-          'Basta saber que Sam Wilson es el nuevo Capitán América.',
+          'Su final y escena post-créditos conectan con el multiverso y los X-Men: Monica Rambeau despierta en un universo paralelo tras cerrar la brecha espacial, encontrándose con Binary (variante de su madre, Maria Rambeau) y el mutante Bestia.',
       },
       {
         id: 'recap-agatha-all-along',
@@ -143,6 +168,14 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
         year: '2024',
         keyTakeaway:
           'Solo es relevante saber que Billy es la reencarnación del hijo de Wanda Maximoff.',
+      },
+      {
+        id: 'recap-captain-america-4',
+        productionId: 'captain-america-brave-new-world-43',
+        title: 'Capitán América: Brave New World',
+        year: '2025',
+        keyTakeaway:
+          'Basta saber que Sam Wilson es el nuevo Capitán América.',
       },
     ],
     []
@@ -228,7 +261,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             }`}
         >
           <Clapperboard className="w-4 h-4" />
-          <span>El Clímax en Cine</span>
+          <span>Doomsday y Secret Wars</span>
         </button>
       </div>
 
@@ -248,12 +281,20 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           >
             {/* Subsection 1: Imprescindibles */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]" />
-                <h3 className="font-display text-sm sm:text-base font-bold text-white tracking-tight uppercase">
+              <div className="text-center">
+                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
                   Imprescindibles
                 </h3>
-                <div className="h-[1px] flex-1 bg-gradient-to-r from-emerald-500/30 via-emerald-500/10 to-transparent ml-2" />
+              </div>
+
+              {/* Advertencia / Nota: se asume haber visto la Saga del Infinito */}
+              <div className="flex justify-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-medium text-center">
+                  <Info className="w-4 h-4 shrink-0 text-emerald-400" />
+                  <span>
+                    Se da por sentado que ya viste o tuviste que haber visto <strong className="text-emerald-200 font-semibold">toda la Saga del Infinito</strong>.
+                  </span>
+                </div>
               </div>
 
               {/* Cards Grid */}
@@ -265,91 +306,93 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={milestone.id}
-                      className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.14)] transition-all group"
+                      className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden shadow-lg"
                     >
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
+                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
                             <img
                               src={posterUrl}
                               alt={milestone.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                             />
                           </div>
                         )}
 
-                        <div className="min-w-0 flex-1 space-y-1.5">
-                          <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
-                            {milestone.title}
-                          </h4>
+                        <div className="min-w-0 flex-1 space-y-2.5">
+                          <div>
+                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
+                              {milestone.title}
+                            </h4>
 
-                          {/* Motivo por el cual ver al lado del poster */}
-                          <p className="text-xs text-zinc-300/85 leading-relaxed font-sans">
-                            {milestone.whyItMatters}
-                          </p>
-                        </div>
-                      </div>
+                            {/* Motivo por el cual ver al lado del poster */}
+                            <p className="text-xs text-zinc-300/85 leading-relaxed font-sans mt-1">
+                              {milestone.whyItMatters}
+                            </p>
+                          </div>
 
-                      {/* Action Button */}
-                      <div className="pt-3 sm:pt-3.5 mt-auto">
-                        {milestone.additionalProductionId ? (
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <a
-                              href={getWatchButtonData(prod).watchUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-xs transition-all hover:scale-[1.03]"
-                              title="Ver X-Men (2000) en Disney+"
-                            >
-                              <Play className="w-3 h-3 fill-current" />
-                              <span>X-Men 1</span>
-                              {getWatchButtonData(prod).renderLogo()}
-                            </a>
-                            {(() => {
-                              const prod2 = getProduction(milestone.additionalProductionId);
-                              const { watchUrl, renderLogo } = getWatchButtonData(prod2);
-                              return (
+                          {/* Botón de ver ahora debajo del texto explicativo al lado del poster */}
+                          <div className="pt-0.5">
+                            {milestone.additionalProductionId ? (
+                              <div className="flex items-center gap-1.5 flex-wrap">
                                 <a
-                                  href={watchUrl}
+                                  href={getWatchButtonData(prod).watchUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
                                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-xs transition-all hover:scale-[1.03]"
-                                  title="Ver X-Men 2 (2003) en Disney+"
+                                  title="Ver X-Men (2000) en Disney+"
                                 >
                                   <Play className="w-3 h-3 fill-current" />
-                                  <span>X-Men 2</span>
-                                  {renderLogo()}
+                                  <span>X-Men 1</span>
+                                  {getWatchButtonData(prod).renderLogo()}
                                 </a>
-                              );
-                            })()}
+                                {(() => {
+                                  const prod2 = getProduction(milestone.additionalProductionId);
+                                  const { watchUrl, renderLogo } = getWatchButtonData(prod2);
+                                  return (
+                                    <a
+                                      href={watchUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-xs transition-all hover:scale-[1.03]"
+                                      title="Ver X-Men 2 (2003) en Disney+"
+                                    >
+                                      <Play className="w-3 h-3 fill-current" />
+                                      <span>X-Men 2</span>
+                                      {renderLogo()}
+                                    </a>
+                                  );
+                                })()}
+                              </div>
+                            ) : prod && !milestone.isUpcoming ? (
+                              (() => {
+                                const { watchUrl, tooltip, buttonClasses, renderLogo } = getWatchButtonData(prod);
+                                return (
+                                  <a
+                                    href={watchUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    title={tooltip}
+                                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${buttonClasses}`}
+                                  >
+                                    <Play className="w-3 h-3 fill-current transition-transform group-hover/watch:scale-110" />
+                                    <span>Ver ahora</span>
+                                    {renderLogo()}
+                                  </a>
+                                );
+                              })()
+                            ) : (
+                              <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-sans font-medium py-1">
+                                <span>Próximamente en cines</span>
+                              </span>
+                            )}
                           </div>
-                        ) : prod && !milestone.isUpcoming ? (
-                          (() => {
-                            const { watchUrl, tooltip, buttonClasses, renderLogo } = getWatchButtonData(prod);
-                            return (
-                              <a
-                                href={watchUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                title={tooltip}
-                                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${buttonClasses}`}
-                              >
-                                <Play className="w-3 h-3 fill-current transition-transform group-hover/watch:scale-110" />
-                                <span>Ver ahora</span>
-                                {renderLogo()}
-                              </a>
-                            );
-                          })()
-                        ) : (
-                          <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-sans font-medium py-1">
-                            <span>Próximamente en cines</span>
-                          </span>
-                        )}
+                        </div>
                       </div>
                     </div>
                   );
@@ -358,22 +401,18 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Subsection 2: Resumen de lo que no necesitas volver a ver */}
-            <div className="pt-4 space-y-3">
-              <div className="border-t border-emerald-500/20 pt-5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_10px_#fbbf24]" />
-                  <h3 className="font-display text-sm sm:text-base font-bold text-white tracking-tight uppercase">
-                    Resumen de lo que no necesitas volver a ver
-                  </h3>
-                  <div className="h-[1px] flex-1 bg-gradient-to-r from-amber-500/30 via-emerald-500/10 to-transparent ml-2" />
-                </div>
+            <div className="pt-2 space-y-3">
+              <div className="text-center">
+                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
+                  Resumen de lo que no necesitas volver a ver
+                </h3>
                 <p className="text-xs text-zinc-400 mt-1">
-                  Ahorra tiempo de visionado: únicamente necesitas conocer estos tres puntos narrativos específicos para comprender su contexto en Doomsday:
+                  Ahorra tiempo: únicamente necesitas conocer estos puntos narrativos específicos para comprender su contexto en Doomsday:
                 </p>
               </div>
 
-              {/* 3 Quick Recap Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Quick Recap Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {quickRecapItems.map((recap) => {
                   const prod = getProduction(recap.productionId);
                   const posterUrl = prod?.urlPoster || recap.posterUrl;
@@ -381,54 +420,56 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={recap.id}
-                      className="rounded-2xl p-4 flex flex-col justify-between border border-emerald-500/20 bg-gradient-to-br from-[#0c0e0c]/90 via-[#060806]/90 to-black hover:border-amber-500/40 transition-all shadow-md group"
+                      className="rounded-2xl p-4 flex flex-col justify-between bg-gradient-to-br from-[#0c0e0c]/90 via-[#060806]/90 to-black shadow-md"
                     >
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
+                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
                             <img
                               src={posterUrl}
                               alt={recap.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="w-full h-full object-cover"
                               loading="lazy"
                             />
                           </div>
                         )}
 
-                        <div className="min-w-0 flex-1 space-y-1.5">
-                          <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-amber-300 transition-colors">
-                            {recap.title}
-                          </h4>
+                        <div className="min-w-0 flex-1 space-y-2.5">
+                          <div>
+                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
+                              {recap.title}
+                            </h4>
 
-                          {/* Crucial Takeaway Text */}
-                          <p className="text-xs text-zinc-300/85 leading-relaxed font-sans">
-                            {recap.keyTakeaway}
-                          </p>
+                            {/* Crucial Takeaway Text */}
+                            <p className="text-xs text-zinc-300/85 leading-relaxed font-sans mt-1">
+                              {recap.keyTakeaway}
+                            </p>
+                          </div>
+
+                          {/* Footer Info / Optional Watch debajo del texto explicativo al lado del poster */}
+                          {prod && (
+                            <div className="pt-0.5 flex items-center justify-start">
+                              {(() => {
+                                const { watchUrl, tooltip, buttonClasses, renderLogo } = getWatchButtonData(prod);
+                                return (
+                                  <a
+                                    href={watchUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    title={tooltip}
+                                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all hover:scale-[1.03] cursor-pointer select-none group/watch ${buttonClasses}`}
+                                  >
+                                    <span>Ver</span>
+                                    {renderLogo()}
+                                  </a>
+                                );
+                              })()}
+                            </div>
+                          )}
                         </div>
                       </div>
-
-                      {/* Footer Info / Optional Watch */}
-                      {prod && (
-                        <div className="pt-3 sm:pt-3.5 flex items-center justify-end mt-auto">
-                          {(() => {
-                            const { watchUrl, tooltip, buttonClasses, renderLogo } = getWatchButtonData(prod);
-                            return (
-                              <a
-                                href={watchUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                title={tooltip}
-                                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all hover:scale-[1.03] cursor-pointer select-none group/watch ${buttonClasses}`}
-                              >
-                                <span>Ver</span>
-                                {renderLogo()}
-                              </a>
-                            );
-                          })()}
-                        </div>
-                      )}
                     </div>
                   );
                 })}
@@ -526,44 +567,91 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           </motion.div>
         )}
 
-        {/* TAB 3: EL CLÍMAX EN CINE (ANUNCIO + DESTINO) */}
+        {/* TAB 3: DOOMSDAY Y SECRET WARS */}
         {activeTab === 'climax' && (
           <motion.div
-            key="tab-climax"
+            key="tab-doomsday-secret-wars"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
           >
-            {/* Card 1: El Regreso de RDJ */}
-            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                  <Clapperboard className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                  Robert Downey Jr. es Doom
-                </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-300/85 leading-relaxed">
-                Marvel confirmó que RDJ interpreta al genuino <strong>Victor Von Doom</strong> de Latveria, no a una variante de Tony Stark. <strong>Joe & Anthony Russo</strong> dirigen y <strong>Stephen McFeely</strong> escribe el guion de ambas películas.
-              </p>
+            {/* Fotos Izquierda */}
+            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+              <img
+                src="https://www.cinemascomics.com/wp-content/uploads/2024/09/Secret-Wars_4_dr-doom.jpg"
+                alt="Doctor Doom - Secret Wars"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://http2.mlstatic.com/D_NQ_NP_640198-MLA100013270382_122025-F.jpg"
+                alt="Doctor Doom vs Mister Fantástico - Secret Wars"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
             </div>
 
-            {/* Card 2: Soft-Reboot */}
-            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                  Destino & Soft-Reboot
+            {/* Texto Explicativo Central */}
+            <div className="lg:col-span-6 bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-start">
+              <div className="text-center mb-5">
+                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
+                  El evento que puede redefinir el multiverso de Marvel
                 </h3>
               </div>
-              <p className="text-xs sm:text-sm text-zinc-300/85 leading-relaxed">
-                La convergencia multiversal unirá a los Vengadores, los X-Men y los Cuatro Fantásticos. Tras <em>Secret Wars</em> en 2027, el UCM unificará su universo en una sola línea temporal continua, abriendo paso a la <strong>Saga Mutante</strong>.
-              </p>
+
+              <div className="space-y-3.5 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
+                <p>
+                  Para entender la conexión entre Avengers: Doomsday y Avengers: Secret Wars hay que entender primero el concepto de Multiverso. Marvel plantea la existencia de múltiples realidades que pueden coexistir, pero que también pueden entrar en conflicto entre sí. Una de las amenazas más importantes de este sistema son las incursiones: situaciones en las que dos universos comienzan a colisionar y, si el proceso llega a completarse, ambas realidades pueden ser destruidas. Esta idea es fundamental en Secret Wars (2015), el evento de los cómics escrito por Jonathan Hickman que sirve como una de las principales inspiraciones para lo que Marvel está construyendo en el cine.
+                </p>
+                <p>
+                  En aquella historia, el Multiverso comienza a morir debido a una serie de incursiones que provocan la destrucción progresiva de diferentes universos. Detrás de esta crisis están los Beyonders, entidades de un poder extraordinario. Mientras las distintas realidades desaparecen, Doctor Doom consigue intervenir en el conflicto y obtiene un poder suficiente para reconstruir la realidad. Sin embargo, Doom no simplemente restaura el universo tal como era: utiliza fragmentos de las realidades destruidas para crear una nueva existencia llamada Battleworld, convirtiéndose en su gobernante absoluto, conocido como God Emperor Doom.
+                </p>
+                <p>
+                  Esta historia es especialmente importante porque explica por qué Doctor Doom puede ser mucho más que un villano tradicional. Victor von Doom es un científico, hechicero, gobernante y uno de los mayores rivales de Reed Richards. Doom cree que su inteligencia y voluntad están por encima de las de cualquier otra persona y, en determinadas circunstancias, puede llegar a convencerse de que sus acciones son necesarias para salvar a la humanidad. Su problema es que, cuando intenta salvar la realidad, también quiere decidir quién puede vivir dentro de ella y bajo qué reglas.
+                </p>
+                <p>
+                  El concepto de Doom como alguien que destruye y reconstruye la realidad encaja directamente con la dirección que parece estar tomando el MCU. Avengers: Doomsday, cuyo estreno está previsto para el 18 de diciembre de 2026, reúne a personajes de diferentes partes del universo Marvel, incluyendo a los Avengers, Fantastic Four y personajes de las antiguas películas de X-Men. Esta combinación es especialmente significativa porque muchos de estos personajes originalmente pertenecían a continuidades diferentes. La película parece utilizar precisamente esa diversidad de universos y generaciones para llevar la historia hacia una crisis de escala multiversal.
+                </p>
+                <p>
+                  Los Fantastic Four tienen una importancia especial debido a la relación entre Reed Richards y Doctor Doom. En los cómics, Reed es uno de los pocos personajes capaces de enfrentarse intelectualmente a Doom y comprender las consecuencias de sus decisiones. Por otro lado, la presencia de los antiguos X-Men demuestra hasta qué punto el MCU puede comenzar a mezclar personajes provenientes de diferentes continuidades. Los Avengers representan el núcleo del universo que conocemos, mientras que Fantastic Four y X-Men amplían el conflicto hacia una escala mucho mayor.
+                </p>
+                <p>
+                  La trama exacta de Doomsday todavía no está completamente revelada, por lo que no puede afirmarse que la película vaya a terminar exactamente como Secret Wars (2015). Sin embargo, una posible interpretación es que las incursiones se vuelvan incontrolables, las diferentes realidades comiencen a desaparecer y Doctor Doom encuentre una manera de intervenir en el colapso. Si consigue reconstruir la existencia utilizando fragmentos de distintos universos, podría aparecer una versión cinematográfica de Battleworld y Doom podría convertirse en el gobernante de esa nueva realidad.
+                </p>
+                <p>
+                  En ese escenario, Avengers: Doomsday funcionaría como el momento en el que el Multiverso llega a su límite, mientras que Avengers: Secret Wars, prevista para el 17 de diciembre de 2027, sería la historia que determine qué sucede después. Los héroes tendrían que enfrentarse a Doom y decidir qué realidad merece sobrevivir cuando todo lo que conocían ha desaparecido. Por eso Secret Wars podría ser mucho más que una simple batalla entre superhéroes: podría tratarse de una historia sobre poder, identidad, sacrificio y la reconstrucción de la realidad.
+                </p>
+                <p>
+                  Uno de los mayores rumores alrededor del evento es que Marvel podría utilizar Secret Wars para realizar un llamado &quot;soft reboot&quot; del MCU. Esto no necesariamente significaría borrar todo lo ocurrido, sino utilizar la destrucción y reconstrucción del Multiverso para reorganizar las diferentes continuidades y crear una nueva realidad en la que personajes como Avengers, X-Men, Fantastic Four y Spider-Man puedan coexistir de una manera más sencilla. El cómic de 2015 ofrece un precedente para esta idea, aunque Marvel no ha confirmado que vaya a hacer exactamente lo mismo en el cine.
+                </p>
+                <p>
+                  También existen numerosas teorías sobre qué personajes podrían regresar, qué universos podrían aparecer y si veremos una versión cinematográfica de God Emperor Doom o Battleworld. Sin embargo, estas posibilidades deben diferenciarse de la información oficial. La presencia de personajes de distintas generaciones de X-Men, Fantastic Four y Avengers en Doomsday está confirmada, pero no lo están muchos de los detalles sobre Secret Wars. Por eso, cualquier explicación del evento debería separar claramente lo confirmado por Marvel de lo inspirado en los cómics y de las teorías y rumores.
+                </p>
+                <p>
+                  En términos simples, la historia puede entenderse de esta manera: el Multiverso está formado por muchas realidades; esas realidades comienzan a chocar mediante incursiones; la crisis amenaza con destruirlo todo; Doctor Doom intenta controlar el resultado; Avengers: Doomsday podría mostrar el punto máximo de esa crisis; y Avengers: Secret Wars podría contar la lucha por decidir qué queda después del colapso. Si Marvel sigue parcialmente el camino de los cómics, el resultado podría ser una nueva realidad capaz de redefinir el futuro del MCU.
+                </p>
+                <p className="text-emerald-300 font-medium pt-2 bg-emerald-500/10 p-3.5 rounded-xl leading-relaxed">
+                  En una sola frase, la idea central sería: Doomsday podría ser la historia en la que el Multiverso llega al límite, mientras que Secret Wars podría ser la historia en la que Marvel decide qué universo nace después de su destrucción.
+                </p>
+              </div>
+            </div>
+
+            {/* Fotos Derecha */}
+            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+              <img
+                src="https://www.carnivorecomics.com/cdn/shop/files/IMG_1999.jpg?v=1699460585&width=823"
+                alt="Avengers Secret Wars - Battleworld"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://i.pinimg.com/1200x/da/64/0a/da640ad25e6cace3889e26960fd55762.jpg"
+                alt="Wallpaper cómic Avengers Secret Wars"
+                className="w-full h-auto object-contain rounded-2x1 shadow-xl select-none"
+                loading="lazy"
+              />
             </div>
           </motion.div>
         )}
