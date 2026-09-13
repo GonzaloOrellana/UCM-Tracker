@@ -19,11 +19,36 @@ import { MCUItem } from './types/mcu';
 import { getSupabaseClient } from './lib/supabase';
 
 const TrackerMainApp: React.FC = () => {
-  const { currentView, setCurrentView, activeDetailItem, closeDetailModal, user } = useMCU();
+  const { currentView, setCurrentView, activeDetailItem, closeDetailModal, user, authLoading } = useMCU();
 
-  const [isGuestMode, setIsGuestMode] = useState(false);
+  const [isGuestMode, setIsGuestMode] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('mcu_guest_mode') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
   const [editingItem, setEditingItem] = useState<MCUItem | null>(null);
   const [resetPasswordState, setResetPasswordState] = useState<'request' | 'update' | null>(null);
+
+  const handleEnterGuest = () => {
+    try {
+      localStorage.setItem('mcu_guest_mode', 'true');
+    } catch {
+      // Ignorar error
+    }
+    setIsGuestMode(true);
+  };
+
+  const handleExitGuest = () => {
+    try {
+      localStorage.removeItem('mcu_guest_mode');
+    } catch {
+      // Ignorar error
+    }
+    setIsGuestMode(false);
+  };
 
   // Detect Password Recovery Event from Supabase Link
   useEffect(() => {
@@ -39,9 +64,14 @@ const TrackerMainApp: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Al cerrar sesión, volver automáticamente a la página de Login
+  // Limpiar modo invitado si el usuario inicia sesión formalmente
   useEffect(() => {
-    if (!user) {
+    if (user) {
+      try {
+        localStorage.removeItem('mcu_guest_mode');
+      } catch {
+        // Ignorar
+      }
       setIsGuestMode(false);
     }
   }, [user]);
@@ -60,12 +90,21 @@ const TrackerMainApp: React.FC = () => {
     );
   }
 
+  // Si está resolviendo la sesión de Supabase inicialmente
+  if (authLoading && !isGuestMode && currentView !== 'privacy' && currentView !== 'terms') {
+    return (
+      <div className="min-h-screen bg-[#0C0D17] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#C81D25] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   // Si el usuario no ha iniciado sesión y no ha elegido entrar como invitado -> Página de Login (salvo que navegue a una vista legal pública)
   if (!user && !isGuestMode && currentView !== 'privacy' && currentView !== 'terms') {
     return (
       <>
         <LoginView
-          onContinueAsGuest={() => setIsGuestMode(true)}
+          onContinueAsGuest={handleEnterGuest}
           onForgotPassword={() => setResetPasswordState('request')}
         />
         <CookieConsentBanner />
@@ -100,7 +139,7 @@ const TrackerMainApp: React.FC = () => {
             currentView={currentView}
             onSelectView={(view) => setCurrentView(view)}
             onOpenSettingsModal={() => setCurrentView('profile')}
-            onExitGuestMode={() => setIsGuestMode(false)}
+            onExitGuestMode={handleExitGuest}
           />
 
           {/* Active View Router Content */}
@@ -122,7 +161,7 @@ const TrackerMainApp: React.FC = () => {
             )}
 
             {currentView === 'profile' && (
-              <ProfileView onExitGuestMode={() => setIsGuestMode(false)} />
+              <ProfileView onExitGuestMode={handleExitGuest} />
             )}
 
             {currentView === 'privacy' && (

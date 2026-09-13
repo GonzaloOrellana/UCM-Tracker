@@ -71,7 +71,7 @@ export const UpcomingCarouselCard: React.FC<UpcomingCarouselCardProps> = ({ upco
                 />
 
                 {/* Top Countdown Pill Badge directly on poster */}
-                <div className="absolute top-1 inset-x-1 bg-black/85 backdrop-blur-md text-white font-label text-[7px] sm:text-[7.5px] xl:text-[8px] font-bold uppercase tracking-wider py-0.5 px-0.5 rounded-full text-center border border-white/20 shadow truncate pointer-events-none z-10">
+                <div className="absolute top-1 inset-x-1 bg-black/85 backdrop-blur-md text-white font-display text-[7px] sm:text-[7.5px] xl:text-[8px] font-bold uppercase tracking-wider py-0.5 px-0.5 rounded-full text-center border border-white/20 shadow truncate pointer-events-none z-10">
                   {getCountdownLabel(item.fechaLanzamiento)}
                 </div>
               </div>

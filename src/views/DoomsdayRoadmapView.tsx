@@ -6,11 +6,8 @@ import {
   ArrowLeft,
   BookOpen,
   Clapperboard,
-  Flame,
-  Globe2,
   Play,
   Sparkles,
-  Zap,
 } from 'lucide-react';
 import { getPlatformInfo } from '../utils/platformHelper';
 
@@ -172,7 +169,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
       <div className="flex items-center pt-1">
         <button
           onClick={onBackToDashboard}
-          className="bg-black/70 border border-emerald-500/30 text-emerald-300 font-label text-xs sm:text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.12)] hover:border-emerald-400 hover:bg-emerald-950/40 hover:text-emerald-200 hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] transition-all"
+          className="bg-black/70 border border-emerald-500/30 text-emerald-300 font-display text-xs sm:text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.12)] hover:border-emerald-400 hover:bg-emerald-950/40 hover:text-emerald-200 hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] transition-all"
         >
           <ArrowLeft className="w-4 h-4 text-emerald-400" />
           <span>Volver al Dashboard</span>
@@ -192,7 +189,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           <img
             src="/logoAvengersDoomsday.png"
             alt="Marvel Studios Avengers: Doomsday"
-            className="w-auto h-[240px] sm:h-[330px] md:h-[430px] lg:h-[530px] xl:h-[620px] max-w-none object-contain select-none drop-shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-transform duration-300 hover:scale-[1.01]"
+            className="w-auto h-[240px] sm:h-[330px] md:h-[430px] lg:h-[530px] xl:h-[620px] max-w-none object-contain select-none pointer-events-none drop-shadow-[0_0_15px_rgba(16,185,129,0.15)]"
           />
         </div>
       </div>
@@ -203,9 +200,9 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
       <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar">
         <button
           onClick={() => setActiveTab('prep')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'prep'
-              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'prep'
+            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
             }`}
         >
           <Clapperboard className="w-4 h-4" />
@@ -214,9 +211,9 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('comics')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'comics'
-              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'comics'
+            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
             }`}
         >
           <BookOpen className="w-4 h-4" />
@@ -225,9 +222,9 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('climax')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-label text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'climax'
-              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'climax'
+            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
             }`}
         >
           <Clapperboard className="w-4 h-4" />
@@ -270,38 +267,33 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                       key={milestone.id}
                       className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.14)] transition-all group"
                     >
-                      <div>
-                        {/* Poster + Title Section */}
-                        <div className="flex gap-3.5 items-start mb-2.5">
-                          {posterUrl && (
-                            <div className="w-16 h-24 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
-                              <img
-                                src={posterUrl}
-                                alt={milestone.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-
-                          <div className="min-w-0 flex-1 space-y-1">
-                            <h4 className="font-display text-sm font-bold text-white leading-tight line-clamp-2 group-hover:text-emerald-300 transition-colors">
-                              {milestone.title}
-                            </h4>
-                            <span className="text-[11px] text-emerald-400/80 block font-mono">
-                              {milestone.year}
-                            </span>
+                      {/* Poster + Content Side by Side */}
+                      <div className="flex gap-3.5 items-start">
+                        {posterUrl && (
+                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
+                            <img
+                              src={posterUrl}
+                              alt={milestone.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
                           </div>
-                        </div>
+                        )}
 
-                        {/* Motivo por el cual ver */}
-                        <p className="text-xs text-zinc-300/85 mb-3.5 leading-relaxed font-sans">
-                          {milestone.whyItMatters}
-                        </p>
+                        <div className="min-w-0 flex-1 space-y-1.5">
+                          <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
+                            {milestone.title}
+                          </h4>
+
+                          {/* Motivo por el cual ver al lado del poster */}
+                          <p className="text-xs text-zinc-300/85 leading-relaxed font-sans">
+                            {milestone.whyItMatters}
+                          </p>
+                        </div>
                       </div>
 
                       {/* Action Button */}
-                      <div className="pt-1">
+                      <div className="pt-3 sm:pt-3.5 mt-auto">
                         {milestone.additionalProductionId ? (
                           <div className="flex items-center gap-1.5 flex-wrap">
                             <a
@@ -354,7 +346,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                             );
                           })()
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-mono py-1">
+                          <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-sans font-medium py-1">
                             <span>Próximamente en cines</span>
                           </span>
                         )}
@@ -391,38 +383,34 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                       key={recap.id}
                       className="rounded-2xl p-4 flex flex-col justify-between border border-emerald-500/20 bg-gradient-to-br from-[#0c0e0c]/90 via-[#060806]/90 to-black hover:border-amber-500/40 transition-all shadow-md group"
                     >
-                      <div>
-                        {/* Top: Mini Poster + Title + Year */}
-                        <div className="flex items-center gap-3 mb-3">
-                          {posterUrl && (
-                            <div className="w-12 h-16 rounded-lg overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-sm">
-                              <img
-                                src={posterUrl}
-                                alt={recap.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-                          <div className="min-w-0 flex-1">
-                            <h4 className="font-display text-sm font-bold text-white leading-tight truncate group-hover:text-amber-300 transition-colors">
-                              {recap.title}
-                            </h4>
-                            <span className="text-[10.5px] text-zinc-400 font-mono block mt-0.5">
-                              {recap.year}
-                            </span>
+                      {/* Poster + Content Side by Side */}
+                      <div className="flex gap-3.5 items-start">
+                        {posterUrl && (
+                          <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden shrink-0 border border-emerald-500/25 bg-zinc-950 shadow-md">
+                            <img
+                              src={posterUrl}
+                              alt={recap.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
                           </div>
-                        </div>
+                        )}
 
-                        {/* Crucial Takeaway Text */}
-                        <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-xs text-zinc-200 leading-relaxed font-sans">
-                          <p>{recap.keyTakeaway}</p>
+                        <div className="min-w-0 flex-1 space-y-1.5">
+                          <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-amber-300 transition-colors">
+                            {recap.title}
+                          </h4>
+
+                          {/* Crucial Takeaway Text */}
+                          <p className="text-xs text-zinc-300/85 leading-relaxed font-sans">
+                            {recap.keyTakeaway}
+                          </p>
                         </div>
                       </div>
 
                       {/* Footer Info / Optional Watch */}
                       {prod && (
-                        <div className="pt-3 flex items-center justify-end border-t border-white/5 mt-3">
+                        <div className="pt-3 sm:pt-3.5 flex items-center justify-end mt-auto">
                           {(() => {
                             const { watchUrl, tooltip, buttonClasses, renderLogo } = getWatchButtonData(prod);
                             return (
@@ -432,7 +420,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 title={tooltip}
-                                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-wide transition-all hover:scale-[1.02] cursor-pointer select-none group/watch ${buttonClasses}`}
+                                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all hover:scale-[1.03] cursor-pointer select-none group/watch ${buttonClasses}`}
                               >
                                 <span>Ver</span>
                                 {renderLogo()}
@@ -450,7 +438,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           </motion.div>
         )}
 
-        {/* TAB 2: ORIGEN EN CÓMICS (CLEAN & NON-REPETITIVE) */}
+        {/* TAB 2: ORIGEN EN CÓMICS */}
         {activeTab === 'comics' && (
           <motion.div
             key="tab-comics"
@@ -458,51 +446,82 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
           >
-            {/* Card 1: La Regla de las Incursiones */}
-            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                  <Globe2 className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                  Colapso de Realidades
-                </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-300/85 leading-relaxed">
-                En la etapa de <strong>Jonathan Hickman</strong>, una incursión es el choque frontal de dos Tierras paralelas en un punto focal que dura 8 horas. Si ninguna de las dos es destruida, <strong>ambos universos son aniquilados por completo</strong>.
-              </p>
+            {/* Fotos Izquierda */}
+            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsodUOhTbuVHNpAZSmCEKYeyfw_ZQwLH7mcjTH0ZvGr4n1wlNm9hMXWOo&s=10"
+                alt="Doctor Doom - Cómics"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://i.pinimg.com/736x/27/2d/28/272d28337e6aa0cd45ed83572245cb5d.jpg"
+                alt="Doctor Doom - Segunda ilustración cómic"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
             </div>
 
-            {/* Card 2: Dios Emperador Doom y Battleworld */}
-            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-emerald-500/20 hover:border-emerald-400/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.14)] transition-all">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                  <Flame className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                  Battleworld
-                </h3>
+            {/* Texto Explicativo Central */}
+            <div className="lg:col-span-6 bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-start">
+              <div className="space-y-3.5 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
+                <p>
+                  Victor von Doom nació en Latveria, un pequeño país ficticio de Europa del Este, dentro de una familia romaní. Desde muy joven estuvo marcado por la tragedia: su madre, Cynthia von Doom, era una poderosa hechicera que murió al intentar obtener poderes sobrenaturales, mientras que su padre, Werner, era un médico que falleció después de intentar salvar a la esposa de un gobernante de Latveria.
+                </p>
+                <p>
+                  Victor desarrolló una enorme inteligencia y una obsesión por superar los límites de la ciencia. Gracias a su talento, consiguió una beca para estudiar en Estados Unidos, donde conoció a Reed Richards, quien posteriormente se convertiría en Mr. Fantastic. Ambos eran brillantes científicos, pero también extremadamente competitivos.
+                </p>
+                <p>
+                  Mientras estudiaba, Victor construyó una máquina destinada a contactar con el mundo de los muertos para intentar recuperar el alma de su madre. Reed Richards descubrió que los cálculos de Victor contenían un error y trató de advertirle, pero Victor ignoró la advertencia. El experimento salió mal y una explosión desfiguró su rostro.
+                </p>
+                <p>
+                  Victor culpó a Reed por el accidente y abandonó Estados Unidos. Viajó por el mundo hasta terminar en el Himalaya, donde fue acogido por monjes que lo ayudaron a desarrollar sus conocimientos científicos y místicos. Allí construyó una armadura y una máscara de metal que se convertirían en su identidad característica: Doctor Doom.
+                </p>
+                <p>
+                  Después de regresar a Latveria, Victor derrocó a su gobernante y tomó el control del país, convirtiéndose en su soberano. Desde entonces, gobierna Latveria con una combinación de tecnología avanzada, ciencia y magia.
+                </p>
+                <p>
+                  Doctor Doom se convirtió así en uno de los grandes enemigos de los Fantastic Four, especialmente de Reed Richards. Sin embargo, su ambición va mucho más allá de derrotar a los Cuatro Fantásticos: Doom está convencido de que es la única persona capaz de llevar al mundo hacia un futuro mejor. Su problema es que considera que para conseguirlo debe tener un control absoluto.
+                </p>
+                <p>
+                  A diferencia de muchos villanos, Doom no se considera malvado. Se ve a sí mismo como un genio incomprendido y como el único hombre capaz de salvar a la humanidad. Su orgullo, su necesidad de demostrar su superioridad sobre Reed Richards y su obsesión con el poder terminan convirtiéndose en sus mayores debilidades.
+                </p>
+                <p className="text-emerald-300/90 font-medium pt-1">
+                  Doctor Doom fue creado por Stan Lee y Jack Kirby y apareció por primera vez en The Fantastic Four #5, publicado en 1962. Desde entonces, se convirtió en uno de los villanos más importantes y complejos del universo Marvel.
+                </p>
               </div>
-              <p className="text-xs sm:text-sm text-zinc-300/85 leading-relaxed">
-                Ante la extinción inevitable del cosmos provocada por los Todopoderosos, <strong>Victor Von Doom</strong> roba su poder divino para salvar fragmentos de universos destruidos y unirlos en un único planeta mosaico gobernado por su voluntad.
-              </p>
+
+              {/* Video de YouTube: Historia de Doctor Doom */}
+              <div className="mt-5 sm:mt-6 w-full">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(16,185,129,0.15)] border border-emerald-500/25 bg-black">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/I_-qgFqUvlo"
+                    title="Doctor Doom | La historia completa en 80 minutos"
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Card 3: Doom vs Reed Richards */}
-            <div className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 space-y-3 border border-amber-500/20 hover:border-amber-400/50 hover:shadow-[0_0_20px_rgba(251,191,36,0.14)] transition-all">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.2)]">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-white">
-                  Doom vs. Reed Richards
-                </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-300/85 leading-relaxed">
-                El corazón de <em>Secret Wars</em>: Doom salvó la realidad mediante el absolutismo y el miedo, pero reconoce que Reed lo habría hecho mejor, permitiendo a Richards reconstruir un multiverso libre y luminoso.
-              </p>
+            {/* Fotos Derecha */}
+            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYcKfNhjDSbwgM3sVRVjf8OhBrHiAdA5ihxa_lYaqpX7egL1xLMP1Q3E&s=10"
+                alt="Avengers Doomsday"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
+              <img
+                src="https://i.pinimg.com/736x/75/f2/c2/75f2c28c0510fc26f5dd7013da065c5b.jpg"
+                alt="Doctor Doom - Portada cómic"
+                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
+                loading="lazy"
+              />
             </div>
           </motion.div>
         )}

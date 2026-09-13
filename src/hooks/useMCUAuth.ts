@@ -12,10 +12,14 @@ interface UseMCUAuthProps {
 
 export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuccess }: UseMCUAuthProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     const supabase = getSupabaseClient();
-    if (!supabase) return;
+    if (!supabase) {
+      setAuthLoading(false);
+      return;
+    }
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       const u = session?.user ?? null;
@@ -32,6 +36,8 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
           avatarId: u.user_metadata.avatar_id || settings.avatarId,
         });
       }
+    }).finally(() => {
+      setAuthLoading(false);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -140,6 +146,7 @@ export function useMCUAuth({ settings, updateSettings, onAuthChange, onDeleteSuc
   return {
     user,
     setUser,
+    authLoading,
     login,
     signup,
     logout,

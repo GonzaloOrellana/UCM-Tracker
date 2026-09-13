@@ -23,6 +23,7 @@ interface MCUContextType {
 
   // Autenticación
   user: User | null;
+  authLoading: boolean;
   login: (email: string, pass: string) => Promise<void>;
   signup: (email: string, pass: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -55,8 +56,139 @@ interface MCUContextType {
 
 const MCUContext = createContext<MCUContextType | undefined>(undefined);
 
+const VIEW_MAP: Record<string, NavView> = {
+  dashboard: 'dashboard',
+  home: 'dashboard',
+  inicio: 'dashboard',
+  movies: 'movies',
+  peliculas: 'movies',
+  'películas': 'movies',
+  series: 'series',
+  specials: 'specials',
+  especiales: 'specials',
+  upcoming: 'upcoming',
+  proximos: 'upcoming',
+  'próximos': 'upcoming',
+  profile: 'profile',
+  perfil: 'profile',
+  doomsday: 'doomsday',
+  privacy: 'privacy',
+  privacidad: 'privacy',
+  terms: 'terms',
+  terminos: 'terms',
+  'términos': 'terms',
+};
+
+const parseViewFromUrl = (): NavView | null => {
+  if (typeof window === 'undefined') return null;
+
+  // 1. Hash de la URL: #/movies, #movies, #peliculas
+  const rawHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+  if (rawHash && VIEW_MAP[rawHash]) {
+    return VIEW_MAP[rawHash];
+  }
+
+  // 2. Parámetro de consulta (?view=movies o ?seccion=movies)
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const param = (params.get('view') || params.get('seccion') || '').trim().toLowerCase();
+    if (param && VIEW_MAP[param]) {
+      return VIEW_MAP[param];
+    }
+  } catch {
+    // Ignorar error de parseo
+  }
+
+  // 3. Pathname directo (/movies, /series)
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, '').trim().toLowerCase();
+  if (path && VIEW_MAP[path]) {
+    return VIEW_MAP[path];
+  }
+
+  return null;
+};
+
 export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentView, setCurrentView] = useState<NavView>('dashboard');
+  const [currentView, setCurrentViewState] = useState<NavView>(() => {
+    const fromUrl = parseViewFromUrl();
+    if (fromUrl) return fromUrl;
+
+    try {
+      const saved = localStorage.getItem('mcu_current_view');
+      if (saved && VIEW_MAP[saved]) {
+        return VIEW_MAP[saved];
+      }
+    } catch {
+      // Ignorar error
+    }
+
+    return 'dashboard';
+  });
+
+  const setCurrentView = (view: NavView) => {
+    setCurrentViewState(view);
+    try {
+      localStorage.setItem('mcu_current_view', view);
+    } catch {
+      // Ignorar error
+    }
+
+    const targetHash = view === 'dashboard' ? '' : `#${view}`;
+    const currentHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+    const currentResolved = VIEW_MAP[currentHash] || 'dashboard';
+
+    if (currentResolved !== view) {
+      if (view === 'dashboard') {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else {
+        window.history.replaceState(null, '', targetHash);
+      }
+    }
+  };
+
+  // Mantener sincronizado URL y localStorage ante cambios de vista
+  useEffect(() => {
+    try {
+      localStorage.setItem('mcu_current_view', currentView);
+    } catch {
+      // Ignorar error
+    }
+
+    const currentHash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+    const currentResolved = VIEW_MAP[currentHash] || 'dashboard';
+
+    if (currentResolved !== currentView) {
+      const targetHash = currentView === 'dashboard' ? '' : `#${currentView}`;
+      if (currentView === 'dashboard') {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else {
+        window.history.replaceState(null, '', targetHash);
+      }
+    }
+  }, [currentView]);
+
+  // Soporte para botones Atrás / Adelante del navegador
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const fromUrl = parseViewFromUrl() || 'dashboard';
+      if (fromUrl !== currentView) {
+        setCurrentViewState(fromUrl);
+        try {
+          localStorage.setItem('mcu_current_view', fromUrl);
+        } catch {
+          // Ignorar error
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleUrlChange);
+    window.addEventListener('popstate', handleUrlChange);
+    return () => {
+      window.removeEventListener('hashchange', handleUrlChange);
+      window.removeEventListener('popstate', handleUrlChange);
+    };
+  }, [currentView]);
+
   const [activeDetailItem, setActiveDetailItem] = useState<MCUItem | null>(null);
 
   const [watchedIds, setWatchedIds] = useState<Set<string>>(new Set());
@@ -95,7 +227,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // Custom Auth Hook
-  const { user, login, signup, logout, deleteAccount, requestPasswordReset, updatePassword, updateAvatarId } = useMCUAuth({
+  const { user, authLoading, login, signup, logout, deleteAccount, requestPasswordReset, updatePassword, updateAvatarId } = useMCUAuth({
     settings,
     updateSettings,
     onAuthChange: () => {
@@ -326,6 +458,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         currentView,
         activeDetailItem,
         user,
+        authLoading,
         login,
         signup,
         logout,

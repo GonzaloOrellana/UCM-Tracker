@@ -22,11 +22,11 @@ const renderEnergyBeam = (
   return (
     <div className="flex flex-col items-end gap-0.5 sm:gap-1 w-20 sm:w-22 xl:w-28 shrink-0">
       {/* Top Metric Header: Status / Percent */}
-      <div className="flex items-center justify-between w-full text-[9px] sm:text-[10px] xl:text-[11px] font-label font-bold tracking-wider leading-none">
+      <div className="flex items-center justify-between w-full text-[9px] sm:text-[10px] xl:text-[11px] font-display font-bold tracking-wider leading-none">
         <span className="text-[8.5px] sm:text-[9.5px] text-zinc-400 uppercase">
           {pct === 100 ? 'COMPLETO' : 'PROGRESO'}
         </span>
-        <span className={`text-[10.5px] sm:text-[11px] xl:text-xs font-mono font-bold ${colorTheme.text}`}>
+        <span className={`text-[10.5px] sm:text-[11px] xl:text-xs font-display font-bold ${colorTheme.text}`}>
           {pct}%
         </span>
       </div>

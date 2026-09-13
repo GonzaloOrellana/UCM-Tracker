@@ -55,7 +55,7 @@ export const FilterBar: React.FC = () => {
               value={filters.search}
               onChange={(e) => setFilters({ search: e.target.value })}
               placeholder="BUSCAR PRODUCCIONES..."
-              className="w-full bg-transparent border-none outline-none text-white placeholder:text-zinc-500 font-label font-bold text-xs sm:text-sm uppercase tracking-wider truncate"
+              className="w-full bg-transparent border-none outline-none text-white placeholder:text-zinc-500 font-display font-bold text-xs sm:text-sm uppercase tracking-wider truncate"
             />
           </div>
 
@@ -64,7 +64,7 @@ export const FilterBar: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsFiltersOpen(true)}
-              className={`px-4 py-1.5 rounded-full cursor-pointer flex items-center gap-2 font-label font-bold text-xs uppercase tracking-wider relative transition-all ${
+              className={`px-4 py-1.5 rounded-full cursor-pointer flex items-center gap-2 font-display font-bold text-xs uppercase tracking-wider relative transition-all ${
                 isFiltersOpen || hasActiveSecondaryFilters
                   ? 'neu-pill-button-active'
                   : 'neu-pill-button text-white'
@@ -122,7 +122,7 @@ export const FilterBar: React.FC = () => {
 
                   {/* Section 1: Order Mode */}
                   <div>
-                    <label className="font-label font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
+                    <label className="font-display font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
                       Orden
                     </label>
                     <div className="space-y-2">
@@ -156,14 +156,14 @@ export const FilterBar: React.FC = () => {
 
                   {/* Section 2: Watched Status */}
                   <div>
-                    <label className="font-label font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
+                    <label className="font-display font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
                       Vista
                     </label>
                     <div className="grid grid-cols-3 gap-1.5 bg-[#080911] p-1.5 rounded-2xl border border-white/10 shadow-inner">
                       <button
                         type="button"
                         onClick={() => setFilters({ status: 'all' })}
-                        className={`py-2 rounded-xl font-bold font-label uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
+                        className={`py-2 rounded-xl font-bold font-display uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
                           filters.status === 'all'
                             ? 'bg-gradient-to-b from-white to-zinc-200 text-zinc-950 shadow-md border-t border-white'
                             : 'text-zinc-400 hover:text-white'
@@ -175,7 +175,7 @@ export const FilterBar: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setFilters({ status: 'watched' })}
-                        className={`py-2 rounded-xl font-bold font-label uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
+                        className={`py-2 rounded-xl font-bold font-display uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
                           filters.status === 'watched'
                             ? 'bg-gradient-to-b from-white to-zinc-200 text-zinc-950 shadow-md border-t border-white'
                             : 'text-zinc-400 hover:text-white'
@@ -187,7 +187,7 @@ export const FilterBar: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setFilters({ status: 'unwatched' })}
-                        className={`py-2 rounded-xl font-bold font-label uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
+                        className={`py-2 rounded-xl font-bold font-display uppercase tracking-wider text-[10px] transition-all text-center cursor-pointer ${
                           filters.status === 'unwatched'
                             ? 'bg-gradient-to-b from-white to-zinc-200 text-zinc-950 shadow-md border-t border-white'
                             : 'text-zinc-400 hover:text-white'
@@ -200,14 +200,14 @@ export const FilterBar: React.FC = () => {
 
                   {/* Section 3: MCU Phase Filter */}
                   <div>
-                    <label className="font-label font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
+                    <label className="font-display font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
                       Fase del MCU
                     </label>
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"
                         onClick={() => setFilters({ phase: 'all' })}
-                        className={`p-2.5 rounded-xl border text-center font-label font-bold uppercase tracking-wider text-xs transition-all cursor-pointer ${
+                        className={`p-2.5 rounded-xl border text-center font-display font-bold uppercase tracking-wider text-xs transition-all cursor-pointer ${
                           filters.phase === 'all'
                             ? 'bg-gradient-to-r from-red-700 via-rose-600 to-red-800 text-white border-red-400/40 shadow-md border-t-white/40'
                             : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 backdrop-blur-md'
@@ -220,7 +220,7 @@ export const FilterBar: React.FC = () => {
                           key={phase}
                           type="button"
                           onClick={() => setFilters({ phase })}
-                          className={`p-2.5 rounded-xl border text-center font-label font-bold uppercase tracking-wider text-xs transition-all cursor-pointer ${
+                          className={`p-2.5 rounded-xl border text-center font-display font-bold uppercase tracking-wider text-xs transition-all cursor-pointer ${
                             filters.phase === phase
                               ? 'bg-gradient-to-r from-red-700 via-rose-600 to-red-800 text-white border-red-400/40 shadow-md border-t-white/40'
                               : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 backdrop-blur-md'
@@ -234,7 +234,7 @@ export const FilterBar: React.FC = () => {
 
                   {/* Section 4: Priority Filter */}
                   <div>
-                    <label className="font-label font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
+                    <label className="font-display font-bold block mb-2.5 text-[11px] uppercase tracking-wider text-zinc-400">
                       Prioridad
                     </label>
                     <div className="grid grid-cols-2 gap-2">
@@ -262,7 +262,7 @@ export const FilterBar: React.FC = () => {
                       <button
                         type="button"
                         onClick={resetFilters}
-                        className="w-full py-2.5 text-xs text-red-400 hover:text-red-300 font-label font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer bg-red-950/30 hover:bg-red-900/40 border border-red-500/30 rounded-xl transition-all"
+                        className="w-full py-2.5 text-xs text-red-400 hover:text-red-300 font-display font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer bg-red-950/30 hover:bg-red-900/40 border border-red-500/30 rounded-xl transition-all"
                       >
                         <RotateCcw className="w-3.5 h-3.5" /> Limpiar todos los filtros
                       </button>

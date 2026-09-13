@@ -52,7 +52,7 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
               <span className="font-display text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-white tracking-tight leading-none block">
                 {stats.total}
               </span>
-              <span className="font-label text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
+              <span className="font-display text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
                 Total
               </span>
             </div>
@@ -62,7 +62,7 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
               <span className="font-display text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-emerald-400 tracking-tight leading-none block drop-shadow-[0_0_12px_rgba(52,211,153,0.35)]">
                 {stats.watched}
               </span>
-              <span className="font-label text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
+              <span className="font-display text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
                 Vistas
               </span>
             </div>
@@ -72,7 +72,7 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
               <span className="font-display text-lg sm:text-lg lg:text-xl xl:text-2xl font-bold text-amber-400 tracking-tight leading-none block drop-shadow-[0_0_12px_rgba(251,191,36,0.35)]">
                 {stats.total - stats.watched}
               </span>
-              <span className="font-label text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
+              <span className="font-display text-[10px] sm:text-[9.5px] lg:text-[10px] xl:text-[10.5px] text-zinc-400 font-semibold uppercase tracking-wider block truncate">
                 Faltan
               </span>
             </div>

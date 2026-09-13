@@ -90,8 +90,8 @@ export default {
         sans: ['"Lato"', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['"Plus Jakarta Sans"', '"Lato"', 'sans-serif'],
         body: ['"Lato"', 'system-ui', 'sans-serif'],
-        label: ['"Lato"', 'system-ui', 'sans-serif'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        label: ['"Plus Jakarta Sans"', '"Lato"', 'sans-serif'],
+        mono: ['"Lato"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'crextio-card': '0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 2px 10px -2px rgba(0, 0, 0, 0.02)',

@@ -27,6 +27,10 @@
   font-family: 'Plus Jakarta Sans', 'Lato', sans-serif !important;
 }
 
+.font-label {
+  font-family: 'Plus Jakarta Sans', 'Lato', sans-serif !important;
+}
+
 
 /* Hide Scrollbars Globally While Retaining Full Scrollability */
 ::-webkit-scrollbar {

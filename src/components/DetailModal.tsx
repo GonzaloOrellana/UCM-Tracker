@@ -240,7 +240,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.3, delay: 0.23, ease: transitionEase }}
-                  className="flex items-center flex-wrap gap-x-2.5 gap-y-1 font-label text-xs text-zinc-700 font-bold uppercase tracking-wider"
+                  className="flex items-center flex-wrap gap-x-2.5 gap-y-1 font-display text-xs text-zinc-700 font-bold uppercase tracking-wider"
                 >
                   <span className="text-[#C81D25] uppercase tracking-wider font-bold">
                     {item.fase}

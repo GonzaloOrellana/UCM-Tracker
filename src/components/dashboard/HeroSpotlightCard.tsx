@@ -116,7 +116,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
 
           {/* Top Header: Section / Priority Badge */}
           <div className="relative z-10 flex items-center gap-2 shrink-0">
-            <span className="font-label text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold text-zinc-300 shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+            <span className="font-display text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold text-zinc-300 shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
               Siguiente en tu lista:
             </span>
             {currentSpotlightItem.prioridad && (
@@ -265,7 +265,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
       ) : spotlightFilter === 'main' && availableItems.some((item) => !watchedIds.has(item.id)) ? (
         <div className="tactile-bento-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 lg:p-4 xl:p-5 flex flex-col justify-between h-[180px] sm:h-[195px] lg:h-full text-center border-emerald-500/40">
           <div className="flex items-center justify-between gap-1.5 shrink-0">
-            <span className="font-label text-[9px] sm:text-[10.5px] font-semibold text-emerald-300">
+            <span className="font-display text-[9px] sm:text-[10.5px] font-semibold text-emerald-300">
               Trama Principal:
             </span>
             <button
@@ -286,7 +286,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
           </div>
           <button
             onClick={() => handleFilterChange('all')}
-            className="bg-emerald-600 hover:bg-emerald-500 active:translate-y-0.5 text-white font-label text-[10.5px] sm:text-xs font-bold py-1.5 px-4 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer mx-auto"
+            className="bg-emerald-600 hover:bg-emerald-500 active:translate-y-0.5 text-white font-display text-[10.5px] sm:text-xs font-bold py-1.5 px-4 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer mx-auto"
           >
             Ver producciones complementarias →
           </button>
@@ -304,7 +304,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
           </div>
           <button
             onClick={onNavigateUpcoming}
-            className="bg-[#C81D25] hover:bg-[#E62429] active:translate-y-0.5 text-white font-label text-xs font-bold py-1.5 px-4 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer"
+            className="bg-[#C81D25] hover:bg-[#E62429] active:translate-y-0.5 text-white font-display text-xs font-bold py-1.5 px-4 rounded-full shadow-lg border-t border-white/30 transition-all cursor-pointer"
           >
             Ver próximos estrenos →
           </button>

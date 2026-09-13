@@ -126,7 +126,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                 
                 {/* Field 1: Nombre de Usuario */}
                 <div className="space-y-1">
-                  <label className="font-label text-[11px] font-bold uppercase tracking-wider text-zinc-300 block">
+                  <label className="font-display text-[11px] font-bold uppercase tracking-wider text-zinc-300 block">
                     Nombre de Usuario <span className="text-[#C81D25]">*</span>
                   </label>
                   <input
@@ -141,7 +141,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
 
                 {/* Field 2: Correo Electrónico */}
                 <div className="space-y-1">
-                  <label className="font-label text-[11px] font-bold uppercase tracking-wider text-zinc-300 block flex items-center gap-1.5">
+                  <label className="font-display text-[11px] font-bold uppercase tracking-wider text-zinc-300 block flex items-center gap-1.5">
                     <Mail className="w-3.5 h-3.5 text-zinc-400" /> Correo Electrónico
                   </label>
                   <input
@@ -154,7 +154,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
 
                 {/* Field 3: Sincronización Status */}
                 <div className="pt-1">
-                  <div className="flex items-center gap-2 text-[11px] font-label font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl tactile-kpi-plate text-zinc-300">
+                  <div className="flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl tactile-kpi-plate text-zinc-300">
                     <ShieldCheck className={`w-4 h-4 ${user ? 'text-emerald-400' : 'text-amber-400'}`} />
                     <span>{user ? 'Sincronizado en Supabase' : 'Guardado Local'}</span>
                   </div>
@@ -166,14 +166,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
               <div className="space-y-2 pt-1">
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 btn-metallic-primary text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-4 btn-metallic-primary text-white font-display text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <CheckCircle2 className="w-4 h-4 text-white" />
                   <span>GUARDAR CAMBIOS</span>
                 </button>
 
                 {saveSuccess && (
-                  <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[11px] font-label font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[11px] font-display font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Perfil guardado correctamente</span>
                   </div>
@@ -193,7 +193,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
             <div className="tactile-bento-card p-6 rounded-3xl space-y-6 flex-1 flex flex-col justify-start">
               
               {/* Tab Navigation Header */}
-              <div className="flex items-center gap-2 border-b border-white/15 pb-4 font-label text-xs font-bold uppercase tracking-wider">
+              <div className="flex items-center gap-2 border-b border-white/15 pb-4 font-display text-xs font-bold uppercase tracking-wider">
                 <button
                   onClick={() => setActiveTab('security')}
                   className={`px-4 py-2 rounded-xl transition-all cursor-pointer flex items-center gap-2 ${
@@ -240,7 +240,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                   {/* Cookie Status Box en Gestión de Cuenta */}
                   <div className="p-4 rounded-2xl bg-[#24273E]/60 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
                     <div className="space-y-1 text-left">
-                      <span className="font-label text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                      <span className="font-display text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
                         <Cookie className="w-4 h-4 text-amber-400" />
                         <span>PREFERENCIA DE COOKIES ANALÍTICAS</span>
                       </span>
@@ -255,7 +255,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                     <button
                       type="button"
                       onClick={resetCookieConsent}
-                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-label text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0"
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-display text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0"
                     >
                       RECONFIGURAR
                     </button>
@@ -269,7 +269,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                         onClick={async () => {
                           await logout();
                         }}
-                        className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
+                        className="w-full py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-display text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
                       >
                         <LogOut className="w-4 h-4 text-zinc-300" />
                         <span>CERRAR SESIÓN</span>
@@ -278,7 +278,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                       {/* Zona de Peligro: Eliminar Cuenta */}
                       <div className="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-left">
                         <div className="space-y-1">
-                          <h4 className="font-label text-xs font-bold uppercase tracking-wider text-rose-300 flex items-center gap-2">
+                          <h4 className="font-display text-xs font-bold uppercase tracking-wider text-rose-300 flex items-center gap-2">
                             <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
                             <span>ZONA DE PELIGRO</span>
                           </h4>
@@ -289,7 +289,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                         <button
                           type="button"
                           onClick={() => setShowDeleteConfirm(true)}
-                          className="px-4 py-2 text-rose-300 hover:text-rose-200 hover:bg-rose-500/20 border border-rose-500/30 rounded-xl font-label text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0 flex items-center gap-2"
+                          className="px-4 py-2 text-rose-300 hover:text-rose-200 hover:bg-rose-500/20 border border-rose-500/30 rounded-xl font-display text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shrink-0 flex items-center gap-2"
                         >
                           <Trash2 className="w-4 h-4" />
                           <span>ELIMINAR CUENTA</span>
@@ -306,7 +306,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onExitGuestMode }) => 
                           logout();
                         }
                       }}
-                      className="w-full py-3.5 px-4 bg-[#C81D25] hover:bg-[#a8151c] text-white font-label text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                      className="w-full py-3.5 px-4 bg-[#C81D25] hover:bg-[#a8151c] text-white font-display text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
                     >
                       <User className="w-4 h-4" />
                       <span>INICIAR SESIÓN / REGISTRARSE</span>
