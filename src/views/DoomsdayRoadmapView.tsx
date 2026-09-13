@@ -64,12 +64,6 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
     };
   }, []);
 
-  // Al cambiar entre pestañas internas del evento, volver suavemente arriba
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, [activeTab]);
 
   // Curation: Imprescindibles ordenadas para estar preparado para Avengers: Doomsday
   const prepMilestones: PrepMilestone[] = useMemo(
