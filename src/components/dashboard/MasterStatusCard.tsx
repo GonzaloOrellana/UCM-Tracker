@@ -13,9 +13,9 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.25, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.85, ease: 'easeOut' }}
       className="lg:col-span-4 flex flex-col h-full"
     >
       <div className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-5 sm:p-5 lg:p-3.5 xl:p-6 flex flex-col justify-between h-full overflow-hidden min-h-[165px] lg:min-h-0">

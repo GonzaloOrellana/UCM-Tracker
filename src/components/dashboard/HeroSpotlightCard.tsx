@@ -75,9 +75,9 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.85, delay: 0.1, ease: 'easeOut' }}
       className="lg:col-span-4 flex flex-col h-full"
     >
       {currentSpotlightItem ? (
@@ -114,58 +114,45 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
             </motion.div>
           </AnimatePresence>
 
-          {/* Top Header: Section / Priority Badge */}
-          <div className="relative z-10 flex items-center gap-2 shrink-0">
-            <span className="font-display text-[9px] sm:text-[10px] xl:text-[10.5px] font-semibold text-zinc-300 shrink-0 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-              Siguiente en tu lista:
-            </span>
-            {currentSpotlightItem.prioridad && (
-              <span
-                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[8px] sm:text-[8.5px] xl:text-[9px] font-sans font-bold uppercase tracking-wider tactile-priority-pill shrink-0 ${
-                  currentSpotlightItem.prioridad === 'esencial'
-                    ? 'tactile-priority-esencial'
-                    : currentSpotlightItem.prioridad === 'recomendada'
-                    ? 'tactile-priority-recomendada'
-                    : currentSpotlightItem.prioridad === 'complementaria'
-                    ? 'tactile-priority-complementaria'
-                    : 'tactile-priority-opcional'
-                }`}
-              >
-                <span className="text-[8.5px] leading-none">
-                  {currentSpotlightItem.prioridad === 'esencial'
-                    ? '🔥'
-                    : currentSpotlightItem.prioridad === 'recomendada'
-                    ? '🟢'
-                    : currentSpotlightItem.prioridad === 'complementaria'
-                    ? '🟡'
-                    : '⚪'}
-                </span>
-                <span>
-                  {currentSpotlightItem.prioridad === 'esencial'
-                    ? 'Esencial'
-                    : currentSpotlightItem.prioridad === 'recomendada'
-                    ? 'Recomendada'
-                    : currentSpotlightItem.prioridad === 'complementaria'
-                    ? 'Complementaria'
-                    : 'Opcional'}
-                </span>
-              </span>
-            )}
-          </div>
-
-          {/* Spotlight Content: Animated Title */}
-          <div className="relative z-10 my-auto py-0.5 sm:py-1 pointer-events-none">
+          {/* Body / Title & Priority Subtitle (Clean & Spacious Top Placement matching Doomsday card) */}
+          <div className="relative z-10 pt-1 sm:pt-1.5 xl:pt-2">
             <AnimatePresence mode="wait">
-              <motion.h2
+              <motion.div
                 key={currentSpotlightItem.id}
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.22, ease: 'easeOut' }}
-                className="font-display text-sm sm:text-base lg:text-base xl:text-xl font-bold tracking-tight text-white leading-tight line-clamp-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] select-none"
               >
-                {currentSpotlightItem.titulo}
-              </motion.h2>
+                <span className="block text-[10.5px] sm:text-[11.5px] xl:text-xs font-semibold text-zinc-400 tracking-wide font-sans mb-0.5 sm:mb-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] select-none">
+                  Siguiente en tu lista
+                </span>
+                <h3 className="font-display text-base sm:text-lg lg:text-lg xl:text-2xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] line-clamp-1 sm:line-clamp-2 select-none">
+                  {currentSpotlightItem.titulo}
+                </h3>
+                <p className="text-[11px] lg:text-[11.5px] xl:text-[12px] text-zinc-300/85 mt-1 sm:mt-1.5 leading-relaxed font-sans max-w-sm line-clamp-2">
+                  {currentSpotlightItem.prioridad === 'esencial' && (
+                    <>
+                      <span className="text-red-400 font-semibold">Esencial:</span> contenido clave para la trama principal.
+                    </>
+                  )}
+                  {currentSpotlightItem.prioridad === 'recomendada' && (
+                    <>
+                      <span className="text-emerald-400 font-semibold">Recomendada:</span> enriquece la historia y amplía el universo.
+                    </>
+                  )}
+                  {currentSpotlightItem.prioridad === 'complementaria' && (
+                    <>
+                      <span className="text-amber-400 font-semibold">Complementaria:</span> aporta contexto adicional a la saga.
+                    </>
+                  )}
+                  {(!currentSpotlightItem.prioridad || currentSpotlightItem.prioridad === 'opcional') && (
+                    <>
+                      <span className="text-zinc-400 font-semibold">Opcional:</span> historia independiente para completistas.
+                    </>
+                  )}
+                </p>
+              </motion.div>
             </AnimatePresence>
           </div>
 

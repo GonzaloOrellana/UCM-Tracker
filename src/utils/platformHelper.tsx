@@ -39,23 +39,24 @@ export function getPlatformInfo(rawUrl?: string, item?: Partial<MCUItem> | null)
 
   let type: PlatformType = 'official';
   let tooltip = 'Ver en sitio oficial';
-  let buttonClasses = 'bg-zinc-900 hover:bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.35)]';
+  let buttonClasses = 'tactile-watch-btn tactile-watch-official';
 
   if (isMercadoPlay) {
     type = 'mercadoPlay';
     tooltip = 'Ver en Mercado Play (Sitio oficial)';
-    buttonClasses = 'bg-[#FFE600] hover:bg-[#F2DC00] text-zinc-950 shadow-[0_2px_8px_rgba(255,230,0,0.35)] hover:shadow-[0_4px_14px_rgba(255,230,0,0.45)]';
+    buttonClasses = 'tactile-watch-btn tactile-watch-mercadoplay';
   } else if (isPrimeVideo) {
     type = 'primeVideo';
     tooltip = 'Ver en Prime Video (Sitio oficial)';
-    buttonClasses = 'bg-[#00A8E1] hover:bg-[#0092C5] text-white shadow-[0_2px_8px_rgba(0,168,225,0.35)] hover:shadow-[0_4px_14px_rgba(0,168,225,0.45)]';
+    buttonClasses = 'tactile-watch-btn tactile-watch-prime';
   } else if (isDisney) {
     type = 'disney';
     tooltip = 'Ver en Disney+ (Sitio oficial)';
-    buttonClasses = 'bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-[0_2px_8px_rgba(0,99,229,0.35)] hover:shadow-[0_4px_14px_rgba(0,99,229,0.45)]';
+    buttonClasses = 'tactile-watch-btn tactile-watch-disney';
   } else if (isSony) {
     type = 'sony';
     tooltip = 'Ver en Sony Pictures (Sitio oficial)';
+    buttonClasses = 'tactile-watch-btn tactile-watch-official';
   }
 
   const renderLogo = (sizeClass = 'w-3.5 h-3.5 sm:w-4 sm:h-4') => {

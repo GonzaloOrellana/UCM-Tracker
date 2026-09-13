@@ -10,9 +10,9 @@ interface DoomsdayBentoCardProps {
 export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.85, delay: 0.15, ease: 'easeOut' }}
       className="lg:col-span-4 flex flex-col h-full cursor-pointer group/doomsday"
       onClick={() => onNavigate('doomsday')}
     >
@@ -52,7 +52,7 @@ export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate
             }}
             className="tactile-btn-glass text-white text-[10px] sm:text-[11px] xl:text-xs font-semibold px-3 sm:px-3.5 xl:px-4.5 py-1.5 xl:py-2 rounded-full flex items-center gap-1.5 cursor-pointer group-hover/doomsday:border-emerald-400/80 group-hover/doomsday:text-emerald-300 transition-all shadow-lg"
           >
-            <span>Explorar evento</span>
+            <span>Explorar</span>
             <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
           </button>
         </div>

@@ -113,7 +113,7 @@ export default {
       },
       animation: {
         'bounce-check': 'bounceCheck 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.85s ease-out forwards',
       }
     },
   },

@@ -619,3 +619,130 @@
     0 4px 14px rgba(0, 0, 0, 0.7),
     inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
+
+/* ──────────────────────────────────────────────────────────
+   SKEUOMORPHIC TACTILE WATCH BUTTONS ('VER AHORA')
+   ────────────────────────────────────────────────────────── */
+.tactile-watch-btn {
+  position: relative;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Disney+ Skeuomorphic Blue Glass Button */
+.tactile-watch-disney {
+  background: linear-gradient(180deg, #1f7dff 0%, #0063e5 50%, #004dc0 100%);
+  border: 1px solid #004dc0;
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  border-bottom: 1.5px solid rgba(0, 20, 60, 0.85);
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 14px rgba(0, 70, 180, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 2px rgba(0, 30, 90, 0.35);
+}
+.tactile-watch-disney:hover {
+  background: linear-gradient(180deg, #388eff 0%, #0e72f5 50%, #0056d6 100%);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(0, 99, 229, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.65),
+    inset 0 -1px 2px rgba(0, 30, 90, 0.4);
+}
+.tactile-watch-disney:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 1px 3px rgba(0, 70, 180, 0.4),
+    inset 0 2px 4px rgba(0, 30, 90, 0.6);
+}
+
+/* Prime Video Skeuomorphic Cyan Button */
+.tactile-watch-prime {
+  background: linear-gradient(180deg, #22c3f7 0%, #00a8e1 50%, #0087b7 100%);
+  border: 1px solid #0087b7;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1.5px solid rgba(0, 40, 60, 0.85);
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 14px rgba(0, 168, 225, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -1px 2px rgba(0, 60, 90, 0.35);
+}
+.tactile-watch-prime:hover {
+  background: linear-gradient(180deg, #44cefa 0%, #12b4eb 50%, #0093c7 100%);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 6px 20px rgba(0, 168, 225, 0.6),
+    0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 2px rgba(0, 60, 90, 0.4);
+}
+.tactile-watch-prime:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 1px 3px rgba(0, 168, 225, 0.4),
+    inset 0 2px 4px rgba(0, 60, 90, 0.6);
+}
+
+/* Mercado Play Skeuomorphic Golden Yellow Button */
+.tactile-watch-mercadoplay {
+  background: linear-gradient(180deg, #fff34d 0%, #ffe600 50%, #e6cf00 100%);
+  border: 1px solid #cca900;
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 1.5px solid rgba(130, 100, 0, 0.85);
+  color: #12131A;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 4px 14px rgba(255, 230, 0, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 2px rgba(160, 130, 0, 0.35);
+}
+.tactile-watch-mercadoplay:hover {
+  background: linear-gradient(180deg, #fff775 0%, #ffeb1a 50%, #edd400 100%);
+  border-top-color: #FFFFFF;
+  box-shadow: 
+    0 6px 20px rgba(255, 230, 0, 0.65),
+    0 3px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 2px rgba(160, 130, 0, 0.4);
+}
+.tactile-watch-mercadoplay:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 1px 3px rgba(255, 230, 0, 0.4),
+    inset 0 2px 4px rgba(160, 130, 0, 0.5);
+}
+
+/* Official / Sony / Dark Skeuomorphic Button */
+.tactile-watch-official {
+  background: linear-gradient(180deg, #2c2f42 0%, #1c1e2d 50%, #12131d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.85);
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+}
+.tactile-watch-official:hover {
+  background: linear-gradient(180deg, #383c54 0%, #24273a 50%, #181926 100%);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.75),
+    0 3px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+}
+.tactile-watch-official:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}

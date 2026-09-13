@@ -396,7 +396,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
-                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-xs transition-all hover:scale-[1.03]"
+                                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${getWatchButtonData(prod).buttonClasses}`}
                                   title="Ver X-Men (2000) en Disney+"
                                 >
                                   <Play className="w-3 h-3 fill-current" />
@@ -405,14 +405,14 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                                 </a>
                                 {(() => {
                                   const prod2 = getProduction(milestone.additionalProductionId);
-                                  const { watchUrl, renderLogo } = getWatchButtonData(prod2);
+                                  const { watchUrl, buttonClasses, renderLogo } = getWatchButtonData(prod2);
                                   return (
                                     <a
                                       href={watchUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       onClick={(e) => e.stopPropagation()}
-                                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide bg-[#0063e5] hover:bg-[#0051bf] text-white shadow-xs transition-all hover:scale-[1.03]"
+                                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${buttonClasses}`}
                                       title="Ver X-Men 2 (2003) en Disney+"
                                     >
                                       <Play className="w-3 h-3 fill-current" />
