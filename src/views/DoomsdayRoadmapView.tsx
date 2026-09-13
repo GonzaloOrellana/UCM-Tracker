@@ -11,6 +11,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { getPlatformInfo } from '../utils/platformHelper';
+import { DoomsdayCountdown } from '../components/DoomsdayCountdown';
 
 interface DoomsdayRoadmapViewProps {
   onBackToDashboard: () => void;
@@ -246,6 +247,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
+          CINEMATIC COUNTDOWN: AVENGERS DOOMSDAY (MATCHING MARVEL TRAILER)
+          ───────────────────────────────────────────────────────────── */}
+      <DoomsdayCountdown />
+
+      {/* ─────────────────────────────────────────────────────────────
           NAVIGATION TABS (3 CONCISE CHAPTERS WITH DOOM ACCENTS)
           ───────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar">
@@ -308,8 +314,6 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   Tras el colapso inminente de múltiples realidades desatado por las constantes incursiones multiversales, los Vengadores, los Cuatro Fantásticos y héroes provenientes de distintas líneas temporales deberán unir fuerzas ante una crisis de proporciones cósmicas. Frente a ellos emerge el temible y brillante <strong>Victor von Doom</strong> (Robert Downey Jr.), quien buscará remodelar el tejido mismo de la existencia bajo su propia voluntad suprema.
                 </p>
                 <div className="pt-1 flex items-center gap-3 text-xs text-zinc-400 font-sans flex-wrap">
-                  <span>Estreno: <strong className="text-white">18 de Diciembre de 2026</strong></span>
-                  <span>•</span>
                   <span>Dirección: <strong className="text-white">Anthony y Joe Russo</strong></span>
                 </div>
               </div>
