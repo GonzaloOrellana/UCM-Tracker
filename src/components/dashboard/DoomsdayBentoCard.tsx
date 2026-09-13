@@ -43,8 +43,8 @@ export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate
           </p>
         </div>
 
-        {/* Footer Action: Tactile Glass CTA aligned with row baseline */}
-        <div className="relative z-10 flex items-center justify-start pt-2">
+        {/* Footer Action: Tactile Glass CTA aligned to bottom right */}
+        <div className="relative z-10 flex items-center justify-end pt-2">
           <button
             onClick={(e) => {
               e.stopPropagation();
