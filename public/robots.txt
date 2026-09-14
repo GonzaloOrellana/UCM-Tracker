@@ -4,7 +4,7 @@ Disallow: /api/
 Disallow: /private/
 
 # Sitemap
-Sitemap: https://ucm-tracker.com/sitemap.xml
+Sitemap: https://ucmtracker.vercel.app/sitemap.xml
 
 # Crawl-delay (optional, be polite)
 Crawl-delay: 1
