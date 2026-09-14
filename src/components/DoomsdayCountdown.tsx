@@ -88,8 +88,8 @@ export const DoomsdayCountdown: React.FC = () => {
 
   return (
     <div className="relative w-full flex flex-col items-center justify-center pt-1 pb-3 sm:pb-4 select-none">
-      {/* Mystic Emerald Ambient Glow behind the countdown (evoking Doctor Doom & stained glass from Marvel teaser) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] md:w-[620px] h-[90px] sm:h-[120px] bg-emerald-500/[0.13] rounded-full blur-[60px] sm:blur-[80px] pointer-events-none -z-10" />
+      {/* Subtle Emerald Ambient Glow behind the countdown */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] md:w-[620px] h-[90px] sm:h-[120px] bg-emerald-500/[0.025] rounded-full blur-[60px] sm:blur-[80px] pointer-events-none -z-10" />
 
       {/* Main Countdown Row with Numbers & Colons */}
       <div className="flex items-start justify-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-6">
@@ -104,7 +104,7 @@ export const DoomsdayCountdown: React.FC = () => {
         </div>
 
         {/* Separator */}
-        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/80 select-none pt-0.5 sm:pt-1 font-display">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/40 select-none pt-0.5 sm:pt-1 font-display">
           :
         </span>
 
@@ -119,7 +119,7 @@ export const DoomsdayCountdown: React.FC = () => {
         </div>
 
         {/* Separator */}
-        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/80 select-none pt-0.5 sm:pt-1 font-display">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/40 select-none pt-0.5 sm:pt-1 font-display">
           :
         </span>
 
@@ -134,7 +134,7 @@ export const DoomsdayCountdown: React.FC = () => {
         </div>
 
         {/* Separator */}
-        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/80 select-none pt-0.5 sm:pt-1 font-display">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/40 select-none pt-0.5 sm:pt-1 font-display">
           :
         </span>
 
@@ -149,7 +149,7 @@ export const DoomsdayCountdown: React.FC = () => {
         </div>
 
         {/* Separator */}
-        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/80 select-none pt-0.5 sm:pt-1 font-display">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-emerald-400/40 select-none pt-0.5 sm:pt-1 font-display">
           :
         </span>
 

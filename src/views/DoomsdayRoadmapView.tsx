@@ -79,9 +79,9 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   return (
     <div className="flex-1 flex flex-col space-y-6 animate-fade-in pb-12 max-w-[1580px] mx-auto w-full relative">
       {/* Doctor Doom Ambient Aura & Mystic Green Glows */}
-      <div className="fixed top-12 right-1/4 w-[500px] h-[500px] bg-emerald-500/[0.07] rounded-full blur-[140px] pointer-events-none -z-10" />
-      <div className="fixed bottom-1/4 left-10 w-[420px] h-[420px] bg-teal-600/[0.04] rounded-full blur-[130px] pointer-events-none -z-10" />
-      <div className="fixed top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent pointer-events-none -z-10" />
+      <div className="fixed top-12 right-1/4 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed bottom-1/4 left-10 w-[420px] h-[420px] bg-teal-600/[0.02] rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="fixed top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-950/10 via-transparent to-transparent pointer-events-none -z-10" />
 
       {/* ─────────────────────────────────────────────────────────────
           TOP NAV BAR (Clean Back Button with Doom emerald accent)
@@ -101,7 +101,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           ───────────────────────────────────────────────────────────── */}
       <div className="relative w-full flex items-center justify-center overflow-hidden py-1 sm:py-2 select-none">
         {/* Subtle, refined Ambient Emerald Aura */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] md:w-[650px] lg:w-[800px] h-[120px] sm:h-[160px] md:h-[200px] bg-emerald-500/[0.08] rounded-full blur-[70px] sm:blur-[100px] pointer-events-none -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] md:w-[650px] lg:w-[800px] h-[120px] sm:h-[160px] md:h-[200px] bg-emerald-500/[0.02] rounded-full blur-[70px] sm:blur-[100px] pointer-events-none -z-10" />
 
         <h1 className="sr-only">Marvel Studios Avengers: Doomsday</h1>
 
@@ -109,7 +109,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
           <img
             src="/logoAvengersDoomsday.png"
             alt="Marvel Studios Avengers: Doomsday"
-            className="w-auto h-[240px] sm:h-[330px] md:h-[430px] lg:h-[530px] xl:h-[620px] max-w-none object-contain select-none pointer-events-none drop-shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+            className="w-auto h-[240px] sm:h-[330px] md:h-[430px] lg:h-[530px] xl:h-[620px] max-w-none object-contain select-none pointer-events-none drop-shadow-[0_0_8px_rgba(16,185,129,0.05)]"
           />
         </div>
       </div>
@@ -172,9 +172,9 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             className="space-y-6"
           >
             {/* Sinopsis (Izquierda) + Tráiler Oficial (Derecha) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center px-5 sm:px-6 lg:px-7">
               {/* Sinopsis a la izquierda */}
-              <div className="bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-center space-y-3 shadow-xl">
+              <div className="flex flex-col justify-center space-y-3">
                 <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
                   Sinopsis
                 </h3>
@@ -220,7 +220,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
               </div>
 
               {/* Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {PREP_MILESTONES.map((milestone) => {
                   const prod = getProduction(milestone.productionId);
                   const posterUrl = prod?.urlPoster || milestone.posterUrl;
@@ -228,12 +228,12 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={milestone.id}
-                      className="bg-[#050806]/85 backdrop-blur-md rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden shadow-lg"
+                      className="flex flex-col justify-between group"
                     >
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
+                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md transition-transform duration-300 group-hover:scale-[1.03]">
                             <img
                               src={posterUrl}
                               alt={milestone.title}
@@ -245,7 +245,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
                         <div className="min-w-0 flex-1 space-y-2.5">
                           <div>
-                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
+                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
                               {milestone.title}
                             </h4>
 
@@ -298,7 +298,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
               </div>
 
               {/* Quick Recap Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {QUICK_RECAP_ITEMS.map((recap) => {
                   const prod = getProduction(recap.productionId);
                   const posterUrl = prod?.urlPoster || recap.posterUrl;
@@ -306,12 +306,12 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                   return (
                     <div
                       key={recap.id}
-                      className="rounded-2xl p-4 flex flex-col justify-between bg-gradient-to-br from-[#0c0e0c]/90 via-[#060806]/90 to-black shadow-md"
+                      className="flex flex-col justify-between group"
                     >
                       {/* Poster + Content Side by Side */}
                       <div className="flex gap-3.5 items-start">
                         {posterUrl && (
-                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md">
+                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md transition-transform duration-300 group-hover:scale-[1.03]">
                             <img
                               src={posterUrl}
                               alt={recap.title}
@@ -323,7 +323,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
                         <div className="min-w-0 flex-1 space-y-2.5">
                           <div>
-                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
+                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
                               {recap.title}
                             </h4>
 
@@ -393,7 +393,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Texto Explicativo Central */}
-            <div className="lg:col-span-6 bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-start">
+            <div className="lg:col-span-6 flex flex-col justify-start">
               <div className="space-y-3.5 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
                 <p>
                   Victor von Doom nació en Latveria, un pequeño país ficticio de Europa del Este, dentro de una familia romaní. Desde muy joven estuvo marcado por la tragedia: su madre, Cynthia von Doom, era una poderosa hechicera que murió al intentar obtener poderes sobrenaturales, mientras que su padre, Werner, era un médico que falleció después de intentar salvar a la esposa de un gobernante de Latveria.
@@ -497,7 +497,7 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
             </div>
 
             {/* Texto Explicativo Central */}
-            <div className="lg:col-span-6 bg-[#050806]/60 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 flex flex-col justify-start">
+            <div className="lg:col-span-6 flex flex-col justify-start">
               <div className="text-center mb-5">
                 <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
                   El evento que puede redefinir el multiverso de Marvel
@@ -535,14 +535,14 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
                 <p>
                   En términos simples, la historia puede entenderse de esta manera: el Multiverso está formado por muchas realidades; esas realidades comienzan a chocar mediante incursiones; la crisis amenaza con destruirlo todo; Doctor Doom intenta controlar el resultado; Avengers: Doomsday podría mostrar el punto máximo de esa crisis; y Avengers: Secret Wars podría contar la lucha por decidir qué queda después del colapso. Si Marvel sigue parcialmente el camino de los cómics, el resultado podría ser una nueva realidad capaz de redefinir el futuro del MCU.
                 </p>
-                <p className="text-emerald-300 font-medium pt-2 bg-emerald-500/10 p-3.5 rounded-xl leading-relaxed">
+                <p className="text-emerald-300 font-medium pt-2 border-l-2 border-emerald-500/60 pl-4 py-1 leading-relaxed">
                   En una sola frase, la idea central sería: Doomsday podría ser la historia en la que el Multiverso llega al límite, mientras que Secret Wars podría ser la historia en la que Marvel decide qué universo nace después de su destrucción.
                 </p>
               </div>
             </div>
 
             {/* Fotos Derecha */}
-            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-5 self-start justify-center">
+            <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-5 self-start justify-center items-start">
               <img
                 src="https://www.carnivorecomics.com/cdn/shop/files/IMG_1999.jpg?v=1699460585&width=823"
                 alt="Avengers Secret Wars - Battleworld"
