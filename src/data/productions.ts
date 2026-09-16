@@ -1,6 +1,7 @@
 import { MCUItem } from '../types/mcu';
+import { HORIZONTAL_POSTERS } from './horizontalPosters';
 
-export const PRODUCTIONS: MCUItem[] = [
+const RAW_PRODUCTIONS: MCUItem[] = [
   {
     "id": "x-men-animated-series-1992",
     "titulo": "X-Men: La serie animada",
@@ -9,7 +10,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 1992,
     "fechaLanzamiento": "1992-10-31",
     "ordenEstreno": 0.001,
-    "ordenCronologico": 91,
+    "ordenCronologico": 92,
     "fase": "Saga X-Men",
     "urlPoster": "https://static.wikia.nocookie.net/doblaje/images/a/ad/X-men_the_animated_series_DVD.jpeg/revision/latest?cb=20200704192347&path-prefix=es",
     "resumen": "La mítica serie animada de los años 90 que sigue a Charles Xavier, Wolverine, Cíclope, Tormenta, Titania, Gambito, Bestia y Júpiter defendiendo a mutantes y humanos de las amenazas de Magneto, Sentinelas, Apocalipsis y Mr. Siniestro.",
@@ -27,7 +28,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 1994,
     "fechaLanzamiento": "1994-11-19",
     "ordenEstreno": 0.002,
-    "ordenCronologico": 92,
+    "ordenCronologico": 93,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVrgmjFISNOtmkpn4OwsIexEIWd9FFnz2TCB5lb9mYURR383z--igiVM&s=10",
     "resumen": "La aclamada serie animada de los 90 que relata las aventuras de Peter Parker equilibrando su vida universitaria en la Universidad Empire State con su lucha contra villanos icónicos como Duende Verde, Venom, Doctor Octopus, Carnage y Kingpin.",
@@ -178,7 +179,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2008,
     "fechaLanzamiento": "2008-03-08",
     "ordenEstreno": 0.32,
-    "ordenCronologico": 93,
+    "ordenCronologico": 94,
     "fase": "Saga Spider-Man",
     "urlPoster": "https://i.pinimg.com/736x/41/ea/a3/41eaa3998e4b575eaeb616210ce270fd.jpg",
     "resumen": "Considerada una de las mejores adaptaciones animadas del personaje. Sigue a un joven Peter Parker comenzando su tercer año de preparatoria mientras lidia con la adquisición de sus superpoderes, sus relaciones con Gwen Stacy y Harry Osborn, y la amenaza de supervillanos emergentes en Nueva York.",
@@ -386,7 +387,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2013,
     "fechaLanzamiento": "2013-09-24",
     "ordenEstreno": 7,
-    "ordenCronologico": 94,
+    "ordenCronologico": 95,
     "fase": "Serie ABC",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BMTkwODYyMjgzOV5BMl5BanBnXkFtZTgwODAzMTE5MjE@._V1_SX300.jpg",
     "resumen": "El agente Phil Coulson lidera un equipo del S.H.I.E.L.D. que investiga casos inexplicables relacionados con las recientes invasiones alienígenas en la Tierra.",
@@ -575,7 +576,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2015,
     "fechaLanzamiento": "2015-01-06",
     "ordenEstreno": 13.5,
-    "ordenCronologico": 95,
+    "ordenCronologico": 96,
     "fase": "Fase 2",
     "urlPoster": "https://www.cinemascomics.com/wp-content/uploads/2026/07/agente-carter-poster-tmdb.jpg",
     "resumen": "En 1946, Peggy Carter debe lidiar con el trabajo administrativo en la SSR mientras ayuda secretamente a Howard Stark a limpiar su nombre tras ser acusado de vender armas a enemigos de Estados Unidos.",
@@ -820,7 +821,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2017,
     "fechaLanzamiento": "2017-11-17",
     "ordenEstreno": 19,
-    "ordenCronologico": 71,
+    "ordenCronologico": 72,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/01/The_Punisher_-_Promo_P%C3%B3ster_Oficial.png/revision/latest?cb=20171203043332&path-prefix=es",
     "resumen": "Tras cobrar venganza contra los criminales directamente responsables de la muerte de su familia, el ex-marine Frank Castle descubre un secreto militar mucho más grande y oscuro. Aliado con un analista tecnológico prófugo llamado Micro, Castle se adentra en el inframundo de Nueva York para desmantelar una conspiración gubernamental vinculada a su pasado en Afganistán. Al mismo tiempo, debe lidiar con la traición de su mejor amigo de las fuerzas especiales, Billy Russo.",
@@ -828,7 +829,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Frank Castle / Punisher",
     "colorAcento": "#1A1A1A",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991",
-    "ordenListaMaestra": 71,
+    "ordenListaMaestra": 72,
     "prioridad": "esencial"
   },
   {
@@ -858,7 +859,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-03-08",
     "ordenEstreno": 20,
-    "ordenCronologico": 72,
+    "ordenCronologico": 73,
     "fase": "Saga The Defenders",
     "urlPoster": "https://www.cinemascomics.com/wp-content/uploads/2017/10/poster-temporada-2-jessica-jones-2017.jpg",
     "resumen": "Tras los eventos con su peor enemigo, Jessica profundiza de forma obsesiva en los violentos misterios de su propio pasado y el origen real de sus poderes.",
@@ -866,7 +867,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Jessica Jones",
     "colorAcento": "#4A2E59",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8",
-    "ordenListaMaestra": 72,
+    "ordenListaMaestra": 73,
     "prioridad": "opcional"
   },
   {
@@ -915,14 +916,14 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-06-22",
     "ordenEstreno": 21,
-    "ordenCronologico": 73,
+    "ordenCronologico": 74,
     "fase": "Saga The Defenders",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b8/Luke_Cage_-_Imagen_promocional_T2.png/revision/latest?cb=20181111172040&path-prefix=es",
     "resumen": "Convertido en una celebridad en las calles de Harlem tras limpiar su nombre, Luke Cage enfrenta la presión de mantener la paz comunitaria. El panorama se complica con la llegada de Bushmaster, un líder criminal jamaiquino con habilidades sobrehumanas que busca venganza contra la familia Stokes, arrastrando a Luke a una violenta guerra de pandillas que pondrá a prueba sus límites morales.",
     "duracion": "13 episodios",
     "personajePrincipal": "Luke Cage & Bushmaster",
     "colorAcento": "#D97706",
-    "ordenListaMaestra": 73,
+    "ordenListaMaestra": 74,
     "prioridad": "opcional"
   },
   {
@@ -952,7 +953,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-09-07",
     "ordenEstreno": 22,
-    "ordenCronologico": 74,
+    "ordenCronologico": 75,
     "fase": "Saga The Defenders",
     "urlPoster": "https://imagenes.hobbyconsolas.com/files/image_640_auto/uploads/imagenes/2023/04/25/690257089468a.jpeg",
     "resumen": "Ambientada tras los eventos de The Defenders, Danny asume el rol de protector de Nueva York tras la desaparición de Matt Murdock. Junto a su pareja Colleen Wing, intenta mantener la paz frente a una violenta guerra de pandillas en Chinatown. Sin embargo, la situación se complica con la llegada de Davos, su antiguo hermano de armas de K'un-Lun, quien busca arrebatarle el poder del Puño de Hierro por considerarlo su derecho de nacimiento.",
@@ -960,7 +961,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Danny Rand & Colleen Wing",
     "colorAcento": "#059669",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0",
-    "ordenListaMaestra": 74,
+    "ordenListaMaestra": 75,
     "prioridad": "opcional"
   },
   {
@@ -971,7 +972,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2018,
     "fechaLanzamiento": "2018-10-19",
     "ordenEstreno": 22,
-    "ordenCronologico": 75,
+    "ordenCronologico": 71,
     "fase": "Saga The Defenders",
     "urlPoster": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/65d24c101118375.5f17aaf5e783d.jpg",
     "resumen": "Tras quedar gravemente herido en The Defenders, Matt Murdock resurge de las sombras para detener la venganza de Wilson Fisk y enfrentar al letal Bullseye.",
@@ -979,7 +980,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Matt Murdock / Daredevil",
     "colorAcento": "#880E4F",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
-    "ordenListaMaestra": 75,
+    "ordenListaMaestra": 71,
     "prioridad": "esencial"
   },
   {
@@ -1332,7 +1333,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2022,
     "fechaLanzamiento": "2022-08-10",
     "ordenEstreno": 37,
-    "ordenCronologico": 96,
+    "ordenCronologico": 97,
     "fase": "Fase 4",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/8e/I_Am_Groot_-_P%C3%B3ster_2.png/revision/latest?cb=20220722195018&path-prefix=es",
     "resumen": "Historias breves e independientes que siguen las divertidas travesuras galácticas de Baby Groot mientras crece y se mete en problemas por el universo.",
@@ -1464,7 +1465,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2023,
     "fechaLanzamiento": "2023-09-06",
     "ordenEstreno": 40,
-    "ordenCronologico": 97,
+    "ordenCronologico": 98,
     "fase": "Especiales UCM",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/I_Am_Groot_-_Segunda_Temporada_-_Primer_p%C3%B3ster.png/revision/latest?cb=20230806172732&path-prefix=es",
     "resumen": "Segunda temp. de aventuras donde Baby Groot explora el universo a bordo de las naves de los Guardianes, encontrándose con criaturas extrañas y nuevos mundos.",
@@ -1672,7 +1673,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2024,
     "fechaLanzamiento": "2024-12-22",
     "ordenEstreno": 45,
-    "ordenCronologico": 98,
+    "ordenCronologico": 99,
     "fase": "Multiverso Animado",
     "urlPoster": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/e8/What_If_-_Tercera_temporada_-_P%C3%B3ster.png/revision/latest?cb=20241111182039&path-prefix=es",
     "resumen": "Cierra la historia multiversal explorando géneros variados, incluyendo un combate contra vengadores mecánicos y realidades inspiradas en el salvaje oeste.",
@@ -1690,7 +1691,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-08-06",
     "ordenEstreno": 45,
-    "ordenCronologico": 99,
+    "ordenCronologico": 100,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BZjhhOTE5ODgtNDFjOS00ZTdlLTgzYjAtNGU1NmM4YzkwYWMxXkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Serie que sigue a Okoye y al Dora Milaje de Wakanda mientras lideran la seguridad nacional de Wakanda después de los eventos de *Wakanda Forever*, enfrentándose a nuevas amenazas.",
@@ -1708,7 +1709,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2025,
     "fechaLanzamiento": "2025-09-24",
     "ordenEstreno": 46,
-    "ordenCronologico": 100,
+    "ordenCronologico": 101,
     "fase": "Fase 6",
     "urlPoster": "https://m.media-amazon.com/images/M/MV5BNGNkYjI3ZWUtN2MzMS00NDg5LWE5MmYtZGE4Zjc0OGVhODM4XkEyXkFqcGc@._V1_SX300.jpg",
     "resumen": "Serie animada en la que el multiverso del UCM es infectado por una plaga zombi. Superhéroes icónicos se ven transformados y luchan por la supervivencia en un mundo postapocalíptico.",
@@ -1840,7 +1841,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "anioLanzamiento": 2026,
     "fechaLanzamiento": "2026-05-12",
     "ordenEstreno": 55,
-    "ordenCronologico": 101,
+    "ordenCronologico": 88,
     "fase": "Fase 6",
     "urlPoster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTYxrR-uu-Q8ZXg2ZPfVjDDp4hvfX7l0q5hlh3AOQ5cNwhhYA3IW_VGJs&s=10",
     "resumen": "Un Frank devastado vive al margen de la sociedad intentando dejar atrás las armas. Sin embargo, se ve forzado a defenderse cuando la villana Ma Gnucci le pone una recompensa millonaria a su cabeza en venganza por la muerte de su familia, desatando una cacería implacable.",
@@ -1848,6 +1849,7 @@ export const PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Frank Castle / Punisher",
     "colorAcento": "#C81D25",
     "urlOficial": "https://www.disneyplus.com/es-ar/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878",
+    "ordenListaMaestra": 88,
     "prioridad": "recomendada"
   },
   {
@@ -1877,15 +1879,16 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-07-30",
     "fechaEsExacta": true,
     "ordenEstreno": 56,
-    "ordenCronologico": 88,
+    "ordenCronologico": 89,
     "fase": "Fase 6",
     "urlPoster": "https://preview.redd.it/new-spider-man-brand-new-day-posters-v0-0jon411xh2vg1.jpg?width=1080&crop=smart&auto=webp&s=ce2923b014959315129a2238151d8d72869d8166",
     "resumen": "Peter Parker inicia un nuevo capítulo urbano en Nueva York sin el recuerdo de sus seres queridos tras los eventos de Sin Camino a Casa.",
-    "duracion": "Por anunciar",
+    "duracion": "2h 25m",
     "personajePrincipal": "Peter Parker / Spider-Man",
     "colorAcento": "#C81D25",
     "urlOficial": "https://www.sonypictures.com/movies",
-    "ordenListaMaestra": 88,
+    "enCines": true,
+    "ordenListaMaestra": 89,
     "prioridad": "esencial"
   },
   {
@@ -1915,14 +1918,14 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2026-12-18",
     "fechaEsExacta": true,
     "ordenEstreno": 58,
-    "ordenCronologico": 89,
+    "ordenCronologico": 90,
     "fase": "Fase 6",
     "urlPoster": "https://preview.redd.it/official-poster-for-avengers-doomsday-v0-4xcitk12vdeh1.jpeg?width=1080&crop=smart&auto=webp&s=39eb06fd7152854c766b0ec0481b1e558998bc56",
     "resumen": "Los héroes de múltiples dimensiones se unen para enfrentar al temible Doctor Victor Von Doom interpretado por Robert Downey Jr.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Doctor Doom & Vengadores",
     "colorAcento": "#4CAF50",
-    "ordenListaMaestra": 89,
+    "ordenListaMaestra": 90,
     "prioridad": "recomendada"
   },
   {
@@ -1971,14 +1974,14 @@ export const PRODUCTIONS: MCUItem[] = [
     "fechaLanzamiento": "2027-12-17",
     "fechaEsExacta": true,
     "ordenEstreno": 61,
-    "ordenCronologico": 90,
+    "ordenCronologico": 91,
     "fase": "Fase 6",
     "urlPoster": "https://i.pinimg.com/736x/42/6c/88/426c88866e6d624f42848752ba8d1b82.jpg",
     "resumen": "La colisión definitiva del Multiverso en Battleworld que redefinirá el futuro del Universo Cinematográfico de Marvel.",
     "duracion": "Por anunciar",
     "personajePrincipal": "Vengadores Multiversales",
     "colorAcento": "#9C27B0",
-    "ordenListaMaestra": 90,
+    "ordenListaMaestra": 91,
     "prioridad": "recomendada"
   },
   {
@@ -2000,3 +2003,9 @@ export const PRODUCTIONS: MCUItem[] = [
     "prioridad": "opcional"
   }
 ];
+
+export const PRODUCTIONS: MCUItem[] = RAW_PRODUCTIONS.map((item) => ({
+  ...item,
+  urlPosterHorizontal: HORIZONTAL_POSTERS[item.id] || item.urlPosterHorizontal,
+}));
+

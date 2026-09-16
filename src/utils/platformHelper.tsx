@@ -1,15 +1,18 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Play, Ticket } from 'lucide-react';
 import { MCUItem } from '../types/mcu';
 
-export type PlatformType = 'mercadoPlay' | 'primeVideo' | 'disney' | 'sony' | 'official';
+export type PlatformType = 'mercadoPlay' | 'primeVideo' | 'disney' | 'sony' | 'official' | 'cinema';
 
 export interface PlatformInfo {
   type: PlatformType;
   watchUrl: string;
   tooltip: string;
   buttonClasses: string;
+  label: string;
+  inTheaters: boolean;
   renderLogo: (sizeClass?: string) => React.ReactNode;
+  renderLeadingIcon: (sizeClass?: string) => React.ReactNode;
 }
 
 export function resolveWatchUrl(item?: Partial<MCUItem> | null): string {
@@ -32,6 +35,15 @@ export function resolveWatchUrl(item?: Partial<MCUItem> | null): string {
 export function getPlatformInfo(rawUrl?: string, item?: Partial<MCUItem> | null): PlatformInfo {
   const watchUrl = rawUrl || resolveWatchUrl(item);
 
+  const isBrandNewDay = Boolean(
+    item &&
+      (item.id === 'up-spider-man-4' ||
+        item.titulo?.toLowerCase().includes('brand new day') ||
+        item.tituloOriginal?.toLowerCase().includes('brand new day'))
+  );
+
+  const inTheaters = Boolean(item?.enCines || isBrandNewDay);
+
   const isMercadoPlay = Boolean(watchUrl.includes('mercadolibre'));
   const isPrimeVideo = Boolean(watchUrl.includes('primevideo'));
   const isDisney = Boolean(watchUrl.includes('disneyplus'));
@@ -40,8 +52,14 @@ export function getPlatformInfo(rawUrl?: string, item?: Partial<MCUItem> | null)
   let type: PlatformType = 'official';
   let tooltip = 'Ver en sitio oficial';
   let buttonClasses = 'tactile-watch-btn tactile-watch-official';
+  let label = 'Ver ahora';
 
-  if (isMercadoPlay) {
+  if (inTheaters) {
+    type = 'cinema';
+    tooltip = 'Actualmente solo en cines';
+    buttonClasses = 'tactile-watch-btn tactile-watch-cinema';
+    label = 'En cines';
+  } else if (isMercadoPlay) {
     type = 'mercadoPlay';
     tooltip = 'Ver en Mercado Play (Sitio oficial)';
     buttonClasses = 'tactile-watch-btn tactile-watch-mercadoplay';
@@ -59,7 +77,21 @@ export function getPlatformInfo(rawUrl?: string, item?: Partial<MCUItem> | null)
     buttonClasses = 'tactile-watch-btn tactile-watch-official';
   }
 
+  const renderLeadingIcon = (sizeClass = 'w-3 h-3 sm:w-3.5 sm:h-3.5') => {
+    if (inTheaters) {
+      return (
+        <Ticket className={`${sizeClass} stroke-[2.2] fill-white/15 shrink-0`} />
+      );
+    }
+    return (
+      <Play className={`${sizeClass} fill-current transition-transform group-hover/watch:scale-110 shrink-0`} />
+    );
+  };
+
   const renderLogo = (sizeClass = 'w-3.5 h-3.5 sm:w-4 sm:h-4') => {
+    if (inTheaters) {
+      return null;
+    }
     if (isMercadoPlay) {
       return (
         <img
@@ -99,6 +131,9 @@ export function getPlatformInfo(rawUrl?: string, item?: Partial<MCUItem> | null)
     watchUrl,
     tooltip,
     buttonClasses,
+    label,
+    inTheaters,
     renderLogo,
+    renderLeadingIcon,
   };
 }

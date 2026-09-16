@@ -26,6 +26,8 @@ export interface MCUItem {
   prioridad?: MCUPriority;
   fase: MCUPhase;
   urlPoster: string;
+  urlPosterHorizontal?: string;
+  enCines?: boolean;
   resumen: string;
   duracion?: string;
   tmdbId?: number;

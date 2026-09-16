@@ -373,19 +373,28 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                 transition={{ duration: 0.3, delay: 0.38, ease: transitionEase }}
                 className="flex items-center justify-between shrink-0 pt-1.5 sm:pt-2 border-t border-zinc-100 gap-3"
               >
-                {/* Watch Now Official Link Button */}
-                <a
-                  href={platformInfo.watchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  title={platformInfo.tooltip}
-                  className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${platformInfo.buttonClasses}`}
-                >
-                  <Play className="w-3.5 h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
-                  <span>Ver ahora</span>
-                  {platformInfo.renderLogo('w-4 h-4 sm:w-4.5 sm:h-4.5')}
-                </a>
+                {platformInfo.inTheaters ? (
+                  <div
+                    title={platformInfo.tooltip}
+                    className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide select-none shrink-0 cursor-default ${platformInfo.buttonClasses}`}
+                  >
+                    {platformInfo.renderLeadingIcon('w-3.5 h-3.5')}
+                    <span>{platformInfo.label}</span>
+                  </div>
+                ) : (
+                  <a
+                    href={platformInfo.watchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    title={platformInfo.tooltip}
+                    className={`inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${platformInfo.buttonClasses}`}
+                  >
+                    {platformInfo.renderLeadingIcon('w-3.5 h-3.5')}
+                    <span>{platformInfo.label}</span>
+                    {platformInfo.renderLogo('w-4 h-4 sm:w-4.5 sm:h-4.5')}
+                  </a>
+                )}
 
                 <div
                   onClick={() => toggleWatched(item.id)}

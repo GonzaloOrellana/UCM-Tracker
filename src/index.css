@@ -659,3 +659,32 @@
     0 1px 3px rgba(0, 0, 0, 0.6),
     inset 0 2px 4px rgba(0, 0, 0, 0.8);
 }
+
+/* In Theaters (En cines) Skeuomorphic Crimson / Red Cinema Button */
+.tactile-watch-cinema {
+  background: linear-gradient(180deg, #e5252b 0%, #c81d25 50%, #99141a 100%);
+  border: 1px solid #7f1217;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 1.5px solid rgba(50, 5, 8, 0.9);
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 14px rgba(200, 29, 37, 0.55),
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px rgba(80, 5, 10, 0.4);
+}
+.tactile-watch-cinema:hover {
+  background: linear-gradient(180deg, #f03d43 0%, #db222a 50%, #b2181f 100%);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 6px 20px rgba(200, 29, 37, 0.7),
+    0 3px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.75),
+    inset 0 -1px 2px rgba(80, 5, 10, 0.45);
+}
+.tactile-watch-cinema:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 1px 3px rgba(200, 29, 37, 0.4),
+    inset 0 2px 4px rgba(80, 5, 10, 0.6);
+}

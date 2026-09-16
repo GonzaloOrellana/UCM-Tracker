@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Trophy, Sparkles, Play } from 'lucide-react';
 import { MCUItem } from '../../types/mcu';
 import { getPlatformInfo } from '../../utils/platformHelper';
+import { HORIZONTAL_POSTERS } from '../../data/horizontalPosters';
 
 interface HeroSpotlightCardProps {
   availableItems: MCUItem[];
@@ -104,9 +105,14 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
               className="absolute inset-0 z-0 pointer-events-none"
             >
               <img
-                src={currentSpotlightItem.urlPoster}
+                src={currentSpotlightItem.urlPosterHorizontal || HORIZONTAL_POSTERS[currentSpotlightItem.id] || currentSpotlightItem.urlPoster}
                 alt={currentSpotlightItem.titulo}
                 className="w-full h-full object-cover object-center group-hover/spotlight:scale-105 transition-transform duration-700 ease-out opacity-80 group-hover/spotlight:opacity-95"
+                onError={(e) => {
+                  if (e.currentTarget.src !== currentSpotlightItem.urlPoster) {
+                    e.currentTarget.src = currentSpotlightItem.urlPoster;
+                  }
+                }}
               />
               {/* Directional Soft Scrim to Guarantee Pristine Text Contrast */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#090A12]/95 via-[#090A12]/65 to-black/25" />
@@ -161,6 +167,19 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
             {(() => {
               const platformInfo = getPlatformInfo(currentSpotlightItem.urlOficial, currentSpotlightItem);
 
+              if (platformInfo.inTheaters) {
+                return (
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    title={platformInfo.tooltip}
+                    className={`inline-flex items-center gap-1 sm:gap-1.5 xl:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-2.5 lg:py-1 xl:px-3.5 xl:py-1.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wide select-none shrink-0 cursor-default ${platformInfo.buttonClasses}`}
+                  >
+                    {platformInfo.renderLeadingIcon('w-3 h-3 sm:w-3.5 sm:h-3.5')}
+                    <span>{platformInfo.label}</span>
+                  </div>
+                );
+              }
+
               return (
                 <a
                   href={platformInfo.watchUrl}
@@ -170,8 +189,8 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                   title={platformInfo.tooltip}
                   className={`inline-flex items-center gap-1 sm:gap-1.5 xl:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-2.5 lg:py-1 xl:px-3.5 xl:py-1.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch shrink-0 ${platformInfo.buttonClasses}`}
                 >
-                  <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current transition-transform group-hover/watch:scale-110" />
-                  <span>Ver ahora</span>
+                  {platformInfo.renderLeadingIcon('w-3 h-3 sm:w-3.5 sm:h-3.5')}
+                  <span>{platformInfo.label}</span>
                   {platformInfo.renderLogo('w-3.5 h-3.5 sm:w-4 sm:h-4')}
                 </a>
               );

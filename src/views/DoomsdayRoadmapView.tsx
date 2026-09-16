@@ -25,22 +25,35 @@ interface DoomsdayWatchButtonProps {
   customTitle?: string;
 }
 
-const DoomsdayWatchButton: React.FC<DoomsdayWatchButtonProps> = ({ prod, label = 'Ver ahora', customTitle }) => {
+const DoomsdayWatchButton: React.FC<DoomsdayWatchButtonProps> = ({ prod, label, customTitle }) => {
   if (!prod) return null;
-  const { watchUrl, tooltip, buttonClasses, renderLogo } = getPlatformInfo(prod.urlOficial, prod);
+  const platformInfo = getPlatformInfo(prod.urlOficial, prod);
+  const displayLabel = label || platformInfo.label;
+
+  if (platformInfo.inTheaters) {
+    return (
+      <div
+        title={customTitle || platformInfo.tooltip}
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide select-none cursor-default ${platformInfo.buttonClasses}`}
+      >
+        {platformInfo.renderLeadingIcon('w-3 h-3')}
+        <span>{displayLabel}</span>
+      </div>
+    );
+  }
 
   return (
     <a
-      href={watchUrl}
+      href={platformInfo.watchUrl}
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      title={customTitle || tooltip}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${buttonClasses}`}
+      title={customTitle || platformInfo.tooltip}
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${platformInfo.buttonClasses}`}
     >
-      <Play className="w-3 h-3 fill-current transition-transform group-hover/watch:scale-110" />
-      <span>{label}</span>
-      {renderLogo()}
+      {platformInfo.renderLeadingIcon('w-3 h-3')}
+      <span>{displayLabel}</span>
+      {platformInfo.renderLogo()}
     </a>
   );
 };
