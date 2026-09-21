@@ -23,11 +23,9 @@ const TermsOfServiceView = lazy(() =>
   import('./views/TermsOfServiceView').then((m) => ({ default: m.TermsOfServiceView }))
 );
 import { DetailModal } from './components/DetailModal';
-import { EditItemModal } from './components/EditItemModal';
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { AvatarUpdateNotice } from './components/AvatarUpdateNotice';
 import { Footer } from './components/Footer';
-import { MCUItem } from './types/mcu';
 import { getSupabaseClient } from './lib/supabase';
 
 const TrackerMainApp: React.FC = () => {
@@ -41,7 +39,6 @@ const TrackerMainApp: React.FC = () => {
     }
   });
 
-  const [editingItem, setEditingItem] = useState<MCUItem | null>(null);
   const [resetPasswordState, setResetPasswordState] = useState<'request' | 'update' | null>(null);
 
   const handleEnterGuest = () => {
@@ -234,14 +231,6 @@ const TrackerMainApp: React.FC = () => {
       <DetailModal
         item={activeDetailItem}
         onClose={closeDetailModal}
-        onEdit={(item) => {
-          setEditingItem(item);
-        }}
-      />
-
-      <EditItemModal
-        item={editingItem}
-        onClose={() => setEditingItem(null)}
       />
 
       <CookieConsentBanner />

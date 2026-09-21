@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { X, Check, Clock, Film, Tv, Sparkles, Edit2, Star, Play } from 'lucide-react';
+import { X, Check, Clock, Film, Tv, Sparkles, Star, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getPlatformInfo } from '../utils/platformHelper';
 
 interface DetailModalProps {
   item: MCUItem | null;
   onClose: () => void;
-  onEdit: (item: MCUItem) => void;
 }
 
-export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit }) => {
+export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
   const { watchedIds, ratings, toggleWatched, setRating } = useMCU();
 
   const layoutPrefix = 'card';
@@ -197,13 +196,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose, onEdit 
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    onClick={() => onEdit(item)}
-                    className="p-1.5 text-zinc-600 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer"
-                    title="Editar información"
-                  >
-                    <Edit2 className="w-5 h-5" />
-                  </button>
                   <button
                     onClick={onClose}
                     className="p-1.5 text-zinc-500 hover:text-zinc-900 transition-all hover:scale-110 cursor-pointer ml-1"
