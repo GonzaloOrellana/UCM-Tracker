@@ -158,15 +158,15 @@ const TrackerMainApp: React.FC = () => {
             ? 'bg-black text-white'
             : 'bg-crextio-dashboard-gradient text-white'
         } font-sans flex flex-col items-center px-3.5 py-3 sm:p-6 lg:px-6 lg:py-3 xl:px-8 xl:py-4 pb-12 sm:pb-6 lg:pb-3 xl:pb-4 transition-colors duration-500 ${
-          currentView === 'dashboard' || currentView === 'profile'
-            ? 'lg:h-screen lg:max-h-screen lg:overflow-hidden'
+          currentView === 'dashboard'
+            ? 'lg:min-h-screen [@media(min-width:1024px)_and_(min-height:820px)]:h-screen [@media(min-width:1024px)_and_(min-height:820px)]:max-h-screen [@media(min-width:1024px)_and_(min-height:820px)]:overflow-hidden'
             : ''
         }`}
       >
         <div
           className={`w-full max-w-[1580px] flex-1 flex flex-col space-y-2.5 sm:space-y-3.5 xl:space-y-4 ${
-            currentView === 'dashboard' || currentView === 'profile'
-              ? 'h-full min-h-0'
+            currentView === 'dashboard'
+              ? 'min-h-0 [@media(min-width:1024px)_and_(min-height:820px)]:h-full'
               : ''
           }`}
         >

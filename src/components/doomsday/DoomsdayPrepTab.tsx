@@ -4,6 +4,7 @@ import { Info } from 'lucide-react';
 import { MCUItem } from '../../types/mcu';
 import { PREP_MILESTONES, QUICK_RECAP_ITEMS } from '../../data/doomsdayData';
 import { DoomsdayWatchButton } from './DoomsdayWatchButton';
+import { LiteYouTubeEmbed } from '../common/LiteYouTubeEmbed';
 
 interface DoomsdayPrepTabProps {
   getProduction: (id: string) => MCUItem | undefined;
@@ -34,18 +35,12 @@ export const DoomsdayPrepTab: React.FC<DoomsdayPrepTabProps> = ({ getProduction 
           </div>
         </div>
 
-        {/* Tráiler a la derecha */}
+        {/* Tráiler a la derecha con carga ligera Facade */}
         <div className="w-full">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.12)] bg-black">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/lAr_uspgHm8"
-              title="Avengers: Doomsday | Tráiler Oficial"
-              className="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <LiteYouTubeEmbed
+            videoId="lAr_uspgHm8"
+            title="Avengers: Doomsday | Tráiler Oficial"
+          />
         </div>
       </div>
 

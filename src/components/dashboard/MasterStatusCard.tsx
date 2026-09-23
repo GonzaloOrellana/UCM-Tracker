@@ -16,7 +16,7 @@ export const MasterStatusCard: React.FC<MasterStatusCardProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.85, ease: 'easeOut' }}
-      className="lg:col-span-4 flex flex-col h-full"
+      className="md:col-span-1 lg:col-span-4 flex flex-col h-full"
     >
       <div className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-5 sm:p-5 lg:p-3.5 xl:p-6 flex flex-col justify-between h-full overflow-hidden min-h-[165px] lg:min-h-0">
 

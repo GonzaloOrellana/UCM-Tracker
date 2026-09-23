@@ -79,7 +79,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.85, delay: 0.1, ease: 'easeOut' }}
-      className="lg:col-span-4 flex flex-col h-full"
+      className="md:col-span-1 lg:col-span-4 flex flex-col h-full"
     >
       {currentSpotlightItem ? (
         <div

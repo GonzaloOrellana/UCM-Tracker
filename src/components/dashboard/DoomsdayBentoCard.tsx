@@ -13,7 +13,7 @@ export const DoomsdayBentoCard: React.FC<DoomsdayBentoCardProps> = ({ onNavigate
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.85, delay: 0.15, ease: 'easeOut' }}
-      className="lg:col-span-4 flex flex-col h-full cursor-pointer group/doomsday"
+      className="md:col-span-2 lg:col-span-4 flex flex-col h-full cursor-pointer group/doomsday"
       onClick={() => onNavigate('doomsday')}
     >
       <div className="relative tactile-bento-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 lg:p-3.5 xl:p-5 flex flex-col justify-between h-[180px] sm:h-[195px] lg:h-full overflow-hidden border-emerald-500/30 hover:border-emerald-400/60 hover:shadow-[0_0_28px_rgba(16,185,129,0.22)] transition-all duration-500 bg-gradient-to-br from-[#07130F]/90 via-[#0B0D18]/90 to-[#120817]/90">

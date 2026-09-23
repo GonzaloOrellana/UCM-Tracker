@@ -71,17 +71,16 @@ export const LoginView: React.FC<LoginViewProps> = ({ onContinueAsGuest, onForgo
   return (
     <div className="relative min-h-screen w-full bg-[#08090E] flex flex-col items-center justify-center p-4 sm:p-6 overflow-x-hidden font-sans text-white select-none">
 
-      {/* Background Cinematic Wallpaper (Desktop) */}
-      <div
-        className="hidden sm:block absolute inset-0 bg-cover bg-center scale-105 opacity-70 pointer-events-none"
-        style={{ backgroundImage: `url('/uatu-vigilante.png')` }}
-      />
-
-      {/* Background Cinematic Wallpaper (Mobile Responsive) */}
-      <div
-        className="block sm:hidden absolute inset-0 bg-cover bg-center scale-105 opacity-75 pointer-events-none"
-        style={{ backgroundImage: `url('/uatu-vigilante-responsive.png')` }}
-      />
+      {/* Responsive Cinematic Wallpaper (Native single-asset load via picture element) */}
+      <picture className="absolute inset-0 pointer-events-none overflow-hidden">
+        <source media="(max-width: 639px)" srcSet="/uatu-vigilante-responsive.png" />
+        <img
+          src="/uatu-vigilante.png"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover scale-105 opacity-75 sm:opacity-70 select-none"
+        />
+      </picture>
 
       {/* Dark Vignette & Soft Scrim Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#08090E] via-black/40 to-[#08090E]/80 pointer-events-none" />

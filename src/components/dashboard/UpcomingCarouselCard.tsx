@@ -23,7 +23,7 @@ export const UpcomingCarouselCard: React.FC<UpcomingCarouselCardProps> = ({ upco
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.35, ease: [0.25, 1, 0.3, 1] }}
-      className="md:col-span-1 lg:col-span-6 flex flex-col min-h-0 h-full"
+      className="md:col-span-2 lg:col-span-6 flex flex-col min-h-0 h-full"
     >
       <div className="tactile-bento-card rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between h-full min-h-0">
         <div className="flex items-center justify-between shrink-0 mb-2 sm:mb-2.5 lg:mb-1 xl:mb-2">

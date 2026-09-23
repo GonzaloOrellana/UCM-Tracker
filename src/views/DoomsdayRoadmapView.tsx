@@ -51,8 +51,8 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   return (
     <div className="flex-1 flex flex-col space-y-6 animate-fade-in pb-12 max-w-[1580px] mx-auto w-full relative">
       {/* Doctor Doom Ambient Aura & Mystic Green Glows */}
-      <div className="fixed top-12 right-1/4 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[140px] pointer-events-none -z-10" />
-      <div className="fixed bottom-1/4 left-10 w-[420px] h-[420px] bg-teal-600/[0.02] rounded-full blur-[130px] pointer-events-none -z-10" />
+      <div className="fixed top-12 right-1/4 w-[260px] h-[260px] sm:w-[500px] sm:h-[500px] bg-emerald-500/[0.02] rounded-full blur-[60px] sm:blur-[140px] pointer-events-none -z-10" />
+      <div className="fixed bottom-1/4 left-10 w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] bg-teal-600/[0.02] rounded-full blur-[50px] sm:blur-[130px] pointer-events-none -z-10" />
       <div className="fixed top-0 left-0 right-0 h-48 bg-gradient-to-b from-emerald-950/10 via-transparent to-transparent pointer-events-none -z-10" />
 
       {/* ─────────────────────────────────────────────────────────────
