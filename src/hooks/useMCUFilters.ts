@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { FilterState, MCUItem } from '../types/mcu';
 
 export const defaultFilters: FilterState = {
@@ -59,13 +59,13 @@ export function useMCUFilters(items: MCUItem[], watchedIds: Set<string>) {
       });
   }, [items, filters, watchedIds]);
 
-  const setFilters = (newFilters: Partial<FilterState>) => {
+  const setFilters = React.useCallback((newFilters: Partial<FilterState>) => {
     setFiltersState((prev) => ({ ...prev, ...newFilters }));
-  };
+  }, []);
 
-  const resetFilters = () => {
+  const resetFilters = React.useCallback(() => {
     setFiltersState(defaultFilters);
-  };
+  }, []);
 
   return {
     filters,

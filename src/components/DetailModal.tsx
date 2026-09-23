@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { MCUItem } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { X, Check, Clock, Film, Tv, Sparkles, Star, Play } from 'lucide-react';
+import { X, Clock, Film, Tv, Sparkles, Star, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getPlatformInfo } from '../utils/platformHelper';
+import { PriorityBadge } from './common/PriorityBadge';
+import { TactileSwitch } from './common/TactileSwitch';
 
 interface DetailModalProps {
   item: MCUItem | null;
@@ -12,8 +14,6 @@ interface DetailModalProps {
 
 export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
   const { watchedIds, ratings, toggleWatched, setRating } = useMCU();
-
-  const layoutPrefix = 'card';
 
   const synopsisRef = useRef<HTMLDivElement>(null);
   const [hasMoreContent, setHasMoreContent] = useState(false);
@@ -26,17 +26,12 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
     setHasMoreContent(hasScrollableOverflow && !isScrolledToBottom);
   }, []);
 
-  // Recalculate scroll and fade when item changes or modal mounts
+  // Recalculate scroll and fade when item changes without forced layout timers
   useEffect(() => {
     if (item && synopsisRef.current) {
       synopsisRef.current.scrollTop = 0;
-      checkSynopsisScroll();
-      const timer1 = setTimeout(checkSynopsisScroll, 50);
-      const timer2 = setTimeout(checkSynopsisScroll, 450);
-      return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-      };
+      const rId = requestAnimationFrame(checkSynopsisScroll);
+      return () => cancelAnimationFrame(rId);
     }
   }, [item, checkSynopsisScroll]);
 
@@ -46,34 +41,22 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
     return () => window.removeEventListener('resize', checkSynopsisScroll);
   }, [checkSynopsisScroll]);
 
-  // Body scroll lock with exact scroll position preservation (prevents background touch/wheel scrolling)
+  // Clean body scroll lock without full-document layout shift
   useEffect(() => {
     if (!item) return;
 
-    const scrollY = window.scrollY || document.documentElement.scrollTop;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
     const originalOverflow = document.body.style.overflow;
-    const originalPosition = document.body.style.position;
-    const originalTop = document.body.style.top;
-    const originalWidth = document.body.style.width;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     const originalPaddingRight = document.body.style.paddingRight;
 
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
     if (scrollbarWidth > 0) {
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
 
     return () => {
       document.body.style.overflow = originalOverflow;
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-      document.body.style.width = originalWidth;
       document.body.style.paddingRight = originalPaddingRight;
-      window.scrollTo(0, scrollY);
     };
   }, [item]);
 
@@ -90,7 +73,6 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
   const currentRating = item ? ratings[item.id] : undefined;
 
   const platformInfo = getPlatformInfo(item?.urlOficial, item);
-
 
   const getTypeText = () => {
     if (!item) return '';
@@ -116,7 +98,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
     }
   };
 
-  // Material Motion Cubic Easing Curve (350-450ms)
+  // Material Motion Cubic Easing Curve (optimized for 60fps)
   const transitionEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
   return (
@@ -124,28 +106,29 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
       {item && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 select-none overflow-hidden">
           
-          {/* Backdrop Blur (8-12px) & Soft Darkening Overlay */}
+          {/* Backdrop Blur & Soft Darkening Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: transitionEase }}
+            transition={{ duration: 0.25, ease: transitionEase }}
             className="fixed inset-0 bg-black/60 backdrop-blur-md z-0 cursor-pointer"
             onClick={onClose}
           />
 
-          {/* Shared Element Container Transform (Expands smoothly from origin card) */}
+          {/* Hardware-Accelerated Modal Container Transform */}
           <motion.div
-            layoutId={`${layoutPrefix}-container-${item.id}`}
-            transition={{ duration: 0.4, ease: transitionEase }}
+            initial={{ opacity: 0, scale: 0.95, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 8 }}
+            transition={{ duration: 0.28, ease: transitionEase }}
+            onClick={(e) => e.stopPropagation()}
             className="relative z-10 w-full max-w-2xl bg-white border border-zinc-200 rounded-[24px] shadow-2xl flex flex-col sm:flex-row overflow-hidden text-zinc-900 min-h-0 sm:min-h-[380px] max-h-[min(92vh,560px)] sm:max-h-[min(85vh,500px)] my-auto"
           >
             
-            {/* Left Side: Full-height Poster Container (Occupies entire left zone from top to bottom) */}
+            {/* Left Side: Full-height Poster Container */}
             <div className="w-full sm:w-[38%] md:w-[40%] relative bg-zinc-900 shrink-0 border-b sm:border-b-0 sm:border-r border-zinc-100 overflow-hidden h-[135px] max-h-[140px] sm:h-auto sm:min-h-full sm:max-h-none">
-              <motion.img
-                layoutId={`${layoutPrefix}-poster-${item.id}`}
-                transition={{ duration: 0.4, ease: transitionEase }}
+              <img
                 src={item.urlPoster}
                 alt={item.titulo}
                 className="w-full h-full object-cover absolute inset-0"
@@ -164,35 +147,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
                 className="flex items-center justify-between gap-2 shrink-0"
               >
                 <div>
-                  {item.prioridad && (
-                    <span
-                      className={`inline-flex items-center gap-1.5 text-[10.5px] font-sans font-bold tracking-wider uppercase ${
-                        item.prioridad === 'esencial'
-                          ? 'text-red-700'
-                          : item.prioridad === 'recomendada'
-                          ? 'text-emerald-700'
-                          : item.prioridad === 'complementaria'
-                          ? 'text-amber-700'
-                          : 'text-zinc-700'
-                      }`}
-                      title={
-                        item.prioridad === 'esencial'
-                          ? 'Esencial: Sin esto perdés una parte importante de la experiencia.'
-                          : item.prioridad === 'recomendada'
-                          ? 'Recomendada: Importante para personajes o historia.'
-                          : item.prioridad === 'complementaria'
-                          ? 'Complementaria: Aporta contexto, pero no es fundamental.'
-                          : 'Opcional: Principalmente para completar el universo.'
-                      }
-                    >
-                      <span>
-                        {item.prioridad === 'esencial' ? '🔥' : item.prioridad === 'recomendada' ? '🟢' : item.prioridad === 'complementaria' ? '🟡' : '⚪'}
-                      </span>
-                      <span>
-                        {item.prioridad === 'esencial' ? 'Esencial' : item.prioridad === 'recomendada' ? 'Recomendada' : item.prioridad === 'complementaria' ? 'Complementaria' : 'Opcional'}
-                      </span>
-                    </span>
-                  )}
+                  <PriorityBadge priority={item.prioridad} variant="modal" />
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
@@ -395,25 +350,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
                   <span className="text-xs font-semibold text-zinc-900 group-hover/toggle:text-[#C81D25] transition-colors">
                     {isWatched ? 'Visto' : 'Marcar como visto'}
                   </span>
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={isWatched}
-                    className={`w-11 h-6 rounded-full p-0.5 transition-all duration-200 cursor-pointer flex items-center active:scale-90 ${
-                      isWatched
-                        ? 'tactile-switch-active'
-                        : 'tactile-switch-well'
-                    }`}
-                    title={isWatched ? 'Marcar como no visto' : 'Marcar como visto'}
-                  >
-                    <span
-                      className={`w-5 h-5 rounded-full tactile-switch-thumb transform transition-transform duration-200 flex items-center justify-center ${
-                        isWatched ? 'translate-x-5' : 'translate-x-0'
-                      }`}
-                    >
-                      {isWatched && <Check className="w-3 h-3 text-emerald-800 stroke-[3.5]" />}
-                    </span>
-                  </button>
+                  <TactileSwitch
+                    checked={isWatched}
+                    onChange={() => toggleWatched(item.id)}
+                    size="md"
+                  />
                 </div>
               </motion.div>
 

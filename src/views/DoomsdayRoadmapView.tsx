@@ -1,62 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useMCU } from '../context/MCUContext';
 import { NavView, MCUItem } from '../types/mcu';
 import {
   ArrowLeft,
   BookOpen,
   Clapperboard,
-  Info,
-  Play,
 } from 'lucide-react';
-import { getPlatformInfo } from '../utils/platformHelper';
 import { DoomsdayCountdown } from '../components/DoomsdayCountdown';
-
-import { PREP_MILESTONES, QUICK_RECAP_ITEMS } from '../data/doomsdayData';
+import { DoomsdayPrepTab } from '../components/doomsday/DoomsdayPrepTab';
+import { DoomsdayComicsTab } from '../components/doomsday/DoomsdayComicsTab';
+import { DoomsdayClimaxTab } from '../components/doomsday/DoomsdayClimaxTab';
 
 interface DoomsdayRoadmapViewProps {
   onBackToDashboard: () => void;
   onNavigate: (view: NavView) => void;
 }
-
-interface DoomsdayWatchButtonProps {
-  prod?: MCUItem;
-  label?: string;
-  customTitle?: string;
-}
-
-const DoomsdayWatchButton: React.FC<DoomsdayWatchButtonProps> = ({ prod, label, customTitle }) => {
-  if (!prod) return null;
-  const platformInfo = getPlatformInfo(prod.urlOficial, prod);
-  const displayLabel = label || platformInfo.label;
-
-  if (platformInfo.inTheaters) {
-    return (
-      <div
-        title={customTitle || platformInfo.tooltip}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide select-none cursor-default ${platformInfo.buttonClasses}`}
-      >
-        {platformInfo.renderLeadingIcon('w-3 h-3')}
-        <span>{displayLabel}</span>
-      </div>
-    );
-  }
-
-  return (
-    <a
-      href={platformInfo.watchUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={(e) => e.stopPropagation()}
-      title={customTitle || platformInfo.tooltip}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer select-none group/watch ${platformInfo.buttonClasses}`}
-    >
-      {platformInfo.renderLeadingIcon('w-3 h-3')}
-      <span>{displayLabel}</span>
-      {platformInfo.renderLogo()}
-    </a>
-  );
-};
 
 export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
   onBackToDashboard,
@@ -138,10 +97,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
       <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar">
         <button
           onClick={() => setActiveTab('prep')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'prep'
-            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
-            }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
+            activeTab === 'prep'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          }`}
         >
           <Clapperboard className="w-4 h-4" />
           <span>Qué ver para estar preparado</span>
@@ -149,10 +109,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('comics')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'comics'
-            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
-            }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
+            activeTab === 'comics'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          }`}
         >
           <BookOpen className="w-4 h-4" />
           <span>Origen en Cómics</span>
@@ -160,10 +121,11 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
 
         <button
           onClick={() => setActiveTab('climax')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${activeTab === 'climax'
-            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
-            : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
-            }`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-2xl font-display text-xs sm:text-sm font-bold tracking-wide transition-all shrink-0 cursor-pointer ${
+            activeTab === 'climax'
+              ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border-t border-emerald-300/50'
+              : 'bg-zinc-950/70 border border-emerald-900/40 text-zinc-400 hover:text-emerald-300 hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]'
+          }`}
         >
           <Clapperboard className="w-4 h-4" />
           <span>Doomsday y Secret Wars</span>
@@ -171,405 +133,19 @@ export const DoomsdayRoadmapView: React.FC<DoomsdayRoadmapViewProps> = ({
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          TAB CONTENT AREA
+          TAB CONTENT AREA (MODULAR TABS)
           ───────────────────────────────────────────────────────────── */}
       <AnimatePresence mode="wait">
-        {/* TAB 1: QUÉ VER PARA ESTAR PREPARADO (IMPRESCINDIBLES + RECAP EXPRÉS) */}
         {activeTab === 'prep' && (
-          <motion.div
-            key="tab-prep"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-6"
-          >
-            {/* Sinopsis (Izquierda) + Tráiler Oficial (Derecha) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center px-5 sm:px-6 lg:px-7">
-              {/* Sinopsis a la izquierda */}
-              <div className="flex flex-col justify-center space-y-3">
-                <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
-                  Sinopsis
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
-                  Tras el colapso inminente de múltiples realidades desatado por las constantes incursiones multiversales, los Vengadores, los Cuatro Fantásticos y héroes provenientes de distintas líneas temporales deberán unir fuerzas ante una crisis de proporciones cósmicas. Frente a ellos emerge el temible y brillante <strong>Victor von Doom</strong> (Robert Downey Jr.), quien buscará remodelar el tejido mismo de la existencia bajo su propia voluntad suprema.
-                </p>
-                <div className="pt-1 flex items-center gap-3 text-xs text-zinc-400 font-sans flex-wrap">
-                  <span>Dirección: <strong className="text-white">Anthony y Joe Russo</strong></span>
-                </div>
-              </div>
-
-              {/* Tráiler a la derecha */}
-              <div className="w-full">
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.12)] bg-black">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/lAr_uspgHm8"
-                    title="Avengers: Doomsday | Tráiler Oficial"
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Subsection 1: Imprescindibles */}
-            <div className="space-y-3 px-5 sm:px-6 lg:px-7">
-              <div>
-                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
-                  Imprescindibles
-                </h3>
-              </div>
-
-              {/* Advertencia / Nota: se asume haber visto la Saga del Infinito */}
-              <div className="flex justify-start">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-medium">
-                  <Info className="w-4 h-4 shrink-0 text-emerald-400" />
-                  <span>
-                    Se da por sentado que ya viste o tuviste que haber visto <strong className="text-emerald-200 font-semibold">toda la Saga del Infinito</strong>.
-                  </span>
-                </div>
-              </div>
-
-              {/* Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PREP_MILESTONES.map((milestone) => {
-                  const prod = getProduction(milestone.productionId);
-                  const posterUrl = prod?.urlPoster || milestone.posterUrl;
-
-                  return (
-                    <div
-                      key={milestone.id}
-                      className="flex flex-col justify-between group"
-                    >
-                      {/* Poster + Content Side by Side */}
-                      <div className="flex gap-3.5 items-start">
-                        {posterUrl && (
-                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md transition-transform duration-300 group-hover:scale-[1.03]">
-                            <img
-                              src={posterUrl}
-                              alt={milestone.title}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
-
-                        <div className="min-w-0 flex-1 space-y-2.5">
-                          <div>
-                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
-                              {milestone.title}
-                            </h4>
-
-                            {/* Motivo por el cual ver al lado del poster */}
-                            <p className="text-xs text-zinc-300/85 leading-relaxed font-sans mt-1">
-                              {milestone.whyItMatters}
-                            </p>
-                          </div>
-
-                          {/* Botón de ver ahora debajo del texto explicativo al lado del poster */}
-                          <div className="pt-0.5">
-                            {milestone.additionalProductionId ? (
-                              <div className="flex items-center gap-1.5 flex-wrap">
-                                <DoomsdayWatchButton
-                                  prod={prod}
-                                  label="X-Men 1"
-                                  customTitle="Ver X-Men (2000) en Disney+"
-                                />
-                                <DoomsdayWatchButton
-                                  prod={getProduction(milestone.additionalProductionId)}
-                                  label="X-Men 2"
-                                  customTitle="Ver X-Men 2 (2003) en Disney+"
-                                />
-                              </div>
-                            ) : prod && !milestone.isUpcoming ? (
-                              <DoomsdayWatchButton prod={prod} />
-                            ) : (
-                              <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-sans font-medium py-1">
-                                <span>Próximamente en cines</span>
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Subsection 2: Resumen de lo que no necesitas volver a ver */}
-            <div className="pt-2 space-y-3 px-5 sm:px-6 lg:px-7">
-              <div>
-                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
-                  Resumen de lo que no necesitas volver a ver
-                </h3>
-                <p className="text-xs text-zinc-400 mt-1">
-                  Ahorra tiempo: únicamente necesitas conocer estos puntos narrativos específicos para comprender su contexto en Doomsday:
-                </p>
-              </div>
-
-              {/* Quick Recap Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {QUICK_RECAP_ITEMS.map((recap) => {
-                  const prod = getProduction(recap.productionId);
-                  const posterUrl = prod?.urlPoster || recap.posterUrl;
-
-                  return (
-                    <div
-                      key={recap.id}
-                      className="flex flex-col justify-between group"
-                    >
-                      {/* Poster + Content Side by Side */}
-                      <div className="flex gap-3.5 items-start">
-                        {posterUrl && (
-                          <div className="w-20 h-28 sm:w-24 sm:h-36 rounded-xl overflow-hidden shrink-0 bg-zinc-950 shadow-md transition-transform duration-300 group-hover:scale-[1.03]">
-                            <img
-                              src={posterUrl}
-                              alt={recap.title}
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
-
-                        <div className="min-w-0 flex-1 space-y-2.5">
-                          <div>
-                            <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight group-hover:text-emerald-300 transition-colors">
-                              {recap.title}
-                            </h4>
-
-                            {/* Crucial Takeaway Text */}
-                            <p className="text-xs text-zinc-300/85 leading-relaxed font-sans mt-1">
-                              {recap.keyTakeaway}
-                            </p>
-                          </div>
-
-                          {/* Footer Info / Optional Watch debajo del texto explicativo al lado del poster */}
-                          {prod && (
-                            <div className="pt-0.5 flex items-center justify-start">
-                              <DoomsdayWatchButton prod={prod} />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-          </motion.div>
+          <DoomsdayPrepTab key="tab-prep" getProduction={getProduction} />
         )}
 
-        {/* TAB 2: ORIGEN EN CÓMICS */}
         {activeTab === 'comics' && (
-          <motion.div
-            key="tab-comics"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
-          >
-            {/* Vista Celular: Primer par de imágenes al principio (Primera Izquierda + Primera Derecha) */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden items-start">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsodUOhTbuVHNpAZSmCEKYeyfw_ZQwLH7mcjTH0ZvGr4n1wlNm9hMXWOo&s=10"
-                alt="Doctor Doom - Cómics"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYcKfNhjDSbwgM3sVRVjf8OhBrHiAdA5ihxa_lYaqpX7egL1xLMP1Q3E&s=10"
-                alt="Avengers Doomsday"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Fotos Columna Izquierda (Sólo Desktop / lg) */}
-            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4 sm:gap-5 self-start justify-center">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsodUOhTbuVHNpAZSmCEKYeyfw_ZQwLH7mcjTH0ZvGr4n1wlNm9hMXWOo&s=10"
-                alt="Doctor Doom - Cómics"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://i.pinimg.com/736x/27/2d/28/272d28337e6aa0cd45ed83572245cb5d.jpg"
-                alt="Doctor Doom - Segunda ilustración cómic"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Texto Explicativo Central */}
-            <div className="lg:col-span-6 flex flex-col justify-start">
-              <div className="space-y-3.5 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
-                <p>
-                  Victor von Doom nació en Latveria, un pequeño país ficticio de Europa del Este, dentro de una familia romaní. Desde muy joven estuvo marcado por la tragedia: su madre, Cynthia von Doom, era una poderosa hechicera que murió al intentar obtener poderes sobrenaturales, mientras que su padre, Werner, era un médico que falleció después de intentar salvar a la esposa de un gobernante de Latveria.
-                </p>
-                <p>
-                  Victor desarrolló una enorme inteligencia y una obsesión por superar los límites de la ciencia. Gracias a su talento, consiguió una beca para estudiar en Estados Unidos, donde conoció a Reed Richards, quien posteriormente se convertiría en Mr. Fantastic. Ambos eran brillantes científicos, pero también extremadamente competitivos.
-                </p>
-                <p>
-                  Mientras estudiaba, Victor construyó una máquina destinada a contactar con el mundo de los muertos para intentar recuperar el alma de su madre. Reed Richards descubrió que los cálculos de Victor contenían un error y trató de advertirle, pero Victor ignoró la advertencia. El experimento salió mal y una explosión desfiguró su rostro.
-                </p>
-                <p>
-                  Victor culpó a Reed por el accidente y abandonó Estados Unidos. Viajó por el mundo hasta terminar en el Himalaya, donde fue acogido por monjes que lo ayudaron a desarrollar sus conocimientos científicos y místicos. Allí construyó una armadura y una máscara de metal que se convertirían en su identidad característica: Doctor Doom.
-                </p>
-                <p>
-                  Después de regresar a Latveria, Victor derrocó a su gobernante y tomó el control del país, convirtiéndose en su soberano. Desde entonces, gobierna Latveria con una combinación de tecnología avanzada, ciencia y magia.
-                </p>
-                <p>
-                  Doctor Doom se convirtió así en uno de los grandes enemigos de los Fantastic Four, especialmente de Reed Richards. Sin embargo, su ambición va mucho más allá de derrotar a los Cuatro Fantásticos: Doom está convencido de que es la única persona capaz de llevar al mundo hacia un futuro mejor. Su problema es que considera que para conseguirlo debe tener un control absoluto.
-                </p>
-                <p>
-                  A diferencia de muchos villanos, Doom no se considera malvado. Se ve a sí mismo como un genio incomprendido y como el único hombre capaz de salvar a la humanidad. Su orgullo, su necesidad de demostrar su superioridad sobre Reed Richards y su obsesión con el poder terminan convirtiéndose en sus mayores debilidades.
-                </p>
-                <p className="text-emerald-300/90 font-medium pt-1">
-                  Doctor Doom fue creado por Stan Lee y Jack Kirby y apareció por primera vez en The Fantastic Four #5, publicado en 1962. Desde entonces, se convirtió en uno de los villanos más importantes y complejos del universo Marvel.
-                </p>
-              </div>
-
-              {/* Video de YouTube: Historia de Doctor Doom */}
-              <div className="mt-5 sm:mt-6 w-full">
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(16,185,129,0.15)] border border-emerald-500/25 bg-black">
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/I_-qgFqUvlo"
-                    title="Doctor Doom | La historia completa en 80 minutos"
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Vista Celular: Segundo par de imágenes al final (Segunda Izquierda + Segunda Derecha) */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden items-start">
-              <img
-                src="https://i.pinimg.com/736x/27/2d/28/272d28337e6aa0cd45ed83572245cb5d.jpg"
-                alt="Doctor Doom - Segunda ilustración cómic"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://i.pinimg.com/736x/75/f2/c2/75f2c28c0510fc26f5dd7013da065c5b.jpg"
-                alt="Doctor Doom - Portada cómic"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Fotos Columna Derecha (Sólo Desktop / lg) */}
-            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4 sm:gap-5 self-start justify-center">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYcKfNhjDSbwgM3sVRVjf8OhBrHiAdA5ihxa_lYaqpX7egL1xLMP1Q3E&s=10"
-                alt="Avengers Doomsday"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://i.pinimg.com/736x/75/f2/c2/75f2c28c0510fc26f5dd7013da065c5b.jpg"
-                alt="Doctor Doom - Portada cómic"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+          <DoomsdayComicsTab key="tab-comics" />
         )}
 
-        {/* TAB 3: DOOMSDAY Y SECRET WARS */}
         {activeTab === 'climax' && (
-          <motion.div
-            key="tab-doomsday-secret-wars"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-start"
-          >
-            {/* Fotos Izquierda */}
-            <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-5 self-start justify-center items-start">
-              <img
-                src="https://www.cinemascomics.com/wp-content/uploads/2024/09/Secret-Wars_4_dr-doom.jpg"
-                alt="Doctor Doom - Secret Wars"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://http2.mlstatic.com/D_NQ_NP_640198-MLA100013270382_122025-F.jpg"
-                alt="Doctor Doom vs Mister Fantástico - Secret Wars"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Texto Explicativo Central */}
-            <div className="lg:col-span-6 flex flex-col justify-start">
-              <div className="text-center mb-5">
-                <h3 className="font-display text-base sm:text-lg md:text-xl font-bold text-white tracking-tight uppercase">
-                  El evento que puede redefinir el multiverso de Marvel
-                </h3>
-              </div>
-
-              <div className="space-y-3.5 text-xs sm:text-sm text-zinc-300/90 leading-relaxed font-sans">
-                <p>
-                  Para entender la conexión entre Avengers: Doomsday y Avengers: Secret Wars hay que entender primero el concepto de Multiverso. Marvel plantea la existencia de múltiples realidades que pueden coexistir, pero que también pueden entrar en conflicto entre sí. Una de las amenazas más importantes de este sistema son las incursiones: situaciones en las que dos universos comienzan a colisionar y, si el proceso llega a completarse, ambas realidades pueden ser destruidas. Esta idea es fundamental en Secret Wars (2015), el evento de los cómics escrito por Jonathan Hickman que sirve como una de las principales inspiraciones para lo que Marvel está construyendo en el cine.
-                </p>
-                <p>
-                  En aquella historia, el Multiverso comienza a morir debido a una serie de incursiones que provocan la destrucción progresiva de diferentes universos. Detrás de esta crisis están los Beyonders, entidades de un poder extraordinario. Mientras las distintas realidades desaparecen, Doctor Doom consigue intervenir en el conflicto y obtiene un poder suficiente para reconstruir la realidad. Sin embargo, Doom no simplemente restaura el universo tal como era: utiliza fragmentos de las realidades destruidas para crear una nueva existencia llamada Battleworld, convirtiéndose en su gobernante absoluto, conocido como God Emperor Doom.
-                </p>
-                <p>
-                  Esta historia es especialmente importante porque explica por qué Doctor Doom puede ser mucho más que un villano tradicional. Victor von Doom es un científico, hechicero, gobernante y uno de los mayores rivales de Reed Richards. Doom cree que su inteligencia y voluntad están por encima de las de cualquier otra persona y, en determinadas circunstancias, puede llegar a convencerse de que sus acciones son necesarias para salvar a la humanidad. Su problema es que, cuando intenta salvar la realidad, también quiere decidir quién puede vivir dentro de ella y bajo qué reglas.
-                </p>
-                <p>
-                  El concepto de Doom como alguien que destruye y reconstruye la realidad encaja directamente con la dirección que parece estar tomando el MCU. Avengers: Doomsday, cuyo estreno está previsto para el 18 de diciembre de 2026, reúne a personajes de diferentes partes del universo Marvel, incluyendo a los Avengers, Fantastic Four y personajes de las antiguas películas de X-Men. Esta combinación es especialmente significativa porque muchos de estos personajes originalmente pertenecían a continuidades diferentes. La película parece utilizar precisamente esa diversidad de universos y generaciones para llevar la historia hacia una crisis de escala multiversal.
-                </p>
-                <p>
-                  Los Fantastic Four tienen una importancia especial debido a la relación entre Reed Richards y Doctor Doom. En los cómics, Reed es uno de los pocos personajes capaces de enfrentarse intelectualmente a Doom y comprender las consecuencias de sus decisiones. Por otro lado, la presencia de los antiguos X-Men demuestra hasta qué punto el MCU puede comenzar a mezclar personajes provenientes de diferentes continuidades. Los Avengers representan el núcleo del universo que conocemos, mientras que Fantastic Four y X-Men amplían el conflicto hacia una escala mucho mayor.
-                </p>
-                <p>
-                  La trama exacta de Doomsday todavía no está completamente revelada, por lo que no puede afirmarse que la película vaya a terminar exactamente como Secret Wars (2015). Sin embargo, una posible interpretación es que las incursiones se vuelvan incontrolables, las diferentes realidades comiencen a desaparecer y Doctor Doom encuentre una manera de intervenir en el colapso. Si consigue reconstruir la existencia utilizando fragmentos de distintos universos, podría aparecer una versión cinematográfica de Battleworld y Doom podría convertirse en el gobernante de esa nueva realidad.
-                </p>
-                <p>
-                  En ese escenario, Avengers: Doomsday funcionaría como el momento en el que el Multiverso llega a su límite, mientras que Avengers: Secret Wars, prevista para el 17 de diciembre de 2027, sería la historia que determine qué sucede después. Los héroes tendrían que enfrentarse a Doom y decidir qué realidad merece sobrevivir cuando todo lo que conocían ha desaparecido. Por eso Secret Wars podría ser mucho más que una simple batalla entre superhéroes: podría tratarse de una historia sobre poder, identidad, sacrificio y la reconstrucción de la realidad.
-                </p>
-                <p>
-                  Uno de los mayores rumores alrededor del evento es que Marvel podría utilizar Secret Wars para realizar un llamado &quot;soft reboot&quot; del MCU. Esto no necesariamente significaría borrar todo lo ocurrido, sino utilizar la destrucción y reconstrucción del Multiverso para reorganizar las diferentes continuidades y crear una nueva realidad en la que personajes como Avengers, X-Men, Fantastic Four y Spider-Man puedan coexistir de una manera más sencilla. El cómic de 2015 ofrece un precedente para esta idea, aunque Marvel no ha confirmado que vaya a hacer exactamente lo mismo en el cine.
-                </p>
-                <p>
-                  También existen numerosas teorías sobre qué personajes podrían regresar, qué universos podrían aparecer y si veremos una versión cinematográfica de God Emperor Doom o Battleworld. Sin embargo, estas posibilidades deben diferenciarse de la información oficial. La presencia de personajes de distintas generaciones de X-Men, Fantastic Four y Avengers en Doomsday está confirmada, pero no lo están muchos de los detalles sobre Secret Wars. Por eso, cualquier explicación del evento debería separar claramente lo confirmado por Marvel de lo inspirado en los cómics y de las teorías y rumores.
-                </p>
-                <p>
-                  En términos simples, la historia puede entenderse de esta manera: el Multiverso está formado por muchas realidades; esas realidades comienzan a chocar mediante incursiones; la crisis amenaza con destruirlo todo; Doctor Doom intenta controlar el resultado; Avengers: Doomsday podría mostrar el punto máximo de esa crisis; y Avengers: Secret Wars podría contar la lucha por decidir qué queda después del colapso. Si Marvel sigue parcialmente el camino de los cómics, el resultado podría ser una nueva realidad capaz de redefinir el futuro del MCU.
-                </p>
-                <p className="text-emerald-300 font-medium pt-2 border-l-2 border-emerald-500/60 pl-4 py-1 leading-relaxed">
-                  En una sola frase, la idea central sería: Doomsday podría ser la historia en la que el Multiverso llega al límite, mientras que Secret Wars podría ser la historia en la que Marvel decide qué universo nace después de su destrucción.
-                </p>
-              </div>
-            </div>
-
-            {/* Fotos Derecha */}
-            <div className="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-5 self-start justify-center items-start">
-              <img
-                src="https://www.carnivorecomics.com/cdn/shop/files/IMG_1999.jpg?v=1699460585&width=823"
-                alt="Avengers Secret Wars - Battleworld"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-              <img
-                src="https://i.pinimg.com/1200x/da/64/0a/da640ad25e6cace3889e26960fd55762.jpg"
-                alt="Portada cómic Avengers Secret Wars"
-                className="w-full h-auto object-contain rounded-2xl shadow-xl select-none"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+          <DoomsdayClimaxTab key="tab-doomsday-secret-wars" />
         )}
       </AnimatePresence>
     </div>

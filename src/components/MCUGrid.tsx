@@ -13,6 +13,13 @@ interface MCUGridProps {
 export const MCUGrid: React.FC<MCUGridProps> = ({ items, onOpenDetail }) => {
   const { resetFilters, watchedIds, toggleWatched } = useMCU();
 
+  const handleToggleWatched = React.useCallback(
+    (id: string) => {
+      toggleWatched(id);
+    },
+    [toggleWatched]
+  );
+
   if (items.length === 0) {
     return (
       <div className="bg-white/60 backdrop-blur-xl border border-white/50 rounded-3xl p-8 sm:p-10 text-center my-10 max-w-md mx-auto space-y-5 shadow-xl animate-fade-in text-zinc-900">
@@ -55,7 +62,7 @@ export const MCUGrid: React.FC<MCUGridProps> = ({ items, onOpenDetail }) => {
           item={item}
           isWatched={watchedIds.has(item.id)}
           onOpenDetail={onOpenDetail}
-          onToggleWatched={toggleWatched}
+          onToggleWatched={handleToggleWatched}
         />
       ))}
     </motion.div>

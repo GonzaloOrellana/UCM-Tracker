@@ -3,10 +3,14 @@ import { MCUProvider, useMCU } from './context/MCUContext';
 import { Topbar } from './components/Topbar';
 import { LoginView } from './views/LoginView';
 import { DashboardView } from './views/DashboardView';
-import { LibraryView } from './views/LibraryView';
-import { UpcomingView } from './views/UpcomingView';
 
-// Lazy loading para vistas secundarias o pesadas (optimiza el bundle inicial)
+// Lazy loading para vistas de biblioteca, próximos estrenos y vistas secundarias (optimiza el bundle inicial)
+const LibraryView = lazy(() =>
+  import('./views/LibraryView').then((m) => ({ default: m.LibraryView }))
+);
+const UpcomingView = lazy(() =>
+  import('./views/UpcomingView').then((m) => ({ default: m.UpcomingView }))
+);
 const ResetPasswordView = lazy(() =>
   import('./views/ResetPasswordView').then((m) => ({ default: m.ResetPasswordView }))
 );

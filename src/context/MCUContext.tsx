@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { MCUItem, FilterState, UserSettings, NavView, ProgressStats } from '../types/mcu';
 import { PRODUCTIONS } from '../data/productions';
 import { storageService, DEFAULT_AVATAR } from '../services/storageService';
@@ -43,11 +43,7 @@ interface MCUContextType {
   closeDetailModal: () => void;
   toggleWatched: (id: string) => void;
   setRating: (id: string, rating: number | null) => void;
-  markAllAsWatched: () => void;
   resetProgress: () => void;
-  addCustomItem: (itemData: Omit<MCUItem, 'id' | 'isCustom'>, imageBase64?: string) => Promise<void>;
-  updateItem: (id: string, updated: Partial<MCUItem>) => void;
-  deleteItem: (id: string) => void;
   setFilters: (filters: Partial<FilterState>) => void;
   resetFilters: () => void;
   updateSettings: (newSettings: UserSettings) => void;
@@ -150,7 +146,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   }, []);
 
-  const setCurrentView = (view: NavView) => {
+  const setCurrentView = useCallback((view: NavView) => {
     setCurrentViewState(view);
     try {
       localStorage.setItem('mcu_current_view', view);
@@ -166,7 +162,7 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     syncUrlWithView(view);
-  };
+  }, []);
 
   // Mantener sincronizado URL y localStorage ante cambios de vista
   useEffect(() => {
@@ -210,8 +206,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [watchedIds, setWatchedIds] = useState<Set<string>>(new Set());
   const [ratings, setRatingsState] = useState<Record<string, number>>({});
-  const [customItems, setCustomItems] = useState<MCUItem[]>([]);
-  const [editedMap, setEditedMap] = useState<Record<string, Partial<MCUItem>>>({});
   
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'rejected' | null>(() => {
     const saved = localStorage.getItem('marvel_tracker_cookie_consent');
@@ -219,29 +213,29 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return null;
   });
 
-  const acceptCookies = () => {
+  const acceptCookies = useCallback(() => {
     localStorage.setItem('marvel_tracker_cookie_consent', 'accepted');
     setCookieConsent('accepted');
-  };
+  }, []);
 
-  const rejectCookies = () => {
+  const rejectCookies = useCallback(() => {
     localStorage.setItem('marvel_tracker_cookie_consent', 'rejected');
     setCookieConsent('rejected');
-  };
+  }, []);
 
-  const resetCookieConsent = () => {
+  const resetCookieConsent = useCallback(() => {
     localStorage.removeItem('marvel_tracker_cookie_consent');
     setCookieConsent(null);
-  };
+  }, []);
 
   const [settings, setSettings] = useState<UserSettings>({
     userName: 'Gonzalo',
   });
 
-  const updateSettings = (newSettings: UserSettings) => {
+  const updateSettings = useCallback((newSettings: UserSettings) => {
     setSettings(newSettings);
     storageService.saveSettings(newSettings);
-  };
+  }, []);
 
   // Custom Auth Hook
   const { user, authLoading, login, signup, logout, deleteAccount, requestPasswordReset, updatePassword, updateAvatarId } = useMCUAuth({
@@ -257,23 +251,19 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     },
   });
 
-  const updateAvatar = async (avatarId: string) => {
+  const updateAvatar = useCallback(async (avatarId: string) => {
     const avatarObj = getAvatarById(avatarId);
     const url = avatarObj ? avatarObj.url : DEFAULT_AVATAR;
-    const newSettings = { ...settings, avatarId, profilePicUrl: url };
-    setSettings(newSettings);
-    storageService.saveSettings(newSettings);
-    await updateAvatarId(avatarId);
-  };
-
-  // Combine initial + custom + edits
-  const items = useMemo(() => {
-    const combined = [...PRODUCTIONS, ...customItems];
-    return combined.map((item) => {
-      const edit = editedMap[item.id];
-      return edit ? { ...item, ...edit } : item;
+    setSettings((prev) => {
+      const newSettings = { ...prev, avatarId, profilePicUrl: url };
+      storageService.saveSettings(newSettings);
+      return newSettings;
     });
-  }, [customItems, editedMap]);
+    await updateAvatarId(avatarId);
+  }, [updateAvatarId]);
+
+  // Static productions catalogue
+  const items = PRODUCTIONS;
 
   // Today's date ISO string YYYY-MM-DD for dynamic comparison against system date
   const todayStr = useMemo(() => {
@@ -309,11 +299,6 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
       const loadedRatings = storageService.getRatings();
       setRatingsState(loadedRatings);
-
-      const customs = await mcuService.fetchCustomItems();
-      setCustomItems(customs);
-
-      setEditedMap(storageService.getEditedItems());
     }
     loadData();
   }, []);
@@ -355,26 +340,29 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [availableItems, watchedIds]);
 
   // Modal handlers
-  const openDetailModal = (item: MCUItem) => {
+  const openDetailModal = useCallback((item: MCUItem) => {
     if (item.fechaLanzamiento && item.fechaLanzamiento > todayStr) return;
     setActiveDetailItem(item);
-  };
-  const closeDetailModal = () => setActiveDetailItem(null);
+  }, [todayStr]);
+
+  const closeDetailModal = useCallback(() => {
+    setActiveDetailItem(null);
+  }, []);
 
   // Actions
-  const toggleWatched = async (id: string) => {
-    const nextIsWatched = !watchedIds.has(id);
+  const toggleWatched = useCallback(async (id: string) => {
+    let nextIsWatched = false;
     setWatchedIds((prev) => {
+      nextIsWatched = !prev.has(id);
       const next = new Set(prev);
       if (nextIsWatched) next.add(id);
       else next.delete(id);
       return next;
     });
     await mcuService.toggleWatchedState(id, nextIsWatched);
-  };
+  }, []);
 
-
-  const setRating = (id: string, rating: number | null) => {
+  const setRating = useCallback((id: string, rating: number | null) => {
     setRatingsState((prev) => {
       const next = { ...prev };
       if (rating === null || rating === undefined) {
@@ -385,68 +373,14 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       storageService.saveRatings(next);
       return next;
     });
-  };
+  }, []);
 
-  const markAllAsWatched = async () => {
-    const allIds = items.map((i) => i.id);
-    setWatchedIds(new Set(allIds));
-    await mcuService.setMultipleWatchedState(allIds, true);
-  };
-
-  const resetProgress = async () => {
-    const allIds = items.map((i) => i.id);
+  const resetProgress = useCallback(async () => {
+    const allIds = PRODUCTIONS.map((i) => i.id);
     setWatchedIds(new Set());
     await mcuService.setMultipleWatchedState(allIds, false);
     storageService.saveRatings({});
-  };
-
-  const addCustomItem = async (
-    itemData: Omit<MCUItem, 'id' | 'isCustom'>,
-    imageBase64?: string
-  ) => {
-    const newId = `custom-${Date.now()}`;
-    const baseItem: MCUItem = {
-      ...itemData,
-      id: newId,
-      isCustom: true,
-      ordenEstreno: items.length + 1,
-      ordenCronologico: items.length + 1,
-    };
-
-    const saved = await mcuService.saveCustomItem(baseItem, imageBase64);
-    setCustomItems((prev) => [...prev, saved]);
-  };
-
-  const updateItem = (id: string, updated: Partial<MCUItem>) => {
-    setEditedMap((prev) => {
-      const next = { ...prev, [id]: { ...(prev[id] || {}), ...updated } };
-      storageService.saveEditedItems(next);
-      return next;
-    });
-    setActiveDetailItem((prev) => {
-      if (prev && prev.id === id) {
-        return { ...prev, ...updated };
-      }
-      return prev;
-    });
-  };
-
-  const deleteItem = (id: string) => {
-    setCustomItems((prev) => {
-      const next = prev.filter((item) => item.id !== id);
-      storageService.saveCustomItems(next);
-      return next;
-    });
-    setWatchedIds((prev) => {
-      if (prev.has(id)) {
-        const next = new Set(prev);
-        next.delete(id);
-        mcuService.toggleWatchedState(id, false);
-        return next;
-      }
-      return prev;
-    });
-  };
+  }, []);
 
   const effectiveSettings = useMemo<UserSettings>(() => {
     const activeAvatarId = user ? (user.user_metadata?.avatar_id || settings.avatarId) : settings.avatarId;
@@ -460,48 +394,81 @@ export const MCUProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
   }, [settings, user]);
 
+  const contextValue = useMemo<MCUContextType>(
+    () => ({
+      items,
+      availableItems,
+      upcomingItems,
+      filteredItems,
+      watchedIds,
+      ratings,
+      filters,
+      stats,
+      settings: effectiveSettings,
+      currentView,
+      activeDetailItem,
+      user,
+      authLoading,
+      login,
+      signup,
+      logout,
+      deleteAccount,
+      requestPasswordReset,
+      updatePassword,
+      cookieConsent,
+      acceptCookies,
+      rejectCookies,
+      resetCookieConsent,
+      setCurrentView,
+      openDetailModal,
+      closeDetailModal,
+      toggleWatched,
+      setRating,
+      resetProgress,
+      setFilters,
+      resetFilters,
+      updateSettings,
+      updateAvatar,
+    }),
+    [
+      items,
+      availableItems,
+      upcomingItems,
+      filteredItems,
+      watchedIds,
+      ratings,
+      filters,
+      stats,
+      effectiveSettings,
+      currentView,
+      activeDetailItem,
+      user,
+      authLoading,
+      login,
+      signup,
+      logout,
+      deleteAccount,
+      requestPasswordReset,
+      updatePassword,
+      cookieConsent,
+      acceptCookies,
+      rejectCookies,
+      resetCookieConsent,
+      setCurrentView,
+      openDetailModal,
+      closeDetailModal,
+      toggleWatched,
+      setRating,
+      resetProgress,
+      setFilters,
+      resetFilters,
+      updateSettings,
+      updateAvatar,
+    ]
+  );
+
   return (
-    <MCUContext.Provider
-      value={{
-        items,
-        availableItems,
-        upcomingItems,
-        filteredItems,
-        watchedIds,
-        ratings,
-        filters,
-        stats,
-        settings: effectiveSettings,
-        currentView,
-        activeDetailItem,
-        user,
-        authLoading,
-        login,
-        signup,
-        logout,
-        deleteAccount,
-        requestPasswordReset,
-        updatePassword,
-        cookieConsent,
-        acceptCookies,
-        rejectCookies,
-        resetCookieConsent,
-        setCurrentView,
-        openDetailModal,
-        closeDetailModal,
-        toggleWatched,
-        setRating,
-        markAllAsWatched,
-        resetProgress,
-        addCustomItem,
-        updateItem,
-        deleteItem,
-        setFilters,
-        resetFilters,
-        updateSettings,
-        updateAvatar,
-      }}
-    >
+    <MCUContext.Provider value={contextValue}>
       {children}
     </MCUContext.Provider>
   );

@@ -3,8 +3,6 @@ import { MCUItem, UserSettings } from '../types/mcu';
 const STORAGE_KEYS = {
   WATCHED_IDS: 'mcu_watched_ids_v1',
   RATINGS: 'mcu_ratings_v1',
-  CUSTOM_ITEMS: 'mcu_custom_items_v1',
-  EDITED_ITEMS: 'mcu_edited_items_v1',
   SETTINGS: 'mcu_user_settings_v1',
 };
 
@@ -49,42 +47,6 @@ export const storageService = {
       localStorage.setItem(STORAGE_KEYS.RATINGS, JSON.stringify(ratings));
     } catch (e) {
       console.error('Error saving ratings:', e);
-    }
-  },
-
-  getCustomItems(): MCUItem[] {
-    try {
-      const data = localStorage.getItem(STORAGE_KEYS.CUSTOM_ITEMS);
-      return data ? JSON.parse(data) : [];
-    } catch (e) {
-      console.error('Error loading custom items:', e);
-      return [];
-    }
-  },
-
-  saveCustomItems(items: MCUItem[]): void {
-    try {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_ITEMS, JSON.stringify(items));
-    } catch (e) {
-      console.error('Error saving custom items:', e);
-    }
-  },
-
-  getEditedItems(): Record<string, Partial<MCUItem>> {
-    try {
-      const data = localStorage.getItem(STORAGE_KEYS.EDITED_ITEMS);
-      return data ? JSON.parse(data) : {};
-    } catch (e) {
-      console.error('Error loading edited items:', e);
-      return {};
-    }
-  },
-
-  saveEditedItems(editedMap: Record<string, Partial<MCUItem>>): void {
-    try {
-      localStorage.setItem(STORAGE_KEYS.EDITED_ITEMS, JSON.stringify(editedMap));
-    } catch (e) {
-      console.error('Error saving edited items:', e);
     }
   },
 

@@ -13,7 +13,17 @@ export const LibraryView: React.FC<LibraryViewProps> = ({ view }) => {
   const { filteredItems, openDetailModal } = useMCU();
 
   const targetType = view === 'movies' ? 'movie' : view === 'series' ? 'series' : 'special';
-  const sectionItems = filteredItems.filter((item) => item.tipo === targetType);
+  const sectionItems = React.useMemo(
+    () => filteredItems.filter((item) => item.tipo === targetType),
+    [filteredItems, targetType]
+  );
+
+  const handleOpenDetail = React.useCallback(
+    (item: (typeof filteredItems)[0]) => {
+      openDetailModal(item);
+    },
+    [openDetailModal]
+  );
 
   return (
     <div key={view} className="space-y-5">
@@ -24,7 +34,7 @@ export const LibraryView: React.FC<LibraryViewProps> = ({ view }) => {
       {/* Grid of Library Cards (Scoped to Current Section Type) */}
       <MCUGrid
         items={sectionItems}
-        onOpenDetail={(item) => openDetailModal(item)}
+        onOpenDetail={handleOpenDetail}
       />
 
       {/* Floating Scroll To Top Button */}
