@@ -7,7 +7,7 @@ export const defaultFilters: FilterState = {
   type: 'all',
   priority: 'all',
   status: 'all',
-  order: 'release',
+  order: 'recommended',
 };
 
 export function useMCUFilters(items: MCUItem[], watchedIds: Set<string>) {
@@ -54,6 +54,9 @@ export function useMCUFilters(items: MCUItem[], watchedIds: Set<string>) {
       .sort((a, b) => {
         if (filters.order === 'chronological') {
           return a.ordenCronologico - b.ordenCronologico;
+        }
+        if (filters.order === 'recommended') {
+          return (a.ordenRecomendado ?? a.ordenCronologico) - (b.ordenRecomendado ?? b.ordenCronologico);
         }
         return a.ordenEstreno - b.ordenEstreno;
       });

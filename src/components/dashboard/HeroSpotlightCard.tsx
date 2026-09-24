@@ -43,7 +43,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
     } catch {}
   }, [spotlightFilter]);
 
-  // Full list of unwatched productions sorted chronologically, filtered by spotlight mode
+  // Full list of unwatched productions sorted by recommended criteria, filtered by spotlight mode
   const spotlightList = useMemo<MCUItem[]>(() => {
     const unwatched = availableItems.filter((item) => {
       if (watchedIds.has(item.id)) return false;
@@ -55,7 +55,9 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
       }
       return true;
     });
-    return unwatched.sort((a, b) => a.ordenCronologico - b.ordenCronologico);
+    return unwatched.sort(
+      (a, b) => (a.ordenRecomendado ?? a.ordenCronologico) - (b.ordenRecomendado ?? b.ordenCronologico)
+    );
   }, [availableItems, watchedIds, spotlightFilter]);
 
   // Ensure spotlightIndex stays valid when list changes
@@ -213,7 +215,7 @@ export const HeroSpotlightCard: React.FC<HeroSpotlightCardProps> = ({
                       ? 'bg-white/25 text-white shadow-xs font-bold border-t border-white/40'
                       : 'text-zinc-400 hover:text-white'
                   }`}
-                  title="Mostrar todas las producciones pendientes en orden cronológico"
+                  title="Mostrar todas las producciones pendientes en orden recomendado"
                 >
                   Todas
                 </button>

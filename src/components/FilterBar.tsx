@@ -23,7 +23,7 @@ export const FilterBar: React.FC = () => {
     filters.status !== 'all' ||
     filters.phase !== 'all' ||
     filters.priority !== 'all' ||
-    filters.order !== 'release';
+    filters.order !== 'recommended';
 
   // Lock body scroll when side drawer is open
   useEffect(() => {
@@ -126,6 +126,19 @@ export const FilterBar: React.FC = () => {
                       Orden
                     </label>
                     <div className="space-y-2">
+                      <button
+                        type="button"
+                        onClick={() => setFilters({ order: 'recommended' })}
+                        className={`w-full p-3 rounded-2xl border text-left font-medium transition-all flex items-center justify-between cursor-pointer ${
+                          filters.order === 'recommended'
+                            ? 'bg-gradient-to-r from-red-700 via-rose-600 to-red-800 text-white border-red-400/40 shadow-lg shadow-red-950/60 border-t-white/40'
+                            : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 backdrop-blur-md'
+                        }`}
+                      >
+                        <span>Recomendado</span>
+                        {filters.order === 'recommended' && <Check className="w-4 h-4 text-white stroke-[2.5]" />}
+                      </button>
+
                       <button
                         type="button"
                         onClick={() => setFilters({ order: 'release' })}

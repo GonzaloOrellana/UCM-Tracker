@@ -22,6 +22,7 @@ export interface MCUItem {
   fechaLanzamiento: string; // ISO YYYY-MM-DD
   ordenEstreno: number;
   ordenCronologico: number;
+  ordenRecomendado?: number;
   ordenListaMaestra?: number;
   prioridad?: MCUPriority;
   fase: MCUPhase;
@@ -38,7 +39,7 @@ export interface MCUItem {
   urlOficial?: string;
 }
 
-export type OrderMode = 'release' | 'chronological';
+export type OrderMode = 'release' | 'chronological' | 'recommended';
 
 export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday';
 
