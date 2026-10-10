@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 
 interface SagaRoadmapCardProps {
   phases: Record<string, { total: number; watched: number; percentage: number }>;
+  onViewDetail?: () => void;
 }
 
 // SVG Node Helper for Roadmap with Tactile Convex Lens Diode Styling
@@ -74,7 +76,7 @@ const renderRoadmapNode = (
   );
 };
 
-export const SagaRoadmapCard: React.FC<SagaRoadmapCardProps> = ({ phases }) => {
+export const SagaRoadmapCard: React.FC<SagaRoadmapCardProps> = ({ phases, onViewDetail }) => {
   const p1 = phases['Fase 1']?.percentage || 0;
   const p2 = phases['Fase 2']?.percentage || 0;
   const p3 = phases['Fase 3']?.percentage || 0;
@@ -90,11 +92,21 @@ export const SagaRoadmapCard: React.FC<SagaRoadmapCardProps> = ({ phases }) => {
       className="md:col-span-1 lg:col-span-3 flex flex-col min-h-0 h-full"
     >
       <div className="tactile-bento-card rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 lg:p-3.5 xl:p-4.5 flex flex-col justify-between h-full min-h-0">
-        {/* Header */}
-        <div className="mb-2 sm:mb-2.5 lg:mb-1 xl:mb-2 shrink-0">
+        {/* Header with Title and 'Ver en detalle' button */}
+        <div className="flex items-center justify-between mb-2 sm:mb-2.5 lg:mb-1 xl:mb-2 shrink-0">
           <h3 className="font-display text-sm sm:text-base xl:text-xl font-bold tracking-tight text-white leading-tight">
             Saga Roadmap
           </h3>
+          {onViewDetail && (
+            <button
+              onClick={onViewDetail}
+              className="tactile-btn-glass text-white text-[10px] sm:text-[11px] xl:text-xs font-semibold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full flex items-center gap-1 cursor-pointer hover:border-[#00A8FF]/70 hover:text-[#00A8FF] hover:shadow-[0_0_16px_rgba(0,168,255,0.25)] transition-all shadow-md group/btn"
+              title="Explorar el mapa interactivo de la saga"
+            >
+              <span>Mapa completo</span>
+              <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+            </button>
+          )}
         </div>
 
         {/* Continuous SVG Circuit Diagram with Glow Defs */}

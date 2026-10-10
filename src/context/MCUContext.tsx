@@ -73,6 +73,12 @@ const VIEW_MAP: Record<string, NavView> = {
   terms: 'terms',
   terminos: 'terms',
   'términos': 'terms',
+  roadmap: 'roadmap',
+  'saga-tree': 'roadmap',
+  'saga-roadmap': 'roadmap',
+  mapa: 'roadmap',
+  arbol: 'roadmap',
+  'skill-tree': 'roadmap',
 };
 
 const parseViewFromUrl = (): NavView | null => {

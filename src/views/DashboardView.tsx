@@ -38,7 +38,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
 
       {/* ROW 2: MAIN GRID (3 SYMMETRICAL COLUMNS: ROADMAP + VAULT + UPCOMING) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-2.5 lg:gap-3 xl:gap-3.5 flex-1 min-h-0">
-        <SagaRoadmapCard phases={stats.phases} />
+        <SagaRoadmapCard
+          phases={stats.phases}
+          onViewDetail={() => onNavigate('roadmap')}
+        />
         <InfinityVaultCard stats={stats} onNavigate={onNavigate} />
         <UpcomingCarouselCard upcomingItems={upcomingItems} />
       </div>

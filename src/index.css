@@ -688,3 +688,29 @@
     0 1px 3px rgba(200, 29, 37, 0.4),
     inset 0 2px 4px rgba(80, 5, 10, 0.6);
 }
+
+/* ──────────────────────────────────────────────────────────
+   REACT FLOW: DARK COSMIC CUSTOM THEME
+   ────────────────────────────────────────────────────────── */
+.react-flow {
+  background-color: transparent !important;
+}
+
+.react-flow__minimap {
+  background-color: #070810 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(0, 168, 255, 0.12) !important;
+  stroke: rgba(0, 168, 255, 0.6) !important;
+  stroke-width: 1.5 !important;
+}
+
+.react-flow__handle {
+  border-radius: 9999px !important;
+}

@@ -41,7 +41,25 @@ export interface MCUItem {
 
 export type OrderMode = 'release' | 'chronological' | 'recommended';
 
-export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday';
+export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday' | 'roadmap';
+
+export type StorylineArc =
+  | 'all'
+  | 'core-avengers'
+  | 'multiverse'
+  | 'cosmic'
+  | 'mystic'
+  | 'street'
+  | 'legacy';
+
+export interface NarrativeConnection {
+  id: string;
+  source: string;
+  target: string;
+  arc: Exclude<StorylineArc, 'all'>;
+  isEssential?: boolean;
+  label?: string;
+}
 
 export interface FilterState {
   status: 'all' | 'watched' | 'unwatched';

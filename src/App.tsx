@@ -20,6 +20,9 @@ const ProfileView = lazy(() =>
 const DoomsdayRoadmapView = lazy(() =>
   import('./views/DoomsdayRoadmapView').then((m) => ({ default: m.DoomsdayRoadmapView }))
 );
+const RoadmapView = lazy(() =>
+  import('./views/RoadmapView').then((m) => ({ default: m.RoadmapView }))
+);
 const PrivacyPolicyView = lazy(() =>
   import('./views/PrivacyPolicyView').then((m) => ({ default: m.PrivacyPolicyView }))
 );
@@ -217,6 +220,13 @@ const TrackerMainApp: React.FC = () => {
 
               {currentView === 'doomsday' && (
                 <DoomsdayRoadmapView
+                  onBackToDashboard={() => setCurrentView('dashboard')}
+                  onNavigate={(v) => setCurrentView(v)}
+                />
+              )}
+
+              {currentView === 'roadmap' && (
+                <RoadmapView
                   onBackToDashboard={() => setCurrentView('dashboard')}
                   onNavigate={(v) => setCurrentView(v)}
                 />
