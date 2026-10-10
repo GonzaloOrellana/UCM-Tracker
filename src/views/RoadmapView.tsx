@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -67,6 +67,30 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
     return getAllSuccessorIds(selectedNodeId);
   }, [selectedNodeId]);
 
+  // Viewport inicial calculado dinámicamente según el ancho de pantalla para centrar el origen
+  const defaultViewport = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return { x: 100, y: 80, zoom: 0.75 };
+    }
+    const isMobile = window.innerWidth < 640;
+    const zoom = isMobile ? 0.65 : 0.85;
+    // Centrar horizontalmente el nodo inicial (Iron Man 1 en x: 0, ancho: 180 => centro x: 90)
+    const screenWidth = window.innerWidth;
+    const x = screenWidth / 2 - 90 * zoom;
+    const y = isMobile ? 120 : 100;
+    return { x, y, zoom };
+  }, []);
+
+  // Asegurar centrado en el inicio de la saga (Iron Man 1 / Fase 1) al abrir el mapa en celular o desktop
+  useEffect(() => {
+    const isMobile = window.innerWidth < 640;
+    const zoom = isMobile ? 0.65 : 0.85;
+    const timer = setTimeout(() => {
+      setCenter(90, isMobile ? 320 : 380, { zoom, duration: 350 });
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [setCenter]);
+
   // Manejador de selección de nodo
   const handleSelectNode = useCallback((id: string) => {
     setSelectedNodeId((prev) => (prev === id ? null : id));
@@ -76,7 +100,7 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
     setSelectedNodeId(null);
   }, []);
 
-  // Manejador del filtro de Fases con vuelo de cámara suave
+  // Manejador del filtro de Fases con vuelo de cámara suave y soporte mobile
   const handleSelectPhase = useCallback(
     (phase: PhaseFilter) => {
       setActivePhase(phase);
@@ -85,14 +109,39 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
       const meta = PHASE_FILTERS.find((p) => p.id === phase);
       if (!meta) return;
 
+      const isMobile = window.innerWidth < 640;
+
       if (phase === 'all') {
-        fitView({ padding: 0.15, duration: 650 });
+        if (isMobile) {
+          setCenter(90, 320, { duration: 650, zoom: 0.65 });
+        } else {
+          fitView({ padding: 0.15, duration: 650 });
+        }
       } else {
-        setCenter(meta.centerX, meta.centerY, { duration: 650, zoom: meta.zoom });
+        const targetZoom = isMobile ? Math.min(meta.zoom, 0.55) : meta.zoom;
+        setCenter(meta.centerX, meta.centerY, { duration: 650, zoom: targetZoom });
       }
     },
     [fitView, setCenter]
   );
+
+  // Botón centrar mapa adaptado a pantallas móviles
+  const handleResetView = useCallback(() => {
+    const isMobile = window.innerWidth < 640;
+    if (activePhase === 'all') {
+      if (isMobile) {
+        setCenter(90, 320, { duration: 600, zoom: 0.65 });
+      } else {
+        fitView({ padding: 0.15, duration: 600 });
+      }
+    } else {
+      const meta = PHASE_FILTERS.find((p) => p.id === activePhase);
+      if (meta) {
+        const targetZoom = isMobile ? Math.min(meta.zoom, 0.55) : meta.zoom;
+        setCenter(meta.centerX, meta.centerY, { duration: 600, zoom: targetZoom });
+      }
+    }
+  }, [activePhase, fitView, setCenter]);
 
   // 1. Contenedores de Otros Universos (fondo visual estático memoizado independientemente)
   const containerNodes = useMemo<Node[]>(() => {
@@ -285,7 +334,7 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
           </button>
 
           <button
-            onClick={() => fitView({ padding: 0.15, duration: 600 })}
+            onClick={handleResetView}
             className="bg-[#0B0D19]/90 hover:bg-[#14172B] border border-white/15 text-zinc-300 hover:text-white text-xs font-semibold px-3.5 py-2 rounded-full flex items-center gap-1.5 cursor-pointer shadow-lg transition-all active:scale-95"
             title="Centrar todo el mapa"
           >
@@ -305,8 +354,8 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
           onPaneClick={handlePaneClick}
-          defaultViewport={{ x: 400, y: 80, zoom: 0.85 }}
-          minZoom={0.12}
+          defaultViewport={defaultViewport}
+          minZoom={0.08}
           maxZoom={1.75}
           nodesDraggable={false}
           nodesConnectable={false}

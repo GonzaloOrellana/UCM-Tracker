@@ -135,18 +135,6 @@ export const UNIVERSE_CONTAINERS: UniverseContainerConfig[] = [
     "width": 820,
     "height": 1060,
     "era": "fase-5"
-  },
-  {
-    "id": "container-fantasticfour-multiverse",
-    "title": "Universo Los 4 Fantásticos",
-    "badgeColor": "#06B6D4",
-    "borderColor": "rgba(0, 182, 212, 0.45)",
-    "glowColor": "rgba(0, 182, 212, 0.18)",
-    "x": 410,
-    "y": 7700,
-    "width": 260,
-    "height": 710,
-    "era": "fase-6"
   }
 ];
 
@@ -809,20 +797,6 @@ export const ROADMAP_NODE_LAYOUTS: RoadmapNodeLayout[] = [
     "y": 8100,
     "lane": "legacy",
     "era": "fase-5"
-  },
-  {
-    "id": "fantastic-four-2005",
-    "x": 450,
-    "y": 7750,
-    "lane": "legacy",
-    "era": "fase-6"
-  },
-  {
-    "id": "fantastic-four-rise-of-the-silver-surfer-2007",
-    "x": 450,
-    "y": 8100,
-    "lane": "legacy",
-    "era": "fase-6"
   }
 ];
 
@@ -1474,20 +1448,6 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "target": "up-avengers-doomsday",
     "arc": "core-avengers",
     "isEssential": true
-  },
-  {
-    "id": "e-f4_05-f4_07",
-    "source": "fantastic-four-2005",
-    "target": "fantastic-four-rise-of-the-silver-surfer-2007",
-    "arc": "legacy",
-    "isEssential": false
-  },
-  {
-    "id": "e-f4_07-f4steps",
-    "source": "fantastic-four-rise-of-the-silver-surfer-2007",
-    "target": "fantastic-four-first-steps-2025",
-    "arc": "multiverse",
-    "isEssential": false
   },
   {
     "id": "e-f4steps-doom",
