@@ -24,7 +24,7 @@ import { RoadmapNode, RoadmapNodeType } from '../components/roadmap/RoadmapNode'
 import { UniverseContainerNode } from '../components/roadmap/UniverseContainerNode';
 import { RoadmapEdge, RoadmapEdgeType } from '../components/roadmap/RoadmapEdge';
 import { RoadmapControls } from '../components/roadmap/RoadmapControls';
-import { ArrowLeft, Compass, Filter } from 'lucide-react';
+import { ArrowLeft, Compass, Filter, ChevronDown, Check } from 'lucide-react';
 
 interface RoadmapViewProps {
   onBackToDashboard: () => void;
@@ -49,6 +49,11 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
   const [activePhase, setActivePhase] = useState<PhaseFilter>('all');
   const [showOnlyUnwatched, setShowOnlyUnwatched] = useState<boolean>(false);
+  const [isPhaseDropdownOpen, setIsPhaseDropdownOpen] = useState<boolean>(false);
+
+  const currentPhaseMeta = useMemo(() => {
+    return PHASE_FILTERS.find((p) => p.id === activePhase) || PHASE_FILTERS[0];
+  }, [activePhase]);
 
   // Mapeo rápido de ID a item completo
   const itemsMap = useMemo(() => {
@@ -98,6 +103,7 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
 
   const handlePaneClick = useCallback(() => {
     setSelectedNodeId(null);
+    setIsPhaseDropdownOpen(false);
   }, []);
 
   // Manejador del filtro de Fases con vuelo de cámara suave y soporte mobile
@@ -293,8 +299,8 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
           <span className="sm:hidden">Volver</span>
         </button>
 
-        {/* Filtros de Fases (Ubicados en el centro entre ambos botones) */}
-        <div className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar bg-[#0A0B14]/92 backdrop-blur-xl border border-white/10 px-2 py-1.5 rounded-full shadow-2xl shrink min-w-0">
+        {/* Desktop: Filtros de Fases (Barra horizontal con píldoras) */}
+        <div className="hidden sm:flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar bg-[#0A0B14]/92 backdrop-blur-xl border border-white/10 px-2 py-1.5 rounded-full shadow-2xl shrink min-w-0">
           {PHASE_FILTERS.map((phase) => {
             const isActive = activePhase === phase.id;
             return (
@@ -316,6 +322,74 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
               </button>
             );
           })}
+        </div>
+
+        {/* Móvil: Selector desplegable de Fases */}
+        <div className="relative sm:hidden">
+          <button
+            type="button"
+            onClick={() => setIsPhaseDropdownOpen((prev) => !prev)}
+            className="bg-[#0A0B14]/95 hover:bg-[#121424] active:scale-95 border border-white/20 text-white text-xs font-semibold px-3 py-2 rounded-full flex items-center gap-1.5 cursor-pointer shadow-xl transition-all"
+            aria-expanded={isPhaseDropdownOpen}
+          >
+            <span
+              className="w-2 h-2 rounded-full shrink-0"
+              style={{
+                backgroundColor: currentPhaseMeta.color,
+                boxShadow: `0 0 6px ${currentPhaseMeta.color}`,
+              }}
+            />
+            <span className="truncate max-w-[105px]">{currentPhaseMeta.label}</span>
+            <ChevronDown
+              className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 shrink-0 ${
+                isPhaseDropdownOpen ? 'rotate-180 text-white' : ''
+              }`}
+            />
+          </button>
+
+          {/* Menú desplegable */}
+          {isPhaseDropdownOpen && (
+            <>
+              {/* Capa invisible para cerrar al hacer clic afuera (sin oscurecer ni crear cartel) */}
+              <div
+                className="fixed inset-0 z-40 bg-transparent"
+                onClick={() => setIsPhaseDropdownOpen(false)}
+              />
+
+              <div className="absolute top-full mt-1.5 left-0 min-w-[145px] w-full bg-[#0A0B14]/98 backdrop-blur-xl border border-white/15 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.9)] p-1 z-50 flex flex-col gap-0.5 animate-in fade-in slide-in-from-top-1 duration-150">
+                {PHASE_FILTERS.map((phase) => {
+                  const isActive = activePhase === phase.id;
+                  return (
+                    <button
+                      key={phase.id}
+                      type="button"
+                      onClick={() => {
+                        handleSelectPhase(phase.id);
+                        setIsPhaseDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center gap-2 cursor-pointer ${
+                        isActive
+                          ? 'bg-white/15 text-white font-semibold'
+                          : 'text-zinc-300 hover:text-white hover:bg-white/5 active:bg-white/10'
+                      }`}
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{
+                          backgroundColor: phase.color,
+                          boxShadow: isActive ? `0 0 6px ${phase.color}` : undefined,
+                        }}
+                      />
+                      <span className="truncate flex-1">{phase.label}</span>
+                      {isActive && (
+                        <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 ml-1" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Controles del Lado Derecho: Solo Pendientes + Centrar Mapa */}
