@@ -3,23 +3,28 @@ import {
   BaseEdge,
   EdgeProps,
   Edge,
-  getBezierPath,
   getSmoothStepPath,
   Position,
   EdgeLabelRenderer,
   getEdgeCenter,
 } from '@xyflow/react';
-import { getArcColor } from '../../data/roadmapTreeData';
-import { StorylineArc } from '../../types/mcu';
+import { getArcColor, getPriorityColor } from '../../data/roadmapTreeData';
+import { StorylineArc, MCUPriority } from '../../types/mcu';
 
 export type RoadmapEdgeData = {
   arc: Exclude<StorylineArc, 'all'>;
+  priority?: MCUPriority;
   isEssential?: boolean;
   label?: string;
   isHighlighted?: boolean;
   isPrerequisitePath?: boolean;
   isUnlockPath?: boolean;
   isDimmed?: boolean;
+  isPostEndgame?: boolean;
+  isMergedTarget?: boolean;
+  isPrimaryIncoming?: boolean;
+  targetJunctionOffset?: number;
+  isEndgameBranch?: boolean;
   [key: string]: unknown;
 };
 
@@ -37,15 +42,54 @@ export const RoadmapEdge = memo(({
   style = {},
 }: EdgeProps<RoadmapEdgeType>) => {
   const deltaY = Math.abs(targetY - sourceY);
-  const deltaX = Math.abs(targetX - sourceX);
   const isLongDistance = deltaY > 550;
   const isSameSideVertical =
     (sourcePosition === Position.Left && targetPosition === Position.Left) ||
     (sourcePosition === Position.Right && targetPosition === Position.Right);
 
-  // Generación de ruta inteligente: bypass por canal lateral o bezier adaptativo
+  const isPostEndgame = !!data?.isPostEndgame;
+  const isMergedTarget = !!data?.isMergedTarget;
+  const isPrimaryIncoming = !!data?.isPrimaryIncoming;
+  const isEndgameBranch = !!data?.isEndgameBranch;
+  const targetJunctionOffset = (data?.targetJunctionOffset as number) || 50;
+
+  // Generación de ruta: líneas rectas/ortogonales y unificación de troncos convergentes
   let edgePath = '';
-  if (isSameSideVertical) {
+  const radius = 14;
+
+  if (isEndgameBranch && targetY > sourceY + 40) {
+    // Ramificación limpia desde Endgame: un solo tronco vertical que alimenta el riel horizontal a y: 6940
+    const busY = 6940;
+    if (Math.abs(sourceX - targetX) < 4) {
+      edgePath = `M ${sourceX} ${sourceY} L ${targetX} ${targetY}`;
+    } else {
+      const dir = sourceX < targetX ? 1 : -1;
+      edgePath = `M ${sourceX} ${sourceY} L ${sourceX} ${busY - radius} Q ${sourceX} ${busY} ${sourceX + dir * radius} ${busY} L ${targetX - dir * radius} ${busY} Q ${targetX} ${busY} ${targetX} ${busY + radius} L ${targetX} ${targetY}`;
+    }
+  } else if (isMergedTarget && targetPosition === Position.Top) {
+    // Unificación de múltiples producciones hacia un único destino con tronco común y flecha única
+    const junctionY = targetY - targetJunctionOffset;
+    if (sourceY < junctionY - 16) {
+      if (Math.abs(sourceX - targetX) < 4) {
+        // En la misma columna vertical: línea recta directa de inicio a fin
+        edgePath = `M ${sourceX} ${sourceY} L ${targetX} ${targetY}`;
+      } else {
+        const dir = sourceX < targetX ? 1 : -1;
+        edgePath = `M ${sourceX} ${sourceY} L ${sourceX} ${junctionY - radius} Q ${sourceX} ${junctionY} ${sourceX + dir * radius} ${junctionY} L ${targetX - dir * radius} ${junctionY} Q ${targetX} ${junctionY} ${targetX} ${junctionY + radius} L ${targetX} ${targetY}`;
+      }
+    } else {
+      // Si la fuente está en cota cercana o lateral
+      [edgePath] = getSmoothStepPath({
+        sourceX,
+        sourceY,
+        sourcePosition,
+        targetX,
+        targetY,
+        targetPosition,
+        borderRadius: radius,
+      });
+    }
+  } else if (isSameSideVertical) {
     const gutterOffset = Math.min(60, Math.max(35, 25 + deltaY / 400));
     [edgePath] = getSmoothStepPath({
       sourceX,
@@ -54,46 +98,58 @@ export const RoadmapEdge = memo(({
       targetX,
       targetY,
       targetPosition,
-      borderRadius: 24,
+      borderRadius: 20,
       offset: gutterOffset,
     });
-  } else if (isLongDistance) {
-    // Curvatura adaptativa amortiguada para evitar bucles gigantes
-    const curvature = Math.min(0.2, Math.max(0.04, 240 / (deltaY || 1)));
-    [edgePath] = getBezierPath({
-      sourceX,
-      sourceY,
-      sourcePosition,
-      targetX,
-      targetY,
-      targetPosition,
-      curvature,
-    });
   } else {
-    [edgePath] = getBezierPath({
-      sourceX,
-      sourceY,
-      sourcePosition,
-      targetX,
-      targetY,
-      targetPosition,
-    });
+    // 100% Rectas u ortogonales en todo el mapa (incluyendo antes de Avengers: Endgame)
+    if (Math.abs(sourceX - targetX) < 4) {
+      edgePath = `M ${sourceX} ${sourceY} L ${targetX} ${targetY}`;
+    } else if (Math.abs(sourceY - targetY) < 4) {
+      edgePath = `M ${sourceX} ${sourceY} L ${targetX} ${targetY}`;
+    } else {
+      [edgePath] = getSmoothStepPath({
+        sourceX,
+        sourceY,
+        sourcePosition,
+        targetX,
+        targetY,
+        targetPosition,
+        borderRadius: radius,
+      });
+    }
   }
 
-  const arc = data?.arc || 'core-avengers';
-  const arcColor = getArcColor(arc);
-  const isEssential = data?.isEssential !== false;
+  const priority = (data?.priority as MCUPriority) || (data?.isEssential !== false ? 'esencial' : 'opcional');
+  const priorityColor = getPriorityColor(priority);
+  const isEssential = priority === 'esencial' || data?.isEssential !== false;
   const isHighlighted = !!data?.isHighlighted;
   const isPrerequisitePath = !!data?.isPrerequisitePath;
   const isUnlockPath = !!data?.isUnlockPath;
   const isDimmed = !!data?.isDimmed;
   const isActive = isHighlighted || isPrerequisitePath || isUnlockPath;
 
-  // Color de acento, grosor y opacidad según estado para máxima visibilidad estética
-  let strokeColor = arcColor;
-  let strokeWidth = isLongDistance ? 2.8 : (isEssential ? 3.8 : 3.0);
-  let opacity = isLongDistance ? 0.65 : (isEssential ? 0.90 : 0.75);
-  let dashArray: string | undefined = isLongDistance ? '7 5' : (isEssential ? undefined : '6 4');
+  // En conexiones unificadas, solo se dibuja la punta de flecha en el destino una sola vez
+  const shouldRenderMarker = !isMergedTarget || isPrimaryIncoming || isActive;
+
+  // Color de acento, grosor y opacidad según la prioridad de la producción
+  let strokeColor = priorityColor;
+  let strokeWidth = isLongDistance
+    ? 2.8
+    : priority === 'esencial'
+    ? 3.8
+    : priority === 'recomendada'
+    ? 3.4
+    : 3.0;
+  let opacity = isLongDistance
+    ? 0.70
+    : priority === 'esencial'
+    ? 0.95
+    : priority === 'opcional'
+    ? 0.65
+    : 0.85;
+  let dashArray: string | undefined =
+    priority === 'opcional' ? '6 4' : isLongDistance ? '7 5' : undefined;
 
   if (isPrerequisitePath) {
     if (isEssential) {
@@ -135,7 +191,7 @@ export const RoadmapEdge = memo(({
 
   return (
     <>
-      {!isDimmed && (
+      {!isDimmed && shouldRenderMarker && (
         <defs>
           <marker
             id={markerId}
@@ -153,6 +209,26 @@ export const RoadmapEdge = memo(({
             />
           </marker>
         </defs>
+      )}
+
+      {/* Punto de unión sutil en el riel colector donde convergen las flechas */}
+      {isMergedTarget && isPrimaryIncoming && !isDimmed && (
+        <g style={{ pointerEvents: 'none' }}>
+          <circle
+            cx={targetX}
+            cy={targetY - targetJunctionOffset}
+            r={5}
+            fill={strokeColor}
+            fillOpacity={0.3}
+          />
+          <circle
+            cx={targetX}
+            cy={targetY - targetJunctionOffset}
+            r={3}
+            fill={strokeColor}
+            fillOpacity={opacity}
+          />
+        </g>
       )}
 
       {/* Halo ambiental / Resplandor de neón luminoso para que resalte sobre el fondo oscuro */}
@@ -174,7 +250,7 @@ export const RoadmapEdge = memo(({
       <BaseEdge
         id={id}
         path={edgePath}
-        markerEnd={!isDimmed ? `url(#${markerId})` : undefined}
+        markerEnd={!isDimmed && shouldRenderMarker ? `url(#${markerId})` : undefined}
         style={{
           ...style,
           stroke: strokeColor,
@@ -214,7 +290,11 @@ export const RoadmapEdge = memo(({
     prev.data?.isPrerequisitePath === next.data?.isPrerequisitePath &&
     prev.data?.isUnlockPath === next.data?.isUnlockPath &&
     prev.data?.isDimmed === next.data?.isDimmed &&
-    prev.data?.arc === next.data?.arc
+    prev.data?.arc === next.data?.arc &&
+    prev.data?.isMergedTarget === next.data?.isMergedTarget &&
+    prev.data?.isPrimaryIncoming === next.data?.isPrimaryIncoming &&
+    prev.data?.isPostEndgame === next.data?.isPostEndgame &&
+    prev.data?.isEndgameBranch === next.data?.isEndgameBranch
   );
 });
 

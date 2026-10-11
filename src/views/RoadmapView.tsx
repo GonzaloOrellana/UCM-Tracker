@@ -152,9 +152,18 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
   // 1. Contenedores de Otros Universos (fondo visual estático memoizado independientemente)
   const containerNodes = useMemo<Node[]>(() => {
     const eraKey = activePhase !== 'all' ? activePhase.toLowerCase().replace(' ', '-') : null;
+    const hasSelection = Boolean(selectedNodeId);
 
     return UNIVERSE_CONTAINERS.map((container) => {
-      const isDimmed = eraKey ? container.era !== eraKey : false;
+      let isDimmed = false;
+      if (hasSelection) {
+        const isPredecessor = allPredecessorsSet.has(container.id);
+        const isUnlock = allSuccessorsSet.has(container.id);
+        isDimmed = !isPredecessor && !isUnlock;
+      } else if (eraKey) {
+        isDimmed = container.era !== eraKey;
+      }
+
       return {
         id: container.id,
         type: 'universeContainer',
@@ -173,7 +182,7 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
         },
       };
     });
-  }, [activePhase]);
+  }, [activePhase, selectedNodeId, allPredecessorsSet, allSuccessorsSet]);
 
   // 2. Nodos de producciones interactivas memoizados
   const movieNodes = useMemo<Node[]>(() => {
@@ -272,12 +281,18 @@ const RoadmapCanvasContent: React.FC<RoadmapViewProps> = ({
         type: 'roadmapEdge' as const,
         data: {
           arc: spec.arc,
+          priority: spec.priority,
           isEssential: spec.isEssential,
           label: spec.label,
           isHighlighted: isPrerequisitePath || isUnlockPath,
           isPrerequisitePath,
           isUnlockPath,
           isDimmed,
+          isPostEndgame: spec.isPostEndgame,
+          isMergedTarget: spec.isMergedTarget,
+          isPrimaryIncoming: spec.isPrimaryIncoming,
+          targetJunctionOffset: spec.targetJunctionOffset,
+          isEndgameBranch: spec.isEndgameBranch,
         },
       };
     });

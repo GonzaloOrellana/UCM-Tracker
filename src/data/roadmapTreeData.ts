@@ -1,4 +1,5 @@
-import { NarrativeConnection, StorylineArc } from '../types/mcu';
+import { NarrativeConnection, StorylineArc, MCUPriority } from '../types/mcu';
+import { PRODUCTIONS } from './productions';
 
 export type PhaseFilter = 'all' | 'Fase 1' | 'Fase 2' | 'Fase 3' | 'Fase 4' | 'Fase 5' | 'Fase 6';
 
@@ -1082,18 +1083,12 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "isEssential": false
   },
   {
-    "id": "e-tobey-nwh",
-    "source": "spider-man-3-tobey",
+    "id": "e-spidiverse-nwh",
+    "source": "container-spiderman-multiverse",
     "target": "spider-man-no-way-home-33",
     "arc": "multiverse",
-    "isEssential": true
-  },
-  {
-    "id": "e-andrew-nwh",
-    "source": "the-amazing-spider-man-2-andrew",
-    "target": "spider-man-no-way-home-33",
-    "arc": "multiverse",
-    "isEssential": true
+    "isEssential": true,
+    "label": "Multiverso Spider-Man"
   },
   {
     "id": "e-ffh-nwh",
@@ -1146,6 +1141,14 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "isEssential": true
   },
   {
+    "id": "e-ddba1-punspec",
+    "source": "daredevil-born-again-s1",
+    "target": "punisher-one-last-kill",
+    "arc": "street",
+    "isEssential": true,
+    "label": "Frank Castle"
+  },
+  {
     "id": "e-ddba2-ddba3",
     "source": "daredevil-born-again-s2",
     "target": "up-daredevil-born-again-s3",
@@ -1164,7 +1167,14 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "source": "daredevil-netflix-s1",
     "target": "daredevil-netflix-s2",
     "arc": "street",
-    "isEssential": false
+    "isEssential": true
+  },
+  {
+    "id": "e-dd2-dd3",
+    "source": "daredevil-netflix-s2",
+    "target": "daredevil-netflix-s3",
+    "arc": "street",
+    "isEssential": true
   },
   {
     "id": "e-pun1-pun2",
@@ -1206,7 +1216,7 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "source": "daredevil-netflix-s2",
     "target": "the-defenders",
     "arc": "street",
-    "isEssential": false
+    "isEssential": true
   },
   {
     "id": "e-jj-def",
@@ -1234,21 +1244,15 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "source": "the-defenders",
     "target": "daredevil-netflix-s3",
     "arc": "street",
-    "isEssential": false
+    "isEssential": true
   },
   {
-    "id": "e-dd3-ddba",
-    "source": "daredevil-netflix-s3",
+    "id": "e-defenders-ddba",
+    "source": "container-defenders",
     "target": "daredevil-born-again-s1",
     "arc": "street",
-    "isEssential": true
-  },
-  {
-    "id": "e-pun2-punspec",
-    "source": "punisher-s2",
-    "target": "punisher-one-last-kill",
-    "arc": "street",
-    "isEssential": true
+    "isEssential": true,
+    "label": "The Defenders Saga"
   },
   {
     "id": "e-punspec-bnd",
@@ -1429,11 +1433,27 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "label": "Yelena Belova & Red Guardian"
   },
   {
-    "id": "e-bnd-tb",
-    "source": "up-spider-man-4",
+    "id": "e-fal-tb",
+    "source": "falcon-and-winter-soldier-26",
     "target": "thunderbolts-44",
+    "arc": "core-avengers",
+    "isEssential": true,
+    "label": "Bucky Barnes & John Walker"
+  },
+  {
+    "id": "e-ant2-tb",
+    "source": "ant-man-and-the-wasp-21",
+    "target": "thunderbolts-44",
+    "arc": "core-avengers",
+    "isEssential": true,
+    "label": "Ava Starr / Ghost"
+  },
+  {
+    "id": "e-tb-bnd",
+    "source": "thunderbolts-44",
+    "target": "up-spider-man-4",
     "arc": "street",
-    "isEssential": false
+    "isEssential": true
   },
   {
     "id": "e-bnd-doom",
@@ -1471,25 +1491,12 @@ export const ROADMAP_CONNECTIONS: NarrativeConnection[] = [
     "isEssential": false
   },
   {
-    "id": "e-logan-dpw",
-    "source": "logan-2017",
+    "id": "e-xmen-dpw",
+    "source": "container-xmen-multiverse",
     "target": "deadpool-wolverine-42",
     "arc": "multiverse",
-    "isEssential": true
-  },
-  {
-    "id": "e-dp2-dpw",
-    "source": "deadpool-2-2018",
-    "target": "deadpool-wolverine-42",
-    "arc": "multiverse",
-    "isEssential": true
-  },
-  {
-    "id": "e-dofp-dpw",
-    "source": "x-men-days-of-future-past-2014",
-    "target": "deadpool-wolverine-42",
-    "arc": "multiverse",
-    "isEssential": true
+    "isEssential": true,
+    "label": "Universo X-Men"
   },
   {
     "id": "e-dpw-doom",
@@ -1512,6 +1519,17 @@ export const ROADMAP_NODE_LAYOUT_MAP = new Map(
   ROADMAP_NODE_LAYOUTS.map((layout) => [layout.id, layout])
 );
 
+// Registrar contenedores de universos en el mapa de layouts para cálculo de aristas
+UNIVERSE_CONTAINERS.forEach((container) => {
+  ROADMAP_NODE_LAYOUT_MAP.set(container.id, {
+    id: container.id,
+    x: container.x,
+    y: container.y,
+    lane: 'street',
+    era: container.era,
+  });
+});
+
 // Mapas auxiliares para cálculo eficiente de caminos de precedencia
 const predecessorsMap = new Map<string, string[]>();
 const successorsMap = new Map<string, string[]>();
@@ -1528,12 +1546,82 @@ ROADMAP_CONNECTIONS.forEach((conn) => {
   predecessorsMap.get(conn.target)!.push(conn.source);
 });
 
+// Enlazar lógicamente las series de The Defenders con su contenedor para trazabilidad bidireccional
+const DEFENDERS_SERIES_IDS = [
+  'daredevil-netflix-s1',
+  'daredevil-netflix-s2',
+  'daredevil-netflix-s3',
+  'the-defenders',
+  'jessica-jones-s1',
+  'jessica-jones-s2',
+  'jessica-jones-s3',
+  'luke-cage-s1',
+  'luke-cage-s2',
+  'iron-fist-s1',
+  'iron-fist-s2',
+  'punisher-s1',
+  'punisher-s2',
+];
+
+DEFENDERS_SERIES_IDS.forEach((id) => {
+  if (!successorsMap.has(id)) successorsMap.set(id, []);
+  successorsMap.get(id)!.push('container-defenders');
+
+  if (!predecessorsMap.has('container-defenders')) predecessorsMap.set('container-defenders', []);
+  predecessorsMap.get('container-defenders')!.push(id);
+});
+
+// Enlazar lógicamente el Multiverso Spider-Man con su contenedor
+const SPIDERMAN_LEGACY_IDS = [
+  'spider-man-1-tobey',
+  'spider-man-2-tobey',
+  'spider-man-3-tobey',
+  'the-amazing-spider-man-1-andrew',
+  'the-amazing-spider-man-2-andrew',
+];
+
+SPIDERMAN_LEGACY_IDS.forEach((id) => {
+  if (!successorsMap.has(id)) successorsMap.set(id, []);
+  successorsMap.get(id)!.push('container-spiderman-multiverse');
+
+  if (!predecessorsMap.has('container-spiderman-multiverse'))
+    predecessorsMap.set('container-spiderman-multiverse', []);
+  predecessorsMap.get('container-spiderman-multiverse')!.push(id);
+});
+
+// Enlazar lógicamente el Universo X-Men con su contenedor
+const XMEN_LEGACY_IDS = [
+  'deadpool-1-2016',
+  'deadpool-2-2018',
+  'logan-2017',
+  'x-men-2000',
+  'x-men-2-2003',
+  'x-men-3-the-last-stand-2006',
+  'x-men-first-class-2011',
+  'x-men-days-of-future-past-2014',
+  'x-men-origins-wolverine-2009',
+];
+
+XMEN_LEGACY_IDS.forEach((id) => {
+  if (!successorsMap.has(id)) successorsMap.set(id, []);
+  successorsMap.get(id)!.push('container-xmen-multiverse');
+
+  if (!predecessorsMap.has('container-xmen-multiverse'))
+    predecessorsMap.set('container-xmen-multiverse', []);
+  predecessorsMap.get('container-xmen-multiverse')!.push(id);
+});
+
 // Precomputar todos los ancestros y sucesores para todos los nodos en tiempo de inicio (O(1) lookups en render)
 const precomputedPredecessors = new Map<string, Set<string>>();
 const precomputedSuccessors = new Map<string, Set<string>>();
 const EMPTY_SET = new Set<string>();
 
-ROADMAP_NODE_LAYOUTS.forEach((node) => {
+const ALL_GRAPH_NODES = [
+  ...ROADMAP_NODE_LAYOUTS,
+  ...UNIVERSE_CONTAINERS.map((c) => ({ id: c.id })),
+];
+
+ALL_GRAPH_NODES.forEach((node) => {
   // Predecesores
   const preds = new Set<string>();
   const pQueue = [node.id];
@@ -1573,12 +1661,18 @@ export function getAllSuccessorIds(sourceId: string): Set<string> {
   return precomputedSuccessors.get(sourceId) || EMPTY_SET;
 }
 
+// Mapa O(1) para consultar la prioridad de cada producción del UCM
+const PRODUCTIONS_PRIORITY_MAP = new Map<string, MCUPriority>(
+  PRODUCTIONS.map((p) => [p.id, p.prioridad || 'esencial'])
+);
+
 // Estructura estática precomputada de aristas (geometría, handles y eras precalculadas)
 export interface StaticEdgeSpec {
   id: string;
   source: string;
   target: string;
   arc: Exclude<StorylineArc, 'all'>;
+  priority: MCUPriority;
   isEssential: boolean;
   label?: string;
   sourceHandle: string;
@@ -1587,7 +1681,20 @@ export interface StaticEdgeSpec {
   targetEra?: string;
   isLongDistance: boolean;
   isSameSideVertical: boolean;
+  isPostEndgame: boolean;
+  isMergedTarget: boolean;
+  isPrimaryIncoming: boolean;
+  targetJunctionOffset: number;
+  isEndgameBranch: boolean;
 }
+
+const incomingByTarget = new Map<string, NarrativeConnection[]>();
+ROADMAP_CONNECTIONS.forEach((conn) => {
+  if (!incomingByTarget.has(conn.target)) {
+    incomingByTarget.set(conn.target, []);
+  }
+  incomingByTarget.get(conn.target)!.push(conn);
+});
 
 export const STATIC_EDGE_SPECS: StaticEdgeSpec[] = ROADMAP_CONNECTIONS.map((conn) => {
   const sourceLayout = ROADMAP_NODE_LAYOUT_MAP.get(conn.source);
@@ -1610,7 +1717,7 @@ export const STATIC_EDGE_SPECS: StaticEdgeSpec[] = ROADMAP_CONNECTIONS.map((conn
       targetHandle = 'target-right';
     }
   } else if (sourceLayout && targetLayout) {
-    if (deltaY > 500 && deltaX < 180) {
+    if (deltaY > 500 && deltaX < 180 && deltaX > 0) {
       if (sourceLayout.x <= 0) {
         sourceHandle = 'source-left';
         targetHandle = 'target-left';
@@ -1621,21 +1728,103 @@ export const STATIC_EDGE_SPECS: StaticEdgeSpec[] = ROADMAP_CONNECTIONS.map((conn
     }
   }
 
-  // Conexiones de salida directa hacia el UCM exterior
-  if (conn.id === 'e-dd3-ddba' || conn.id === 'e-pun2-punspec') {
+  // Conexiones de los contenedores de universos hacia el UCM principal
+  if (conn.id === 'e-defenders-ddba') {
     sourceHandle = 'source-right';
     targetHandle = 'target-left';
+  }
+  if (conn.id === 'e-spidiverse-nwh') {
+    sourceHandle = 'source-right';
+    targetHandle = 'target-left';
+  }
+  // Corrección Foto 1: Salir por la base de la columna de Logan del Universo X-Men y entrar por la derecha a Deadpool & Wolverine
+  if (conn.id === 'e-xmen-dpw') {
+    sourceHandle = 'source-bottom';
+    targetHandle = 'target-right';
+  }
+
+  // Corrección Foto 2: Conexión vertical 100% directa entre Spider-Man: Far From Home y Spider-Man: No Way Home
+  if (conn.id === 'e-ffh-nwh') {
+    sourceHandle = 'source-bottom';
+    targetHandle = 'target-top';
+  }
+
+  // Conexión de Daredevil Born Again S1 a Punisher Special (salir por la base, entrar por arriba)
+  if (conn.id === 'e-ddba1-punspec') {
+    sourceHandle = 'source-bottom';
+    targetHandle = 'target-top';
+  }
+
+  // The Defenders entra por el lateral izquierdo a Daredevil S3
+  if (conn.id === 'e-def-dd3') {
+    sourceHandle = 'source-right';
+    targetHandle = 'target-left';
+  }
+
+  // Guardianes de la Galaxia Vol. 2 baja directo por la derecha y entra por la derecha a Avengers: Infinity War
+  if (conn.id === 'e-gotg2-iw') {
+    sourceHandle = 'source-bottom';
+    targetHandle = 'target-right';
+  }
+
+  // Thunderbolts conecta por su lateral izquierdo hacia la parte superior de Spider-Man 4 (Brand New Day)
+  if (conn.id === 'e-tb-bnd') {
+    sourceHandle = 'source-left';
+    targetHandle = 'target-top';
+  }
+
+  // Spider-Man 4 conecta por su base hacia el colector inferior de Doomsday
+  if (conn.id === 'e-bnd-doom') {
+    sourceHandle = 'source-bottom';
+    targetHandle = 'target-top';
   }
 
   const isSameSideVertical =
     (sourceHandle === 'source-left' && targetHandle === 'target-left') ||
     (sourceHandle === 'source-right' && targetHandle === 'target-right');
 
+  const isPostEndgame =
+    (sourceLayout && sourceLayout.y >= 6580) || (targetLayout && targetLayout.y >= 6580) || false;
+  const targetConns = (incomingByTarget.get(conn.target) || []).filter((c) => {
+    let cTargetHandle = 'target-top';
+    if (c.id === 'e-defenders-ddba' || c.id === 'e-spidiverse-nwh' || c.id === 'e-def-dd3') cTargetHandle = 'target-left';
+    if (c.id === 'e-xmen-dpw' || c.id === 'e-gotg2-iw') cTargetHandle = 'target-right';
+    return cTargetHandle === targetHandle;
+  });
+  const isMergedTarget = targetConns.length > 1 && isPostEndgame && targetHandle === 'target-top';
+  const isPrimaryIncoming = targetConns[0]?.id === conn.id;
+  const isEndgameBranch = conn.source === 'avengers-endgame-23';
+  const targetJunctionOffset = conn.target === 'up-avengers-doomsday' ? 60 : 50;
+
+  // Prioridad de la conexión basada en la prioridad de la producción destino en el UCM
+  const targetPriority = PRODUCTIONS_PRIORITY_MAP.get(conn.target) || (conn.isEssential !== false ? 'esencial' : 'opcional');
+  let priority: MCUPriority = targetPriority;
+  if (conn.isEssential === false && targetPriority === 'esencial') {
+    priority = 'opcional';
+  }
+
+  // Las flechas que terminan en Avengers: Doomsday siempre son esenciales
+  if (conn.target === 'up-avengers-doomsday' || conn.target === 'up-avengers-secret-wars') {
+    priority = 'esencial';
+  }
+
+  // Las flechas que unen las temporadas de Daredevil (Netflix) y Thunderbolts a Spider-Man 4 son esenciales
+  if (
+    conn.id === 'e-dd1-dd2' ||
+    conn.id === 'e-dd2-dd3' ||
+    conn.id === 'e-dd2-def' ||
+    conn.id === 'e-def-dd3' ||
+    conn.id === 'e-tb-bnd'
+  ) {
+    priority = 'esencial';
+  }
+
   return {
     id: conn.id,
     source: conn.source,
     target: conn.target,
     arc: conn.arc,
+    priority,
     isEssential: conn.isEssential !== false,
     label: conn.label,
     sourceHandle,
@@ -1644,6 +1833,11 @@ export const STATIC_EDGE_SPECS: StaticEdgeSpec[] = ROADMAP_CONNECTIONS.map((conn
     targetEra: targetLayout?.era,
     isLongDistance,
     isSameSideVertical,
+    isPostEndgame,
+    isMergedTarget,
+    isPrimaryIncoming,
+    targetJunctionOffset,
+    isEndgameBranch,
   };
 });
 
@@ -1665,5 +1859,21 @@ export function getArcColor(arc: Exclude<StorylineArc, 'all'>): string {
       return '#94A3B8';
   }
 }
+
+export function getPriorityColor(priority?: MCUPriority): string {
+  switch (priority) {
+    case 'esencial':
+      return '#EF4444'; // Rojo vibrante Marvel
+    case 'recomendada':
+      return '#10B981'; // Verde Esmeralda
+    case 'complementaria':
+      return '#F59E0B'; // Ámbar Dorado
+    case 'opcional':
+      return '#71717A'; // Zinc Neutro
+    default:
+      return '#EF4444';
+  }
+}
+
 
 

@@ -2028,7 +2028,7 @@ const RAW_PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Doctor Doom & Vengadores",
     "colorAcento": "#4CAF50",
     "ordenListaMaestra": 90,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "up-yfnsm-s2",
@@ -2087,7 +2087,7 @@ const RAW_PRODUCTIONS: MCUItem[] = [
     "personajePrincipal": "Vengadores Multiversales",
     "colorAcento": "#9C27B0",
     "ordenListaMaestra": 91,
-    "prioridad": "recomendada"
+    "prioridad": "esencial"
   },
   {
     "id": "up-armor-wars",
