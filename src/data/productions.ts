@@ -2008,7 +2008,7 @@ const RAW_PRODUCTIONS: MCUItem[] = [
     "duracion": "Por anunciar",
     "personajePrincipal": "Visión Blanco",
     "colorAcento": "#607D8B",
-    "prioridad": "opcional"
+    "prioridad": "esencial"
   },
   {
     "id": "up-avengers-doomsday",
