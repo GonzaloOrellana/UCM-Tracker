@@ -56,6 +56,8 @@ const VIEW_MAP: Record<string, NavView> = {
   dashboard: 'dashboard',
   home: 'dashboard',
   inicio: 'dashboard',
+  todo: 'all',
+  all: 'all',
   movies: 'movies',
   peliculas: 'movies',
   'películas': 'movies',

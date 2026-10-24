@@ -41,7 +41,7 @@ export interface MCUItem {
 
 export type OrderMode = 'release' | 'chronological' | 'recommended';
 
-export type NavView = 'dashboard' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday' | 'roadmap';
+export type NavView = 'dashboard' | 'all' | 'movies' | 'series' | 'specials' | 'upcoming' | 'profile' | 'privacy' | 'terms' | 'doomsday' | 'roadmap';
 
 export type StorylineArc =
   | 'all'

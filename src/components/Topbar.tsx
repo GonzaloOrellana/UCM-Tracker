@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavView } from '../types/mcu';
 import { useMCU } from '../context/MCUContext';
-import { Sparkles, Home, Film, Tv, Calendar } from 'lucide-react';
+import { Sparkles, Home, Film, Tv, Calendar, LayoutGrid } from 'lucide-react';
 
 interface TopbarProps {
   currentView: NavView;
@@ -20,6 +20,7 @@ export const Topbar: React.FC<TopbarProps> = ({
 
   const navItems = [
     { id: 'dashboard' as NavView, label: 'Dashboard', icon: Home },
+    { id: 'all' as NavView, label: 'Todo', icon: LayoutGrid },
     { id: 'movies' as NavView, label: 'Películas', icon: Film },
     { id: 'series' as NavView, label: 'Series', icon: Tv },
     { id: 'specials' as NavView, label: 'Especiales', icon: Sparkles },

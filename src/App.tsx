@@ -196,7 +196,7 @@ const TrackerMainApp: React.FC = () => {
                 />
               )}
 
-              {(currentView === 'movies' || currentView === 'series' || currentView === 'specials') && (
+              {(currentView === 'all' || currentView === 'movies' || currentView === 'series' || currentView === 'specials') && (
                 <LibraryView
                   view={currentView}
                 />

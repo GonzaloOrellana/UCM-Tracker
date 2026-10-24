@@ -12,9 +12,9 @@ interface LibraryViewProps {
 export const LibraryView: React.FC<LibraryViewProps> = ({ view }) => {
   const { filteredItems, openDetailModal } = useMCU();
 
-  const targetType = view === 'movies' ? 'movie' : view === 'series' ? 'series' : 'special';
+  const targetType = view === 'all' ? null : view === 'movies' ? 'movie' : view === 'series' ? 'series' : 'special';
   const sectionItems = React.useMemo(
-    () => filteredItems.filter((item) => item.tipo === targetType),
+    () => (targetType ? filteredItems.filter((item) => item.tipo === targetType) : filteredItems),
     [filteredItems, targetType]
   );
 
